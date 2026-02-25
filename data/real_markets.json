@@ -1,0 +1,107 @@
+[
+  {
+    "slug": "will-glenn-youngkin-win-the-2024-republican-presidential-nomination",
+    "question": "[Single Market] Will Glenn Youngkin win the 2024 Republican presidential nomination?",
+    "description": "This market will resolve to “Yes” if Glenn Youngkin wins the 2024 nomination of the Republican Party for U.S. president. Otherwise, this market will resolve to “No”. \n\nThe resolution source for this market will be a consensus of official GOP sources, including https://www.gop.com. Any replacement of the nominee before election day will not change the resolution of the market.",
+    "resolution_url": "https://www.gop.com",
+    "outcome": "NO"
+  },
+  {
+    "slug": "will-brendan-fraser-win-the-oscar-for-best-actor-in-a-leading-role",
+    "question": "Will Brendan Fraser win the Oscar for Best Actor in a Leading Role?",
+    "description": "The Academy Awards are given every year by the Academy of Motion Picture Arts and Scientists (AMPAS) to a variety of films and film industry workers for outstanding displays of artistic and technical merit. In 2023 the 95th Academy Awards are set to be given out in a ceremony scheduled for March 12.\n\nThis market will resolve to \"Yes\" if Brendan Fraser wins the Academy Award for Best Actor in a Leading Role. Otherwise, this market will resolve to \"No\".\n\nIf for any reason no winner is declared by ",
+    "resolution_url": "https://www.oscars.org/",
+    "outcome": "YES"
+  },
+  {
+    "slug": "will-biden-be-impeached-by-june-30-2023",
+    "question": "Will Biden be impeached by June 30, 2023?",
+    "description": "This market will resolve to “Yes“ if the US House of Representatives by simple majority vote to approve or pass one or more articles of impeachment of President Joseph Biden by June 30, 2023, 11:59:59 PM ET. Otherwise, this market will resolve to \"No\".\n\nNeither trial nor conviction by the US Senate, nor removal from office, is necessary to resolve this market to “Yes“.\n\nIf President Joseph Biden for any reason ceases to be President of the United States before being impeached by June 30, 2023 11",
+    "resolution_url": "",
+    "outcome": "NO"
+  },
+  {
+    "slug": "will-brandon-johnson-win-the-2023-chicago-mayoral-election",
+    "question": "Will Brandon Johnson win the 2023 Chicago Mayoral Election?",
+    "description": "The 2023 Chicago Mayoral Election is scheduled to take place on February 28, 2023. If no candidate receives a majority of votes, a runoff election will be held on April 4, 2023. This is a market asking who will be the ultimate victor.\n\nThis market will resolve to \"Yes\" if Brandon Johnson wins the 2023 Chicago Mayoral Election. Otherwise, this market will resolve to \"No\".\n\nIf a runoff election is triggered and this candidate is no longer in consideration for Mayor of Chicago, this market will res",
+    "resolution_url": "https://chicagoelections.gov/en/election-results.html",
+    "outcome": "YES"
+  },
+  {
+    "slug": "will-lori-lightfoot-win-the-2023-chicago-mayoral-election",
+    "question": "Will Lori Lightfoot win the 2023 Chicago Mayoral Election?",
+    "description": "The 2023 Chicago Mayoral Election is scheduled to take place on February 28, 2023. If no candidate receives a majority of votes, a runoff election will be held on April 4, 2023. This is a market asking who will be the ultimate victor.\n\nThis market will resolve to \"Yes\" if Lori Lightfoot wins the 2023 Chicago Mayoral Election. Otherwise, this market will resolve to \"No\".\n\nIf a runoff election is triggered and this candidate is no longer in consideration for Mayor of Chicago, this market will reso",
+    "resolution_url": "https://chicagoelections.gov/en/election-results.html",
+    "outcome": "NO"
+  },
+  {
+    "slug": "will-joe-biden-be-president-of-the-united-states-on-june-1-2023",
+    "question": "Will Joe Biden be President of the United States on June 1, 2023?",
+    "description": "This is a market on if Joe Biden will be President of the United States on June 1, 2023, 12 PM ET.\n\nThis market will resolve to “Yes“ if, at the time of this market's resolution, Joe Biden is the President of the United States as officially substantiated by US government sources. Otherwise, this market will resolve to \"No.\"\n\nThe primary resolution source for this market is https://www.whitehouse.gov/; however, other official government sources may be used.",
+    "resolution_url": "https://www.whitehouse.gov/;",
+    "outcome": "YES"
+  },
+  {
+    "slug": "will-us-inflation-be-greater-than-0pt0-from-february-to-march-2023",
+    "question": "Will U.S. inflation be greater than 0.0% from February to March 2023?",
+    "description": "This is a market on a month-to-month inflation, as measured by the Bureau of Labor Statistics (CPI-U), from January to February 2023. Inflation is measured by a change in Consumer Price Index for All Urban Consumers (CPI-U) on a seasonally adjusted basis, reported by the U.S. Bureau of Labor Statistics.\n\nThis market will resolve to “Yes” if the index increased by more than 0.0 percent (on a seasonally adjusted basis) from February to March 2023 and “No“ otherwise.\n\nThe resolution source for this",
+    "resolution_url": "https://www.bls.gov/bls/news-release/cpi.htm",
+    "outcome": "YES"
+  },
+  {
+    "slug": "will-nikki-haley-win-the-us-2024-republican-presidential-nomination",
+    "question": "[Single Market] Will Nikki Haley win the U.S. 2024 Republican presidential nomination?",
+    "description": "This market will resolve to “Yes” if Nimrata Nikki Haley wins the 2024 nomination of the Republican Party for U.S. president. Otherwise, this market will resolve to “No”.\n\nThe resolution source for this market will be a consensus of official GOP sources, including https://www.gop.com.\n\nAny replacement of the nominee before election day will not change the resolution of the market.",
+    "resolution_url": "https://www.gop.com",
+    "outcome": "NO"
+  },
+  {
+    "slug": "will-austin-butler-win-the-oscar-for-best-actor-in-a-leading-role",
+    "question": "Will Austin Butler win the Oscar for Best Actor in a Leading Role?",
+    "description": "The Academy Awards are given every year by the Academy of Motion Picture Arts and Scientists (AMPAS) to a variety of films and film industry workers for outstanding displays of artistic and technical merit. In 2023 the 95th Academy Awards are set to be given out in a ceremony scheduled for March 12.\n\nThis market will resolve to \"Yes\" if Austin Butler wins the Academy Award for Best Actor in a Leading Role. Otherwise, this market will resolve to \"No\".\n\nIf for any reason no winner is declared by D",
+    "resolution_url": "https://www.oscars.org/",
+    "outcome": "NO"
+  },
+  {
+    "slug": "will-everton-beat-brentford-03112023",
+    "question": "Will Everton beat Brentford? (03/11/2023)",
+    "description": "In the upcoming Premier League soccer match scheduled for March 11, 2023:\n\nIf Everton wins, this market will resolve to \"Yes\". Otherwise, this market will resolve to \"No\".\n\nIf the game results in a draw, the market resolves to \"No.\"\n\nIf the game is not completed by March 25, 2023, the market will resolve to 50-50.",
+    "resolution_url": "",
+    "outcome": "YES"
+  },
+  {
+    "slug": "will-the-suns-be-the-2022-23-nba-champion",
+    "question": "Will the Suns be the 2022-23 NBA Champion?",
+    "description": "This market will resolve to \"Yes\" if the Phoenix Suns become the 2022-23 NBA Champion. Otherwise, this market will resolve to \"No\".\n\nIf it is determined at any point that it is impossible for the Suns to be the 2022-23 NBA Champion based on the rules of the NBA (e.g. they're eliminated in the playoffs), this market will immediately resolve to \"No.\"\n\nIf this team is still in contention to become the champion and the champion still isn't determined by October 24, 2023, 11:59:59 PM ET, this market ",
+    "resolution_url": "",
+    "outcome": "NO"
+  },
+  {
+    "slug": "will-donald-j-trump-win-the-us-2024-republican-presidential-nomination-1",
+    "question": "[Single Market] Will Donald J. Trump win the U.S. 2024 Republican presidential nomination?",
+    "description": "This market will resolve to “Yes” if Donald J. Trump wins the 2024 nomination of the Republican Party for U.S. president. Otherwise, this market will resolve to “No”.\n\nThe resolution source for this market will be a consensus of official GOP sources, including https://www.gop.com.\n\nAny replacement of the nominee before election day will not change the resolution of the market.",
+    "resolution_url": "https://www.gop.com",
+    "outcome": "YES"
+  },
+  {
+    "slug": "will-shazam-fury-of-the-gods-gross-more-than-30-million-domestically-on-its-opening-weekend",
+    "question": "Will 'Shazam! Fury of the Gods' gross more than $30 million domestically on its opening weekend?",
+    "description": "'Shazam! Fury of the Gods' (2023) is an upcoming American Superhero film directed by David F. Sandberg. It is the sequel to Shazam! (2019) and the 12th installment in the DC Extended Universe (DCEU). It is scheduled for theatrical release in the USA on March 17, 2023.\n\nThis is a market on how much ‘Shazam! Fury of the Gods' will gross domestically on its opening weekend. The “Domestic Weekend” tab on https://www.boxofficemojo.com/title/tt10151854/ will be used to resolve this market once the val",
+    "resolution_url": "https://www.boxofficemojo.com/title/tt10151854/",
+    "outcome": "YES"
+  },
+  {
+    "slug": "will-elonmusk-have-23451-or-more-tweets-on-march-6",
+    "question": "Will @elonmusk have 23,451 or more tweets on March 6?",
+    "description": "Memorialization: At 12:00 PM ET according to the resolution source, the number of tweets that @elonmusk had was 23,366.\n\n-----\n\nIf the number of tweets published by Elon Musk's verified Twitter account, @elonmusk, is 23,451 or greater on March 6, 2023, 12:00:00 PM ET, this market will resolve to \"Yes\". Otherwise, this market will resolve to \"No\".\n\nThis market will resolve according to the number of tweets found at 12:00:00 PM ET on March 6, 2023, and CANNOT resolve prior to that time (tweet numb",
+    "resolution_url": "https://twitter.com/elonmusk",
+    "outcome": "NO"
+  },
+  {
+    "slug": "will-the-fed-increase-interest-rates-by-25-bps-after-its-march-meeting",
+    "question": "Will the Fed increase interest rates by 25 bps after its March meeting?",
+    "description": "The FED interest rates are defined in this market by the upper bound of the target federal funds range. The decisions on the target federal fund range are made by the Federal Open Market Committee (FOMC) meetings.\n\nThe resolution source for this market is the FOMC’s statement after its meeting scheduled for March 21-22, 2023 according to the official calendar: https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm.\n\nThis market will resolve to “Yes” if following the Federal Reserve's Ma",
+    "resolution_url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+    "outcome": "YES"
+  }
+]

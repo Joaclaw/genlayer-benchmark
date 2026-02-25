@@ -1,0 +1,72 @@
+[
+  {
+    "id": "nyc-mayor-mamdani-2026",
+    "question": "Is Zohran Mamdani the Mayor of New York City in February 2026?",
+    "resolution_url": "https://en.wikipedia.org/wiki/Zohran_Mamdani",
+    "outcome": "YES",
+    "source": "Sworn in January 1, 2026 as 112th Mayor"
+  },
+  {
+    "id": "indiana-cfp-2026",
+    "question": "Did Indiana win the 2026 College Football Playoff National Championship?",
+    "resolution_url": "https://en.wikipedia.org/wiki/2026_College_Football_Playoff_National_Championship",
+    "outcome": "YES",
+    "source": "Indiana beat Miami 27-21 on Jan 19, 2026"
+  },
+  {
+    "id": "virginia-governor-spanberger",
+    "question": "Is Abigail Spanberger the Governor of Virginia in February 2026?",
+    "resolution_url": "https://en.wikipedia.org/wiki/Abigail_Spanberger",
+    "outcome": "YES",
+    "source": "Took office January 17, 2026"
+  },
+  {
+    "id": "us-who-withdrawal-2026",
+    "question": "Did the United States leave the World Health Organization in January 2026?",
+    "resolution_url": "https://en.wikipedia.org/wiki/2026_in_the_United_States",
+    "outcome": "YES",
+    "source": "Left WHO on January 22, 2026"
+  },
+  {
+    "id": "nj-governor-sherrill",
+    "question": "Is Mikie Sherrill the Governor of New Jersey in February 2026?",
+    "resolution_url": "https://en.wikipedia.org/wiki/Mikie_Sherrill",
+    "outcome": "YES",
+    "source": "Took office January 20, 2026"
+  },
+  {
+    "id": "venezuela-maduro-capture",
+    "question": "Was Nicolás Maduro captured by US forces in January 2026?",
+    "resolution_url": "https://en.wikipedia.org/wiki/2026_United_States_strikes_in_Venezuela",
+    "outcome": "YES",
+    "source": "Captured following air strike, announced Jan 3, 2026"
+  },
+  {
+    "id": "us-president-trump-2026",
+    "question": "Is Donald Trump the President of the United States in February 2026?",
+    "resolution_url": "https://en.wikipedia.org/wiki/2026_in_the_United_States",
+    "outcome": "YES",
+    "source": "Serving second term"
+  },
+  {
+    "id": "grammy-2026-location",
+    "question": "Were the 68th Grammy Awards held at Crypto.com Arena in Los Angeles?",
+    "resolution_url": "https://en.wikipedia.org/wiki/68th_Annual_Grammy_Awards",
+    "outcome": "YES",
+    "source": "Held February 1, 2026 at Crypto.com Arena"
+  },
+  {
+    "id": "fed-shutdown-jan-2026",
+    "question": "Did a federal government shutdown begin on January 31, 2026?",
+    "resolution_url": "https://en.wikipedia.org/wiki/January%E2%80%93February_2026_United_States_federal_government_shutdown",
+    "outcome": "YES",
+    "source": "Shutdown began January 31, 2026"
+  },
+  {
+    "id": "mangione-federal-dismissed",
+    "question": "Were Luigi Mangione's federal murder charges dismissed in January 2026?",
+    "resolution_url": "https://en.wikipedia.org/wiki/Killing_of_Brian_Thompson",
+    "outcome": "YES",
+    "source": "Dismissed by Judge Garnett on January 30, 2026"
+  }
+]

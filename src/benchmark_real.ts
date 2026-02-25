@@ -13,15 +13,12 @@ const ROOT_DIR = join(__dirname, '..');
 // TYPES
 // ============================================================================
 
-interface ClobMarket {
+interface RealMarket {
+  slug: string;
   question: string;
   description: string;
-  market_slug: string;
-  end_date_iso: string;
-  tokens: Array<{
-    outcome: string;
-    winner: boolean;
-  }>;
+  resolution_url: string;  // Extracted from description
+  outcome: string;
 }
 
 interface MarketResult {
@@ -33,6 +30,7 @@ interface MarketResult {
   genlayer_result: string;
   correct: boolean;
   failure_reason: string;
+  failure_category: 'none' | 'web_access' | 'content_quality' | 'llm_extraction' | 'consensus' | 'tx_error';
   status_code: number;
   error_detail: string;
   reasoning: string;
@@ -49,44 +47,73 @@ interface BenchmarkOutput {
   network: string;
   total_markets: number;
   results: MarketResult[];
+  summary: {
+    total: number;
+    consensus_achieved: number;
+    consensus_failed: number;
+    resolvable: number;
+    correct: number;
+    failure_breakdown: Record<string, number>;
+  };
 }
 
 // ============================================================================
-// POLYMARKET CLOB API
+// FETCH REAL POLYMARKET DATA
 // ============================================================================
 
-async function fetchResolvedMarkets(limit: number = 10): Promise<Array<{id: string; question: string; resolutionUrl: string; outcome: string}>> {
-  console.log(`📊 Loading Feb 2026 markets (Wikipedia-verified)...`);
+async function fetchRealMarkets(limit: number = 20): Promise<RealMarket[]> {
+  console.log(`📊 Fetching REAL resolved markets from Polymarket...`);
   
-  // Load curated Feb 2026 markets with stable Wikipedia sources
-  const marketsPath = join(ROOT_DIR, 'data/markets_feb_2026.json');
-  const marketsData = readFileSync(marketsPath, 'utf-8');
-  const markets = JSON.parse(marketsData) as Array<{
-    id: string;
-    question: string;
-    resolution_url: string;
-    outcome: string;
-    source: string;
-  }>;
+  const response = await fetch('https://clob.polymarket.com/markets?closed=true');
+  const json = await response.json() as any;
+  const allMarkets = json.data || [];
   
-  const validMarkets = markets.slice(0, limit).map(m => ({
-    id: m.id,
-    question: m.question,
-    resolutionUrl: m.resolution_url,
-    outcome: m.outcome.toUpperCase()
-  }));
+  const markets: RealMarket[] = [];
   
-  console.log(`   Found ${validMarkets.length} Feb 2026 markets\n`);
+  for (const m of allMarkets) {
+    if (markets.length >= limit) break;
+    
+    // Skip if no clear winner
+    const winner = m.tokens?.find((t: any) => t.winner === true)?.outcome;
+    if (!winner) continue;
+    
+    // Skip if no description
+    if (!m.description || m.description.length < 50) continue;
+    
+    // Skip pure sports games (less interesting for benchmarking)
+    if (m.market_slug?.match(/^(nba-|nfl-|nhl-|mlb-|ncaab-|ufc-)/)) continue;
+    
+    // Extract URL from description
+    const urlMatch = m.description.match(/https?:\/\/[^\s\)\"]+/);
+    const resolutionUrl = urlMatch ? urlMatch[0].replace(/[,.]$/, '') : '';
+    
+    // Include market even if no URL (to track that failure mode)
+    markets.push({
+      slug: m.market_slug || 'unknown',
+      question: m.question,
+      description: m.description.slice(0, 500),
+      resolution_url: resolutionUrl,
+      outcome: winner.toUpperCase()
+    });
+  }
   
-  // Log first few
-  validMarkets.slice(0, 3).forEach(m => {
-    console.log(`   - ${m.question.slice(0, 50)}...`);
-    console.log(`     URL: ${m.resolutionUrl.slice(0, 50)}...`);
-    console.log(`     Expected: ${m.outcome}`);
+  console.log(`   Found ${markets.length} real resolved markets\n`);
+  
+  // Stats on URL availability
+  const withUrl = markets.filter(m => m.resolution_url).length;
+  const withoutUrl = markets.length - withUrl;
+  console.log(`   With resolution URL: ${withUrl}`);
+  console.log(`   Without resolution URL: ${withoutUrl}\n`);
+  
+  // Show sample
+  markets.slice(0, 5).forEach((m, i) => {
+    console.log(`   ${i+1}. ${m.question.slice(0, 55)}...`);
+    console.log(`      URL: ${m.resolution_url ? m.resolution_url.slice(0, 50) + '...' : '(none)'}`);
+    console.log(`      Outcome: ${m.outcome}`);
   });
   console.log('');
   
-  return validMarkets;
+  return markets;
 }
 
 // ============================================================================
@@ -122,20 +149,39 @@ async function deployResolver(client: any, contractCode: string): Promise<string
   return contractAddress;
 }
 
+function categorizeFailure(result: MarketResult): 'none' | 'web_access' | 'content_quality' | 'llm_extraction' | 'consensus' | 'tx_error' {
+  if (result.consensus_status === 'MAJORITY_DISAGREE') return 'consensus';
+  if (result.consensus_status === 'ERROR') return 'tx_error';
+  
+  const reason = result.failure_reason.toLowerCase();
+  if (reason.includes('web_') || reason.includes('forbidden') || reason.includes('timeout') || reason.includes('not_found')) {
+    return 'web_access';
+  }
+  if (reason.includes('content_') || reason.includes('empty') || reason.includes('insufficient') || reason.includes('anti_bot') || reason.includes('paywall')) {
+    return 'content_quality';
+  }
+  if (reason.includes('llm_') || reason.includes('unresolvable')) {
+    return 'llm_extraction';
+  }
+  if (result.resolvable) return 'none';
+  return 'llm_extraction';
+}
+
 async function resolveMarket(
   client: any,
   contractAddress: string,
-  market: {id: string; question: string; resolutionUrl: string; outcome: string}
+  market: RealMarket
 ): Promise<MarketResult> {
   const result: MarketResult = {
-    market_id: market.id,
+    market_id: market.slug,
     question: market.question,
-    resolution_url: market.resolutionUrl,
+    resolution_url: market.resolution_url || '(none)',
     polymarket_result: market.outcome,
     resolvable: false,
     genlayer_result: 'PENDING',
     correct: false,
     failure_reason: '',
+    failure_category: 'none',
     status_code: 0,
     error_detail: '',
     reasoning: '',
@@ -144,19 +190,28 @@ async function resolveMarket(
     timestamp: new Date().toISOString(),
   };
   
+  // If no URL, mark as unresolvable immediately
+  if (!market.resolution_url) {
+    result.resolvable = false;
+    result.genlayer_result = 'NO_URL';
+    result.failure_reason = 'no_resolution_url';
+    result.failure_category = 'web_access';
+    result.error_detail = 'Market description contains no resolution URL';
+    result.consensus_status = 'MAJORITY_AGREE';  // We agree it can't be resolved
+    return result;
+  }
+  
   try {
-    // Call resolve_market on the contract
     const txHash = await client.writeContract({
       address: contractAddress,
       functionName: 'resolve_market',
-      args: [market.id, market.question, market.resolutionUrl, market.outcome],
+      args: [market.slug, market.question, market.resolution_url, market.outcome],
       leaderOnly: false,
     });
     
     result.tx_hash = txHash;
     console.log(`   TX: ${txHash}`);
     
-    // Wait for finalization
     const receipt = await client.waitForTransactionReceipt({
       hash: txHash,
       status: TransactionStatus.FINALIZED,
@@ -167,14 +222,11 @@ async function resolveMarket(
     const receiptData = receipt as any;
     const consensusResult = receiptData?.result_name || 'UNKNOWN';
     
-    // Determine consensus status
     if (consensusResult === 'MAJORITY_AGREE' || consensusResult === 'AGREE') {
       result.consensus_status = 'MAJORITY_AGREE';
       
-      // Extract the return value from the transaction
+      // Extract contract result
       let contractResult = null;
-      
-      // Try to get result from leader receipt
       const leaderReceipt = receiptData?.consensus_data?.leader_receipt;
       if (leaderReceipt) {
         const receipts = Array.isArray(leaderReceipt) ? leaderReceipt : [leaderReceipt];
@@ -184,8 +236,10 @@ async function resolveMarket(
             if (payload.readable) payload = payload.readable;
             if (typeof payload === 'string') {
               try {
-                if (payload.startsWith('"')) payload = JSON.parse(payload);
-                contractResult = typeof payload === 'string' ? JSON.parse(payload) : payload;
+                // Handle double-encoded JSON
+                let parsed = payload;
+                if (parsed.startsWith('"')) parsed = JSON.parse(parsed);
+                contractResult = typeof parsed === 'string' ? JSON.parse(parsed) : parsed;
               } catch {
                 contractResult = { genlayer_result: payload };
               }
@@ -197,21 +251,6 @@ async function resolveMarket(
         }
       }
       
-      // Fallback: read from contract state
-      if (!contractResult) {
-        try {
-          const storedResult = await client.readContract({
-            address: contractAddress,
-            functionName: 'get_result',
-            args: [market.id],
-          });
-          if (storedResult && typeof storedResult === 'object') {
-            contractResult = storedResult;
-          }
-        } catch {}
-      }
-      
-      // Parse contract result
       if (contractResult) {
         result.resolvable = contractResult.resolvable ?? false;
         result.genlayer_result = contractResult.genlayer_result || 'UNKNOWN';
@@ -220,7 +259,6 @@ async function resolveMarket(
         result.error_detail = contractResult.error_detail || '';
         result.reasoning = contractResult.reasoning || '';
         
-        // Determine correctness
         if (result.resolvable && result.polymarket_result !== 'UNKNOWN') {
           result.correct = (result.genlayer_result === result.polymarket_result);
         }
@@ -230,7 +268,7 @@ async function resolveMarket(
       result.consensus_status = 'MAJORITY_DISAGREE';
       result.genlayer_result = 'CONSENSUS_FAILED';
       result.failure_reason = 'consensus_disagree';
-      result.error_detail = 'Validators could not reach consensus';
+      result.error_detail = 'Validators could not reach consensus (web content likely varies)';
     } else {
       result.consensus_status = 'ERROR';
       result.genlayer_result = 'TX_ERROR';
@@ -245,6 +283,7 @@ async function resolveMarket(
     result.error_detail = error.message || String(error);
   }
   
+  result.failure_category = categorizeFailure(result);
   return result;
 }
 
@@ -254,27 +293,36 @@ async function resolveMarket(
 
 async function runBenchmark() {
   console.log('═'.repeat(60));
-  console.log('  GenLayer ↔ Polymarket Benchmark');
+  console.log('  GenLayer ↔ Polymarket REAL Benchmark');
+  console.log('  (No cherry-picking - actual market resolution sources)');
   console.log('═'.repeat(60) + '\n');
   
   const output: BenchmarkOutput = {
-    benchmark_id: `bench_${Date.now()}`,
+    benchmark_id: `bench_real_${Date.now()}`,
     started_at: new Date().toISOString(),
     completed_at: null,
     contract_address: null,
     network: 'studionet',
     total_markets: 0,
     results: [],
+    summary: {
+      total: 0,
+      consensus_achieved: 0,
+      consensus_failed: 0,
+      resolvable: 0,
+      correct: 0,
+      failure_breakdown: {}
+    }
   };
   
-  // Ensure directories exist
+  // Ensure directories
   ['data', 'results', 'logs'].forEach(dir => {
     const path = join(ROOT_DIR, dir);
     if (!existsSync(path)) mkdirSync(path, { recursive: true });
   });
   
-  // 1. Fetch markets
-  const markets = await fetchResolvedMarkets(10);
+  // 1. Fetch REAL markets
+  const markets = await fetchRealMarkets(15);
   output.total_markets = markets.length;
   
   if (markets.length === 0) {
@@ -282,7 +330,13 @@ async function runBenchmark() {
     return;
   }
   
-  // 2. Initialize GenLayer client
+  // Save markets for reference
+  writeFileSync(
+    join(ROOT_DIR, 'data/real_markets.json'),
+    JSON.stringify(markets, null, 2)
+  );
+  
+  // 2. Initialize GenLayer
   console.log('🔗 Connecting to GenLayer studionet...');
   const account = createAccount();
   console.log(`   Account: ${account.address}\n`);
@@ -294,7 +348,7 @@ async function runBenchmark() {
   
   await client.initializeConsensusSmartContract();
   
-  // 3. Deploy the resolver contract
+  // 3. Deploy contract
   const contractCode = readFileSync(
     join(ROOT_DIR, 'contracts/polymarket_resolver.py'),
     'utf-8'
@@ -303,97 +357,84 @@ async function runBenchmark() {
   const contractAddress = await deployResolver(client, contractCode);
   output.contract_address = contractAddress;
   
-  // 4. Process each market
-  console.log('🔍 Processing markets...\n');
+  // 4. Process markets
+  console.log('🔍 Processing REAL markets...\n');
   
   for (let i = 0; i < markets.length; i++) {
     const market = markets[i];
     
     console.log(`[${i + 1}/${markets.length}] ${market.question.slice(0, 55)}...`);
-    console.log(`   URL: ${market.resolutionUrl.slice(0, 60)}...`);
+    console.log(`   URL: ${market.resolution_url ? market.resolution_url.slice(0, 55) + '...' : '(none)'}`);
     console.log(`   Polymarket: ${market.outcome}`);
     
     const result = await resolveMarket(client, contractAddress, market);
     output.results.push(result);
     
     // Log outcome
-    if (result.consensus_status === 'MAJORITY_AGREE') {
-      if (result.resolvable) {
-        const icon = result.correct ? '✅' : '❌';
-        console.log(`   GenLayer: ${result.genlayer_result} ${icon}`);
-        if (result.reasoning) {
-          console.log(`   Reasoning: ${result.reasoning.slice(0, 80)}...`);
-        }
-      } else {
-        console.log(`   ⚠️ Not resolvable: ${result.failure_reason}`);
-        if (result.error_detail) {
-          console.log(`   Detail: ${result.error_detail.slice(0, 60)}`);
-        }
-      }
-    } else if (result.consensus_status === 'MAJORITY_DISAGREE') {
-      console.log(`   ⚠️ MAJORITY_DISAGREE`);
+    if (result.failure_category === 'none' && result.resolvable) {
+      const icon = result.correct ? '✅' : '❌';
+      console.log(`   GenLayer: ${result.genlayer_result} ${icon}`);
     } else {
-      console.log(`   ❌ Error: ${result.error_detail}`);
+      console.log(`   ⚠️ ${result.failure_category}: ${result.failure_reason}`);
+      if (result.error_detail) {
+        console.log(`   Detail: ${result.error_detail.slice(0, 60)}`);
+      }
     }
-    
     console.log('');
     
-    // Save intermediate results
+    // Save intermediate
     writeFileSync(
-      join(ROOT_DIR, 'results/benchmark_results.json'),
+      join(ROOT_DIR, 'results/benchmark_real_results.json'),
       JSON.stringify(output, null, 2)
     );
     
-    // Delay
-    await new Promise(resolve => setTimeout(resolve, 2000));
+    await new Promise(r => setTimeout(r, 2000));
   }
   
-  // 5. Summary
+  // 5. Calculate summary
   output.completed_at = new Date().toISOString();
+  output.summary.total = output.results.length;
+  output.summary.consensus_achieved = output.results.filter(r => r.consensus_status === 'MAJORITY_AGREE').length;
+  output.summary.consensus_failed = output.results.filter(r => r.consensus_status === 'MAJORITY_DISAGREE').length;
+  output.summary.resolvable = output.results.filter(r => r.resolvable).length;
+  output.summary.correct = output.results.filter(r => r.correct).length;
   
-  const agreed = output.results.filter(r => r.consensus_status === 'MAJORITY_AGREE');
-  const disagreed = output.results.filter(r => r.consensus_status === 'MAJORITY_DISAGREE');
-  const errors = output.results.filter(r => r.consensus_status === 'ERROR');
-  
-  const resolvable = agreed.filter(r => r.resolvable);
-  const notResolvable = agreed.filter(r => !r.resolvable);
-  const correct = resolvable.filter(r => r.correct);
-  
-  // Failure breakdown
-  const failureBreakdown: Record<string, number> = {};
-  [...notResolvable, ...disagreed].forEach(r => {
-    const reason = r.failure_reason || 'unknown';
-    failureBreakdown[reason] = (failureBreakdown[reason] || 0) + 1;
+  // Failure breakdown by category
+  output.results.forEach(r => {
+    const cat = r.failure_category;
+    output.summary.failure_breakdown[cat] = (output.summary.failure_breakdown[cat] || 0) + 1;
   });
   
+  // Print summary
   console.log('═'.repeat(60));
-  console.log('  BENCHMARK RESULTS');
+  console.log('  BENCHMARK RESULTS (REAL Polymarket Markets)');
   console.log('═'.repeat(60));
-  console.log(`\n  Total Markets:        ${output.total_markets}`);
+  console.log(`\n  Total Markets:         ${output.summary.total}`);
   console.log(`  ─────────────────────────────────────`);
-  console.log(`  Consensus Achieved:   ${agreed.length}`);
-  console.log(`  Consensus Failed:     ${disagreed.length}`);
-  console.log(`  TX Errors:            ${errors.length}`);
+  console.log(`  Consensus Achieved:    ${output.summary.consensus_achieved} (${pct(output.summary.consensus_achieved, output.summary.total)})`);
+  console.log(`  Consensus Failed:      ${output.summary.consensus_failed} (${pct(output.summary.consensus_failed, output.summary.total)})`);
   console.log(`  ─────────────────────────────────────`);
-  console.log(`  Resolvable:           ${resolvable.length} of ${agreed.length}`);
-  console.log(`  Correct:              ${correct.length} of ${resolvable.length}`);
+  console.log(`  Resolvable:            ${output.summary.resolvable} (${pct(output.summary.resolvable, output.summary.total)})`);
+  console.log(`  Correct:               ${output.summary.correct} (${pct(output.summary.correct, output.summary.resolvable || 1)})`);
   
-  if (Object.keys(failureBreakdown).length > 0) {
-    console.log(`\n  Failure Breakdown:`);
-    Object.entries(failureBreakdown)
-      .sort((a, b) => b[1] - a[1])
-      .forEach(([reason, count]) => {
-        console.log(`    ${reason}: ${count}`);
-      });
-  }
+  console.log(`\n  Failure Breakdown:`);
+  Object.entries(output.summary.failure_breakdown)
+    .sort((a, b) => b[1] - a[1])
+    .forEach(([cat, count]) => {
+      console.log(`    ${cat}: ${count} (${pct(count, output.summary.total)})`);
+    });
   
   writeFileSync(
-    join(ROOT_DIR, 'results/benchmark_results.json'),
+    join(ROOT_DIR, 'results/benchmark_real_results.json'),
     JSON.stringify(output, null, 2)
   );
   
-  console.log(`\n  Results: results/benchmark_results.json`);
+  console.log(`\n  Results: results/benchmark_real_results.json`);
   console.log('═'.repeat(60) + '\n');
+}
+
+function pct(n: number, total: number): string {
+  return `${Math.round((n / total) * 100)}%`;
 }
 
 runBenchmark().catch(err => {
