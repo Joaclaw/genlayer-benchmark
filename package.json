@@ -5,8 +5,11 @@
   "type": "module",
   "scripts": {
     "benchmark": "tsx src/benchmark.ts",
+    "validate": "tsx src/validate-contract.ts",
+    "test-flow": "tsx src/test-flow.ts",
+    "tx": "tsx src/tx-utils.ts",
     "dashboard": "node dashboard/server.js",
-    "start": "npm run benchmark && npm run dashboard"
+    "start": "npm run dashboard"
   },
   "dependencies": {
     "genlayer-js": "latest",

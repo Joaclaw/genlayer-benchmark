@@ -5,11 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GenLayer vs Polymarket Benchmark</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -19,10 +15,7 @@
       padding: 20px;
     }
     
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+    .container { max-width: 1200px; margin: 0 auto; }
     
     header {
       text-align: center;
@@ -31,15 +24,8 @@
       border-bottom: 1px solid #30363d;
     }
     
-    h1 {
-      color: #58a6ff;
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
-    
-    .subtitle {
-      color: #8b949e;
-    }
+    h1 { color: #58a6ff; font-size: 2rem; margin-bottom: 10px; }
+    .subtitle { color: #8b949e; }
     
     .summary-cards {
       display: grid;
@@ -56,17 +42,8 @@
       text-align: center;
     }
     
-    .card-value {
-      font-size: 2rem;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-    
-    .card-label {
-      color: #8b949e;
-      font-size: 0.9rem;
-    }
-    
+    .card-value { font-size: 2rem; font-weight: bold; margin-bottom: 5px; }
+    .card-label { color: #8b949e; font-size: 0.9rem; }
     .card.success .card-value { color: #3fb950; }
     .card.warning .card-value { color: #d29922; }
     .card.error .card-value { color: #f85149; }
@@ -90,13 +67,8 @@
       align-items: center;
     }
     
-    .market-row {
-      border-bottom: 1px solid #30363d;
-    }
-    
-    .market-row:last-child {
-      border-bottom: none;
-    }
+    .market-row { border-bottom: 1px solid #30363d; }
+    .market-row:last-child { border-bottom: none; }
     
     .market-summary {
       padding: 15px 20px;
@@ -106,9 +78,7 @@
       transition: background 0.2s;
     }
     
-    .market-summary:hover {
-      background: #21262d;
-    }
+    .market-summary:hover { background: #21262d; }
     
     .status-icon {
       width: 24px;
@@ -124,30 +94,12 @@
     
     .status-success { background: #238636; }
     .status-error { background: #da3633; }
-    .status-pending { background: #9e6a03; animation: pulse 1.5s infinite; }
+    .status-pending { background: #9e6a03; }
     .status-mismatch { background: #d29922; }
     
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.5; }
-    }
-    
-    .market-question {
-      flex: 1;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    
-    .expand-icon {
-      color: #8b949e;
-      margin-left: 10px;
-      transition: transform 0.2s;
-    }
-    
-    .market-row.expanded .expand-icon {
-      transform: rotate(180deg);
-    }
+    .market-question { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .expand-icon { color: #8b949e; margin-left: 10px; transition: transform 0.2s; }
+    .market-row.expanded .expand-icon { transform: rotate(180deg); }
     
     .market-details {
       display: none;
@@ -156,9 +108,7 @@
       border-top: 1px solid #30363d;
     }
     
-    .market-row.expanded .market-details {
-      display: block;
-    }
+    .market-row.expanded .market-details { display: block; }
     
     .detail-grid {
       display: grid;
@@ -172,24 +122,10 @@
       border-radius: 6px;
     }
     
-    .detail-label {
-      color: #8b949e;
-      font-size: 0.85rem;
-      margin-bottom: 5px;
-    }
-    
-    .detail-value {
-      word-break: break-all;
-    }
-    
-    .detail-value a {
-      color: #58a6ff;
-      text-decoration: none;
-    }
-    
-    .detail-value a:hover {
-      text-decoration: underline;
-    }
+    .detail-label { color: #8b949e; font-size: 0.85rem; margin-bottom: 5px; }
+    .detail-value { word-break: break-all; }
+    .detail-value a { color: #58a6ff; text-decoration: none; }
+    .detail-value a:hover { text-decoration: underline; }
     
     .resolution-comparison {
       display: flex;
@@ -205,17 +141,8 @@
       text-align: center;
     }
     
-    .resolution-source {
-      color: #8b949e;
-      font-size: 0.85rem;
-      margin-bottom: 5px;
-    }
-    
-    .resolution-value {
-      font-size: 1.5rem;
-      font-weight: bold;
-    }
-    
+    .resolution-source { color: #8b949e; font-size: 0.85rem; margin-bottom: 5px; }
+    .resolution-value { font-size: 1.5rem; font-weight: bold; }
     .resolution-yes { color: #3fb950; }
     .resolution-no { color: #f85149; }
     .resolution-other { color: #d29922; }
@@ -240,10 +167,7 @@
       line-height: 1.5;
     }
     
-    code {
-      color: #c9d1d9;
-    }
-    
+    code { color: #c9d1d9; }
     .keyword { color: #ff7b72; }
     .string { color: #a5d6ff; }
     .function { color: #d2a8ff; }
@@ -251,22 +175,9 @@
     .comment { color: #8b949e; }
     .class { color: #7ee787; }
     
-    .refresh-info {
-      color: #8b949e;
-      font-size: 0.85rem;
-    }
-    
-    .loading {
-      text-align: center;
-      padding: 40px;
-      color: #8b949e;
-    }
-    
-    .timestamp {
-      color: #8b949e;
-      font-size: 0.85rem;
-      margin-top: 10px;
-    }
+    .refresh-info { color: #8b949e; font-size: 0.85rem; }
+    .loading { text-align: center; padding: 40px; color: #8b949e; }
+    .timestamp { color: #8b949e; font-size: 0.85rem; margin-top: 10px; }
   </style>
 </head>
 <body>
@@ -304,9 +215,7 @@
         <span>📊 Market Results</span>
         <span class="refresh-info">Auto-refresh: 10s</span>
       </div>
-      <div id="markets">
-        <div class="loading">Loading results...</div>
-      </div>
+      <div id="markets"><div class="loading">Loading results...</div></div>
     </div>
     
     <div class="section">
@@ -321,35 +230,52 @@
   </div>
   
   <script>
-    function getStatusClass(result) {
-      if (result.status === 'pending') return 'status-pending';
-      if (result.status === 'error') return 'status-error';
-      if (result.match === true) return 'status-success';
-      if (result.match === false) return 'status-mismatch';
-      return 'status-pending';
+    // Support both old and new result formats
+    function normalizeResult(r) {
+      return {
+        marketId: r.marketId || r.market_id,
+        question: r.question,
+        resolutionUrl: r.resolutionUrl || r.resolution_url,
+        createdAt: r.createdAt || r.created_at,
+        endDate: r.endDate || r.end_date,
+        volume: r.volume,
+        polymarketResolution: r.polymarketResolution || r.polymarket_result,
+        genlayerResolution: r.genlayerResolution || r.genlayer_result,
+        status: r.status || (r.error ? 'error' : (r.genlayer_result ? 'success' : 'pending')),
+        match: r.match,
+        error: r.error,
+        txHash: r.txHash || r.genlayer_tx_hash,
+        timestamp: r.timestamp
+      };
     }
     
-    function getStatusIcon(result) {
-      if (result.status === 'pending') return '⏳';
-      if (result.status === 'error') return '✗';
+    function getStatusClass(r) {
+      const result = normalizeResult(r);
+      if (result.status === 'pending' || !result.genlayerResolution) return 'status-pending';
+      if (result.status === 'error' || result.error) return 'status-error';
+      if (result.match === true) return 'status-success';
+      return 'status-mismatch';
+    }
+    
+    function getStatusIcon(r) {
+      const result = normalizeResult(r);
+      if (result.status === 'pending' || !result.genlayerResolution) return '⏳';
+      if (result.status === 'error' || result.error) return '✗';
       if (result.match === true) return '✓';
-      if (result.match === false) return '≠';
-      return '?';
+      return '≠';
     }
     
     function getResolutionClass(resolution) {
-      if (resolution === 'YES') return 'resolution-yes';
-      if (resolution === 'NO') return 'resolution-no';
+      if (!resolution) return 'resolution-other';
+      const r = resolution.toUpperCase();
+      if (r === 'YES') return 'resolution-yes';
+      if (r === 'NO') return 'resolution-no';
       return 'resolution-other';
     }
     
     function formatDate(dateStr) {
       if (!dateStr) return '-';
-      return new Date(dateStr).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric'
-      });
+      return new Date(dateStr).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
     }
     
     function formatVolume(volume) {
@@ -365,54 +291,56 @@
         return '<div class="loading">No markets loaded yet...</div>';
       }
       
-      return markets.map((m, i) => `
-        <div class="market-row" id="market-${i}">
-          <div class="market-summary" onclick="toggleMarket(${i})">
-            <div class="status-icon ${getStatusClass(m)}">${getStatusIcon(m)}</div>
-            <div class="market-question">${m.question}</div>
-            <div class="expand-icon">▼</div>
-          </div>
-          <div class="market-details">
-            <div class="detail-grid">
-              <div class="detail-item">
-                <div class="detail-label">Resolution URL</div>
-                <div class="detail-value">
-                  <a href="${m.resolutionUrl}" target="_blank">${m.resolutionUrl ? m.resolutionUrl.substring(0, 50) + '...' : '-'}</a>
+      return markets.map((m, i) => {
+        const r = normalizeResult(m);
+        return `
+          <div class="market-row" id="market-${i}">
+            <div class="market-summary" onclick="toggleMarket(${i})">
+              <div class="status-icon ${getStatusClass(m)}">${getStatusIcon(m)}</div>
+              <div class="market-question">${r.question}</div>
+              <div class="expand-icon">▼</div>
+            </div>
+            <div class="market-details">
+              <div class="detail-grid">
+                <div class="detail-item">
+                  <div class="detail-label">Resolution URL</div>
+                  <div class="detail-value">
+                    <a href="${r.resolutionUrl}" target="_blank">${r.resolutionUrl ? r.resolutionUrl.substring(0, 50) + '...' : '-'}</a>
+                  </div>
+                </div>
+                <div class="detail-item">
+                  <div class="detail-label">Created</div>
+                  <div class="detail-value">${formatDate(r.createdAt)}</div>
+                </div>
+                <div class="detail-item">
+                  <div class="detail-label">Finalized</div>
+                  <div class="detail-value">${formatDate(r.endDate)}</div>
+                </div>
+                <div class="detail-item">
+                  <div class="detail-label">Volume</div>
+                  <div class="detail-value">${formatVolume(r.volume)}</div>
                 </div>
               </div>
-              <div class="detail-item">
-                <div class="detail-label">Created</div>
-                <div class="detail-value">${formatDate(m.createdAt)}</div>
+              <div class="resolution-comparison">
+                <div class="resolution-box">
+                  <div class="resolution-source">Polymarket</div>
+                  <div class="resolution-value ${getResolutionClass(r.polymarketResolution)}">${r.polymarketResolution || '-'}</div>
+                </div>
+                <div class="resolution-box">
+                  <div class="resolution-source">GenLayer</div>
+                  <div class="resolution-value ${getResolutionClass(r.genlayerResolution)}">${r.genlayerResolution || '-'}</div>
+                </div>
               </div>
-              <div class="detail-item">
-                <div class="detail-label">Finalized</div>
-                <div class="detail-value">${formatDate(m.endDate)}</div>
-              </div>
-              <div class="detail-item">
-                <div class="detail-label">Volume</div>
-                <div class="detail-value">${formatVolume(m.volume)}</div>
-              </div>
+              ${r.error ? `<div class="error-box"><strong>Error:</strong> ${r.error}</div>` : ''}
+              ${r.txHash ? `<div class="detail-item" style="margin-top:15px"><div class="detail-label">Transaction Hash</div><div class="detail-value">${r.txHash}</div></div>` : ''}
             </div>
-            <div class="resolution-comparison">
-              <div class="resolution-box">
-                <div class="resolution-source">Polymarket</div>
-                <div class="resolution-value ${getResolutionClass(m.polymarketResolution)}">${m.polymarketResolution || '-'}</div>
-              </div>
-              <div class="resolution-box">
-                <div class="resolution-source">GenLayer</div>
-                <div class="resolution-value ${getResolutionClass(m.genlayerResolution)}">${m.genlayerResolution || '-'}</div>
-              </div>
-            </div>
-            ${m.error ? `<div class="error-box"><strong>Error:</strong> ${m.error}</div>` : ''}
-            ${m.txHash ? `<div class="detail-item" style="margin-top:15px"><div class="detail-label">Transaction Hash</div><div class="detail-value">${m.txHash}</div></div>` : ''}
           </div>
-        </div>
-      `).join('');
+        `;
+      }).join('');
     }
     
     function toggleMarket(index) {
-      const row = document.getElementById(`market-${index}`);
-      row.classList.toggle('expanded');
+      document.getElementById(`market-${index}`).classList.toggle('expanded');
     }
     
     function highlightPython(code) {
@@ -430,18 +358,28 @@
         const response = await fetch('/api/results');
         const data = await response.json();
         
-        document.getElementById('total').textContent = data.summary?.total || 0;
-        document.getElementById('matches').textContent = data.summary?.matches || 0;
-        document.getElementById('mismatches').textContent = data.summary?.mismatches || 0;
-        document.getElementById('errors').textContent = data.summary?.errors || 0;
-        document.getElementById('pending').textContent = data.summary?.pending || 0;
+        // Handle both array and object with markets
+        const markets = Array.isArray(data) ? data : (data.markets || []);
+        const summary = data.summary || {
+          total: markets.length,
+          completed: markets.filter(m => (m.genlayerResolution || m.genlayer_result)).length,
+          matches: markets.filter(m => m.match === true).length,
+          mismatches: markets.filter(m => m.match === false).length,
+          errors: markets.filter(m => m.error).length,
+          pending: markets.filter(m => !(m.genlayerResolution || m.genlayer_result)).length
+        };
         
-        document.getElementById('markets').innerHTML = renderMarkets(data.markets);
+        document.getElementById('total').textContent = summary.total;
+        document.getElementById('matches').textContent = summary.matches;
+        document.getElementById('mismatches').textContent = summary.mismatches;
+        document.getElementById('errors').textContent = summary.errors;
+        document.getElementById('pending').textContent = summary.pending;
         
-        const time = data.endTime || data.startTime || new Date().toISOString();
+        document.getElementById('markets').innerHTML = renderMarkets(markets);
+        
+        const time = data.endTime || markets[markets.length-1]?.timestamp || new Date().toISOString();
         document.getElementById('timestamp').textContent = 
           `Last updated: ${new Date(time).toLocaleString()} ${data.endTime ? '(Complete)' : '(Running...)'}`;
-          
       } catch (error) {
         console.error('Failed to load results:', error);
       }
@@ -457,11 +395,8 @@
       }
     }
     
-    // Initial load
     loadResults();
     loadContract();
-    
-    // Auto-refresh every 10 seconds
     setInterval(loadResults, 10000);
   </script>
 </body>

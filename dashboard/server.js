@@ -1,51 +1,48 @@
 import express from 'express';
 import { readFileSync, existsSync } from 'fs';
+import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-const PROJECT_ROOT = join(__dirname, '..');
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const ROOT_DIR = join(__dirname, '..');
 
 const app = express();
-const PORT = 5050;
+const PORT = process.env.PORT || 5050;
 
 // Serve static files
 app.use(express.static(__dirname));
 
 // API: Get benchmark results
 app.get('/api/results', (req, res) => {
-  const resultsPath = join(PROJECT_ROOT, 'results', 'benchmark_results.json');
+  const resultsPath = join(ROOT_DIR, 'results/benchmark_results.json');
   
   if (!existsSync(resultsPath)) {
-    return res.json({
-      startTime: new Date().toISOString(),
-      markets: [],
-      summary: { total: 0, completed: 0, matches: 0, mismatches: 0, errors: 0, pending: 0 }
-    });
+    return res.json([]);
   }
   
   try {
-    const data = readFileSync(resultsPath, 'utf-8');
-    res.json(JSON.parse(data));
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to read results' });
+    const results = JSON.parse(readFileSync(resultsPath, 'utf-8'));
+    res.json(results);
+  } catch (err) {
+    console.error('Error reading results:', err);
+    res.json([]);
   }
 });
 
 // API: Get contract code
 app.get('/api/contract', (req, res) => {
-  const contractPath = join(PROJECT_ROOT, 'contracts', 'market_resolver.py');
+  const contractPath = join(ROOT_DIR, 'contracts/market_resolver.py');
   
   if (!existsSync(contractPath)) {
-    return res.status(404).json({ error: 'Contract not found' });
+    return res.json({ code: '# Contract not found' });
   }
   
   try {
     const code = readFileSync(contractPath, 'utf-8');
     res.json({ code });
-  } catch (error) {
-    res.status(500).json({ error: 'Failed to read contract' });
+  } catch (err) {
+    console.error('Error reading contract:', err);
+    res.json({ code: '# Error reading contract' });
   }
 });
 
@@ -57,6 +54,5 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`🌐 GenLayer Benchmark Dashboard`);
   console.log(`   Running at http://localhost:${PORT}`);
-  console.log('');
-  console.log('   Press Ctrl+C to stop');
+  console.log(`\n   Press Ctrl+C to stop`);
 });

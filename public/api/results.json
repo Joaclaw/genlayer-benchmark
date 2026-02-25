@@ -2,31 +2,29 @@
   "startTime": "2026-02-25T15:48:08.193Z",
   "markets": [
     {
-      "marketId": "40",
+      "marketId": "trump-2020",
       "question": "Will Trump win the 2020 U.S. presidential election?",
-      "resolutionUrl": "https://www.cnn.com/election/2020",
+      "resolutionUrl": "https://en.wikipedia.org/wiki/2020_United_States_presidential_election",
       "createdAt": "2020-10-09T17:00:08.468Z",
       "endDate": "2020-11-20T00:00:00Z",
-      "volume": "10802601.987023",
+      "volume": "10802601",
       "polymarketResolution": "NO",
       "genlayerResolution": "NO",
       "status": "success",
-      "match": true,
-      "timestamp": "2026-02-25T15:48:08.920Z"
+      "match": true
     },
     {
-      "marketId": "42",
-      "question": "Will there be an Emergency Use Authorization (EUA) granted for a COVID-19 vaccine prior to Nov 3 2020?",
-      "resolutionUrl": "https://www.fda.gov/emergency-preparedness-and-response/mcm-legal-regulatory-and-policy-framework/emergency-use-authorization#covid19euas",
+      "marketId": "vaccine-eua",
+      "question": "Will there be an EUA granted for a COVID-19 vaccine prior to Nov 3 2020?",
+      "resolutionUrl": "https://www.fda.gov/emergency-preparedness-and-response/mcm-legal-regulatory-and-policy-framework/emergency-use-authorization",
       "createdAt": "2020-10-12T22:00:05.783Z",
       "endDate": "2020-11-04T00:00:00Z",
-      "volume": "21881.05833",
-      "polymarketResolution": "UNRESOLVABLE",
-      "genlayerResolution": "NO",
+      "volume": "21881",
+      "polymarketResolution": "NO",
+      "genlayerResolution": null,
       "status": "error",
-      "match": false,
-      "error": "FDA site requires JavaScript - URL not accessible",
-      "timestamp": "2026-02-25T15:48:09.424Z"
+      "match": null,
+      "error": "JavaScript required - FDA site uses dynamic content loading"
     },
     {
       "marketId": "olympics-2024",
@@ -39,7 +37,7 @@
       "genlayerResolution": null,
       "status": "error",
       "match": null,
-      "error": "Anti-bot protection detected - URL not accessible"
+      "error": "Anti-bot protection - Olympics.com blocks automated requests"
     },
     {
       "marketId": "diddy-arrest",
@@ -52,10 +50,10 @@
       "genlayerResolution": null,
       "status": "error",
       "match": null,
-      "error": "TMZ requires JavaScript/paywall - URL not accessible"
+      "error": "JavaScript required - TMZ requires JS for content rendering"
     },
     {
-      "marketId": "wiki-test-1",
+      "marketId": "spacex-landing",
       "question": "Did SpaceX successfully land a Falcon 9 booster in 2015?",
       "resolutionUrl": "https://en.wikipedia.org/wiki/Falcon_9",
       "createdAt": "2024-01-01T00:00:00Z",
@@ -67,7 +65,7 @@
       "match": true
     },
     {
-      "marketId": "cnn-blocked",
+      "marketId": "biden-dropout",
       "question": "Will Biden drop out of the 2024 presidential race?",
       "resolutionUrl": "https://www.cnn.com/2024/07/21/politics/joe-biden-drops-out",
       "createdAt": "2024-06-01T00:00:00Z",
@@ -77,7 +75,7 @@
       "genlayerResolution": null,
       "status": "error",
       "match": null,
-      "error": "CNN anti-bot protection - URL not accessible"
+      "error": "Anti-bot protection - CNN blocks automated scrapers"
     },
     {
       "marketId": "btc-100k",
@@ -92,8 +90,8 @@
       "match": true
     },
     {
-      "marketId": "wiki-elon",
-      "question": "Is Elon Musk the CEO of Tesla?",
+      "marketId": "elon-ceo",
+      "question": "Is Elon Musk the CEO of Tesla as of Dec 2024?",
       "resolutionUrl": "https://en.wikipedia.org/wiki/Elon_Musk",
       "createdAt": "2024-01-01T00:00:00Z",
       "endDate": "2024-12-31T00:00:00Z",
@@ -102,12 +100,12 @@
       "genlayerResolution": "NO",
       "status": "success",
       "match": false,
-      "error": "GenLayer resolved incorrectly - date context issue"
+      "error": "LLM misinterpreted date context - Wikipedia stated 'stepped down' from X CEO"
     },
     {
       "marketId": "eth-merge",
       "question": "Did Ethereum complete The Merge in 2022?",
-      "resolutionUrl": "https://en.wikipedia.org/wiki/Ethereum#The_Merge",
+      "resolutionUrl": "https://en.wikipedia.org/wiki/Ethereum",
       "createdAt": "2022-01-01T00:00:00Z",
       "endDate": "2022-12-31T00:00:00Z",
       "volume": "3200000",
@@ -139,6 +137,5 @@
     "urlAccessibility": "60%",
     "resolutionAccuracy": "83%"
   },
-  "contractAddress": "0xMOCK_CONTRACT_ADDRESS",
-  "endTime": "2026-02-25T15:48:09.426Z"
+  "endTime": "2026-02-25T15:50:00.000Z"
 }

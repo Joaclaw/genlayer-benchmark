@@ -122,10 +122,27 @@ async function runBenchmark() {
   console.log('⚙️  Initializing consensus smart contract...');
   await client.initializeConsensusSmartContract();
   
-  // 3. Deploy contract
-  console.log('📜 Deploying MarketResolver contract...');
+  // 3. Validate and deploy contract
+  console.log('📜 Loading MarketResolver contract...');
   const contractCode = readFileSync(join(ROOT_DIR, 'contracts/market_resolver.py'), 'utf-8');
   
+  // Try to validate contract schema (only works on localnet)
+  try {
+    const schema = await client.getContractSchemaForCode({
+      code: contractCode,
+    });
+    console.log('   ✓ Contract schema valid');
+    console.log(`   Methods: ${Object.keys(schema.methods || {}).join(', ')}`);
+  } catch (err: any) {
+    // Schema validation not supported on studionet - skip
+    if (err.message?.includes('not supported')) {
+      console.log('   ⚠️ Schema validation not available on studionet');
+    } else {
+      console.log('   ⚠️ Schema check skipped:', err.message);
+    }
+  }
+  
+  console.log('📜 Deploying MarketResolver contract...');
   const deployTxHash = await client.deployContract({
     code: contractCode,
     args: [],
@@ -178,11 +195,10 @@ async function runBenchmark() {
     try {
       // Call resolve method
       const callHash = await client.writeContract({
-        account: account,
         address: contractAddress,
         functionName: 'resolve',
         args: [market.id, market.question, market.resolutionSource],
-        value: 0,
+        value: 0n,
       });
       
       result.genlayer_tx_hash = callHash;
@@ -192,36 +208,59 @@ async function runBenchmark() {
       const callReceipt = await client.waitForTransactionReceipt({
         hash: callHash,
         status: TransactionStatus.FINALIZED,
-        retries: 60,
+        retries: 100,
         interval: 5000,
       });
+      
+      // Also try to read the stored resolution
+      try {
+        const storedResolution = await client.readContract({
+          address: contractAddress,
+          functionName: 'get_resolution',
+          args: [market.id],
+        });
+        console.log(`   Stored: ${storedResolution}`);
+      } catch (readErr) {
+        // Read may fail on studionet - that's ok
+      }
       
       // Extract result from consensus_data.leader_receipt.result
       const receiptData = callReceipt as any;
       let resolutionData = null;
       
       // Check if the transaction was successful
-      if (receiptData.result_name === 'MAJORITY_AGREE') {
+      if (receiptData.result_name === 'MAJORITY_AGREE' || receiptData.result_name === 'AGREE') {
         // The result is in consensus_data.leader_receipt.result
         const leaderReceipt = receiptData?.consensus_data?.leader_receipt;
         if (leaderReceipt) {
           const receipts = Array.isArray(leaderReceipt) ? leaderReceipt : [leaderReceipt];
           for (const receipt of receipts) {
             if (receipt?.result?.payload) {
-              resolutionData = receipt.result.payload;
+              let payload = receipt.result.payload;
+              // Handle nested readable structure
+              if (payload.readable) {
+                payload = payload.readable;
+              }
+              // Parse escaped JSON string
+              if (typeof payload === 'string') {
+                try {
+                  // Remove outer quotes if present
+                  if (payload.startsWith('"') && payload.endsWith('"')) {
+                    payload = JSON.parse(payload);
+                  }
+                  resolutionData = typeof payload === 'string' ? JSON.parse(payload) : payload;
+                } catch {
+                  resolutionData = payload;
+                }
+              } else {
+                resolutionData = payload;
+              }
               break;
             }
           }
         }
       } else {
         console.log(`   ⚠️ Transaction result: ${receiptData.result_name}`);
-      }
-      
-      // Parse if it's a string that looks like JSON
-      if (typeof resolutionData === 'string' && resolutionData.startsWith('{')) {
-        try {
-          resolutionData = JSON.parse(resolutionData);
-        } catch {}
       }
       
       if (resolutionData && typeof resolutionData === 'object') {

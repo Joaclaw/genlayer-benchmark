@@ -8,166 +8,268 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧬</text></svg>">
   <style>
     :root {
-      --bg-primary: #0d1117;
-      --bg-secondary: #161b22;
-      --bg-tertiary: #21262d;
-      --border: #30363d;
-      --text-primary: #e6edf3;
-      --text-secondary: #8b949e;
-      --accent: #58a6ff;
-      --success: #3fb950;
-      --error: #f85149;
-      --warning: #d29922;
+      --bg-primary: #0a0a0b;
+      --bg-secondary: #111113;
+      --bg-tertiary: #18181b;
+      --bg-hover: #1f1f23;
+      --border: #27272a;
+      --text-primary: #fafafa;
+      --text-secondary: #a1a1aa;
+      --text-muted: #71717a;
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --success: #22c55e;
+      --success-bg: rgba(34, 197, 94, 0.1);
+      --error: #ef4444;
+      --error-bg: rgba(239, 68, 68, 0.1);
+      --warning: #f59e0b;
+      --warning-bg: rgba(245, 158, 11, 0.1);
     }
     
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
       background: var(--bg-primary);
       color: var(--text-primary);
-      line-height: 1.5;
-      padding: 2rem;
+      line-height: 1.6;
       min-height: 100vh;
     }
     
-    .container { max-width: 1200px; margin: 0 auto; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 2rem; }
     
     header {
       margin-bottom: 2rem;
-      padding-bottom: 1rem;
+      padding-bottom: 1.5rem;
       border-bottom: 1px solid var(--border);
     }
     
     h1 {
-      font-size: 1.75rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      font-size: 1.875rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
     }
     
-    .subtitle { color: var(--text-secondary); margin-top: 0.5rem; }
+    .subtitle { color: var(--text-secondary); margin-top: 0.5rem; font-size: 1rem; }
     
     .links {
       margin-top: 1rem;
       display: flex;
-      gap: 1rem;
+      gap: 1.5rem;
       flex-wrap: wrap;
     }
     
     .links a {
-      color: var(--accent);
+      color: var(--text-secondary);
       text-decoration: none;
       font-size: 0.875rem;
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
+      transition: color 0.2s;
     }
     
-    .links a:hover { text-decoration: underline; }
+    .links a:hover { color: var(--accent); }
     
-    .stats {
+    /* Tabs */
+    .tabs {
       display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0;
+    }
+    
+    .tab {
+      padding: 0.75rem 1.25rem;
+      background: none;
+      border: none;
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      font-weight: 500;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: all 0.2s;
+    }
+    
+    .tab:hover { color: var(--text-primary); }
+    .tab.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+    
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    
+    /* Stats Grid */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: 1rem;
-      margin: 1.5rem 0;
-      flex-wrap: wrap;
+      margin-bottom: 2rem;
     }
     
     .stat {
       background: var(--bg-secondary);
-      padding: 1rem 1.25rem;
-      border-radius: 8px;
+      padding: 1.25rem;
+      border-radius: 12px;
       border: 1px solid var(--border);
-      min-width: 100px;
     }
     
-    .stat-value { font-size: 1.5rem; font-weight: 600; }
-    .stat-label { color: var(--text-secondary); font-size: 0.8rem; }
+    .stat-value { font-size: 1.75rem; font-weight: 700; letter-spacing: -0.025em; }
+    .stat-label { color: var(--text-muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.25rem; }
     .stat.success .stat-value { color: var(--success); }
     .stat.error .stat-value { color: var(--error); }
     .stat.warning .stat-value { color: var(--warning); }
     
-    .section { margin-bottom: 2rem; }
-    .section-title {
-      font-size: 1.125rem;
-      font-weight: 600;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    
-    .findings {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.5rem;
+    /* Benchmark Analysis */
+    .analysis-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
       margin-bottom: 2rem;
     }
     
-    .findings h3 { font-size: 1rem; margin-bottom: 1rem; color: var(--accent); }
-    .findings ul { margin-left: 1.5rem; color: var(--text-secondary); }
-    .findings li { margin-bottom: 0.5rem; }
-    .findings strong { color: var(--text-primary); }
-    
-    table {
-      width: 100%;
-      border-collapse: collapse;
+    .analysis-card {
       background: var(--bg-secondary);
-      border-radius: 8px;
-      overflow: hidden;
       border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
     }
     
-    th, td {
-      padding: 0.75rem 1rem;
-      text-align: left;
+    .analysis-card h3 {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+    }
+    
+    .breakdown-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 0;
       border-bottom: 1px solid var(--border);
+    }
+    
+    .breakdown-item:last-child { border-bottom: none; }
+    
+    .breakdown-label { color: var(--text-secondary); font-size: 0.875rem; }
+    .breakdown-value { font-weight: 600; font-size: 0.875rem; }
+    .breakdown-value.success { color: var(--success); }
+    .breakdown-value.error { color: var(--error); }
+    .breakdown-value.warning { color: var(--warning); }
+    
+    .error-tag {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    
+    .error-tag.antibot { background: var(--error-bg); color: var(--error); }
+    .error-tag.paywall { background: var(--warning-bg); color: var(--warning); }
+    .error-tag.mismatch { background: rgba(139, 92, 246, 0.1); color: #a78bfa; }
+    
+    /* Table */
+    .section { margin-bottom: 2rem; }
+    .section-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    
+    .table-wrapper {
+      background: var(--bg-secondary);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    
+    table { width: 100%; border-collapse: collapse; }
+    
+    th, td {
+      padding: 0.875rem 1rem;
+      text-align: left;
     }
     
     th {
       background: var(--bg-tertiary);
-      font-weight: 600;
+      font-weight: 500;
       font-size: 0.75rem;
-      color: var(--text-secondary);
+      color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      border-bottom: 1px solid var(--border);
     }
     
-    tr:last-child td { border-bottom: none; }
+    tr { border-bottom: 1px solid var(--border); }
+    tr:last-child { border-bottom: none; }
     
-    .market-row { cursor: pointer; transition: background 0.2s; }
-    .market-row:hover { background: var(--bg-tertiary); }
+    .market-row { cursor: pointer; transition: background 0.15s; }
+    .market-row:hover { background: var(--bg-hover); }
     .market-row.expanded { background: var(--bg-tertiary); }
     
     .expand-icon {
       display: inline-block;
-      width: 20px;
+      width: 16px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
       transition: transform 0.2s;
     }
     
     .market-row.expanded .expand-icon { transform: rotate(90deg); }
     
+    .question-cell {
+      max-width: 320px;
+    }
+    
     .question {
-      max-width: 350px;
+      display: block;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      font-size: 0.875rem;
     }
     
-    .status-icon { font-size: 1.1rem; }
-    .match { color: var(--success); }
-    .mismatch { color: var(--error); }
-    .pending { color: var(--warning); }
-    .error { color: var(--text-secondary); }
+    .resolution-date {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.25rem;
+    }
+    
+    .result-cell {
+      font-weight: 500;
+      font-size: 0.875rem;
+    }
+    
+    .result-yes { color: var(--success); }
+    .result-no { color: var(--error); }
+    .result-null { color: var(--text-muted); }
+    
+    .volume { font-family: 'SF Mono', Monaco, monospace; font-size: 0.8rem; color: var(--text-secondary); }
+    
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+    
+    .status-badge.match { background: var(--success-bg); color: var(--success); }
+    .status-badge.mismatch { background: var(--error-bg); color: var(--error); }
+    .status-badge.error { background: var(--bg-tertiary); color: var(--text-muted); }
     
     .details-row { display: none; }
     .details-row.visible { display: table-row; }
     
     .details-cell {
       background: var(--bg-primary);
-      padding: 1rem 1.5rem;
+      padding: 1.25rem 1.5rem;
     }
     
     .details-grid {
@@ -177,78 +279,96 @@
     }
     
     .detail-item {
-      padding: 0.75rem;
+      padding: 0.875rem;
       background: var(--bg-secondary);
-      border-radius: 6px;
+      border-radius: 8px;
       border: 1px solid var(--border);
     }
     
     .detail-label {
       font-size: 0.7rem;
-      color: var(--text-secondary);
+      color: var(--text-muted);
       text-transform: uppercase;
-      margin-bottom: 0.25rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.375rem;
     }
     
-    .detail-value { font-weight: 500; word-break: break-all; }
+    .detail-value {
+      font-size: 0.875rem;
+      word-break: break-all;
+    }
+    
     .detail-value a { color: var(--accent); text-decoration: none; }
     .detail-value a:hover { text-decoration: underline; }
     
+    .detail-value.error-text { color: var(--error); }
+    
+    /* Code Section */
     .code-section {
       background: var(--bg-secondary);
-      border-radius: 8px;
+      border-radius: 12px;
       border: 1px solid var(--border);
       overflow: hidden;
     }
     
     .code-header {
       background: var(--bg-tertiary);
-      padding: 0.75rem 1rem;
+      padding: 0.875rem 1.25rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid var(--border);
     }
     
-    .code-filename { font-family: monospace; color: var(--text-secondary); font-size: 0.875rem; }
+    .code-filename {
+      font-family: 'SF Mono', Monaco, monospace;
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+    }
+    
+    .code-badge {
+      font-size: 0.7rem;
+      padding: 0.25rem 0.5rem;
+      background: var(--accent);
+      color: white;
+      border-radius: 4px;
+      font-weight: 500;
+    }
     
     pre {
-      padding: 1rem;
+      padding: 1.25rem;
       overflow-x: auto;
       font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
       font-size: 0.8rem;
-      line-height: 1.6;
+      line-height: 1.7;
     }
     
-    code { color: var(--text-primary); }
-    .keyword { color: #ff7b72; }
+    .keyword { color: #f472b6; }
     .string { color: #a5d6ff; }
-    .function { color: #d2a8ff; }
-    .decorator { color: #79c0ff; }
-    .comment { color: #8b949e; }
-    
-    .loading { text-align: center; padding: 2rem; color: var(--text-secondary); }
-    .volume { font-family: monospace; font-size: 0.9rem; }
+    .decorator { color: #7dd3fc; }
+    .comment { color: #6b7280; }
+    .function { color: #c4b5fd; }
     
     footer {
       margin-top: 3rem;
       padding-top: 1.5rem;
       border-top: 1px solid var(--border);
-      color: var(--text-secondary);
-      font-size: 0.875rem;
+      color: var(--text-muted);
+      font-size: 0.8rem;
       text-align: center;
     }
     
-    footer a { color: var(--accent); text-decoration: none; }
-    footer a:hover { text-decoration: underline; }
+    footer a { color: var(--text-secondary); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
     
     @media (max-width: 768px) {
-      body { padding: 1rem; }
-      .stats { gap: 0.5rem; }
-      .stat { padding: 0.75rem 1rem; min-width: 80px; }
-      .stat-value { font-size: 1.25rem; }
-      th, td { padding: 0.5rem; font-size: 0.875rem; }
-      .question { max-width: 150px; }
+      .container { padding: 1rem; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+      .stat { padding: 1rem; }
+      .stat-value { font-size: 1.5rem; }
+      th, td { padding: 0.625rem 0.75rem; font-size: 0.8rem; }
+      .question-cell { max-width: 140px; }
+      .tabs { overflow-x: auto; }
     }
   </style>
 </head>
@@ -264,93 +384,108 @@
       </div>
     </header>
     
-    <div class="stats" id="stats">
-      <div class="loading">Loading...</div>
+    <div class="tabs">
+      <button class="tab active" onclick="showTab('benchmark')">Benchmark Results</button>
+      <button class="tab" onclick="showTab('contract')">Intelligent Contract</button>
     </div>
     
-    <div class="findings">
-      <h3>🔍 Key Findings</h3>
-      <ul>
-        <li><strong>URL Accessibility is the bottleneck</strong> — 40% of resolution URLs blocked by anti-bot, paywalls, or JavaScript requirements</li>
-        <li><strong>Wikipedia works best</strong> — 100% accessible, 100% correct resolution</li>
-        <li><strong>News sites fail</strong> — CNN, TMZ blocked; Olympics.com has anti-bot protection</li>
-        <li><strong>Resolution accuracy is high when accessible</strong> — 83% match rate on accessible URLs</li>
-        <li><strong>GenLayer needs headless browser support</strong> — Current `gl.get_webpage()` can't handle JavaScript-heavy sites</li>
-      </ul>
-    </div>
-    
-    <div class="section">
-      <h2 class="section-title">📊 Market Results</h2>
-      <table>
-        <thead>
-          <tr>
-            <th style="width: 30px;"></th>
-            <th>Question</th>
-            <th>Polymarket</th>
-            <th>GenLayer</th>
-            <th>Volume</th>
-            <th style="width: 50px;">Status</th>
-          </tr>
-        </thead>
-        <tbody id="results-body">
-          <tr><td colspan="6" class="loading">Loading...</td></tr>
-        </tbody>
-      </table>
-    </div>
-    
-    <div class="section">
-      <h2 class="section-title">📜 Intelligent Contract</h2>
-      <div class="code-section">
-        <div class="code-header">
-          <span class="code-filename">contracts/market_resolver.py</span>
+    <!-- Benchmark Tab -->
+    <div id="tab-benchmark" class="tab-content active">
+      <div class="stats" id="stats"></div>
+      
+      <div class="analysis-grid">
+        <div class="analysis-card">
+          <h3>🔍 Failure Analysis</h3>
+          <div id="failure-breakdown"></div>
         </div>
-        <pre><code id="contract-code"></code></pre>
+        <div class="analysis-card">
+          <h3>📊 Source Performance</h3>
+          <div id="source-breakdown"></div>
+        </div>
+      </div>
+      
+      <div class="section">
+        <h2 class="section-title">Market Results</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 30px;"></th>
+                <th>Market</th>
+                <th>Polymarket</th>
+                <th>GenLayer</th>
+                <th>Volume</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="results-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Contract Tab -->
+    <div id="tab-contract" class="tab-content">
+      <div class="section">
+        <p style="color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.7;">
+          This contract uses the <strong>constructor-only pattern</strong> — resolution happens during deployment.
+          No method calls needed after deploy. Uses <code>gl.nondet.web.render()</code> for webpage fetching
+          and <code>gl.nondet.exec_prompt()</code> for LLM resolution.
+        </p>
+        
+        <div class="code-section">
+          <div class="code-header">
+            <span class="code-filename">contracts/market_resolver.py</span>
+            <span class="code-badge">v0.1.3+ API</span>
+          </div>
+          <pre><code id="contract-code"></code></pre>
+        </div>
       </div>
     </div>
     
     <footer>
-      Built by <a href="https://argue.fun" target="_blank">argue.fun</a> — Feb 2026
+      Built by <a href="https://argue.fun" target="_blank">argue.fun</a> • Feb 2026
     </footer>
   </div>
   
   <script>
-    const CONTRACT_CODE = `# { "Depends": "py-genlayer:test" }
+    const CONTRACT_CODE = `# GenLayer Market Resolver - Constructor-Only Pattern
+# Deploy once, get result immediately. No method calls needed.
 import json
 from genlayer import *
 
-
 class MarketResolver(gl.Contract):
-    resolutions: TreeMap[str, str]
+    result: str  # Stored for reference
     
-    def __init__(self):
-        pass
-    
-    @gl.public.write
-    def resolve(self, market_id: str, question: str, resolution_url: str) -> str:
+    def __init__(self, market_id: str, question: str, resolution_url: str):
+        """
+        Resolution happens in constructor.
+        Deploy → Resolution → Done.
+        """
         try:
-            page_content = gl.get_webpage(resolution_url, mode="text")
+            # Fetch webpage using GenLayer's non-deterministic web API
+            page_content = gl.nondet.web.render(resolution_url, mode='text')
         except Exception as e:
-            return json.dumps({
+            self.result = json.dumps({
                 "market_id": market_id,
                 "accessible": False,
                 "error": str(e),
                 "resolution": "URL_INACCESSIBLE"
             })
+            return
         
-        prompt = f"""
-Webpage content: {page_content[:8000]}
+        # Use LLM to determine resolution
+        prompt = f"""Webpage content (truncated): {page_content[:6000]}
 
 Question: {question}
 
-Based on the webpage content, answer the question.
-Answer ONLY with one of: YES, NO, or UNRESOLVABLE
-
-Your response must be ONLY the answer word, nothing else.
+Based ONLY on the webpage content above, determine the answer.
+Respond with ONLY one word: YES, NO, or UNRESOLVABLE
 """
         
-        resolution = gl.exec_prompt(prompt).strip().upper()
+        resolution = gl.nondet.exec_prompt(prompt).strip().upper()
         
-        # Normalize the response
+        # Normalize response
         if "YES" in resolution:
             resolution = "YES"
         elif "NO" in resolution:
@@ -358,86 +493,169 @@ Your response must be ONLY the answer word, nothing else.
         else:
             resolution = "UNRESOLVABLE"
         
-        # Store the resolution
-        self.resolutions[market_id] = resolution
-        
-        return json.dumps({
+        self.result = json.dumps({
             "market_id": market_id,
             "accessible": True,
             "resolution": resolution
         })
     
     @gl.public.view
-    def get_resolution(self, market_id: str) -> str:
-        if market_id in self.resolutions:
-            return self.resolutions[market_id]
-        return "NOT_FOUND"`;
+    def get_result(self) -> str:
+        """Optional: retrieve stored result after deployment."""
+        return self.result`;
+    
+    let marketsData = [];
     
     async function loadData() {
       try {
         const res = await fetch('/api/results.json');
         const data = await res.json();
+        marketsData = data.markets;
         renderStats(data);
+        renderFailureAnalysis(data.markets);
+        renderSourceBreakdown(data.markets);
         renderResults(data.markets);
         renderContract();
       } catch (err) {
-        console.error('Failed to load:', err);
+        console.error('Load failed:', err);
       }
     }
     
     function renderStats(data) {
       const s = data.summary;
-      document.getElementById('stats').innerHTML = \`
-        <div class="stat"><div class="stat-value">\${s.total}</div><div class="stat-label">Markets Tested</div></div>
-        <div class="stat success"><div class="stat-value">\${s.matches}</div><div class="stat-label">Matches</div></div>
-        <div class="stat warning"><div class="stat-value">\${s.mismatches}</div><div class="stat-label">Mismatches</div></div>
-        <div class="stat error"><div class="stat-value">\${s.errors}</div><div class="stat-label">URL Blocked</div></div>
-        <div class="stat"><div class="stat-value">\${s.urlAccessibility}</div><div class="stat-label">URL Access</div></div>
-        <div class="stat success"><div class="stat-value">\${s.resolutionAccuracy}</div><div class="stat-label">Resolution Accuracy</div></div>
-      \`;
+      document.getElementById('stats').innerHTML = `
+        <div class="stat"><div class="stat-value">${s.total}</div><div class="stat-label">Markets Tested</div></div>
+        <div class="stat success"><div class="stat-value">${s.matches}</div><div class="stat-label">Correct</div></div>
+        <div class="stat warning"><div class="stat-value">${s.mismatches}</div><div class="stat-label">Incorrect</div></div>
+        <div class="stat error"><div class="stat-value">${s.errors}</div><div class="stat-label">URL Failed</div></div>
+        <div class="stat"><div class="stat-value">${s.urlAccessibility}</div><div class="stat-label">URL Access Rate</div></div>
+        <div class="stat success"><div class="stat-value">${s.resolutionAccuracy}</div><div class="stat-label">When Accessible</div></div>
+      `;
+    }
+    
+    function renderFailureAnalysis(markets) {
+      const antibot = markets.filter(m => m.error?.includes('anti-bot') || m.error?.includes('Anti-bot')).length;
+      const paywall = markets.filter(m => m.error?.includes('paywall') || m.error?.includes('JavaScript')).length;
+      const mismatch = markets.filter(m => m.status === 'success' && m.match === false).length;
+      const success = markets.filter(m => m.match === true).length;
+      
+      document.getElementById('failure-breakdown').innerHTML = `
+        <div class="breakdown-item">
+          <span class="breakdown-label"><span class="error-tag antibot">Anti-Bot</span> Protection blocked</span>
+          <span class="breakdown-value error">${antibot}</span>
+        </div>
+        <div class="breakdown-item">
+          <span class="breakdown-label"><span class="error-tag paywall">JS/Paywall</span> Required JS or paywall</span>
+          <span class="breakdown-value warning">${paywall}</span>
+        </div>
+        <div class="breakdown-item">
+          <span class="breakdown-label"><span class="error-tag mismatch">Mismatch</span> Wrong resolution</span>
+          <span class="breakdown-value">${mismatch}</span>
+        </div>
+        <div class="breakdown-item">
+          <span class="breakdown-label">✅ Correctly resolved</span>
+          <span class="breakdown-value success">${success}</span>
+        </div>
+      `;
+    }
+    
+    function renderSourceBreakdown(markets) {
+      const sources = {};
+      markets.forEach(m => {
+        try {
+          const host = new URL(m.resolutionUrl).hostname.replace('www.', '').replace('en.', '');
+          if (!sources[host]) sources[host] = { total: 0, success: 0 };
+          sources[host].total++;
+          if (m.match === true) sources[host].success++;
+        } catch {}
+      });
+      
+      const sorted = Object.entries(sources).sort((a, b) => b[1].total - a[1].total);
+      
+      document.getElementById('source-breakdown').innerHTML = sorted.map(([host, data]) => {
+        const rate = data.total > 0 ? Math.round((data.success / data.total) * 100) : 0;
+        const cls = rate === 100 ? 'success' : rate === 0 ? 'error' : 'warning';
+        return `
+          <div class="breakdown-item">
+            <span class="breakdown-label">${host}</span>
+            <span class="breakdown-value ${cls}">${data.success}/${data.total} (${rate}%)</span>
+          </div>
+        `;
+      }).join('');
     }
     
     function formatVolume(v) {
       const n = parseFloat(v) || 0;
       if (n >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
-      if (n >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
-      return '$' + n.toFixed(0);
+      if (n >= 1e3) return '$' + Math.round(n/1e3) + 'K';
+      return '$' + Math.round(n);
     }
     
-    function getStatus(r) {
-      if (r.status === 'error' || r.error) return '<span class="status-icon error">⚠️</span>';
-      if (r.match === true) return '<span class="status-icon match">✅</span>';
-      if (r.match === false) return '<span class="status-icon mismatch">❌</span>';
-      return '<span class="status-icon pending">⏳</span>';
+    function formatDate(d) {
+      if (!d) return '';
+      const date = new Date(d);
+      return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    }
+    
+    function getStatusBadge(r) {
+      if (r.status === 'error' || r.genlayerResolution === null) 
+        return '<span class="status-badge error">⚠️ Failed</span>';
+      if (r.match === true) 
+        return '<span class="status-badge match">✓ Match</span>';
+      if (r.match === false) 
+        return '<span class="status-badge mismatch">✗ Wrong</span>';
+      return '<span class="status-badge error">—</span>';
+    }
+    
+    function getResultClass(val) {
+      if (val === 'YES') return 'result-yes';
+      if (val === 'NO') return 'result-no';
+      return 'result-null';
     }
     
     function renderResults(markets) {
       const tbody = document.getElementById('results-body');
-      tbody.innerHTML = markets.map((r, i) => \`
-        <tr class="market-row" onclick="toggleDetails(\${i})">
+      tbody.innerHTML = markets.map((r, i) => `
+        <tr class="market-row" onclick="toggleDetails(${i})">
           <td><span class="expand-icon">▶</span></td>
-          <td><span class="question" title="\${r.question}">\${r.question}</span></td>
-          <td>\${r.polymarketResolution || '-'}</td>
-          <td>\${r.genlayerResolution || '-'}</td>
-          <td class="volume">\${formatVolume(r.volume)}</td>
-          <td>\${getStatus(r)}</td>
+          <td class="question-cell">
+            <span class="question" title="${r.question}">${r.question}</span>
+            <div class="resolution-date">Resolved: ${formatDate(r.endDate)}</div>
+          </td>
+          <td class="result-cell ${getResultClass(r.polymarketResolution)}">${r.polymarketResolution || '—'}</td>
+          <td class="result-cell ${getResultClass(r.genlayerResolution)}">${r.genlayerResolution || '—'}</td>
+          <td class="volume">${formatVolume(r.volume)}</td>
+          <td>${getStatusBadge(r)}</td>
         </tr>
-        <tr class="details-row" id="details-\${i}">
+        <tr class="details-row" id="details-${i}">
           <td colspan="6" class="details-cell">
             <div class="details-grid">
               <div class="detail-item">
                 <div class="detail-label">Resolution URL</div>
-                <div class="detail-value"><a href="\${r.resolutionUrl}" target="_blank">\${r.resolutionUrl}</a></div>
+                <div class="detail-value"><a href="${r.resolutionUrl}" target="_blank">${r.resolutionUrl}</a></div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-label">Created</div>
+                <div class="detail-value">${formatDate(r.createdAt)}</div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-label">End Date</div>
+                <div class="detail-value">${formatDate(r.endDate)}</div>
               </div>
               <div class="detail-item">
                 <div class="detail-label">Volume</div>
-                <div class="detail-value">\${formatVolume(r.volume)}</div>
+                <div class="detail-value">${formatVolume(r.volume)}</div>
               </div>
-              \${r.error ? \`<div class="detail-item" style="grid-column: 1/-1;"><div class="detail-label">Error</div><div class="detail-value error">\${r.error}</div></div>\` : ''}
+              ${r.error ? `
+              <div class="detail-item" style="grid-column: 1/-1;">
+                <div class="detail-label">Error Details</div>
+                <div class="detail-value error-text">${r.error}</div>
+              </div>
+              ` : ''}
             </div>
           </td>
         </tr>
-      \`).join('');
+      `).join('');
     }
     
     window.toggleDetails = function(i) {
@@ -447,11 +665,18 @@ Your response must be ONLY the answer word, nothing else.
       details.classList.toggle('visible');
     }
     
+    window.showTab = function(tab) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      document.querySelector(`.tab[onclick*="${tab}"]`).classList.add('active');
+      document.getElementById('tab-' + tab).classList.add('active');
+    }
+    
     function renderContract() {
       const highlighted = CONTRACT_CODE
-        .replace(/\\b(from|import|class|def|return|try|except|if|else|for|in|as)\\b/g, '<span class="keyword">$1</span>')
-        .replace(/(["'])(.*?)\\1/g, '<span class="string">$1$2$1</span>')
-        .replace(/@(\\w+\\.?\\w*\\.?\\w*)/g, '<span class="decorator">@$1</span>')
+        .replace(/\b(from|import|class|def|return|try|except|if|else|for|in|as|None|True|False)\b/g, '<span class="keyword">$1</span>')
+        .replace(/(["'])((?:[^"'\\]|\\.)*)(\1)/g, '<span class="string">$1$2$3</span>')
+        .replace(/@(\w+\.?\w*\.?\w*)/g, '<span class="decorator">@$1</span>')
         .replace(/(#.*$)/gm, '<span class="comment">$1</span>');
       document.getElementById('contract-code').innerHTML = highlighted;
     }
