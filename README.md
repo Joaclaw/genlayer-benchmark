@@ -75,6 +75,17 @@ npm run dashboard
 3. **Date context injection** — LLM needs to know the "current" date for time-sensitive questions
 4. **Multiple source verification** — Cross-reference multiple URLs for higher confidence
 
+## 📖 Developer Reference
+
+See [GENLAYER.md](./GENLAYER.md) for:
+- Current v0.1.3+ API reference
+- Constructor-only pattern for resolutions
+- Scalable batch processing architecture
+- Common linter errors and fixes
+- Migration guide from v0.1.0
+
+**Key API docs:** https://sdk.genlayer.com/main/_static/ai/api.txt
+
 ## 📝 License
 
 MIT
