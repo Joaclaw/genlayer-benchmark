@@ -1,0 +1,30 @@
+[
+  {
+    "market_id": "40",
+    "question": "Will Trump win the 2020 U.S. presidential election?",
+    "resolution_url": "https://www.cnn.com/election/2020",
+    "created_at": "2020-10-09T17:00:08.468Z",
+    "end_date": "2020-11-20T00:00:00Z",
+    "volume": 10802601.987023,
+    "polymarket_result": "NO",
+    "genlayer_result": "UNKNOWN",
+    "genlayer_tx_hash": "0x54c643b850a681d580520f2a07a786564519e63b60d3cc24d712083bbc3becf7",
+    "match": false,
+    "error": null,
+    "timestamp": "2026-02-25T15:49:01.373Z"
+  },
+  {
+    "market_id": "42",
+    "question": "Will there be an Emergency Use Authorization (EUA) granted for a COVID-19 vaccine prior to Nov 3 2020?",
+    "resolution_url": "https://www.fda.gov/emergency-preparedness-and-response/mcm-legal-regulatory-and-policy-framework/emergency-use-authorization#covid19euas",
+    "created_at": "2020-10-12T22:00:05.783Z",
+    "end_date": "2020-11-04T00:00:00Z",
+    "volume": 21881.05833,
+    "polymarket_result": "YES",
+    "genlayer_result": "UNKNOWN",
+    "genlayer_tx_hash": "0x2045af2bb2933e82e3d320ce532c6b78c91f187213cddf1dbde12c96edab7aae",
+    "match": false,
+    "error": null,
+    "timestamp": "2026-02-25T15:49:44.428Z"
+  }
+]

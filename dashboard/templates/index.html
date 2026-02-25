@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenLayer vs Polymarket Benchmark</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .stat-value {
+            font-size: 3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .stat-label { opacity: 0.7; font-size: 0.9em; }
+        .green { color: #00ff88; }
+        .yellow { color: #ffcc00; }
+        .red { color: #ff4757; }
+        .blue { color: #00d4ff; }
+        
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 30px;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00d4ff, #7b2cbf);
+            transition: width 0.5s ease;
+        }
+        
+        .markets-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        .markets-table th, .markets-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .markets-table th {
+            background: rgba(255,255,255,0.05);
+            font-weight: 600;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+        .badge-yes { background: rgba(0,255,136,0.2); color: #00ff88; }
+        .badge-no { background: rgba(255,71,87,0.2); color: #ff4757; }
+        .badge-pending { background: rgba(255,204,0,0.2); color: #ffcc00; }
+        .badge-match { background: rgba(0,212,255,0.2); color: #00d4ff; }
+        .badge-mismatch { background: rgba(255,71,87,0.3); color: #ff4757; }
+        
+        .failure-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .failure-item {
+            background: rgba(255,255,255,0.03);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .failure-count { font-size: 2em; font-weight: bold; }
+        .failure-label { font-size: 0.8em; opacity: 0.7; margin-top: 5px; }
+        
+        .refresh-note {
+            text-align: center;
+            opacity: 0.5;
+            margin-top: 30px;
+            font-size: 0.9em;
+        }
+        
+        #last-update { font-style: italic; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔗 GenLayer vs Polymarket Benchmark</h1>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress" style="width: 0%"></div>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value blue" id="total-markets">10</div>
+                <div class="stat-label">Total Markets</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value green" id="resolvable">-</div>
+                <div class="stat-label">URLs Accessible</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value green" id="accuracy">-</div>
+                <div class="stat-label">Accuracy Rate</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value yellow" id="avg-time">-</div>
+                <div class="stat-label">Avg Resolution (ms)</div>
+            </div>
+        </div>
+        
+        <h2 style="margin-bottom: 20px;">📊 Market Results</h2>
+        <table class="markets-table">
+            <thead>
+                <tr>
+                    <th>Market</th>
+                    <th>Polymarket</th>
+                    <th>GenLayer</th>
+                    <th>Match</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="markets-body">
+                <tr><td colspan="5" style="text-align:center; padding: 40px;">Loading...</td></tr>
+            </tbody>
+        </table>
+        
+        <h2 style="margin: 30px 0 20px;">❌ Failure Breakdown</h2>
+        <div class="failure-breakdown" id="failures">
+            <div class="failure-item">
+                <div class="failure-count red" id="fail-antibot">0</div>
+                <div class="failure-label">Anti-Bot Blocks</div>
+            </div>
+            <div class="failure-item">
+                <div class="failure-count red" id="fail-paywall">0</div>
+                <div class="failure-label">Paywalls</div>
+            </div>
+            <div class="failure-item">
+                <div class="failure-count red" id="fail-dead">0</div>
+                <div class="failure-label">Dead Links</div>
+            </div>
+            <div class="failure-item">
+                <div class="failure-count red" id="fail-timeout">0</div>
+                <div class="failure-label">Timeouts</div>
+            </div>
+            <div class="failure-item">
+                <div class="failure-count red" id="fail-wrong">0</div>
+                <div class="failure-label">Wrong Resolution</div>
+            </div>
+        </div>
+        
+        <p class="refresh-note">Auto-refreshes every 5 seconds | Last update: <span id="last-update">-</span></p>
+    </div>
+    
+    <script>
+        async function fetchResults() {
+            try {
+                const res = await fetch('/api/results');
+                const data = await res.json();
+                updateDashboard(data);
+            } catch (e) {
+                console.error('Fetch error:', e);
+            }
+        }
+        
+        function updateDashboard(data) {
+            const results = data.results || {};
+            const markets = data.markets?.markets || [];
+            const metrics = results.metrics || {};
+            const completed = results.completed || 0;
+            const total = results.total_markets || 10;
+            
+            // Update progress
+            document.getElementById('progress').style.width = `${(completed/total)*100}%`;
+            document.getElementById('total-markets').textContent = total;
+            
+            // Update metrics
+            if (metrics.resolvability_rate !== undefined) {
+                document.getElementById('resolvable').textContent = 
+                    `${Math.round(metrics.resolvability_rate * 100)}%`;
+            }
+            if (metrics.accuracy_rate !== undefined) {
+                document.getElementById('accuracy').textContent = 
+                    `${Math.round(metrics.accuracy_rate * 100)}%`;
+            }
+            if (metrics.avg_resolution_time_ms !== undefined) {
+                document.getElementById('avg-time').textContent = 
+                    Math.round(metrics.avg_resolution_time_ms);
+            }
+            
+            // Update failure breakdown
+            const fb = metrics.failure_breakdown || {};
+            document.getElementById('fail-antibot').textContent = fb.anti_bot || 0;
+            document.getElementById('fail-paywall').textContent = fb.paywall || 0;
+            document.getElementById('fail-dead').textContent = fb.dead_link || 0;
+            document.getElementById('fail-timeout').textContent = fb.timeout || 0;
+            document.getElementById('fail-wrong').textContent = fb.wrong_resolution || 0;
+            
+            // Update markets table
+            const tbody = document.getElementById('markets-body');
+            const resultsList = results.results || [];
+            
+            let html = '';
+            markets.forEach((market, idx) => {
+                const result = resultsList.find(r => r.market_id === market.id) || {};
+                const polyRes = market.polymarket_resolution || '-';
+                const genRes = result.resolution || 'Pending';
+                const isMatch = result.resolution ? 
+                    (result.resolution === polyRes || 
+                     (result.resolution === 'YES' && polyRes === 'Yes') ||
+                     (result.resolution === 'NO' && polyRes === 'No')) : null;
+                
+                const polyBadge = polyRes === 'Yes' ? 'badge-yes' : (polyRes === 'No' ? 'badge-no' : 'badge-pending');
+                const genBadge = genRes === 'YES' ? 'badge-yes' : (genRes === 'NO' ? 'badge-no' : 'badge-pending');
+                const matchBadge = isMatch === true ? 'badge-match' : (isMatch === false ? 'badge-mismatch' : 'badge-pending');
+                
+                html += `<tr>
+                    <td style="max-width:400px">${market.question.substring(0, 60)}...</td>
+                    <td><span class="badge ${polyBadge}">${polyRes}</span></td>
+                    <td><span class="badge ${genBadge}">${genRes}</span></td>
+                    <td><span class="badge ${matchBadge}">${isMatch === true ? '✓ Match' : (isMatch === false ? '✗ Mismatch' : 'Pending')}</span></td>
+                    <td>${result.url_error || (result.url_accessible ? '✓ OK' : 'Pending')}</td>
+                </tr>`;
+            });
+            
+            tbody.innerHTML = html || '<tr><td colspan="5" style="text-align:center">No data yet</td></tr>';
+            
+            document.getElementById('last-update').textContent = new Date().toLocaleTimeString();
+        }
+        
+        // Initial fetch and auto-refresh
+        fetchResults();
+        setInterval(fetchResults, 5000);
+    </script>
+</body>
+</html>

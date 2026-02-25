@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GenLayer vs Polymarket Benchmark</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0d1117;
+      color: #c9d1d9;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #30363d;
+    }
+    
+    h1 {
+      color: #58a6ff;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    
+    .subtitle {
+      color: #8b949e;
+    }
+    
+    .summary-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .card-value {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .card-label {
+      color: #8b949e;
+      font-size: 0.9rem;
+    }
+    
+    .card.success .card-value { color: #3fb950; }
+    .card.warning .card-value { color: #d29922; }
+    .card.error .card-value { color: #f85149; }
+    .card.info .card-value { color: #58a6ff; }
+    
+    .section {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    
+    .section-header {
+      background: #21262d;
+      padding: 15px 20px;
+      font-weight: 600;
+      border-bottom: 1px solid #30363d;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .market-row {
+      border-bottom: 1px solid #30363d;
+    }
+    
+    .market-row:last-child {
+      border-bottom: none;
+    }
+    
+    .market-summary {
+      padding: 15px 20px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    
+    .market-summary:hover {
+      background: #21262d;
+    }
+    
+    .status-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+    
+    .status-success { background: #238636; }
+    .status-error { background: #da3633; }
+    .status-pending { background: #9e6a03; animation: pulse 1.5s infinite; }
+    .status-mismatch { background: #d29922; }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    
+    .market-question {
+      flex: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    
+    .expand-icon {
+      color: #8b949e;
+      margin-left: 10px;
+      transition: transform 0.2s;
+    }
+    
+    .market-row.expanded .expand-icon {
+      transform: rotate(180deg);
+    }
+    
+    .market-details {
+      display: none;
+      background: #0d1117;
+      padding: 20px;
+      border-top: 1px solid #30363d;
+    }
+    
+    .market-row.expanded .market-details {
+      display: block;
+    }
+    
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+    
+    .detail-item {
+      padding: 10px;
+      background: #161b22;
+      border-radius: 6px;
+    }
+    
+    .detail-label {
+      color: #8b949e;
+      font-size: 0.85rem;
+      margin-bottom: 5px;
+    }
+    
+    .detail-value {
+      word-break: break-all;
+    }
+    
+    .detail-value a {
+      color: #58a6ff;
+      text-decoration: none;
+    }
+    
+    .detail-value a:hover {
+      text-decoration: underline;
+    }
+    
+    .resolution-comparison {
+      display: flex;
+      gap: 20px;
+      margin-top: 15px;
+    }
+    
+    .resolution-box {
+      flex: 1;
+      padding: 15px;
+      background: #161b22;
+      border-radius: 6px;
+      text-align: center;
+    }
+    
+    .resolution-source {
+      color: #8b949e;
+      font-size: 0.85rem;
+      margin-bottom: 5px;
+    }
+    
+    .resolution-value {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    
+    .resolution-yes { color: #3fb950; }
+    .resolution-no { color: #f85149; }
+    .resolution-other { color: #d29922; }
+    
+    .error-box {
+      background: #3b1f1f;
+      border: 1px solid #f85149;
+      border-radius: 6px;
+      padding: 15px;
+      margin-top: 15px;
+      color: #f85149;
+    }
+    
+    pre {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      padding: 20px;
+      overflow-x: auto;
+      font-family: 'Monaco', 'Menlo', monospace;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    
+    code {
+      color: #c9d1d9;
+    }
+    
+    .keyword { color: #ff7b72; }
+    .string { color: #a5d6ff; }
+    .function { color: #d2a8ff; }
+    .decorator { color: #79c0ff; }
+    .comment { color: #8b949e; }
+    .class { color: #7ee787; }
+    
+    .refresh-info {
+      color: #8b949e;
+      font-size: 0.85rem;
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #8b949e;
+    }
+    
+    .timestamp {
+      color: #8b949e;
+      font-size: 0.85rem;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🔮 GenLayer vs Polymarket</h1>
+      <p class="subtitle">Intelligent Contract Resolution Benchmark</p>
+    </header>
+    
+    <div class="summary-cards" id="summary">
+      <div class="card info">
+        <div class="card-value" id="total">-</div>
+        <div class="card-label">Total Markets</div>
+      </div>
+      <div class="card success">
+        <div class="card-value" id="matches">-</div>
+        <div class="card-label">Matches</div>
+      </div>
+      <div class="card warning">
+        <div class="card-value" id="mismatches">-</div>
+        <div class="card-label">Mismatches</div>
+      </div>
+      <div class="card error">
+        <div class="card-value" id="errors">-</div>
+        <div class="card-label">Errors</div>
+      </div>
+      <div class="card info">
+        <div class="card-value" id="pending">-</div>
+        <div class="card-label">Pending</div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <div class="section-header">
+        <span>📊 Market Results</span>
+        <span class="refresh-info">Auto-refresh: 10s</span>
+      </div>
+      <div id="markets">
+        <div class="loading">Loading results...</div>
+      </div>
+    </div>
+    
+    <div class="section">
+      <div class="section-header">
+        <span>📜 Intelligent Contract Code</span>
+        <span class="refresh-info">market_resolver.py</span>
+      </div>
+      <pre><code id="contract-code">Loading...</code></pre>
+    </div>
+    
+    <div class="timestamp" id="timestamp"></div>
+  </div>
+  
+  <script>
+    function getStatusClass(result) {
+      if (result.status === 'pending') return 'status-pending';
+      if (result.status === 'error') return 'status-error';
+      if (result.match === true) return 'status-success';
+      if (result.match === false) return 'status-mismatch';
+      return 'status-pending';
+    }
+    
+    function getStatusIcon(result) {
+      if (result.status === 'pending') return '⏳';
+      if (result.status === 'error') return '✗';
+      if (result.match === true) return '✓';
+      if (result.match === false) return '≠';
+      return '?';
+    }
+    
+    function getResolutionClass(resolution) {
+      if (resolution === 'YES') return 'resolution-yes';
+      if (resolution === 'NO') return 'resolution-no';
+      return 'resolution-other';
+    }
+    
+    function formatDate(dateStr) {
+      if (!dateStr) return '-';
+      return new Date(dateStr).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric'
+      });
+    }
+    
+    function formatVolume(volume) {
+      if (!volume) return '-';
+      const num = parseFloat(volume);
+      if (num >= 1000000) return '$' + (num / 1000000).toFixed(2) + 'M';
+      if (num >= 1000) return '$' + (num / 1000).toFixed(2) + 'K';
+      return '$' + num.toFixed(2);
+    }
+    
+    function renderMarkets(markets) {
+      if (!markets || markets.length === 0) {
+        return '<div class="loading">No markets loaded yet...</div>';
+      }
+      
+      return markets.map((m, i) => `
+        <div class="market-row" id="market-${i}">
+          <div class="market-summary" onclick="toggleMarket(${i})">
+            <div class="status-icon ${getStatusClass(m)}">${getStatusIcon(m)}</div>
+            <div class="market-question">${m.question}</div>
+            <div class="expand-icon">▼</div>
+          </div>
+          <div class="market-details">
+            <div class="detail-grid">
+              <div class="detail-item">
+                <div class="detail-label">Resolution URL</div>
+                <div class="detail-value">
+                  <a href="${m.resolutionUrl}" target="_blank">${m.resolutionUrl ? m.resolutionUrl.substring(0, 50) + '...' : '-'}</a>
+                </div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-label">Created</div>
+                <div class="detail-value">${formatDate(m.createdAt)}</div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-label">Finalized</div>
+                <div class="detail-value">${formatDate(m.endDate)}</div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-label">Volume</div>
+                <div class="detail-value">${formatVolume(m.volume)}</div>
+              </div>
+            </div>
+            <div class="resolution-comparison">
+              <div class="resolution-box">
+                <div class="resolution-source">Polymarket</div>
+                <div class="resolution-value ${getResolutionClass(m.polymarketResolution)}">${m.polymarketResolution || '-'}</div>
+              </div>
+              <div class="resolution-box">
+                <div class="resolution-source">GenLayer</div>
+                <div class="resolution-value ${getResolutionClass(m.genlayerResolution)}">${m.genlayerResolution || '-'}</div>
+              </div>
+            </div>
+            ${m.error ? `<div class="error-box"><strong>Error:</strong> ${m.error}</div>` : ''}
+            ${m.txHash ? `<div class="detail-item" style="margin-top:15px"><div class="detail-label">Transaction Hash</div><div class="detail-value">${m.txHash}</div></div>` : ''}
+          </div>
+        </div>
+      `).join('');
+    }
+    
+    function toggleMarket(index) {
+      const row = document.getElementById(`market-${index}`);
+      row.classList.toggle('expanded');
+    }
+    
+    function highlightPython(code) {
+      return code
+        .replace(/(#.*$)/gm, '<span class="comment">$1</span>')
+        .replace(/(@\w+\.\w+\.?\w*)/g, '<span class="decorator">$1</span>')
+        .replace(/\b(def|class|return|try|except|if|else|for|in|import|from|as)\b/g, '<span class="keyword">$1</span>')
+        .replace(/\b(str|dict|int|bool|None|True|False)\b/g, '<span class="class">$1</span>')
+        .replace(/(["'])((?:\\.|[^\\])*?)\1/g, '<span class="string">$1$2$1</span>')
+        .replace(/\b(\w+)\s*\(/g, '<span class="function">$1</span>(');
+    }
+    
+    async function loadResults() {
+      try {
+        const response = await fetch('/api/results');
+        const data = await response.json();
+        
+        document.getElementById('total').textContent = data.summary?.total || 0;
+        document.getElementById('matches').textContent = data.summary?.matches || 0;
+        document.getElementById('mismatches').textContent = data.summary?.mismatches || 0;
+        document.getElementById('errors').textContent = data.summary?.errors || 0;
+        document.getElementById('pending').textContent = data.summary?.pending || 0;
+        
+        document.getElementById('markets').innerHTML = renderMarkets(data.markets);
+        
+        const time = data.endTime || data.startTime || new Date().toISOString();
+        document.getElementById('timestamp').textContent = 
+          `Last updated: ${new Date(time).toLocaleString()} ${data.endTime ? '(Complete)' : '(Running...)'}`;
+          
+      } catch (error) {
+        console.error('Failed to load results:', error);
+      }
+    }
+    
+    async function loadContract() {
+      try {
+        const response = await fetch('/api/contract');
+        const data = await response.json();
+        document.getElementById('contract-code').innerHTML = highlightPython(data.code);
+      } catch (error) {
+        document.getElementById('contract-code').textContent = 'Failed to load contract';
+      }
+    }
+    
+    // Initial load
+    loadResults();
+    loadContract();
+    
+    // Auto-refresh every 10 seconds
+    setInterval(loadResults, 10000);
+  </script>
+</body>
+</html>

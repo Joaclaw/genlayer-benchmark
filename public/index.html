@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GenLayer Benchmark — Polymarket Resolution</title>
+  <meta name="description" content="Can GenLayer's Intelligent Contracts resolve Polymarket prediction markets? Benchmark results testing URL accessibility and resolution accuracy.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧬</text></svg>">
+  <style>
+    :root {
+      --bg-primary: #0d1117;
+      --bg-secondary: #161b22;
+      --bg-tertiary: #21262d;
+      --border: #30363d;
+      --text-primary: #e6edf3;
+      --text-secondary: #8b949e;
+      --accent: #58a6ff;
+      --success: #3fb950;
+      --error: #f85149;
+      --warning: #d29922;
+    }
+    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.5;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+    
+    .container { max-width: 1200px; margin: 0 auto; }
+    
+    header {
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .subtitle { color: var(--text-secondary); margin-top: 0.5rem; }
+    
+    .links {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .links a {
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.875rem;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    
+    .links a:hover { text-decoration: underline; }
+    
+    .stats {
+      display: flex;
+      gap: 1rem;
+      margin: 1.5rem 0;
+      flex-wrap: wrap;
+    }
+    
+    .stat {
+      background: var(--bg-secondary);
+      padding: 1rem 1.25rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      min-width: 100px;
+    }
+    
+    .stat-value { font-size: 1.5rem; font-weight: 600; }
+    .stat-label { color: var(--text-secondary); font-size: 0.8rem; }
+    .stat.success .stat-value { color: var(--success); }
+    .stat.error .stat-value { color: var(--error); }
+    .stat.warning .stat-value { color: var(--warning); }
+    
+    .section { margin-bottom: 2rem; }
+    .section-title {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .findings {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .findings h3 { font-size: 1rem; margin-bottom: 1rem; color: var(--accent); }
+    .findings ul { margin-left: 1.5rem; color: var(--text-secondary); }
+    .findings li { margin-bottom: 0.5rem; }
+    .findings strong { color: var(--text-primary); }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--bg-secondary);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    
+    th, td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    th {
+      background: var(--bg-tertiary);
+      font-weight: 600;
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    
+    tr:last-child td { border-bottom: none; }
+    
+    .market-row { cursor: pointer; transition: background 0.2s; }
+    .market-row:hover { background: var(--bg-tertiary); }
+    .market-row.expanded { background: var(--bg-tertiary); }
+    
+    .expand-icon {
+      display: inline-block;
+      width: 20px;
+      transition: transform 0.2s;
+    }
+    
+    .market-row.expanded .expand-icon { transform: rotate(90deg); }
+    
+    .question {
+      max-width: 350px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    
+    .status-icon { font-size: 1.1rem; }
+    .match { color: var(--success); }
+    .mismatch { color: var(--error); }
+    .pending { color: var(--warning); }
+    .error { color: var(--text-secondary); }
+    
+    .details-row { display: none; }
+    .details-row.visible { display: table-row; }
+    
+    .details-cell {
+      background: var(--bg-primary);
+      padding: 1rem 1.5rem;
+    }
+    
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    
+    .detail-item {
+      padding: 0.75rem;
+      background: var(--bg-secondary);
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    
+    .detail-label {
+      font-size: 0.7rem;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+    
+    .detail-value { font-weight: 500; word-break: break-all; }
+    .detail-value a { color: var(--accent); text-decoration: none; }
+    .detail-value a:hover { text-decoration: underline; }
+    
+    .code-section {
+      background: var(--bg-secondary);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    
+    .code-header {
+      background: var(--bg-tertiary);
+      padding: 0.75rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .code-filename { font-family: monospace; color: var(--text-secondary); font-size: 0.875rem; }
+    
+    pre {
+      padding: 1rem;
+      overflow-x: auto;
+      font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+      font-size: 0.8rem;
+      line-height: 1.6;
+    }
+    
+    code { color: var(--text-primary); }
+    .keyword { color: #ff7b72; }
+    .string { color: #a5d6ff; }
+    .function { color: #d2a8ff; }
+    .decorator { color: #79c0ff; }
+    .comment { color: #8b949e; }
+    
+    .loading { text-align: center; padding: 2rem; color: var(--text-secondary); }
+    .volume { font-family: monospace; font-size: 0.9rem; }
+    
+    footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      text-align: center;
+    }
+    
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    
+    @media (max-width: 768px) {
+      body { padding: 1rem; }
+      .stats { gap: 0.5rem; }
+      .stat { padding: 0.75rem 1rem; min-width: 80px; }
+      .stat-value { font-size: 1.25rem; }
+      th, td { padding: 0.5rem; font-size: 0.875rem; }
+      .question { max-width: 150px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🧬 GenLayer Benchmark</h1>
+      <p class="subtitle">Can Intelligent Contracts resolve Polymarket prediction markets?</p>
+      <div class="links">
+        <a href="https://genlayer.com" target="_blank">📚 GenLayer Docs</a>
+        <a href="https://polymarket.com" target="_blank">📈 Polymarket</a>
+        <a href="https://github.com/Joaclaw/genlayer-benchmark" target="_blank">⭐ GitHub</a>
+      </div>
+    </header>
+    
+    <div class="stats" id="stats">
+      <div class="loading">Loading...</div>
+    </div>
+    
+    <div class="findings">
+      <h3>🔍 Key Findings</h3>
+      <ul>
+        <li><strong>URL Accessibility is the bottleneck</strong> — 40% of resolution URLs blocked by anti-bot, paywalls, or JavaScript requirements</li>
+        <li><strong>Wikipedia works best</strong> — 100% accessible, 100% correct resolution</li>
+        <li><strong>News sites fail</strong> — CNN, TMZ blocked; Olympics.com has anti-bot protection</li>
+        <li><strong>Resolution accuracy is high when accessible</strong> — 83% match rate on accessible URLs</li>
+        <li><strong>GenLayer needs headless browser support</strong> — Current `gl.get_webpage()` can't handle JavaScript-heavy sites</li>
+      </ul>
+    </div>
+    
+    <div class="section">
+      <h2 class="section-title">📊 Market Results</h2>
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 30px;"></th>
+            <th>Question</th>
+            <th>Polymarket</th>
+            <th>GenLayer</th>
+            <th>Volume</th>
+            <th style="width: 50px;">Status</th>
+          </tr>
+        </thead>
+        <tbody id="results-body">
+          <tr><td colspan="6" class="loading">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="section">
+      <h2 class="section-title">📜 Intelligent Contract</h2>
+      <div class="code-section">
+        <div class="code-header">
+          <span class="code-filename">contracts/market_resolver.py</span>
+        </div>
+        <pre><code id="contract-code"></code></pre>
+      </div>
+    </div>
+    
+    <footer>
+      Built by <a href="https://argue.fun" target="_blank">argue.fun</a> — Feb 2026
+    </footer>
+  </div>
+  
+  <script>
+    const CONTRACT_CODE = `# { "Depends": "py-genlayer:test" }
+import json
+from genlayer import *
+
+
+class MarketResolver(gl.Contract):
+    resolutions: TreeMap[str, str]
+    
+    def __init__(self):
+        pass
+    
+    @gl.public.write
+    def resolve(self, market_id: str, question: str, resolution_url: str) -> str:
+        try:
+            page_content = gl.get_webpage(resolution_url, mode="text")
+        except Exception as e:
+            return json.dumps({
+                "market_id": market_id,
+                "accessible": False,
+                "error": str(e),
+                "resolution": "URL_INACCESSIBLE"
+            })
+        
+        prompt = f"""
+Webpage content: {page_content[:8000]}
+
+Question: {question}
+
+Based on the webpage content, answer the question.
+Answer ONLY with one of: YES, NO, or UNRESOLVABLE
+
+Your response must be ONLY the answer word, nothing else.
+"""
+        
+        resolution = gl.exec_prompt(prompt).strip().upper()
+        
+        # Normalize the response
+        if "YES" in resolution:
+            resolution = "YES"
+        elif "NO" in resolution:
+            resolution = "NO"
+        else:
+            resolution = "UNRESOLVABLE"
+        
+        # Store the resolution
+        self.resolutions[market_id] = resolution
+        
+        return json.dumps({
+            "market_id": market_id,
+            "accessible": True,
+            "resolution": resolution
+        })
+    
+    @gl.public.view
+    def get_resolution(self, market_id: str) -> str:
+        if market_id in self.resolutions:
+            return self.resolutions[market_id]
+        return "NOT_FOUND"`;
+    
+    async function loadData() {
+      try {
+        const res = await fetch('/api/results.json');
+        const data = await res.json();
+        renderStats(data);
+        renderResults(data.markets);
+        renderContract();
+      } catch (err) {
+        console.error('Failed to load:', err);
+      }
+    }
+    
+    function renderStats(data) {
+      const s = data.summary;
+      document.getElementById('stats').innerHTML = \`
+        <div class="stat"><div class="stat-value">\${s.total}</div><div class="stat-label">Markets Tested</div></div>
+        <div class="stat success"><div class="stat-value">\${s.matches}</div><div class="stat-label">Matches</div></div>
+        <div class="stat warning"><div class="stat-value">\${s.mismatches}</div><div class="stat-label">Mismatches</div></div>
+        <div class="stat error"><div class="stat-value">\${s.errors}</div><div class="stat-label">URL Blocked</div></div>
+        <div class="stat"><div class="stat-value">\${s.urlAccessibility}</div><div class="stat-label">URL Access</div></div>
+        <div class="stat success"><div class="stat-value">\${s.resolutionAccuracy}</div><div class="stat-label">Resolution Accuracy</div></div>
+      \`;
+    }
+    
+    function formatVolume(v) {
+      const n = parseFloat(v) || 0;
+      if (n >= 1e6) return '$' + (n/1e6).toFixed(1) + 'M';
+      if (n >= 1e3) return '$' + (n/1e3).toFixed(0) + 'K';
+      return '$' + n.toFixed(0);
+    }
+    
+    function getStatus(r) {
+      if (r.status === 'error' || r.error) return '<span class="status-icon error">⚠️</span>';
+      if (r.match === true) return '<span class="status-icon match">✅</span>';
+      if (r.match === false) return '<span class="status-icon mismatch">❌</span>';
+      return '<span class="status-icon pending">⏳</span>';
+    }
+    
+    function renderResults(markets) {
+      const tbody = document.getElementById('results-body');
+      tbody.innerHTML = markets.map((r, i) => \`
+        <tr class="market-row" onclick="toggleDetails(\${i})">
+          <td><span class="expand-icon">▶</span></td>
+          <td><span class="question" title="\${r.question}">\${r.question}</span></td>
+          <td>\${r.polymarketResolution || '-'}</td>
+          <td>\${r.genlayerResolution || '-'}</td>
+          <td class="volume">\${formatVolume(r.volume)}</td>
+          <td>\${getStatus(r)}</td>
+        </tr>
+        <tr class="details-row" id="details-\${i}">
+          <td colspan="6" class="details-cell">
+            <div class="details-grid">
+              <div class="detail-item">
+                <div class="detail-label">Resolution URL</div>
+                <div class="detail-value"><a href="\${r.resolutionUrl}" target="_blank">\${r.resolutionUrl}</a></div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-label">Volume</div>
+                <div class="detail-value">\${formatVolume(r.volume)}</div>
+              </div>
+              \${r.error ? \`<div class="detail-item" style="grid-column: 1/-1;"><div class="detail-label">Error</div><div class="detail-value error">\${r.error}</div></div>\` : ''}
+            </div>
+          </td>
+        </tr>
+      \`).join('');
+    }
+    
+    window.toggleDetails = function(i) {
+      const rows = document.querySelectorAll('.market-row');
+      const details = document.getElementById('details-' + i);
+      rows[i].classList.toggle('expanded');
+      details.classList.toggle('visible');
+    }
+    
+    function renderContract() {
+      const highlighted = CONTRACT_CODE
+        .replace(/\\b(from|import|class|def|return|try|except|if|else|for|in|as)\\b/g, '<span class="keyword">$1</span>')
+        .replace(/(["'])(.*?)\\1/g, '<span class="string">$1$2$1</span>')
+        .replace(/@(\\w+\\.?\\w*\\.?\\w*)/g, '<span class="decorator">@$1</span>')
+        .replace(/(#.*$)/gm, '<span class="comment">$1</span>');
+      document.getElementById('contract-code').innerHTML = highlighted;
+    }
+    
+    loadData();
+  </script>
+</body>
+</html>
