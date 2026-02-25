@@ -72,11 +72,14 @@ async function main() {
   // Fetch all markets
   const allMarkets = await fetchAllClosedMarkets();
   
-  // Filter for markets with winners and resolution URLs
+  // Filter for markets with winners, resolution URLs, and ACTUALLY RESOLVED (end_date in past)
+  const now = new Date();
   const marketsWithWinners = allMarkets.filter(m => {
     const hasWinner = m.tokens?.some(t => t.winner === true);
     const hasDescription = m.description && m.description.length > 50;
-    return hasWinner && hasDescription;
+    const endDate = m.end_date_iso ? new Date(m.end_date_iso) : null;
+    const isPast = endDate ? endDate < now : false;
+    return hasWinner && hasDescription && isPast;
   });
   
   console.log(`📊 Markets with clear winners: ${marketsWithWinners.length}`);

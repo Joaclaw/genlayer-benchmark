@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GenLayer Benchmark - Live Results</title>
+  <title>GenLayer Benchmark</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
@@ -43,10 +43,8 @@
     }
     
     .stat-value { font-size: 2.5rem; font-weight: bold; margin-bottom: 8px; }
-    .stat-label { color: #8b949e; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .stat-label { color: #8b949e; font-size: 0.85rem; }
     .stat-card.success .stat-value { color: #3fb950; }
-    .stat-card.warning .stat-value { color: #d29922; }
-    .stat-card.error .stat-value { color: #f85149; }
     .stat-card.info .stat-value { color: #58a6ff; }
     
     .section {
@@ -54,7 +52,6 @@
       border: 1px solid #30363d;
       border-radius: 8px;
       margin-bottom: 20px;
-      overflow: hidden;
     }
     
     .section-header {
@@ -64,48 +61,6 @@
       border-bottom: 1px solid #30363d;
       display: flex;
       justify-content: space-between;
-      align-items: center;
-    }
-    
-    .refresh-btn {
-      background: #238636;
-      border: none;
-      border-radius: 6px;
-      padding: 6px 12px;
-      color: #fff;
-      cursor: pointer;
-      font-size: 0.85rem;
-    }
-    
-    .refresh-btn:hover { background: #2ea043; }
-    
-    .breakdown-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-    
-    .breakdown-item {
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 0;
-      border-bottom: 1px solid #21262d;
-    }
-    
-    .breakdown-bar {
-      height: 8px;
-      background: #30363d;
-      border-radius: 4px;
-      margin-top: 8px;
-      overflow: hidden;
-    }
-    
-    .breakdown-fill {
-      height: 100%;
-      background: #58a6ff;
-      border-radius: 4px;
-      transition: width 0.3s;
     }
     
     .markets-table {
@@ -118,12 +73,10 @@
       padding: 12px 15px;
       background: #21262d;
       border-bottom: 1px solid #30363d;
-      font-weight: 600;
       font-size: 0.85rem;
       color: #8b949e;
       position: sticky;
       top: 0;
-      z-index: 10;
     }
     
     .markets-table td {
@@ -133,51 +86,6 @@
     }
     
     .markets-table tr:hover { background: #21262d; }
-    
-    .status-badge {
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-    }
-    
-    .status-correct { background: #238636; color: #fff; }
-    .status-incorrect { background: #da3633; color: #fff; }
-    .status-unresolvable { background: #9e6a03; color: #fff; }
-    .status-consensus-fail { background: #6e7681; color: #fff; }
-    
-    .category-badge {
-      display: inline-block;
-      padding: 3px 8px;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      background: #30363d;
-      color: #c9d1d9;
-    }
-    
-    .loading {
-      text-align: center;
-      padding: 60px 20px;
-      color: #8b949e;
-      font-size: 1.1rem;
-    }
-    
-    .spinner {
-      border: 3px solid #30363d;
-      border-top: 3px solid #58a6ff;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      animation: spin 1s linear infinite;
-      margin: 20px auto;
-    }
-    
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
     
     .pagination {
       display: flex;
@@ -198,48 +106,29 @@
     .pagination button:hover { background: #30363d; }
     .pagination button:disabled { opacity: 0.5; cursor: not-allowed; }
     
-    .auto-refresh {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.85rem;
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #8b949e;
     }
-    
-    .auto-refresh input { margin: 0; }
   </style>
 </head>
 <body>
   <div class="container">
     <header>
-      <h1>🔬 GenLayer ↔ Polymarket Benchmark</h1>
-      <p class="subtitle">Live Results - 2000 Markets Dataset</p>
+      <h1>🔬 GenLayer Benchmark</h1>
+      <p class="subtitle" id="subtitle">Loading...</p>
     </header>
     
-    <div id="loading" class="loading">
-      <div class="spinner"></div>
-      <div>Loading benchmark results...</div>
-    </div>
+    <div id="loading" class="loading">Loading data...</div>
     
     <div id="content" style="display: none;">
       <div class="stats-grid" id="stats"></div>
       
       <div class="section">
         <div class="section-header">
-          <span>📊 Failure Analysis</span>
-        </div>
-        <div class="breakdown-grid" id="breakdown"></div>
-      </div>
-      
-      <div class="section">
-        <div class="section-header">
-          <span>📋 Results (Showing first 1000)</span>
-          <div style="display: flex; gap: 15px; align-items: center;">
-            <div class="auto-refresh">
-              <input type="checkbox" id="auto-refresh" checked>
-              <label for="auto-refresh">Auto-refresh (30s)</label>
-            </div>
-            <button class="refresh-btn" onclick="loadData()">🔄 Refresh Now</button>
-          </div>
+          <span>📋 Markets Dataset</span>
+          <span id="showing"></span>
         </div>
         <div style="overflow-x: auto; max-height: 600px; overflow-y: auto;">
           <table class="markets-table">
@@ -247,15 +136,13 @@
               <tr>
                 <th>#</th>
                 <th>Question</th>
-                <th>Status</th>
-                <th>GenLayer</th>
-                <th>Expected</th>
+                <th>Expected Outcome</th>
                 <th>Category</th>
-                <th>Failure</th>
-                <th>URL</th>
+                <th>End Date</th>
+                <th>Resolution URL</th>
               </tr>
             </thead>
-            <tbody id="results-body"></tbody>
+            <tbody id="markets-body"></tbody>
           </table>
         </div>
         <div class="pagination" id="pagination"></div>
@@ -264,155 +151,71 @@
   </div>
   
   <script>
-    let data = null;
+    let markets = [];
     let currentPage = 1;
     const pageSize = 50;
-    let autoRefreshInterval = null;
     
     async function loadData() {
       try {
-        const response = await fetch('/results.json');
-        if (!response.ok) throw new Error('No results yet');
-        
-        data = await response.json();
+        const response = await fetch('/markets.json');
+        const data = await response.json();
+        markets = data.markets || [];
         
         document.getElementById('loading').style.display = 'none';
         document.getElementById('content').style.display = 'block';
+        document.getElementById('subtitle').textContent = `${markets.length} Markets Dataset`;
         
-        renderStats();
-        renderBreakdown();
-        renderResults();
+        renderStats(data.stats);
+        renderMarkets();
       } catch (err) {
-        // Results not ready yet
-        console.log('Waiting for results...');
+        document.getElementById('loading').textContent = 'Failed to load: ' + err.message;
       }
     }
     
-    function renderStats() {
-      const s = data.summary || {};
-      const total = s.total || 0;
-      const resolvable = s.resolvable || 0;
-      const correct = s.correct || 0;
-      const consensusAchieved = s.consensus_achieved || 0;
-      
-      const resolvableRate = total > 0 ? Math.round(resolvable / total * 100) : 0;
-      const accuracy = resolvable > 0 ? Math.round(correct / resolvable * 100) : 0;
-      const consensusRate = total > 0 ? Math.round(consensusAchieved / total * 100) : 0;
-      
+    function renderStats(stats) {
       document.getElementById('stats').innerHTML = `
         <div class="stat-card info">
-          <div class="stat-value">${total}</div>
-          <div class="stat-label">Total Processed</div>
+          <div class="stat-value">${stats.total}</div>
+          <div class="stat-label">Total Markets</div>
         </div>
         <div class="stat-card success">
-          <div class="stat-value">${resolvable}</div>
-          <div class="stat-label">Resolvable (${resolvableRate}%)</div>
-        </div>
-        <div class="stat-card success">
-          <div class="stat-value">${correct}</div>
-          <div class="stat-label">Correct (${accuracy}%)</div>
+          <div class="stat-value">${stats.with_url}</div>
+          <div class="stat-label">With Resolution URL</div>
         </div>
         <div class="stat-card info">
-          <div class="stat-value">${consensusAchieved}</div>
-          <div class="stat-label">Consensus (${consensusRate}%)</div>
-        </div>
-        <div class="stat-card warning">
-          <div class="stat-value">${s.consensus_failed || 0}</div>
-          <div class="stat-label">Consensus Failed</div>
+          <div class="stat-value">${Math.round(stats.with_url / stats.total * 100)}%</div>
+          <div class="stat-label">URL Coverage</div>
         </div>
       `;
     }
     
-    function renderBreakdown() {
-      const s = data.summary || {};
-      const total = s.total || 1;
-      const byFailure = s.by_failure || {};
-      const byCategory = s.by_category || {};
-      
-      const failureHtml = Object.entries(byFailure)
-        .sort((a, b) => b[1] - a[1])
-        .map(([type, count]) => `
-          <div>
-            <div class="breakdown-item">
-              <span>${type}</span>
-              <span>${count} (${Math.round(count/total*100)}%)</span>
-            </div>
-            <div class="breakdown-bar">
-              <div class="breakdown-fill" style="width: ${count/total*100}%"></div>
-            </div>
-          </div>
-        `).join('');
-      
-      const categoryHtml = Object.entries(byCategory)
-        .sort((a, b) => b[1] - a[1])
-        .map(([cat, count]) => `
-          <div>
-            <div class="breakdown-item">
-              <span>${cat}</span>
-              <span>${count}</span>
-            </div>
-            <div class="breakdown-bar">
-              <div class="breakdown-fill" style="width: ${count/total*100}%"></div>
-            </div>
-          </div>
-        `).join('');
-      
-      document.getElementById('breakdown').innerHTML = `
-        <div>
-          <h3 style="margin-bottom: 15px; font-size: 1rem;">By Failure Type</h3>
-          ${failureHtml}
-        </div>
-        <div>
-          <h3 style="margin-bottom: 15px; font-size: 1rem;">By Category</h3>
-          ${categoryHtml}
-        </div>
-      `;
-    }
-    
-    function renderResults() {
-      const results = (data.results || []).slice(0, 1000);
+    function renderMarkets() {
       const start = (currentPage - 1) * pageSize;
       const end = start + pageSize;
-      const pageResults = results.slice(start, end);
+      const pageMarkets = markets.slice(start, end);
       
-      const tbody = document.getElementById('results-body');
-      tbody.innerHTML = pageResults.map((r, i) => {
-        let statusBadge, statusText;
-        if (r.resolvable && r.correct) {
-          statusBadge = 'status-correct';
-          statusText = '✓ Correct';
-        } else if (r.resolvable && !r.correct) {
-          statusBadge = 'status-incorrect';
-          statusText = '✗ Wrong';
-        } else if (r.consensus_status === 'MAJORITY_DISAGREE') {
-          statusBadge = 'status-consensus-fail';
-          statusText = 'Consensus Failed';
-        } else {
-          statusBadge = 'status-unresolvable';
-          statusText = 'Unresolvable';
-        }
-        
-        return `
-          <tr>
-            <td>${start + i + 1}</td>
-            <td style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${r.question}">${r.question}</td>
-            <td><span class="status-badge ${statusBadge}">${statusText}</span></td>
-            <td>${r.genlayer_result}</td>
-            <td>${r.polymarket_result}</td>
-            <td><span class="category-badge">${r.category}</span></td>
-            <td style="font-size: 0.8rem; color: #8b949e;">${r.failure_reason || '-'}</td>
-            <td style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-              <a href="${r.resolution_url}" target="_blank" style="color: #58a6ff; text-decoration: none;">${r.resolution_url.slice(0, 40)}...</a>
-            </td>
-          </tr>
-        `;
-      }).join('');
+      document.getElementById('showing').textContent = 
+        `Showing ${start + 1}-${Math.min(end, markets.length)} of ${markets.length}`;
       
-      renderPagination(results.length);
+      const tbody = document.getElementById('markets-body');
+      tbody.innerHTML = pageMarkets.map((m, i) => `
+        <tr>
+          <td>${start + i + 1}</td>
+          <td style="max-width: 400px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${m.question}">${m.question}</td>
+          <td>${m.outcome}</td>
+          <td style="text-transform: capitalize;">${m.category}</td>
+          <td>${m.end_date ? m.end_date.split('T')[0] : '-'}</td>
+          <td style="max-width: 300px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+            <a href="${m.resolution_url}" target="_blank" style="color: #58a6ff; text-decoration: none;">${m.resolution_url || 'N/A'}</a>
+          </td>
+        </tr>
+      `).join('');
+      
+      renderPagination();
     }
     
-    function renderPagination(total) {
-      const totalPages = Math.ceil(total / pageSize);
+    function renderPagination() {
+      const totalPages = Math.ceil(markets.length / pageSize);
       document.getElementById('pagination').innerHTML = `
         <button onclick="changePage(-1)" ${currentPage === 1 ? 'disabled' : ''}>← Previous</button>
         <span>Page ${currentPage} of ${totalPages}</span>
@@ -422,26 +225,11 @@
     
     function changePage(delta) {
       currentPage += delta;
-      renderResults();
+      renderMarkets();
+      window.scrollTo(0, 0);
     }
     
-    function setupAutoRefresh() {
-      const checkbox = document.getElementById('auto-refresh');
-      checkbox.addEventListener('change', () => {
-        if (checkbox.checked) {
-          autoRefreshInterval = setInterval(loadData, 30000);
-        } else {
-          if (autoRefreshInterval) clearInterval(autoRefreshInterval);
-        }
-      });
-      
-      // Start auto-refresh
-      autoRefreshInterval = setInterval(loadData, 30000);
-    }
-    
-    // Initial load
     loadData();
-    setupAutoRefresh();
   </script>
 </body>
 </html>

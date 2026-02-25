@@ -1,104 +1,24 @@
 {
-  "fetched_at": "2026-02-25T22:17:06.551Z",
+  "fetched_at": "2026-02-25T22:37:52.589Z",
   "source": "https://clob.polymarket.com/markets?closed=true (paginated)",
   "stats": {
     "total": 2000,
     "with_url": 2000,
     "without_url": 0,
     "by_category": {
-      "politics": 378,
-      "other": 1381,
+      "other": 1383,
       "economics": 87,
       "business": 16,
-      "crypto": 137,
+      "crypto": 138,
+      "politics": 375,
       "sports": 1
     },
     "date_range": {
       "earliest": "2025-05-06T00:00:00Z",
-      "latest": "2026-03-31T00:00:00Z"
+      "latest": "2026-01-31T00:00:00Z"
     }
   },
   "markets": [
-    {
-      "id": "will-progress-singapore-party-psp-win-the-2025-singapore-parliamentary-election",
-      "question": "Will Progress Singapore Party (PSP) win the 2025 Singapore parliamentary election?",
-      "description": "The 2025 Singaporean general election will be held on Saturday, May 3, 2025, to elect all 97 members of the Parliament of Singapore.\n\nThis market will resolve to the political party that controls the most seats in the Parliament of Singapore as a result of the upcoming election.\n\nIf voting in the next Singapore general election does not occur by March 31, 2026, this market will resolve to \"Other\".\n\nIn the case of a tie between this party and any other for the most seats held, this market will resolve in favor of the party whose listed abbreviation comes first in alphabetical order.\n\nThis market's resolution will be based solely on the number of seats held by the named party or coalition.\n\nThis market will resolve based on the result of the election as indicated by a consensus of credible reporting. If there is ambiguity, this market will resolve based solely on the official results as reported by Singapore's government (e.g. via https://www.eld.gov.sg/).",
-      "end_date": "2026-03-31T00:00:00Z",
-      "outcome": "No",
-      "resolution_url": "https://www.eld.gov.sg/",
-      "category": "politics",
-      "polymarket_url": "https://polymarket.com/event/will-progress-singapore-party-psp-win-the-2025-singapore-parliamentary-election"
-    },
-    {
-      "id": "will-workers-party-wp-win-the-2025-singapore-parliamentary-election",
-      "question": "Will Workers' Party (WP) win the 2025 Singapore parliamentary election?",
-      "description": "The 2025 Singaporean general election will be held on Saturday, May 3, 2025, to elect all 97 members of the Parliament of Singapore.\n\nThis market will resolve to the political party that controls the most seats in the Parliament of Singapore as a result of the upcoming election.\n\nIf voting in the next Singapore general election does not occur by March 31, 2026, this market will resolve to \"Other\".\n\nIn the case of a tie between this party and any other for the most seats held, this market will resolve in favor of the party whose listed abbreviation comes first in alphabetical order.\n\nThis market's resolution will be based solely on the number of seats held by the named party or coalition.\n\nThis market will resolve based on the result of the election as indicated by a consensus of credible reporting. If there is ambiguity, this market will resolve based solely on the official results as reported by Singapore's government (e.g. via https://www.eld.gov.sg/).",
-      "end_date": "2026-03-31T00:00:00Z",
-      "outcome": "No",
-      "resolution_url": "https://www.eld.gov.sg/",
-      "category": "politics",
-      "polymarket_url": "https://polymarket.com/event/will-workers-party-wp-win-the-2025-singapore-parliamentary-election"
-    },
-    {
-      "id": "will-peoples-action-party-pap-win-the-2025-singapore-parliamentary-election",
-      "question": "Will People's Action Party (PAP) win the 2025 Singapore parliamentary election?",
-      "description": "The 2025 Singaporean general election will be held on Saturday, May 3, 2025, to elect all 97 members of the Parliament of Singapore.\n\nThis market will resolve to the political party that controls the most seats in the Parliament of Singapore as a result of the upcoming election.\n\nIf voting in the next Singapore general election does not occur by March 31, 2026, this market will resolve to \"Other\".\n\nIn the case of a tie between this party and any other for the most seats held, this market will resolve in favor of the party whose listed abbreviation comes first in alphabetical order.\n\nThis market's resolution will be based solely on the number of seats held by the named party or coalition.\n\nThis market will resolve based on the result of the election as indicated by a consensus of credible reporting. If there is ambiguity, this market will resolve based solely on the official results as reported by Singapore's government (e.g. via https://www.eld.gov.sg/).",
-      "end_date": "2026-03-31T00:00:00Z",
-      "outcome": "Yes",
-      "resolution_url": "https://www.eld.gov.sg/",
-      "category": "politics",
-      "polymarket_url": "https://polymarket.com/event/will-peoples-action-party-pap-win-the-2025-singapore-parliamentary-election"
-    },
-    {
-      "id": "us-recession-in-2025",
-      "question": "US recession in 2025?",
-      "description": "This market will resolve to “Yes”, if either of the following conditions are met:\n\n1.  The National Bureau of Economic Research (NBER) publicly announces that a recession has occurred in the United States, at any point in 2025, with the announcement made by December 31, 2025, 11:59 PM ET.\n\n2.  The seasonally adjusted annualized percent change in quarterly U.S. real GDP from the previous quarter is less than 0.0 for two consecutive quarters between Q4 2024 and Q4 2025 (inclusive), as reported by the Bureau of Economic Analysis (BEA). \n\nOtherwise, this market will resolve to \"No\". \n\nNote that advance estimates will be considered. For example, if upon release, the advance estimate for Q2 2025 was negative, and the Q1 2025's most recent, up-to-date estimate was also negative, this market would resolve to \"Yes\". If on December 31, 2025 the latest estimate for quarterly GDP in Q3 2025 was negative, this market will stay open until the Advance estimate of Q4 2025 is published, at which point ",
-      "end_date": "2026-02-28T00:00:00Z",
-      "outcome": "No",
-      "resolution_url": "https://www.bea.gov/data/gdp/gross-domestic-product",
-      "category": "other",
-      "polymarket_url": "https://polymarket.com/event/us-recession-in-2025"
-    },
-    {
-      "id": "will-trump-elon-reduce-the-deficit-in-2025",
-      "question": "Will Trump & Elon reduce the deficit in 2025?",
-      "description": "The U.S. federal budget deficit for December 2024 was $86,731,619,013.29 (see: https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government). \n\nThis market will resolve to \"Yes\" if the Monthly Treasury Statement (MTS) reports a lower monthly deficit in December 2025 than in December 2024. Otherwise, this market will resolve to \"No.\"\n\nThe resolution source will be the Monthly Treasury Statement (MTS) published by the U.S. Department of the Treasury (fiscaldata.treasury.gov). The month surplus can be found in the column labeled \"Current Month Deficit Surplus Amount\" in the the table \"Summary of Receipts, Outlays, and Surplus or Deficit” in the MTS (see: https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government).  If no report is published by February 28, 2026, 11:59 PM ET another credible source will be used. \n",
-      "end_date": "2026-02-28T00:00:00Z",
-      "outcome": "No",
-      "resolution_url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government",
-      "category": "other",
-      "polymarket_url": "https://polymarket.com/event/will-trump-elon-reduce-the-deficit-in-2025"
-    },
-    {
-      "id": "will-elon-cut-the-budget-by-at-least-5-in-2025",
-      "question": "Will Elon cut the budget by at least 5% in 2025?",
-      "description": "In Q4 2024, government expenditures were $7,106,807,000,000 (see https://fred.stlouisfed.org/series/FGEXPND). \n\nThis market will resolve to “Yes” if federal government current expenditures decrease by 5% or more between the Q4 2024 report and the Q4 2025 report. Otherwise, it will resolve to \"No\".\n\nAny 2025 quarterly report of $6,751,467,000,000 or less will qualify for a “Yes” resolution.\n\nRevisions made to these figures will not be considered, only the values reported in the initial reports will be used.\n\nThis market's resolution source is the Federal Government: Current Expenditures chart maintained by the St. Louis Federal Reserve Bank, displayed here (https://fred.stlouisfed.org/series/FGEXPND).\n",
-      "end_date": "2026-02-28T00:00:00Z",
-      "outcome": "No",
-      "resolution_url": "https://fred.stlouisfed.org/series/FGEXPND",
-      "category": "other",
-      "polymarket_url": "https://polymarket.com/event/will-elon-cut-the-budget-by-at-least-5-in-2025"
-    },
-    {
-      "id": "will-elon-cut-the-budget-by-at-least-10-in-2025",
-      "question": "Will Elon cut the budget by at least 10% in 2025?",
-      "description": "In Q4 2024, government expenditures were $7,106,807,000,000 see (https://fred.stlouisfed.org/series/FGEXPND). \n\nThis market will resolve to “Yes” if federal government current expenditures decrease by 10% or more between the Q4 2024 report and the Q4 2025 report. Otherwise, it will resolve to \"No\".\n\nAny 2025 quarterly report of $6,396,126,000,000 or less will qualify for a “Yes” resolution.\n\nRevisions made to these figures will not be considered, only the values reported in the initial reports will be used.\n\nThis market's resolution source is the Federal Government: Current Expenditures chart maintained by the St. Louis Federal Reserve Bank, displayed here (https://fred.stlouisfed.org/series/FGEXPND).",
-      "end_date": "2026-02-28T00:00:00Z",
-      "outcome": "No",
-      "resolution_url": "https://fred.stlouisfed.org/series/FGEXPND",
-      "category": "other",
-      "polymarket_url": "https://polymarket.com/event/will-elon-cut-the-budget-by-at-least-10-in-2025"
-    },
-    {
-      "id": "bolsonaro-guilty",
-      "question": "Bolsonaro guilty?",
-      "description": "On March 26, the Brazilian Supreme Court ruled that Jair Bolsonaro will stand charges for an attempted coup. You can read more about that here: https://www.nytimes.com/2025/03/26/world/americas/brazil-bolsonaro-trial-coup-2022-elections.html\n\nThis market will resolve to \"Yes\" if Jair Bolsonaro is found guilty of any charges related to the coup attempt by February 28, 2026, 11:59 PM ET. Otherwise, this market will resolve to \"No\".\n\nIf Bolsonaro's charges are dismissed, end due to a plea agreement without an admission of guilt, or a mistrial is declared for the relevant charges, this market will resolve to \"No\".\n\nThis market will resolve according to the initial judgment rendered in this case. Any appeals will have no bearing on the resolution of this market.\n\nThe primary resolution source will be an official judgement delivered by the ruling court; however, other credible reporting may be used.",
-      "end_date": "2026-02-28T00:00:00Z",
-      "outcome": "Yes",
-      "resolution_url": "https://www.nytimes.com/2025/03/26/world/americas/brazil-bolsonaro-trial-coup-2022-elections.html",
-      "category": "other",
-      "polymarket_url": "https://polymarket.com/event/bolsonaro-guilty"
-    },
     {
       "id": "will-doge-balance-the-budget-in-2025",
       "question": "Will DOGE balance the budget in 2025?",
@@ -20018,6 +19938,86 @@
       "resolution_url": "https://www.wunderground.com/history/daily/us/ny/new-york-city/KLGA",
       "category": "other",
       "polymarket_url": "https://polymarket.com/event/will-the-highest-temperature-in-nyc-be-71f-or-higher-on-may-6"
+    },
+    {
+      "id": "will-trump-say-farmer-during-carney-visit-on-may-6",
+      "question": "Will Trump say \"Farmer\" during Carney visit on May 6?",
+      "description": "Donald Trump is scheduled to hold a Bilateral Meeting and/or Press Conference with Mark Carney on May 6, 2025. You can read more about that here: https://www.bloomberg.com/news/articles/2025-05-02/canada-s-carney-set-to-meet-trump-at-white-house-early-next-week\n\nThis market will resolve to \"Yes\" if Donald Trump says the listed term during his appearance at this event. Otherwise, the market will resolve to \"No\".\n\nAny usage of the term regardless of context will count toward the resolution of this market.\n\nPluralization/possessive of the term will count toward the resolution of this market, however other forms will NOT count.\n\nInstances where the term is used in a compound word will count regardless of context (e.g. joyful is not a compound word for \"joy,\" however \"killjoy\" is a compounding of the words \"kill\" and \"joy\").\n\nIf this event is definitively cancelled, or otherwise is not aired by May 6, 2025, 11:59 PM ET, this market will resolve to \"No\".\n\nThis market is explicitly about the ",
+      "end_date": "2025-05-06T00:00:00Z",
+      "outcome": "No",
+      "resolution_url": "https://www.bloomberg.com/news/articles/2025-05-02/canada-s-carney-set-to-meet-trump-at-white-house-early-next-week",
+      "category": "other",
+      "polymarket_url": "https://polymarket.com/event/will-trump-say-farmer-during-carney-visit-on-may-6"
+    },
+    {
+      "id": "will-trump-say-fentanyl-during-carney-visit-on-may-6",
+      "question": "Will Trump say \"Fentanyl\" during Carney visit on May 6?",
+      "description": "Donald Trump is scheduled to hold a Bilateral Meeting and/or Press Conference with Mark Carney on May 6, 2025. You can read more about that here: https://www.bloomberg.com/news/articles/2025-05-02/canada-s-carney-set-to-meet-trump-at-white-house-early-next-week\n\nThis market will resolve to \"Yes\" if Donald Trump says the listed term during his appearance at this event. Otherwise, the market will resolve to \"No\".\n\nAny usage of the term regardless of context will count toward the resolution of this market.\n\nPluralization/possessive of the term will count toward the resolution of this market, however other forms will NOT count.\n\nInstances where the term is used in a compound word will count regardless of context (e.g. joyful is not a compound word for \"joy,\" however \"killjoy\" is a compounding of the words \"kill\" and \"joy\").\n\nIf this event is definitively cancelled, or otherwise is not aired by May 6, 2025, 11:59 PM ET, this market will resolve to \"No\".\n\nThis market is explicitly about the ",
+      "end_date": "2025-05-06T00:00:00Z",
+      "outcome": "No",
+      "resolution_url": "https://www.bloomberg.com/news/articles/2025-05-02/canada-s-carney-set-to-meet-trump-at-white-house-early-next-week",
+      "category": "other",
+      "polymarket_url": "https://polymarket.com/event/will-trump-say-fentanyl-during-carney-visit-on-may-6"
+    },
+    {
+      "id": "will-saylor-say-china-during-his-strategy-world-2025-keynote",
+      "question": "Will Saylor say \"China\" during his Strategy World 2025 keynote?",
+      "description": "Michael Saylor is scheduled to deliver a keynote address at the Strategy World 2025 event on May 6, 2025, 9 AM ET. You can read more about that event here: https://www.strategysoftware.com/world25\n\nThis market will resolve to \"Yes\" if Saylor says the listed term during his appearance at this event. Otherwise, the market will resolve to \"No\".\n\nAny usage of the term regardless of context will count toward the resolution of this market.\n\nPluralization/possessive of the term will count toward the resolution of this market, however other forms will NOT count.\n\nInstances where the term is used in a compound word will count regardless of context (e.g. joyful is not a compound word for \"joy,\" however \"killjoy\" is a compounding of the words \"kill\" and \"joy\").\n\nIf the Saylor keynote is definitively cancelled, or otherwise is not aired by May 8, 2025, 11:59 PM ET, this market will resolve to \"No\".\n\nThis market is specifically about the Michael Saylor Keynote address scheduled for May 5, 2025, 9 A",
+      "end_date": "2025-05-06T00:00:00Z",
+      "outcome": "No",
+      "resolution_url": "https://www.strategysoftware.com/world25",
+      "category": "other",
+      "polymarket_url": "https://polymarket.com/event/will-saylor-say-china-during-his-strategy-world-2025-keynote"
+    },
+    {
+      "id": "will-the-highest-temperature-in-london-be-between-54-55f-on-may-6",
+      "question": "Will the highest temperature in London be between 54-55°F on May 6?",
+      "description": "This market will resolve to the temperature range that contains the highest temperature recorded at the London City Airport Station in degrees Fahrenheit on May 6, 2025.\n\nThe resolution source for this market will be information from Wunderground, specifically the highest temperature recorded for all times on this day by the Forecast for the London City Airport Station once information is finalized, available here: https://www.wunderground.com/history/daily/gb/london/EGLC.\n\nThis market can not resolve to \"Yes\" until all data for this date has been finalized.\n\nThe resolution source for this market measures temperatures to whole degrees Fahrenheit (eg, 21°F). Thus, this is the level of precision that will be used when resolving the market.\n\nAny revisions to temperatures recorded after data is finalized for this market’s timeframe will not be considered for this market's resolution.",
+      "end_date": "2025-05-06T00:00:00Z",
+      "outcome": "No",
+      "resolution_url": "https://www.wunderground.com/history/daily/gb/london/EGLC",
+      "category": "other",
+      "polymarket_url": "https://polymarket.com/event/will-the-highest-temperature-in-london-be-between-54-55f-on-may-6"
+    },
+    {
+      "id": "will-the-highest-temperature-in-london-be-53f-or-below-on-may-6",
+      "question": "Will the highest temperature in London be 53°F or below on May 6?",
+      "description": "This market will resolve to the temperature range that contains the highest temperature recorded at the London City Airport Station in degrees Fahrenheit on May 6, 2025.\n\nThe resolution source for this market will be information from Wunderground, specifically the highest temperature recorded for all times on this day by the Forecast for the London City Airport Station once information is finalized, available here: https://www.wunderground.com/history/daily/gb/london/EGLC.\n\nThis market can not resolve to \"Yes\" until all data for this date has been finalized.\n\nThe resolution source for this market measures temperatures to whole degrees Fahrenheit (eg, 21°F). Thus, this is the level of precision that will be used when resolving the market.\n\nAny revisions to temperatures recorded after data is finalized for this market’s timeframe will not be considered for this market's resolution.",
+      "end_date": "2025-05-06T00:00:00Z",
+      "outcome": "No",
+      "resolution_url": "https://www.wunderground.com/history/daily/gb/london/EGLC",
+      "category": "other",
+      "polymarket_url": "https://polymarket.com/event/will-the-highest-temperature-in-london-be-53f-or-below-on-may-6"
+    },
+    {
+      "id": "will-the-highest-temperature-in-london-be-between-62-63f-on-may-6",
+      "question": "Will the highest temperature in London be between 62-63°F on May 6?",
+      "description": "This market will resolve to the temperature range that contains the highest temperature recorded at the London City Airport Station in degrees Fahrenheit on May 6, 2025.\n\nThe resolution source for this market will be information from Wunderground, specifically the highest temperature recorded for all times on this day by the Forecast for the London City Airport Station once information is finalized, available here: https://www.wunderground.com/history/daily/gb/london/EGLC.\n\nThis market can not resolve to \"Yes\" until all data for this date has been finalized.\n\nThe resolution source for this market measures temperatures to whole degrees Fahrenheit (eg, 21°F). Thus, this is the level of precision that will be used when resolving the market.\n\nAny revisions to temperatures recorded after data is finalized for this market’s timeframe will not be considered for this market's resolution.",
+      "end_date": "2025-05-06T00:00:00Z",
+      "outcome": "No",
+      "resolution_url": "https://www.wunderground.com/history/daily/gb/london/EGLC",
+      "category": "other",
+      "polymarket_url": "https://polymarket.com/event/will-the-highest-temperature-in-london-be-between-62-63f-on-may-6"
+    },
+    {
+      "id": "will-saylor-say-bitcoin-75-times-during-his-strategy-world-2025-keynote",
+      "question": "Will Saylor say \"Bitcoin\" 75+ times during his Strategy World 2025 keynote?",
+      "description": "Michael Saylor is scheduled to deliver a keynote address at the Strategy World 2025 event on May 6, 2025, 9 AM ET. You can read more about that event here: https://www.strategysoftware.com/world25\n\nThis market will resolve to \"Yes\" if Saylor says the listed term during his appearance at this event. Otherwise, the market will resolve to \"No\".\n\nAny usage of the term regardless of context will count toward the resolution of this market.\n\nPluralization/possessive of the term will count toward the resolution of this market, however other forms will NOT count.\n\nInstances where the term is used in a compound word will count regardless of context (e.g. joyful is not a compound word for \"joy,\" however \"killjoy\" is a compounding of the words \"kill\" and \"joy\").\n\nIf the Saylor keynote is definitively cancelled, or otherwise is not aired by May 8, 2025, 11:59 PM ET, this market will resolve to \"No\".\n\nThis market is specifically about the Michael Saylor Keynote address scheduled for May 5, 2025, 9 A",
+      "end_date": "2025-05-06T00:00:00Z",
+      "outcome": "No",
+      "resolution_url": "https://www.strategysoftware.com/world25",
+      "category": "crypto",
+      "polymarket_url": "https://polymarket.com/event/will-saylor-say-bitcoin-75-times-during-his-strategy-world-2025-keynote"
+    },
+    {
+      "id": "will-trump-say-tariff-7-times-during-carney-visit-on-may-6",
+      "question": "Will Trump say \"Tariff\" 7+ times during Carney visit on May 6?",
+      "description": "Donald Trump is scheduled to hold a Bilateral Meeting and/or Press Conference with Mark Carney on May 6, 2025. You can read more about that here: https://www.bloomberg.com/news/articles/2025-05-02/canada-s-carney-set-to-meet-trump-at-white-house-early-next-week\n\nThis market will resolve to \"Yes\" if Donald Trump says the listed term during his appearance at this event. Otherwise, the market will resolve to \"No\".\n\nAny usage of the term regardless of context will count toward the resolution of this market.\n\nPluralization/possessive of the term will count toward the resolution of this market, however other forms will NOT count.\n\nInstances where the term is used in a compound word will count regardless of context (e.g. joyful is not a compound word for \"joy,\" however \"killjoy\" is a compounding of the words \"kill\" and \"joy\").\n\nIf this event is definitively cancelled, or otherwise is not aired by May 6, 2025, 11:59 PM ET, this market will resolve to \"No\".\n\nThis market is explicitly about the ",
+      "end_date": "2025-05-06T00:00:00Z",
+      "outcome": "Yes",
+      "resolution_url": "https://www.bloomberg.com/news/articles/2025-05-02/canada-s-carney-set-to-meet-trump-at-white-house-early-next-week",
+      "category": "other",
+      "polymarket_url": "https://polymarket.com/event/will-trump-say-tariff-7-times-during-carney-visit-on-may-6"
     }
   ]
 }
