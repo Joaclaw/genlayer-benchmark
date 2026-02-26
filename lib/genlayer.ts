@@ -5,13 +5,27 @@ import { CONTRACT_ADDRESS } from './constants';
 
 const { studionet } = chains;
 
+// Ensure we always use the production endpoint, not localhost
+const studionetWithEndpoint = {
+  ...studionet,
+  rpcUrls: {
+    default: {
+      http: ['https://studio.genlayer.com/api']
+    }
+  }
+};
+
 let clientInstance: any = null;
 
 export async function getGenLayerClient() {
   if (clientInstance) return clientInstance;
   
   const account = createAccount();
-  const client = createClient({ chain: studionet, account }) as any;
+  const client = createClient({ 
+    chain: studionetWithEndpoint,
+    endpoint: 'https://studio.genlayer.com/api',
+    account 
+  }) as any;
   
   // Initialize consensus if method exists
   if (typeof client.initializeConsensusSmartContract === 'function') {
