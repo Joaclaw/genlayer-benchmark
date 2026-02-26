@@ -34,32 +34,38 @@ async function main() {
   
   await client.initializeConsensusSmartContract();
   
-  // Deploy contract
-  console.log('📜 Deploying contract...');
-  const contractCode = readFileSync(
-    join(ROOT_DIR, 'contracts/polymarket_resolver.py'),
-    'utf-8'
-  );
+  // Use existing contract or deploy new one
+  let contractAddress = process.env.CONTRACT_ADDRESS;
   
-  const deployTx = await client.deployContract({
-    code: contractCode,
-    args: [],
-    leaderOnly: false,
-  });
-  
-  console.log(`   Deploy TX: ${deployTx}`);
-  
-  const deployReceipt = await client.waitForTransactionReceipt({
-    hash: deployTx,
-    status: TransactionStatus.FINALIZED,
-    retries: 60,
-    interval: 3000,
-  });
-  
-  const contractAddress = (deployReceipt as any)?.data?.contract_address;
-  if (!contractAddress) throw new Error('Deploy failed');
-  
-  console.log(`   Contract: ${contractAddress}\n`);
+  if (contractAddress) {
+    console.log(`📜 Using existing contract: ${contractAddress}\n`);
+  } else {
+    console.log('📜 Deploying new contract...');
+    const contractCode = readFileSync(
+      join(ROOT_DIR, 'contracts/polymarket_resolver.py'),
+      'utf-8'
+    );
+    
+    const deployTx = await client.deployContract({
+      code: contractCode,
+      args: [],
+      leaderOnly: false,
+    });
+    
+    console.log(`   Deploy TX: ${deployTx}`);
+    
+    const deployReceipt = await client.waitForTransactionReceipt({
+      hash: deployTx,
+      status: TransactionStatus.FINALIZED,
+      retries: 60,
+      interval: 3000,
+    });
+    
+    contractAddress = (deployReceipt as any)?.data?.contract_address;
+    if (!contractAddress) throw new Error('Deploy failed');
+    
+    console.log(`   Contract: ${contractAddress}\n`);
+  }
   
   // Process markets
   const results = [];

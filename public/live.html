@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GenLayer Live Results</title>
+  <script src="https://unpkg.com/genlayer-js@latest/dist/index.global.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0d1117;
+      color: #c9d1d9;
+      padding: 20px;
+    }
+    
+    .container { max-width: 1400px; margin: 0 auto; }
+    
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #30363d;
+    }
+    
+    h1 { color: #58a6ff; font-size: 2rem; margin-bottom: 10px; }
+    .subtitle { color: #8b949e; font-size: 0.9rem; margin-top: 10px; }
+    .contract-addr { 
+      font-family: monospace; 
+      font-size: 0.85rem; 
+      color: #8b949e;
+      margin-top: 10px;
+    }
+    
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .stat-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .stat-value { font-size: 2.5rem; font-weight: bold; margin-bottom: 8px; }
+    .stat-label { color: #8b949e; font-size: 0.85rem; }
+    .stat-card.success .stat-value { color: #3fb950; }
+    .stat-card.info .stat-value { color: #58a6ff; }
+    .stat-card.warning .stat-value { color: #d29922; }
+    
+    .result-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 15px;
+    }
+    
+    .result-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+    
+    .result-question {
+      font-size: 1.1rem;
+      font-weight: 500;
+      flex: 1;
+      margin-right: 20px;
+    }
+    
+    .status-badge {
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    
+    .status-correct { background: #238636; color: #fff; }
+    .status-incorrect { background: #da3633; color: #fff; }
+    .status-unresolvable { background: #9e6a03; color: #fff; }
+    
+    .result-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      padding: 15px;
+      background: #0d1117;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+    
+    .detail-item { display: flex; flex-direction: column; gap: 5px; }
+    .detail-label { font-size: 0.75rem; color: #8b949e; text-transform: uppercase; }
+    .detail-value { word-break: break-word; }
+    
+    .reasoning {
+      margin-top: 15px;
+      padding: 15px;
+      background: #0d1117;
+      border-radius: 6px;
+      border-left: 3px solid #58a6ff;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    
+    .loading {
+      text-align: center;
+      padding: 60px 20px;
+      color: #8b949e;
+    }
+    
+    .spinner {
+      border: 3px solid #30363d;
+      border-top: 3px solid #58a6ff;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🔬 Live Results</h1>
+      <div class="contract-addr" id="contract-addr"></div>
+      <div class="subtitle">Auto-refreshing every 5 seconds</div>
+    </header>
+    
+    <div class="stats" id="stats"></div>
+    
+    <div id="loading" class="loading">
+      <div class="spinner"></div>
+      <div>Connecting to contract...</div>
+    </div>
+    
+    <div id="results"></div>
+  </div>
+  
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const contractAddress = urlParams.get('contract') || '0xaE54474B48200Ad11893e357d1677dcFB29Bd27F';
+    
+    document.getElementById('contract-addr').textContent = `Contract: ${contractAddress}`;
+    
+    let client;
+    
+    async function init() {
+      const { createClient, studionet, createAccount } = window.GenLayerJS;
+      const account = createAccount();
+      client = createClient({ chain: studionet, account });
+      
+      loadResults();
+      setInterval(loadResults, 5000);
+    }
+    
+    async function loadResults() {
+      try {
+        const results = await client.readContract({
+          address: contractAddress,
+          functionName: 'get_results',
+          args: []
+        });
+        
+        document.getElementById('loading').style.display = 'none';
+        
+        const total = results.length;
+        const resolvable = results.filter(r => r.resolvable).length;
+        const correct = results.filter(r => r.correct).length;
+        
+        document.getElementById('stats').innerHTML = `
+          <div class="stat-card info">
+            <div class="stat-value">${total}</div>
+            <div class="stat-label">Processed</div>
+          </div>
+          <div class="stat-card success">
+            <div class="stat-value">${resolvable}</div>
+            <div class="stat-label">Resolvable</div>
+          </div>
+          <div class="stat-card success">
+            <div class="stat-value">${correct}</div>
+            <div class="stat-label">Correct</div>
+          </div>
+          <div class="stat-card ${resolvable > 0 ? 'success' : 'info'}">
+            <div class="stat-value">${resolvable > 0 ? Math.round(correct/resolvable*100) : 0}%</div>
+            <div class="stat-label">Accuracy</div>
+          </div>
+        `;
+        
+        document.getElementById('results').innerHTML = results.map((r, i) => {
+          let statusClass, statusText;
+          if (r.resolvable && r.correct) {
+            statusClass = 'status-correct';
+            statusText = '✓ Correct';
+          } else if (r.resolvable && !r.correct) {
+            statusClass = 'status-incorrect';
+            statusText = '✗ Wrong';
+          } else {
+            statusClass = 'status-unresolvable';
+            statusText = 'Unresolvable';
+          }
+          
+          return `
+            <div class="result-card">
+              <div class="result-header">
+                <div class="result-question">${i+1}. ${r.question}</div>
+                <div class="status-badge ${statusClass}">${statusText}</div>
+              </div>
+              <div class="result-details">
+                <div class="detail-item">
+                  <div class="detail-label">Expected</div>
+                  <div class="detail-value">${r.polymarket_result}</div>
+                </div>
+                <div class="detail-item">
+                  <div class="detail-label">GenLayer</div>
+                  <div class="detail-value">${r.genlayer_result}</div>
+                </div>
+                <div class="detail-item">
+                  <div class="detail-label">HTTP Status</div>
+                  <div class="detail-value">${r.status_code}</div>
+                </div>
+                ${r.failure_reason ? `
+                  <div class="detail-item">
+                    <div class="detail-label">Failure Type</div>
+                    <div class="detail-value">${r.failure_reason}</div>
+                  </div>
+                ` : ''}
+                ${r.error_detail ? `
+                  <div class="detail-item">
+                    <div class="detail-label">Error</div>
+                    <div class="detail-value">${r.error_detail}</div>
+                  </div>
+                ` : ''}
+              </div>
+              ${r.reasoning ? `
+                <div class="reasoning">
+                  <strong>Reasoning:</strong> ${r.reasoning}
+                </div>
+              ` : ''}
+            </div>
+          `;
+        }).join('');
+        
+      } catch (e) {
+        console.error('Failed to load results:', e);
+        document.getElementById('loading').innerHTML = `
+          <div>Error loading results: ${e.message}</div>
+          <div style="margin-top: 10px; font-size: 0.9rem;">
+            Make sure the contract has processed at least one market.
+          </div>
+        `;
+      }
+    }
+    
+    init();
+  </script>
+</body>
+</html>
