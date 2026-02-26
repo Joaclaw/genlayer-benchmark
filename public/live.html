@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GenLayer Live Results</title>
-  <script src="https://unpkg.com/genlayer-js@latest/dist/index.global.js"></script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
@@ -152,6 +151,9 @@
     <div id="results"></div>
   </div>
   
+  <!-- Load GenLayerJS SDK before our code -->
+  <script src="https://unpkg.com/genlayer-js@latest/dist/index.global.js"></script>
+  
   <script>
     const urlParams = new URLSearchParams(window.location.search);
     const contractAddress = urlParams.get('contract') || '0xaE54474B48200Ad11893e357d1677dcFB29Bd27F';
@@ -162,18 +164,37 @@
     
     async function init() {
       try {
+        // Wait for SDK to be available
+        if (!window.GenLayerJS) {
+          throw new Error('GenLayerJS SDK not loaded. Check your internet connection.');
+        }
+        
         const { createClient, studionet, createAccount } = window.GenLayerJS;
+        
+        if (!createClient || !studionet || !createAccount) {
+          throw new Error('GenLayerJS SDK incomplete. Try refreshing the page.');
+        }
+        
+        console.log('Creating account...');
         const account = createAccount();
+        console.log('Account:', account.address);
+        
+        console.log('Creating client...');
         client = createClient({ chain: studionet, account });
         
+        console.log('Initializing consensus smart contract...');
         // REQUIRED: Initialize consensus before reading
         await client.initializeConsensusSmartContract();
         
+        console.log('Loading results...');
         await loadResults();
       } catch (e) {
         console.error('Init failed:', e);
         document.getElementById('loading').innerHTML = `
           <div style="color: #f85149;">Initialization failed: ${e.message}</div>
+          <div style="margin-top: 10px; font-size: 0.9rem; color: #8b949e;">
+            ${e.message.includes('SDK') ? 'Try refreshing the page or check your internet connection.' : ''}
+          </div>
         `;
       }
     }
@@ -344,7 +365,13 @@
         }).join('');
     }
     
-    init();
+    // Wait for page to fully load (including external scripts)
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      // DOM already loaded, but wait a tick to ensure SDK is parsed
+      setTimeout(init, 0);
+    }
   </script>
 </body>
 </html>
