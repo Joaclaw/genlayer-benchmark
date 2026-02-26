@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GenLayer Test Results - 10 Markets</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0d1117;
+      color: #c9d1d9;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .container { max-width: 1400px; margin: 0 auto; }
+    
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #30363d;
+    }
+    
+    h1 { color: #58a6ff; font-size: 2rem; margin-bottom: 10px; }
+    .subtitle { color: #8b949e; }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .stat-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .stat-value { font-size: 2.5rem; font-weight: bold; margin-bottom: 8px; }
+    .stat-label { color: #8b949e; font-size: 0.85rem; }
+    .stat-card.success .stat-value { color: #3fb950; }
+    .stat-card.warning .stat-value { color: #d29922; }
+    .stat-card.error .stat-value { color: #f85149; }
+    .stat-card.info .stat-value { color: #58a6ff; }
+    
+    .section {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    
+    .section-header {
+      background: #21262d;
+      padding: 15px 20px;
+      font-weight: 600;
+      border-bottom: 1px solid #30363d;
+    }
+    
+    .result-card {
+      padding: 20px;
+      border-bottom: 1px solid #30363d;
+    }
+    
+    .result-card:last-child { border-bottom: none; }
+    
+    .result-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 15px;
+    }
+    
+    .result-question {
+      font-size: 1.1rem;
+      font-weight: 500;
+      flex: 1;
+      margin-right: 20px;
+    }
+    
+    .status-badge {
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    
+    .status-correct { background: #238636; color: #fff; }
+    .status-incorrect { background: #da3633; color: #fff; }
+    .status-unresolvable { background: #9e6a03; color: #fff; }
+    .status-consensus-fail { background: #6e7681; color: #fff; }
+    
+    .result-details {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+      padding: 15px;
+      background: #0d1117;
+      border-radius: 6px;
+    }
+    
+    .detail-item {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    
+    .detail-label {
+      font-size: 0.75rem;
+      color: #8b949e;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .detail-value {
+      font-size: 0.95rem;
+      word-break: break-word;
+    }
+    
+    .url-link {
+      color: #58a6ff;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    
+    .url-link:hover { text-decoration: underline; }
+    
+    .loading {
+      text-align: center;
+      padding: 60px 20px;
+      color: #8b949e;
+    }
+    
+    .nav-link {
+      color: #58a6ff;
+      text-decoration: none;
+      margin: 20px 0;
+      display: inline-block;
+    }
+    
+    .nav-link:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🧪 Test Run - 10 Markets</h1>
+      <p class="subtitle">GenLayer Resolution Test</p>
+      <a href="/" class="nav-link">← Back to Dataset</a>
+    </header>
+    
+    <div id="loading" class="loading">Loading test results...</div>
+    
+    <div id="content" style="display: none;">
+      <div class="stats-grid" id="stats"></div>
+      
+      <div class="section">
+        <div class="section-header">📋 Detailed Results</div>
+        <div id="results"></div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    async function loadData() {
+      try {
+        const response = await fetch('/test_results.json');
+        const data = await response.json();
+        
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+        
+        renderStats(data.summary);
+        renderResults(data.results);
+      } catch (err) {
+        document.getElementById('loading').textContent = 'No test results yet. Run the test first.';
+      }
+    }
+    
+    function renderStats(s) {
+      const accuracyRate = s.resolvable > 0 ? Math.round(s.correct / s.resolvable * 100) : 0;
+      const consensusRate = Math.round(s.consensus_achieved / s.total * 100);
+      
+      document.getElementById('stats').innerHTML = `
+        <div class="stat-card info">
+          <div class="stat-value">${s.total}</div>
+          <div class="stat-label">Total</div>
+        </div>
+        <div class="stat-card success">
+          <div class="stat-value">${s.consensus_achieved}</div>
+          <div class="stat-label">Consensus (${consensusRate}%)</div>
+        </div>
+        <div class="stat-card ${s.consensus_failed > 0 ? 'warning' : 'info'}">
+          <div class="stat-value">${s.consensus_failed}</div>
+          <div class="stat-label">Consensus Failed</div>
+        </div>
+        <div class="stat-card success">
+          <div class="stat-value">${s.resolvable}</div>
+          <div class="stat-label">Resolvable</div>
+        </div>
+        <div class="stat-card ${s.correct === s.resolvable ? 'success' : 'warning'}">
+          <div class="stat-value">${s.correct}</div>
+          <div class="stat-label">Correct (${accuracyRate}%)</div>
+        </div>
+      `;
+    }
+    
+    function renderResults(results) {
+      document.getElementById('results').innerHTML = results.map((r, i) => {
+        let statusClass, statusText;
+        if (r.resolvable && r.correct) {
+          statusClass = 'status-correct';
+          statusText = '✓ Correct';
+        } else if (r.resolvable && !r.correct) {
+          statusClass = 'status-incorrect';
+          statusText = '✗ Wrong';
+        } else if (r.consensus_status === 'MAJORITY_DISAGREE') {
+          statusClass = 'status-consensus-fail';
+          statusText = 'Consensus Failed';
+        } else {
+          statusClass = 'status-unresolvable';
+          statusText = 'Unresolvable';
+        }
+        
+        return `
+          <div class="result-card">
+            <div class="result-header">
+              <div class="result-question">${i + 1}. ${r.question}</div>
+              <div class="status-badge ${statusClass}">${statusText}</div>
+            </div>
+            <div class="result-details">
+              <div class="detail-item">
+                <div class="detail-label">Expected</div>
+                <div class="detail-value">${r.polymarket_result}</div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-label">GenLayer</div>
+                <div class="detail-value">${r.genlayer_result}</div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-label">Consensus</div>
+                <div class="detail-value">${r.consensus_status}</div>
+              </div>
+              ${r.failure_reason ? `
+                <div class="detail-item">
+                  <div class="detail-label">Failure Reason</div>
+                  <div class="detail-value">${r.failure_reason}</div>
+                </div>
+              ` : ''}
+              <div class="detail-item">
+                <div class="detail-label">Resolution URL</div>
+                <div class="detail-value">
+                  <a href="${r.resolution_url}" target="_blank" class="url-link">
+                    ${r.resolution_url.length > 60 ? r.resolution_url.slice(0, 60) + '...' : r.resolution_url}
+                  </a>
+                </div>
+              </div>
+              <div class="detail-item">
+                <div class="detail-label">TX Hash</div>
+                <div class="detail-value" style="font-family: monospace; font-size: 0.8rem;">
+                  ${r.tx_hash ? r.tx_hash.slice(0, 20) + '...' : 'N/A'}
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+    
+    loadData();
+  </script>
+</body>
+</html>
