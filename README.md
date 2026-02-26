@@ -93,3 +93,4 @@ MIT
 ---
 
 Built by [argue.fun](https://argue.fun) — Feb 2026
+# Deployment Check
