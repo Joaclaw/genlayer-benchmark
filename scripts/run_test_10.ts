@@ -79,6 +79,9 @@ async function main() {
       correct: false,
       resolvable: false,
       failure_reason: '',
+      error_detail: '',
+      reasoning: '',
+      status_code: 0,
       consensus_status: 'PENDING',
       tx_hash: '',
       timestamp: new Date().toISOString(),
@@ -115,17 +118,41 @@ async function main() {
             if (lr?.result?.payload) {
               let payload = lr.result.payload;
               if (payload.readable) payload = payload.readable;
+              
               try {
-                let parsed = typeof payload === 'string' ? JSON.parse(payload.startsWith('"') ? JSON.parse(payload) : payload) : payload;
+                // Handle nested JSON strings
+                let parsed = payload;
+                if (typeof parsed === 'string') {
+                  // Try parsing once
+                  parsed = JSON.parse(parsed);
+                  // If result is still a string, try again
+                  if (typeof parsed === 'string') {
+                    parsed = JSON.parse(parsed);
+                  }
+                }
+                
                 result.resolvable = parsed.resolvable ?? false;
                 result.genlayer_result = parsed.genlayer_result || 'UNKNOWN';
                 result.failure_reason = parsed.failure_reason || '';
+                result.reasoning = parsed.reasoning || '';
+                result.error_detail = parsed.error_detail || '';
+                result.status_code = parsed.status_code || 0;
                 
                 if (result.resolvable) {
                   result.correct = (result.genlayer_result === result.polymarket_result);
                 }
+                
+                console.log(`   Status: ${parsed.status_code || 'N/A'}`);
+                if (parsed.error_detail) {
+                  console.log(`   Error: ${parsed.error_detail.slice(0, 60)}...`);
+                }
+                if (parsed.reasoning) {
+                  console.log(`   Reasoning: ${parsed.reasoning.slice(0, 80)}...`);
+                }
               } catch (e) {
                 console.log(`   Parse error: ${e}`);
+                result.failure_reason = 'parse_error';
+                result.error_detail = String(e);
               }
               break;
             }
@@ -152,6 +179,26 @@ async function main() {
     }
     
     results.push(result);
+    
+    // Save after each market (in case of interruption)
+    const output = {
+      test_id: `test_10_${Date.now()}`,
+      started_at: new Date().toISOString(),
+      contract_address: contractAddress,
+      processed: results.length,
+      total: markets.length,
+      results
+    };
+    
+    writeFileSync(
+      join(ROOT_DIR, 'results/test_10_results.json'),
+      JSON.stringify(output, null, 2)
+    );
+    
+    writeFileSync(
+      join(ROOT_DIR, 'public/test_results.json'),
+      JSON.stringify(output, null, 2)
+    );
     
     // Rate limit
     await new Promise(r => setTimeout(r, 2000));

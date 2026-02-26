@@ -249,17 +249,35 @@
                 <div class="detail-label">Consensus</div>
                 <div class="detail-value">${r.consensus_status}</div>
               </div>
+              ${r.status_code ? `
+                <div class="detail-item">
+                  <div class="detail-label">HTTP Status</div>
+                  <div class="detail-value">${r.status_code}</div>
+                </div>
+              ` : ''}
               ${r.failure_reason ? `
                 <div class="detail-item">
-                  <div class="detail-label">Failure Reason</div>
+                  <div class="detail-label">Failure Type</div>
                   <div class="detail-value">${r.failure_reason}</div>
                 </div>
               ` : ''}
-              <div class="detail-item">
+              ${r.error_detail ? `
+                <div class="detail-item" style="grid-column: 1 / -1;">
+                  <div class="detail-label">Error Detail</div>
+                  <div class="detail-value" style="color: #f85149;">${r.error_detail}</div>
+                </div>
+              ` : ''}
+              ${r.reasoning ? `
+                <div class="detail-item" style="grid-column: 1 / -1;">
+                  <div class="detail-label">LLM Reasoning</div>
+                  <div class="detail-value" style="color: #58a6ff;">${r.reasoning}</div>
+                </div>
+              ` : ''}
+              <div class="detail-item" style="grid-column: 1 / -1;">
                 <div class="detail-label">Resolution URL</div>
                 <div class="detail-value">
                   <a href="${r.resolution_url}" target="_blank" class="url-link">
-                    ${r.resolution_url.length > 60 ? r.resolution_url.slice(0, 60) + '...' : r.resolution_url}
+                    ${r.resolution_url}
                   </a>
                 </div>
               </div>
