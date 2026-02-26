@@ -8,8 +8,6 @@ export default function ResultsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [filter, setFilter] = useState<'all' | 'resolvable' | 'failed'>('all');
-  const [page, setPage] = useState(1);
-  const pageSize = 20;
 
   useEffect(() => {
     async function load() {
@@ -29,7 +27,7 @@ export default function ResultsPage() {
     return (
       <div className="loading">
         <div className="spinner"></div>
-        <div>Loading results from contract...</div>
+        <div>Loading results...</div>
       </div>
     );
   }
@@ -51,21 +49,13 @@ export default function ResultsPage() {
     return true;
   });
 
-  const paginated = filtered.slice((page - 1) * pageSize, page * pageSize);
-  const totalPages = Math.ceil(filtered.length / pageSize);
-
   return (
     <>
-      <h1 style={{ fontSize: '2rem', marginBottom: '2rem' }}>Analysis & Results</h1>
+      <h1 style={{ fontSize: '2rem', marginBottom: '2rem' }}>Results Analysis</h1>
 
-      <div style={{
-        display: 'flex',
-        gap: '1rem',
-        marginBottom: '2rem',
-        flexWrap: 'wrap'
-      }}>
+      <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
         <button
-          onClick={() => { setFilter('all'); setPage(1); }}
+          onClick={() => setFilter('all')}
           style={{
             padding: '8px 16px',
             background: filter === 'all' ? '#58a6ff' : '#161b22',
@@ -79,7 +69,7 @@ export default function ResultsPage() {
           All ({results.length})
         </button>
         <button
-          onClick={() => { setFilter('resolvable'); setPage(1); }}
+          onClick={() => setFilter('resolvable')}
           style={{
             padding: '8px 16px',
             background: filter === 'resolvable' ? '#3fb950' : '#161b22',
@@ -90,10 +80,10 @@ export default function ResultsPage() {
             fontWeight: filter === 'resolvable' ? 'bold' : 'normal'
           }}
         >
-          Resolvable ({results.filter(r => r.resolvable).length})
+          ✓ Resolvable ({results.filter(r => r.resolvable).length})
         </button>
         <button
-          onClick={() => { setFilter('failed'); setPage(1); }}
+          onClick={() => setFilter('failed')}
           style={{
             padding: '8px 16px',
             background: filter === 'failed' ? '#f85149' : '#161b22',
@@ -104,151 +94,85 @@ export default function ResultsPage() {
             fontWeight: filter === 'failed' ? 'bold' : 'normal'
           }}
         >
-          Failed ({results.filter(r => !r.resolvable).length})
+          ✗ Failed ({results.filter(r => !r.resolvable).length})
         </button>
       </div>
 
-      <div style={{ display: 'grid', gap: '1.5rem' }}>
-        {paginated.map((r, i) => (
-          <div key={r.market_id || i} className="card">
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-              marginBottom: '1rem',
-              gap: '1rem'
-            }}>
-              <h3 style={{ flex: 1 }}>{r.question}</h3>
-              <span className={`badge ${
-                r.resolvable && r.correct ? 'badge-success' :
-                r.resolvable && !r.correct ? 'badge-error' :
-                'badge-warning'
-              }`}>
-                {r.resolvable && r.correct ? '✓ Correct' :
-                 r.resolvable && !r.correct ? '✗ Wrong' :
-                 'Unresolvable'}
-              </span>
-            </div>
+      <div style={{ display: 'grid', gap: '12px' }}>
+        {filtered.map((r, i) => {
+          const isCorrect = r.resolvable && r.correct;
+          const isWrong = r.resolvable && !r.correct;
+          
+          return (
+            <div 
+              key={r.market_id || i} 
+              style={{
+                background: '#161b22',
+                border: `1px solid ${isCorrect ? '#3fb950' : isWrong ? '#f85149' : '#30363d'}`,
+                borderRadius: '6px',
+                padding: '16px',
+                display: 'grid',
+                gap: '8px'
+              }}
+            >
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '16px' }}>
+                <div style={{ flex: 1, fontSize: '1rem', lineHeight: '1.5' }}>
+                  {r.question}
+                </div>
+                <div style={{ display: 'flex', gap: '8px', flexShrink: 0 }}>
+                  <span style={{
+                    padding: '4px 10px',
+                    borderRadius: '4px',
+                    fontSize: '0.85rem',
+                    fontWeight: '600',
+                    background: r.polymarket_result === 'Yes' ? '#238636' : r.polymarket_result === 'No' ? '#7d4e57' : '#6e7681',
+                    color: '#fff'
+                  }}>
+                    Expected: {r.polymarket_result}
+                  </span>
+                  <span style={{
+                    padding: '4px 10px',
+                    borderRadius: '4px',
+                    fontSize: '0.85rem',
+                    fontWeight: '600',
+                    background: isCorrect ? '#238636' : isWrong ? '#da3633' : '#6e7681',
+                    color: '#fff'
+                  }}>
+                    {isCorrect ? '✓ ' + r.genlayer_result : isWrong ? '✗ ' + r.genlayer_result : r.failure_reason.replace('_', ' ')}
+                  </span>
+                </div>
+              </div>
 
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-              gap: '1rem',
-              marginBottom: '1rem',
-              padding: '1rem',
-              background: '#0d1117',
-              borderRadius: '6px',
-              fontSize: '0.9rem'
-            }}>
-              <div>
-                <div style={{ color: '#8b949e', fontSize: '0.75rem', marginBottom: '4px' }}>
-                  EXPECTED
+              {r.reasoning && (
+                <div style={{
+                  fontSize: '0.9rem',
+                  color: '#8b949e',
+                  paddingTop: '8px',
+                  borderTop: '1px solid #30363d',
+                  lineHeight: '1.5'
+                }}>
+                  {r.reasoning}
                 </div>
-                <div>{r.polymarket_result}</div>
-              </div>
-              <div>
-                <div style={{ color: '#8b949e', fontSize: '0.75rem', marginBottom: '4px' }}>
-                  GENLAYER
-                </div>
-                <div>{r.genlayer_result}</div>
-              </div>
-              <div>
-                <div style={{ color: '#8b949e', fontSize: '0.75rem', marginBottom: '4px' }}>
-                  HTTP STATUS
-                </div>
-                <div>{r.status_code || 'N/A'}</div>
-              </div>
-              {r.failure_reason && (
-                <div>
-                  <div style={{ color: '#8b949e', fontSize: '0.75rem', marginBottom: '4px' }}>
-                    FAILURE TYPE
-                  </div>
-                  <div style={{ fontFamily: 'monospace', fontSize: '0.85rem' }}>
-                    {r.failure_reason}
-                  </div>
+              )}
+
+              {r.error_detail && (
+                <div style={{
+                  fontSize: '0.9rem',
+                  color: '#f85149',
+                  paddingTop: '8px',
+                  borderTop: '1px solid #30363d'
+                }}>
+                  Error: {r.error_detail}
                 </div>
               )}
             </div>
-
-            {r.error_detail && (
-              <div style={{
-                padding: '1rem',
-                background: '#161b22',
-                borderLeft: '3px solid #f85149',
-                marginBottom: '1rem',
-                fontSize: '0.9rem',
-                color: '#f85149'
-              }}>
-                <strong>Error:</strong> {r.error_detail}
-              </div>
-            )}
-
-            {r.reasoning && (
-              <div style={{
-                padding: '1rem',
-                background: '#0d1117',
-                borderLeft: '3px solid #58a6ff',
-                fontSize: '0.9rem',
-                lineHeight: '1.6'
-              }}>
-                <strong style={{ color: '#58a6ff' }}>Reasoning:</strong> {r.reasoning}
-              </div>
-            )}
-
-            <div style={{
-              marginTop: '1rem',
-              fontSize: '0.85rem',
-              color: '#8b949e'
-            }}>
-              <a href={r.resolution_url} target="_blank" rel="noopener noreferrer">
-                {r.resolution_url}
-              </a>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
-      {totalPages > 1 && (
-        <div style={{
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '1rem',
-          marginTop: '3rem',
-          alignItems: 'center'
-        }}>
-          <button
-            onClick={() => setPage(p => Math.max(1, p - 1))}
-            disabled={page === 1}
-            style={{
-              padding: '8px 16px',
-              background: '#161b22',
-              border: '1px solid #30363d',
-              borderRadius: '6px',
-              color: '#c9d1d9',
-              cursor: page === 1 ? 'not-allowed' : 'pointer',
-              opacity: page === 1 ? 0.5 : 1
-            }}
-          >
-            ← Previous
-          </button>
-          <span style={{ color: '#8b949e' }}>
-            Page {page} of {totalPages}
-          </span>
-          <button
-            onClick={() => setPage(p => Math.min(totalPages, p + 1))}
-            disabled={page === totalPages}
-            style={{
-              padding: '8px 16px',
-              background: '#161b22',
-              border: '1px solid #30363d',
-              borderRadius: '6px',
-              color: '#c9d1d9',
-              cursor: page === totalPages ? 'not-allowed' : 'pointer',
-              opacity: page === totalPages ? 0.5 : 1
-            }}
-          >
-            Next →
-          </button>
+      {filtered.length === 0 && (
+        <div style={{ textAlign: 'center', padding: '4rem 2rem', color: '#8b949e' }}>
+          No results match this filter
         </div>
       )}
     </>

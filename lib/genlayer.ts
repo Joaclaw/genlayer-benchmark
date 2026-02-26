@@ -5,16 +5,6 @@ import { CONTRACT_ADDRESS } from './constants';
 
 const { studionet } = chains;
 
-// Ensure we always use the production endpoint, not localhost
-const studionetWithEndpoint = {
-  ...studionet,
-  rpcUrls: {
-    default: {
-      http: ['https://studio.genlayer.com/api']
-    }
-  }
-};
-
 let clientInstance: any = null;
 
 export async function getGenLayerClient() {
@@ -22,8 +12,7 @@ export async function getGenLayerClient() {
   
   const account = createAccount();
   const client = createClient({ 
-    chain: studionetWithEndpoint,
-    endpoint: 'https://studio.genlayer.com/api',
+    chain: studionet,
     account 
   }) as any;
   
