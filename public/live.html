@@ -139,7 +139,7 @@
     <header>
       <h1>🔬 Live Results</h1>
       <div class="contract-addr" id="contract-addr"></div>
-      <div class="subtitle">Auto-refreshing every 5 seconds</div>
+      <div class="subtitle">Refresh page to update</div>
     </header>
     
     <div class="stats" id="stats"></div>
@@ -166,7 +166,6 @@
       client = createClient({ chain: studionet, account });
       
       loadResults();
-      setInterval(loadResults, 5000);
     }
     
     async function loadResults() {
