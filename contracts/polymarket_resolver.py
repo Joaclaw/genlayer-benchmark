@@ -330,11 +330,13 @@ If the content does not contain enough information to definitively answer the qu
         genlayer_result = result_data.get("genlayer_result", "UNRESOLVABLE")
         resolvable = result_data.get("resolvable", False)
         
-        # Normalize polymarket result for comparison
+        # Normalize BOTH for comparison (uppercase, strip whitespace)
         poly_normalized = polymarket_result.upper().strip()
+        genlayer_normalized = genlayer_result.upper().strip()
+        
         correct = False
-        if resolvable and genlayer_result in ["YES", "NO"]:
-            correct = (genlayer_result == poly_normalized)
+        if resolvable and genlayer_normalized in ["YES", "NO"]:
+            correct = (genlayer_normalized == poly_normalized)
         
         market_result = MarketResult(
             market_id=market_id,
