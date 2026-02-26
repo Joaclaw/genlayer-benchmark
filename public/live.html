@@ -168,16 +168,43 @@
       loadResults();
     }
     
+    function fixMalformedJson(jsonStr) {
+      // GenLayer returns JSON without commas between fields
+      // Example: {"a":1"b":2} instead of {"a":1,"b":2}
+      
+      // Add commas after closing quotes before next opening quote+key
+      let fixed = jsonStr.replace(/""([a-z_])/gi, '","$1');
+      
+      // Add commas after true/false/numbers before next key
+      fixed = fixed.replace(/(true|false|\d+)"([a-z_])/gi, '$1,"$2');
+      
+      // Add commas after empty strings
+      fixed = fixed.replace(/:"""/g, ':"","');
+      
+      return fixed;
+    }
+    
     async function loadResults() {
       try {
-        let resultsJson = await client.readContract({
+        let resultsRaw = await client.readContract({
           address: contractAddress,
           functionName: 'get_results',
           args: []
         });
         
-        // Parse JSON string return
-        const results = typeof resultsJson === 'string' ? JSON.parse(resultsJson) : resultsJson;
+        // Handle different return types
+        let resultsStr;
+        if (typeof resultsRaw === 'string') {
+          resultsStr = resultsRaw;
+        } else if (resultsRaw && resultsRaw.readable) {
+          resultsStr = resultsRaw.readable;
+        } else {
+          resultsStr = JSON.stringify(resultsRaw);
+        }
+        
+        // Fix malformed JSON from GenLayer
+        const fixedJson = fixMalformedJson(resultsStr);
+        const results = JSON.parse(fixedJson);
         
         document.getElementById('loading').style.display = 'none';
         
