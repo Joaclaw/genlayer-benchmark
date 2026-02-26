@@ -170,11 +170,14 @@
     
     async function loadResults() {
       try {
-        const results = await client.readContract({
+        let resultsJson = await client.readContract({
           address: contractAddress,
           functionName: 'get_results',
           args: []
         });
+        
+        // Parse JSON string return
+        const results = typeof resultsJson === 'string' ? JSON.parse(resultsJson) : resultsJson;
         
         document.getElementById('loading').style.display = 'none';
         

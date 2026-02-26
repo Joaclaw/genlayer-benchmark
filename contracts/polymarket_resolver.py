@@ -357,9 +357,9 @@ If the content does not contain enough information to definitively answer the qu
         return market_result.to_dict()
 
     @gl.public.view
-    def get_results(self) -> list[dict]:
-        """Get all resolved markets."""
-        return [r.to_dict() for r in self.results]
+    def get_results(self) -> str:
+        """Get all resolved markets as JSON string."""
+        return json.dumps([r.to_dict() for r in self.results])
 
     @gl.public.view
     def get_result(self, market_id: str) -> dict:
