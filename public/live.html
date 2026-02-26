@@ -161,11 +161,21 @@
     let client;
     
     async function init() {
-      const { createClient, studionet, createAccount } = window.GenLayerJS;
-      const account = createAccount();
-      client = createClient({ chain: studionet, account });
-      
-      loadResults();
+      try {
+        const { createClient, studionet, createAccount } = window.GenLayerJS;
+        const account = createAccount();
+        client = createClient({ chain: studionet, account });
+        
+        // REQUIRED: Initialize consensus before reading
+        await client.initializeConsensusSmartContract();
+        
+        await loadResults();
+      } catch (e) {
+        console.error('Init failed:', e);
+        document.getElementById('loading').innerHTML = `
+          <div style="color: #f85149;">Initialization failed: ${e.message}</div>
+        `;
+      }
     }
     
     function fixMalformedJson(jsonStr) {
@@ -186,11 +196,16 @@
     
     async function loadResults() {
       try {
+        console.log('Reading contract:', contractAddress);
+        
         let resultsRaw = await client.readContract({
           address: contractAddress,
           functionName: 'get_results',
           args: []
         });
+        
+        console.log('Raw result type:', typeof resultsRaw);
+        console.log('Raw result:', resultsRaw);
         
         // Handle different return types
         let resultsStr;
@@ -198,17 +213,60 @@
           resultsStr = resultsRaw;
         } else if (resultsRaw && resultsRaw.readable) {
           resultsStr = resultsRaw.readable;
+        } else if (Array.isArray(resultsRaw)) {
+          // Got array directly - might be empty objects
+          if (resultsRaw.length > 0 && Object.keys(resultsRaw[0]).length === 0) {
+            throw new Error('Contract returned empty objects. This is a GenLayer serialization bug. Try the new contract.');
+          }
+          // Has data
+          document.getElementById('loading').style.display = 'none';
+          renderResults(resultsRaw);
+          return;
         } else {
           resultsStr = JSON.stringify(resultsRaw);
         }
         
-        // Fix malformed JSON from GenLayer
-        const fixedJson = fixMalformedJson(resultsStr);
-        const results = JSON.parse(fixedJson);
+        console.log('String to parse (first 200):', resultsStr.slice(0, 200));
+        
+        // Try normal parse first
+        let results;
+        try {
+          results = JSON.parse(resultsStr);
+          console.log('✅ Normal JSON parse succeeded');
+        } catch (e) {
+          // Try fixing malformed JSON
+          console.log('Normal parse failed, trying fix...');
+          const fixedJson = fixMalformedJson(resultsStr);
+          results = JSON.parse(fixedJson);
+          console.log('✅ Fixed JSON parse succeeded');
+        }
         
         document.getElementById('loading').style.display = 'none';
+        renderResults(results);
+      } catch (e) {
+        console.error('Failed to load results:', e);
+        console.error('Stack:', e.stack);
         
-        const total = results.length;
+        // Show more detailed error
+        let errorMsg = e.message;
+        if (e.message.includes('JSON')) {
+          errorMsg = 'Failed to parse contract data. Contract may be processing results.';
+        }
+        
+        document.getElementById('loading').innerHTML = `
+          <div style="color: #f85149;">Error: ${errorMsg}</div>
+          <div style="margin-top: 10px; font-size: 0.9rem; color: #8b949e;">
+            ${e.message.includes('JSON') ? 'Try refreshing in a few seconds.' : 'Make sure the contract has processed at least one market.'}
+          </div>
+          <div style="margin-top: 10px; font-size: 0.8rem; color: #6e7681;">
+            Contract: ${contractAddress}
+          </div>
+        `;
+      }
+    }
+    
+    function renderResults(results) {
+      const total = results.length;
         const resolvable = results.filter(r => r.resolvable).length;
         const correct = results.filter(r => r.correct).length;
         
@@ -284,16 +342,6 @@
             </div>
           `;
         }).join('');
-        
-      } catch (e) {
-        console.error('Failed to load results:', e);
-        document.getElementById('loading').innerHTML = `
-          <div>Error loading results: ${e.message}</div>
-          <div style="margin-top: 10px; font-size: 0.9rem;">
-            Make sure the contract has processed at least one market.
-          </div>
-        `;
-      }
     }
     
     init();
