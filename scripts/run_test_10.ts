@@ -5,6 +5,7 @@ import { TransactionStatus } from 'genlayer-js/types';
 import { readFileSync, writeFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { parseGenLayerResult } from './parse_result.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = join(__dirname, '..');
@@ -120,16 +121,7 @@ async function main() {
               if (payload.readable) payload = payload.readable;
               
               try {
-                // Handle nested JSON strings
-                let parsed = payload;
-                if (typeof parsed === 'string') {
-                  // Try parsing once
-                  parsed = JSON.parse(parsed);
-                  // If result is still a string, try again
-                  if (typeof parsed === 'string') {
-                    parsed = JSON.parse(parsed);
-                  }
-                }
+                const parsed = parseGenLayerResult(payload);
                 
                 result.resolvable = parsed.resolvable ?? false;
                 result.genlayer_result = parsed.genlayer_result || 'UNKNOWN';
