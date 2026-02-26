@@ -8,20 +8,38 @@ export default function ResultsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [filter, setFilter] = useState<'all' | 'resolvable' | 'failed'>('all');
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    
     async function load() {
       try {
         const data = await getContractResults();
         setResults(data);
       } catch (err: any) {
-        setError(err.message);
+        console.error('Error loading results:', err);
+        setError(err.message || 'Failed to load results from contract');
       } finally {
         setLoading(false);
       }
     }
+    
     load();
-  }, []);
+  }, [mounted]);
+
+  if (!mounted) {
+    return (
+      <div className="loading">
+        <div className="spinner"></div>
+        <div>Initializing...</div>
+      </div>
+    );
+  }
 
   if (loading) {
     return (
@@ -34,12 +52,46 @@ export default function ResultsPage() {
 
   if (error) {
     return (
-      <div style={{ textAlign: 'center', padding: '4rem 2rem' }}>
-        <div style={{ color: '#f85149', fontSize: '1.2rem', marginBottom: '1rem' }}>
-          Error loading results
+      <>
+        <h1 style={{ fontSize: '2rem', marginBottom: '2rem' }}>Results Analysis</h1>
+        <div style={{ textAlign: 'center', padding: '4rem 2rem' }}>
+          <div style={{ color: '#f85149', fontSize: '1.2rem', marginBottom: '1rem' }}>
+            Error loading results
+          </div>
+          <div style={{ color: '#8b949e', marginBottom: '2rem' }}>{error}</div>
+          <button
+            onClick={() => window.location.reload()}
+            style={{
+              padding: '12px 24px',
+              background: '#238636',
+              border: 'none',
+              borderRadius: '6px',
+              color: '#fff',
+              fontSize: '1rem',
+              cursor: 'pointer',
+              fontWeight: '600'
+            }}
+          >
+            Retry
+          </button>
         </div>
-        <div style={{ color: '#8b949e' }}>{error}</div>
-      </div>
+      </>
+    );
+  }
+
+  if (results.length === 0 && !loading) {
+    return (
+      <>
+        <h1 style={{ fontSize: '2rem', marginBottom: '2rem' }}>Results Analysis</h1>
+        <div style={{ textAlign: 'center', padding: '4rem 2rem' }}>
+          <div style={{ fontSize: '1.2rem', marginBottom: '1rem', color: '#8b949e' }}>
+            No results yet
+          </div>
+          <div style={{ color: '#6e7681' }}>
+            Markets are being processed. Check back in a few minutes.
+          </div>
+        </div>
+      </>
     );
   }
 

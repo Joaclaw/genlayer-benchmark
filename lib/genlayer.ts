@@ -45,20 +45,25 @@ function parseGenLayerResult(payload: any): any {
 }
 
 export async function getContractResults() {
-  const client = await getGenLayerClient();
-  const raw = await client.readContract({
-    address: CONTRACT_ADDRESS,
-    functionName: 'get_results',
-    args: []
-  });
-  
-  // Handle different return types
-  if (typeof raw === 'string') {
-    return JSON.parse(raw);
-  } else if (Array.isArray(raw)) {
-    return raw;
-  } else {
-    return parseGenLayerResult(raw);
+  try {
+    const client = await getGenLayerClient();
+    const raw = await client.readContract({
+      address: CONTRACT_ADDRESS,
+      functionName: 'get_results',
+      args: []
+    });
+    
+    // Handle different return types
+    if (typeof raw === 'string') {
+      return JSON.parse(raw);
+    } else if (Array.isArray(raw)) {
+      return raw;
+    } else {
+      return parseGenLayerResult(raw);
+    }
+  } catch (error: any) {
+    console.error('GenLayer client error:', error);
+    throw new Error(`Failed to fetch results: ${error.message}`);
   }
 }
 
