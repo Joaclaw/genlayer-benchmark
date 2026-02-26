@@ -3,7 +3,7 @@
 import { createClient, createAccount, chains } from 'genlayer-js';
 import { CONTRACT_ADDRESS } from './constants';
 
-const studionet = (chains as any).studionet;
+const { studionet } = chains;
 
 let clientInstance: any = null;
 
