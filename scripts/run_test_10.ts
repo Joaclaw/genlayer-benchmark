@@ -227,6 +227,11 @@ async function main() {
     JSON.stringify(output, null, 2)
   );
   
+  writeFileSync(
+    join(ROOT_DIR, 'public/test_results.json'),
+    JSON.stringify(output, null, 2)
+  );
+  
   console.log('\n═'.repeat(60));
   console.log('  TEST RESULTS');
   console.log('═'.repeat(60));
@@ -237,6 +242,19 @@ async function main() {
   console.log(`  Correct: ${summary.correct} / ${summary.resolvable}`);
   console.log(`\n  Results saved to: results/test_10_results.json`);
   console.log('═'.repeat(60) + '\n');
+  
+  // Push results to git so Vercel can deploy them
+  console.log('📤 Pushing results to GitHub for Vercel deployment...');
+  const { execSync } = require('child_process');
+  try {
+    execSync('git add public/test_results.json', { cwd: ROOT_DIR });
+    execSync(`git commit -m "Test results: ${summary.correct}/${summary.resolvable} correct"`, { cwd: ROOT_DIR });
+    execSync('git push origin main', { cwd: ROOT_DIR });
+    console.log('✅ Results pushed! Vercel will auto-deploy in ~30 seconds.');
+    console.log('🌐 View at: https://genlayer-benchmark.vercel.app/test.html');
+  } catch (e) {
+    console.log('⚠️  Push failed (may need manual push):', e.message);
+  }
 }
 
 main().catch(err => {
