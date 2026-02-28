@@ -30,12 +30,24 @@ export default function AnalysisPage() {
           consensus_fail: 0,
           genlayer_issues: 0,
           external_issues: 0,
+          wrong_answers: [] as any[],
         };
         
         results.forEach((r: any) => {
           if (r.resolvable) {
             analysis.resolvable++;
-            r.correct ? analysis.correct++ : analysis.wrong++;
+            if (r.correct) {
+              analysis.correct++;
+            } else {
+              analysis.wrong++;
+              analysis.wrong_answers.push({
+                question: r.question,
+                expected: r.polymarket_result,
+                genlayer: r.genlayer_result,
+                url: r.resolution_url,
+                reasoning: r.reasoning
+              });
+            }
           } else {
             const reason = r.failure_reason || '';
             
@@ -84,7 +96,8 @@ export default function AnalysisPage() {
     );
   }
 
-  const accuracy = data.resolvable > 0 ? Math.round(data.correct / data.resolvable * 100) : 0;
+  const accuracy = data.resolvable > 0 ? Math.round(data.correct / data.resolvable * 100 * 10) / 10 : 0;
+  const errorRate = data.resolvable > 0 ? Math.round(data.wrong / data.resolvable * 100 * 10) / 10 : 0;
   const resolvableRate = Math.round(data.resolvable / data.total * 100);
   const externalRate = Math.round(data.external_issues / data.total * 100);
 
@@ -95,14 +108,25 @@ export default function AnalysisPage() {
           <h1 style={{ fontSize: '2rem', marginBottom: '0.25rem' }}>Benchmark Analysis</h1>
           <p style={{ color: '#8b949e', fontSize: '0.95rem' }}>GenLayer Intelligent Contract Performance</p>
         </div>
-        <div style={{
-          padding: '12px 24px',
-          background: 'linear-gradient(135deg, #238636, #2ea043)',
-          borderRadius: '8px',
-          fontSize: '1.5rem',
-          fontWeight: 'bold'
-        }}>
-          {accuracy}% Accuracy
+        <div style={{ display: 'flex', gap: '1rem' }}>
+          <div style={{
+            padding: '12px 20px',
+            background: 'linear-gradient(135deg, #238636, #2ea043)',
+            borderRadius: '8px',
+            textAlign: 'center'
+          }}>
+            <div style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>{accuracy}%</div>
+            <div style={{ fontSize: '0.75rem', opacity: 0.8 }}>Correct</div>
+          </div>
+          <div style={{
+            padding: '12px 20px',
+            background: 'linear-gradient(135deg, #da3633, #f85149)',
+            borderRadius: '8px',
+            textAlign: 'center'
+          }}>
+            <div style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>{errorRate}%</div>
+            <div style={{ fontSize: '0.75rem', opacity: 0.8 }}>Wrong</div>
+          </div>
         </div>
       </div>
 
@@ -117,28 +141,85 @@ export default function AnalysisPage() {
         <StatCard label="Resolved" value={`${data.resolvable} (${resolvableRate}%)`} color="#3fb950" />
         <StatCard label="Correct" value={data.correct} color="#3fb950" />
         <StatCard label="Wrong" value={data.wrong} color="#f85149" />
-        <StatCard label="GenLayer Issues" value={data.genlayer_issues} color={data.genlayer_issues === 0 ? '#3fb950' : '#f85149'} />
+        <StatCard label="Consensus Failures" value={data.consensus_fail} color={data.consensus_fail === 0 ? '#3fb950' : '#f85149'} />
       </div>
 
-      {/* Main Analysis Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '2rem' }}>
-        
-        {/* Verdict */}
-        <div style={{
-          gridColumn: '1 / -1',
-          padding: '1.5rem',
-          background: 'linear-gradient(135deg, #1a2e1a, #1a3a1a)',
-          border: '1px solid #3fb950',
-          borderRadius: '8px'
-        }}>
-          <div style={{ fontSize: '1.5rem', fontWeight: '600', marginBottom: '0.5rem', color: '#3fb950' }}>
-            ✓ GenLayer Works Perfectly
+      {/* Performance Summary */}
+      <div style={{
+        gridColumn: '1 / -1',
+        padding: '1.5rem',
+        background: '#161b22',
+        border: '1px solid #30363d',
+        borderRadius: '8px',
+        marginBottom: '2rem'
+      }}>
+        <h2 style={{ fontSize: '1.25rem', marginBottom: '1rem' }}>Performance Summary</h2>
+        <div style={{ display: 'grid', gap: '0.75rem', fontSize: '0.95rem', lineHeight: '1.6' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <span style={{ color: '#3fb950', fontSize: '1.25rem' }}>✓</span>
+            <span><strong>{data.correct}</strong> markets resolved correctly ({accuracy}%)</span>
           </div>
-          <div style={{ fontSize: '0.95rem', color: '#8b949e' }}>
-            Zero consensus failures • Zero LLM errors • {accuracy}% accuracy on resolvable content
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <span style={{ color: '#f85149', fontSize: '1.25rem' }}>✗</span>
+            <span><strong>{data.wrong}</strong> markets resolved incorrectly ({errorRate}%)</span>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <span style={{ color: '#6e7681', fontSize: '1.25rem' }}>⚠</span>
+            <span><strong>{data.total - data.resolvable}</strong> markets could not be resolved (web access, content quality, or ambiguous sources)</span>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <span style={{ color: data.consensus_fail === 0 ? '#3fb950' : '#f85149', fontSize: '1.25rem' }}>⚖</span>
+            <span><strong>{data.consensus_fail}</strong> consensus failures across all markets</span>
           </div>
         </div>
+      </div>
 
+      {/* Wrong Answers Section */}
+      {data.wrong > 0 && (
+        <div style={{
+          padding: '1.5rem',
+          background: '#1a1717',
+          border: '1px solid #f85149',
+          borderRadius: '8px',
+          marginBottom: '2rem'
+        }}>
+          <h2 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: '#f85149' }}>
+            Incorrect Resolutions ({data.wrong} markets)
+          </h2>
+          <div style={{ display: 'grid', gap: '1rem' }}>
+            {data.wrong_answers.map((w: any, i: number) => (
+              <div key={i} style={{
+                padding: '1rem',
+                background: '#161b22',
+                borderRadius: '6px',
+                borderLeft: '3px solid #f85149'
+              }}>
+                <div style={{ fontSize: '0.95rem', fontWeight: '600', marginBottom: '0.5rem' }}>
+                  {w.question}
+                </div>
+                <div style={{ display: 'flex', gap: '2rem', fontSize: '0.85rem', marginBottom: '0.5rem' }}>
+                  <div>
+                    <span style={{ color: '#8b949e' }}>Expected: </span>
+                    <span style={{ color: '#c9d1d9', fontWeight: '600' }}>{w.expected}</span>
+                  </div>
+                  <div>
+                    <span style={{ color: '#8b949e' }}>GenLayer: </span>
+                    <span style={{ color: '#f85149', fontWeight: '600' }}>{w.genlayer}</span>
+                  </div>
+                </div>
+                <div style={{ fontSize: '0.85rem', color: '#8b949e', marginTop: '0.5rem' }}>
+                  {w.reasoning}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Main Analysis Grid */}
+      <h2 style={{ fontSize: '1.25rem', marginBottom: '1rem' }}>Failure Breakdown</h2>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '2rem' }}>
+        
         {/* Web Access */}
         <FailureCard
           title="Web Access"
@@ -177,10 +258,10 @@ export default function AnalysisPage() {
 
         {/* GenLayer Consensus */}
         <FailureCard
-          title="GenLayer Consensus"
+          title="Consensus Mechanism"
           icon="⚖️"
-          tag="Perfect"
-          tagColor="#3fb950"
+          tag={data.consensus_fail === 0 ? 'Success' : 'Issues'}
+          tagColor={data.consensus_fail === 0 ? '#3fb950' : '#f85149'}
           items={[
             { label: 'Consensus failures', count: data.consensus_fail, total: data.total }
           ]}
@@ -194,22 +275,22 @@ export default function AnalysisPage() {
         gap: '1rem'
       }}>
         <InsightCard
-          title="Core Tech Validated"
+          title="Accuracy Rate"
           value={`${accuracy}%`}
-          description="Accuracy on valid content"
+          description="On resolvable markets"
           color="#3fb950"
         />
         <InsightCard
-          title="Data Bottleneck"
+          title="External Failures"
           value={`${externalRate}%`}
-          description="Failures from external sources"
+          description="Web access & content issues"
           color="#f85149"
         />
         <InsightCard
-          title="Improvement Path"
-          value="Off-chain"
-          description="Multi-source preprocessing"
-          color="#58a6ff"
+          title="Error Rate"
+          value={`${errorRate}%`}
+          description="Incorrect resolutions"
+          color="#f85149"
         />
       </div>
     </div>
