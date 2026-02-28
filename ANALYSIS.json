@@ -1,0 +1,43 @@
+{
+  "generated_at": "2026-02-28T10:12:40.636Z",
+  "contract_address": "0x1414F437fd85Ed7f713756c28b2f03F73A3Dc905",
+  "summary": {
+    "total": 959,
+    "resolvable": 80,
+    "resolvable_rate": 8.3,
+    "accuracy": 92.5,
+    "genlayer_issues": 0,
+    "external_issues": 298,
+    "ambiguous_issues": 414
+  },
+  "breakdown": {
+    "web_access": {
+      "forbidden_403": 75,
+      "not_found_404": 2,
+      "timeout": 15,
+      "anti_bot": 31,
+      "total": 123
+    },
+    "content_quality": {
+      "empty": 131,
+      "insufficient": 44,
+      "paywall": 0,
+      "total": 175
+    },
+    "llm_resolution": {
+      "unresolvable": 414,
+      "error": 0,
+      "total": 414
+    },
+    "consensus": {
+      "majority_disagree": 0,
+      "total": 0
+    }
+  },
+  "insights": [
+    "GenLayer achieves 92.5% accuracy on resolvable markets",
+    "31.1% of failures are due to external factors (web access, content quality)",
+    "Only 0.0% of failures are attributable to GenLayer itself",
+    "Main improvement area: off-chain data preprocessing and multi-source validation"
+  ]
+}
