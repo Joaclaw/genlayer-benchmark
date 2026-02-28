@@ -44,6 +44,7 @@ export default function RootLayout({
               <Link href="/markets">Markets</Link>
               <Link href="/contract">Contract</Link>
               <Link href="/results">Results</Link>
+              <Link href="/analysis">Analysis</Link>
             </div>
           </div>
         </nav>

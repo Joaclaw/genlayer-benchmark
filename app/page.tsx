@@ -114,10 +114,8 @@ export default function Home() {
       <div className="card" style={{ marginTop: '3rem' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
           <h2>Key Findings</h2>
-          <a 
-            href="https://github.com/Joaclaw/genlayer-benchmark/blob/main/BENCHMARK_ANALYSIS.md"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link 
+            href="/analysis"
             style={{
               padding: '8px 16px',
               background: '#238636',
@@ -129,7 +127,7 @@ export default function Home() {
             }}
           >
             View Full Analysis →
-          </a>
+          </Link>
         </div>
         <div style={{ display: 'grid', gap: '1rem', lineHeight: '1.8' }}>
           <div style={{ padding: '1rem', background: '#0d1117', borderRadius: '6px', borderLeft: '3px solid #3fb950' }}>
@@ -146,41 +144,53 @@ export default function Home() {
 
       <div style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-        gap: '2rem',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+        gap: '1.5rem',
         marginTop: '3rem'
       }}>
         <Link href="/markets" className="card" style={{
           textAlign: 'center',
-          padding: '3rem 2rem',
+          padding: '2.5rem 1.5rem',
           transition: 'border-color 0.2s',
           display: 'block'
         }}>
-          <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📋</div>
-          <h3 style={{ marginBottom: '0.5rem' }}>View Markets</h3>
-          <p style={{ color: '#8b949e' }}>Browse the 2000 markets dataset</p>
+          <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>📋</div>
+          <h3 style={{ marginBottom: '0.5rem', fontSize: '1.1rem' }}>Markets</h3>
+          <p style={{ color: '#8b949e', fontSize: '0.9rem' }}>Browse dataset</p>
         </Link>
 
         <Link href="/contract" className="card" style={{
           textAlign: 'center',
-          padding: '3rem 2rem',
+          padding: '2.5rem 1.5rem',
           transition: 'border-color 0.2s',
           display: 'block'
         }}>
-          <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📜</div>
-          <h3 style={{ marginBottom: '0.5rem' }}>Contract Code</h3>
-          <p style={{ color: '#8b949e' }}>View the Intelligent Contract</p>
+          <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>📜</div>
+          <h3 style={{ marginBottom: '0.5rem', fontSize: '1.1rem' }}>Contract</h3>
+          <p style={{ color: '#8b949e', fontSize: '0.9rem' }}>View source code</p>
         </Link>
 
         <Link href="/results" className="card" style={{
           textAlign: 'center',
-          padding: '3rem 2rem',
+          padding: '2.5rem 1.5rem',
           transition: 'border-color 0.2s',
           display: 'block'
         }}>
-          <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📊</div>
-          <h3 style={{ marginBottom: '0.5rem' }}>Analysis</h3>
-          <p style={{ color: '#8b949e' }}>Detailed results & diagnostics</p>
+          <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>📊</div>
+          <h3 style={{ marginBottom: '0.5rem', fontSize: '1.1rem' }}>Results</h3>
+          <p style={{ color: '#8b949e', fontSize: '0.9rem' }}>Market outcomes</p>
+        </Link>
+
+        <Link href="/analysis" className="card" style={{
+          textAlign: 'center',
+          padding: '2.5rem 1.5rem',
+          transition: 'border-color 0.2s',
+          display: 'block',
+          borderLeft: '4px solid #58a6ff'
+        }}>
+          <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>💡</div>
+          <h3 style={{ marginBottom: '0.5rem', fontSize: '1.1rem' }}>Analysis</h3>
+          <p style={{ color: '#8b949e', fontSize: '0.9rem' }}>Performance insights</p>
         </Link>
       </div>
     </>
