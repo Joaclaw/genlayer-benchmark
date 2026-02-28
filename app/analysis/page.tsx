@@ -16,13 +16,11 @@ export default function AnalysisPage() {
         
         if (!mounted) return;
         
-        // Analyze data
         const analysis = {
           total: results.length,
           resolvable: 0,
           correct: 0,
           wrong: 0,
-          
           web_forbidden: 0,
           web_timeout: 0,
           web_anti_bot: 0,
@@ -30,7 +28,6 @@ export default function AnalysisPage() {
           content_insufficient: 0,
           llm_unresolvable: 0,
           consensus_fail: 0,
-          
           genlayer_issues: 0,
           external_issues: 0,
         };
@@ -89,242 +86,234 @@ export default function AnalysisPage() {
 
   const accuracy = data.resolvable > 0 ? Math.round(data.correct / data.resolvable * 100) : 0;
   const resolvableRate = Math.round(data.resolvable / data.total * 100);
+  const externalRate = Math.round(data.external_issues / data.total * 100);
 
   return (
-    <>
-      <h1 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>Benchmark Analysis</h1>
-      <p style={{ color: '#8b949e', marginBottom: '3rem', fontSize: '1.1rem' }}>
-        Understanding GenLayer's performance and bottlenecks
-      </p>
+    <div style={{ maxWidth: '1600px', margin: '0 auto' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+        <div>
+          <h1 style={{ fontSize: '2rem', marginBottom: '0.25rem' }}>Benchmark Analysis</h1>
+          <p style={{ color: '#8b949e', fontSize: '0.95rem' }}>GenLayer Intelligent Contract Performance</p>
+        </div>
+        <div style={{
+          padding: '12px 24px',
+          background: 'linear-gradient(135deg, #238636, #2ea043)',
+          borderRadius: '8px',
+          fontSize: '1.5rem',
+          fontWeight: 'bold'
+        }}>
+          {accuracy}% Accuracy
+        </div>
+      </div>
 
-      {/* Hero Metric */}
-      <div style={{
-        background: 'linear-gradient(135deg, #238636 0%, #2ea043 100%)',
-        padding: '3rem',
-        borderRadius: '12px',
-        textAlign: 'center',
-        marginBottom: '3rem',
-        boxShadow: '0 4px 12px rgba(35, 134, 54, 0.2)'
+      {/* Top Stats Grid */}
+      <div style={{ 
+        display: 'grid', 
+        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+        gap: '1rem',
+        marginBottom: '2rem'
       }}>
-        <div style={{ fontSize: '4rem', fontWeight: 'bold', marginBottom: '0.5rem' }}>
-          {accuracy}%
-        </div>
-        <div style={{ fontSize: '1.5rem', opacity: 0.9 }}>
-          GenLayer Accuracy
-        </div>
-        <div style={{ fontSize: '1rem', opacity: 0.7, marginTop: '0.5rem' }}>
-          When content is accessible and valid
-        </div>
+        <StatCard label="Total Markets" value={data.total} color="#58a6ff" />
+        <StatCard label="Resolved" value={`${data.resolvable} (${resolvableRate}%)`} color="#3fb950" />
+        <StatCard label="Correct" value={data.correct} color="#3fb950" />
+        <StatCard label="Wrong" value={data.wrong} color="#f85149" />
+        <StatCard label="GenLayer Issues" value={data.genlayer_issues} color={data.genlayer_issues === 0 ? '#3fb950' : '#f85149'} />
       </div>
 
-      {/* Summary Cards */}
-      <div className="stat-grid" style={{ marginBottom: '3rem' }}>
-        <div className="stat-card" style={{ borderLeft: '4px solid #58a6ff' }}>
-          <div className="stat-value" style={{ color: '#58a6ff' }}>{data.total}</div>
-          <div className="stat-label">Markets Tested</div>
+      {/* Main Analysis Grid */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '2rem' }}>
+        
+        {/* Verdict */}
+        <div style={{
+          gridColumn: '1 / -1',
+          padding: '1.5rem',
+          background: 'linear-gradient(135deg, #1a2e1a, #1a3a1a)',
+          border: '1px solid #3fb950',
+          borderRadius: '8px'
+        }}>
+          <div style={{ fontSize: '1.5rem', fontWeight: '600', marginBottom: '0.5rem', color: '#3fb950' }}>
+            ✓ GenLayer Works Perfectly
+          </div>
+          <div style={{ fontSize: '0.95rem', color: '#8b949e' }}>
+            Zero consensus failures • Zero LLM errors • {accuracy}% accuracy on resolvable content
+          </div>
         </div>
-        <div className="stat-card" style={{ borderLeft: '4px solid #3fb950' }}>
-          <div className="stat-value" style={{ color: '#3fb950' }}>{data.resolvable}</div>
-          <div className="stat-label">Resolved ({resolvableRate}%)</div>
-        </div>
-        <div className="stat-card" style={{ borderLeft: '4px solid #3fb950' }}>
-          <div className="stat-value" style={{ color: '#3fb950' }}>{data.correct}</div>
-          <div className="stat-label">Correct</div>
-        </div>
-        <div className="stat-card" style={{ borderLeft: '4px solid #f85149' }}>
-          <div className="stat-value" style={{ color: '#f85149' }}>{data.genlayer_issues}</div>
-          <div className="stat-label">GenLayer Issues</div>
-        </div>
-      </div>
 
-      {/* Verdict Section */}
-      <div className="card" style={{ marginBottom: '3rem', borderLeft: '4px solid #3fb950' }}>
-        <h2 style={{ marginBottom: '1.5rem', color: '#3fb950' }}>✓ Verdict: GenLayer Works Perfectly</h2>
-        <div style={{ fontSize: '1.1rem', lineHeight: '1.8', color: '#c9d1d9' }}>
-          <p style={{ marginBottom: '1rem' }}>
-            <strong>Zero consensus failures.</strong> Zero LLM processing errors. {accuracy}% accuracy on resolvable markets.
-          </p>
-          <p style={{ color: '#8b949e' }}>
-            The intelligent contract system functions flawlessly. All failures stem from external factors 
-            (web access, content quality) or ambiguous source material.
-          </p>
-        </div>
-      </div>
-
-      {/* Failure Breakdown */}
-      <h2 style={{ marginBottom: '2rem' }}>Failure Attribution</h2>
-
-      <div style={{ display: 'grid', gap: '2rem', marginBottom: '3rem' }}>
         {/* Web Access */}
-        <div className="card">
-          <h3 style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span style={{ fontSize: '1.5rem' }}>🌐</span>
-            Web Access Issues
-            <span style={{ 
-              marginLeft: 'auto',
-              padding: '4px 12px',
-              background: '#f85149',
-              borderRadius: '4px',
-              fontSize: '0.9rem',
-              fontWeight: '600'
-            }}>
-              External
-            </span>
-          </h3>
-          <div style={{ marginBottom: '1.5rem', color: '#8b949e' }}>
-            Servers blocked access or failed to respond
-          </div>
-          <div style={{ display: 'grid', gap: '0.75rem' }}>
-            <FailureBar label="403 Forbidden (Anti-bot)" count={data.web_forbidden} total={data.total} color="#f85149" />
-            <FailureBar label="Anti-bot Detection" count={data.web_anti_bot} total={data.total} color="#f85149" />
-            <FailureBar label="Timeout" count={data.web_timeout} total={data.total} color="#f85149" />
-          </div>
-        </div>
+        <FailureCard
+          title="Web Access"
+          icon="🌐"
+          tag="External"
+          tagColor="#f85149"
+          items={[
+            { label: '403 Forbidden', count: data.web_forbidden, total: data.total },
+            { label: 'Anti-bot', count: data.web_anti_bot, total: data.total },
+            { label: 'Timeout', count: data.web_timeout, total: data.total }
+          ]}
+        />
 
         {/* Content Quality */}
-        <div className="card">
-          <h3 style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span style={{ fontSize: '1.5rem' }}>📄</span>
-            Content Quality Issues
-            <span style={{ 
-              marginLeft: 'auto',
-              padding: '4px 12px',
-              background: '#f85149',
-              borderRadius: '4px',
-              fontSize: '0.9rem',
-              fontWeight: '600'
-            }}>
-              External
-            </span>
-          </h3>
-          <div style={{ marginBottom: '1.5rem', color: '#8b949e' }}>
-            Page loaded but content was insufficient or missing
-          </div>
-          <div style={{ display: 'grid', gap: '0.75rem' }}>
-            <FailureBar label="Empty Content" count={data.content_empty} total={data.total} color="#d29922" />
-            <FailureBar label="Insufficient Content" count={data.content_insufficient} total={data.total} color="#d29922" />
-          </div>
-        </div>
+        <FailureCard
+          title="Content Quality"
+          icon="📄"
+          tag="External"
+          tagColor="#f85149"
+          items={[
+            { label: 'Empty', count: data.content_empty, total: data.total },
+            { label: 'Insufficient', count: data.content_insufficient, total: data.total }
+          ]}
+        />
 
         {/* LLM Resolution */}
-        <div className="card">
-          <h3 style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span style={{ fontSize: '1.5rem' }}>🤖</span>
-            LLM Resolution
-            <span style={{ 
-              marginLeft: 'auto',
-              padding: '4px 12px',
-              background: '#6e7681',
-              borderRadius: '4px',
-              fontSize: '0.9rem',
-              fontWeight: '600'
-            }}>
-              Ambiguous
-            </span>
-          </h3>
-          <div style={{ marginBottom: '1.5rem', color: '#8b949e' }}>
-            Content exists but doesn't contain a clear YES/NO answer
-          </div>
-          <div style={{ display: 'grid', gap: '0.75rem' }}>
-            <FailureBar label="Unresolvable Content" count={data.llm_unresolvable} total={data.total} color="#6e7681" />
-          </div>
-          <div style={{ 
-            marginTop: '1rem', 
-            padding: '1rem', 
-            background: '#0d1117', 
-            borderRadius: '6px',
-            fontSize: '0.9rem',
-            color: '#8b949e'
-          }}>
-            <strong>Examples:</strong> Live dashboards, news articles without explicit statements, 
-            generic info pages. Not a GenLayer failure - the source simply lacks the answer.
-          </div>
-        </div>
+        <FailureCard
+          title="LLM Resolution"
+          icon="🤖"
+          tag="Ambiguous"
+          tagColor="#6e7681"
+          items={[
+            { label: 'No clear answer in content', count: data.llm_unresolvable, total: data.total }
+          ]}
+        />
 
-        {/* GenLayer Performance */}
-        <div className="card" style={{ borderLeft: '4px solid #3fb950' }}>
-          <h3 style={{ marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span style={{ fontSize: '1.5rem' }}>⚖️</span>
-            GenLayer Consensus
-            <span style={{ 
-              marginLeft: 'auto',
-              padding: '4px 12px',
-              background: '#3fb950',
-              borderRadius: '4px',
-              fontSize: '0.9rem',
-              fontWeight: '600'
-            }}>
-              Perfect
-            </span>
-          </h3>
-          <div style={{ marginBottom: '1.5rem', color: '#8b949e' }}>
-            Validators reaching agreement on resolution
-          </div>
-          <div style={{ display: 'grid', gap: '0.75rem' }}>
-            <FailureBar label="Consensus Failures" count={data.consensus_fail} total={data.total} color="#3fb950" />
-          </div>
-        </div>
+        {/* GenLayer Consensus */}
+        <FailureCard
+          title="GenLayer Consensus"
+          icon="⚖️"
+          tag="Perfect"
+          tagColor="#3fb950"
+          items={[
+            { label: 'Consensus failures', count: data.consensus_fail, total: data.total }
+          ]}
+        />
       </div>
 
-      {/* Insights */}
-      <div className="card" style={{ background: '#1a1f2e', borderLeft: '4px solid #58a6ff' }}>
-        <h2 style={{ marginBottom: '1.5rem', color: '#58a6ff' }}>💡 Key Insights</h2>
-        <div style={{ display: 'grid', gap: '1.5rem', fontSize: '1rem', lineHeight: '1.7' }}>
-          <div>
-            <div style={{ fontWeight: '600', marginBottom: '0.5rem' }}>1. Core Technology Validated</div>
-            <div style={{ color: '#8b949e' }}>
-              GenLayer's consensus mechanism and LLM integration work flawlessly. 
-              {accuracy}% accuracy proves the system is production-ready.
-            </div>
-          </div>
-          <div>
-            <div style={{ fontWeight: '600', marginBottom: '0.5rem' }}>2. Data Quality is the Bottleneck</div>
-            <div style={{ color: '#8b949e' }}>
-              {100 - resolvableRate}% of failures are due to external factors. 
-              Polymarket's resolution URLs were designed for humans, not oracles.
-            </div>
-          </div>
-          <div>
-            <div style={{ fontWeight: '600', marginBottom: '0.5rem' }}>3. Clear Path to Improvement</div>
-            <div style={{ color: '#8b949e' }}>
-              Off-chain preprocessing (multi-source validation, content extraction, fallback sources) 
-              can dramatically improve resolution rates without changing the core GenLayer system.
-            </div>
-          </div>
-        </div>
+      {/* Bottom Insights */}
+      <div style={{ 
+        display: 'grid', 
+        gridTemplateColumns: 'repeat(3, 1fr)', 
+        gap: '1rem'
+      }}>
+        <InsightCard
+          title="Core Tech Validated"
+          value={`${accuracy}%`}
+          description="Accuracy on valid content"
+          color="#3fb950"
+        />
+        <InsightCard
+          title="Data Bottleneck"
+          value={`${externalRate}%`}
+          description="Failures from external sources"
+          color="#f85149"
+        />
+        <InsightCard
+          title="Improvement Path"
+          value="Off-chain"
+          description="Multi-source preprocessing"
+          color="#58a6ff"
+        />
       </div>
-    </>
+    </div>
   );
 }
 
-function FailureBar({ label, count, total, color }: { label: string; count: number; total: number; color: string }) {
-  const percentage = total > 0 ? (count / total * 100).toFixed(1) : '0.0';
-  const width = total > 0 ? Math.min((count / total * 100), 100) : 0;
-  
+function StatCard({ label, value, color }: { label: string; value: string | number; color: string }) {
   return (
-    <div>
-      <div style={{ 
-        display: 'flex', 
-        justifyContent: 'space-between', 
-        marginBottom: '0.5rem',
-        fontSize: '0.9rem'
-      }}>
-        <span>{label}</span>
-        <span style={{ color: '#8b949e' }}>{count} ({percentage}%)</span>
+    <div style={{
+      padding: '1rem',
+      background: '#161b22',
+      border: '1px solid #30363d',
+      borderRadius: '6px',
+      borderLeft: `3px solid ${color}`
+    }}>
+      <div style={{ fontSize: '1.75rem', fontWeight: 'bold', color, marginBottom: '0.25rem' }}>
+        {value}
       </div>
-      <div style={{ 
-        height: '8px', 
-        background: '#21262d', 
-        borderRadius: '4px',
-        overflow: 'hidden'
-      }}>
-        <div style={{ 
-          height: '100%', 
-          width: `${width}%`,
-          background: color,
-          transition: 'width 0.3s ease',
-          borderRadius: '4px'
-        }} />
+      <div style={{ fontSize: '0.85rem', color: '#8b949e', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+        {label}
+      </div>
+    </div>
+  );
+}
+
+function FailureCard({ 
+  title, 
+  icon, 
+  tag, 
+  tagColor, 
+  items 
+}: { 
+  title: string; 
+  icon: string; 
+  tag: string; 
+  tagColor: string; 
+  items: { label: string; count: number; total: number }[] 
+}) {
+  return (
+    <div style={{
+      padding: '1.25rem',
+      background: '#161b22',
+      border: '1px solid #30363d',
+      borderRadius: '6px'
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
+        <span style={{ fontSize: '1.25rem' }}>{icon}</span>
+        <span style={{ fontSize: '1rem', fontWeight: '600' }}>{title}</span>
+        <span style={{
+          marginLeft: 'auto',
+          padding: '2px 8px',
+          background: tagColor,
+          borderRadius: '4px',
+          fontSize: '0.75rem',
+          fontWeight: '600'
+        }}>
+          {tag}
+        </span>
+      </div>
+      <div style={{ display: 'grid', gap: '0.5rem' }}>
+        {items.map((item, i) => {
+          const pct = item.total > 0 ? (item.count / item.total * 100).toFixed(1) : '0.0';
+          const width = item.total > 0 ? Math.min((item.count / item.total * 100), 100) : 0;
+          
+          return (
+            <div key={i}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', marginBottom: '0.25rem' }}>
+                <span style={{ color: '#c9d1d9' }}>{item.label}</span>
+                <span style={{ color: '#8b949e' }}>{item.count} ({pct}%)</span>
+              </div>
+              <div style={{ height: '6px', background: '#21262d', borderRadius: '3px', overflow: 'hidden' }}>
+                <div style={{ 
+                  height: '100%', 
+                  width: `${width}%`,
+                  background: tagColor,
+                  borderRadius: '3px',
+                  transition: 'width 0.3s ease'
+                }} />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function InsightCard({ title, value, description, color }: { title: string; value: string; description: string; color: string }) {
+  return (
+    <div style={{
+      padding: '1.25rem',
+      background: '#161b22',
+      border: '1px solid #30363d',
+      borderRadius: '6px',
+      textAlign: 'center'
+    }}>
+      <div style={{ fontSize: '0.8rem', color: '#8b949e', marginBottom: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+        {title}
+      </div>
+      <div style={{ fontSize: '2rem', fontWeight: 'bold', color, marginBottom: '0.25rem' }}>
+        {value}
+      </div>
+      <div style={{ fontSize: '0.85rem', color: '#8b949e' }}>
+        {description}
       </div>
     </div>
   );
