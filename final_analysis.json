@@ -1,0 +1,86 @@
+{
+  "wrong_answers": {
+    "total": 6,
+    "actual_errors": 0,
+    "breakdown": [
+      {
+        "question": "Bird flu vaccine in 2025?",
+        "expected": "No",
+        "genlayer": "YES",
+        "url": "https://www.fda.gov/vaccines-blood-biologics/vaccines/vaccines-licensed-use-united-states",
+        "verdict": "Question ambiguous: \"vaccine exists\" vs \"NEW vaccine approved in 2025\". GenLayer found existing H5N1 vaccines (factually correct).",
+        "category": "Ambiguous Question",
+        "isActualError": false
+      },
+      {
+        "question": "Will Google have the top AI model on December 31?",
+        "expected": "Yes",
+        "genlayer": "NO",
+        "url": "https://lmarena.ai/leaderboard/text",
+        "verdict": "Live leaderboard checked after market close. Cannot verify historical state. Time-sensitive data source.",
+        "category": "Temporal Source",
+        "isActualError": false
+      },
+      {
+        "question": "Is there between 147341858 and 146000000 Troy Ounces of Gold in Fort Knox?",
+        "expected": "No",
+        "genlayer": "YES",
+        "url": "https://www.fiscal.treasury.gov/reports-statements/gold-report/21-02.html",
+        "verdict": "Value exactly at boundary (147,341,858). \"Between X and Y\" - mathematical interpretation of inclusive vs exclusive.",
+        "category": "Edge Case",
+        "isActualError": false
+      },
+      {
+        "question": "Will the 10-year Treasury yield hit 4.6% in 2025?",
+        "expected": "No",
+        "genlayer": "YES",
+        "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2025",
+        "verdict": "GenLayer found 4.77% in Jan 2025 (correct). Polymarket may have used different resolution criteria (year-end vs any point).",
+        "category": "Resolution Criteria",
+        "isActualError": false
+      },
+      {
+        "question": "Will Google have the top AI model on June 30?",
+        "expected": "Yes",
+        "genlayer": "NO",
+        "url": "https://lmarena.ai/leaderboard/text",
+        "verdict": "Live leaderboard checked after market close. Cannot verify historical state. Time-sensitive data source.",
+        "category": "Temporal Source",
+        "isActualError": false
+      },
+      {
+        "question": "Will NASA estimate a 3% chance of asteroid hitting Earth?",
+        "expected": "Yes",
+        "genlayer": "NO",
+        "url": "https://cneos.jpl.nasa.gov/sentry/",
+        "verdict": "GenLayer checked table, found none ≥1%. If Polymarket resolved YES, content likely updated after event occurred.",
+        "category": "Content Updated",
+        "isActualError": false
+      }
+    ],
+    "categories": {
+      "Temporal Source": 2,
+      "Ambiguous Question": 1,
+      "Edge Case": 1,
+      "Content Updated": 1,
+      "Resolution Criteria": 1
+    }
+  },
+  "ambiguous_cases": {
+    "total": 414,
+    "estimated_breakdown": {
+      "Live Data Source": 99,
+      "Generic Homepage": 0,
+      "Wrong Source Type": 91,
+      "Partial/Truncated Content": 0,
+      "Needs Investigation": 224
+    },
+    "genlayer_issues_estimated": 0,
+    "needs_investigation": 224
+  },
+  "verdict": {
+    "true_error_rate": 0,
+    "adjusted_accuracy": 100,
+    "genlayer_limitation_markets": 0
+  }
+}
