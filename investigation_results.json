@@ -1,0 +1,139 @@
+{
+  "sample_size": 12,
+  "unclear_total": 138,
+  "ambiguous_total": 414,
+  "investigated_cases": [
+    {
+      "question": "Will Elon and DOGE cut 50-100k employees in 2025?",
+      "url": "https://fred.stlouisfed.org/series/CES9091000001",
+      "expected": "No",
+      "genlayer_reasoning": "The webpage provides data for 'All Employees, Federal' (2,686,000 in Jan 2026), which is a broad U.S. government employment figure. The question specifically asks about job cuts by 'Elon and DOGE' (presumably Elon Musk and Dogecoin or related entities) targeting 50-100k employees in 2025. There is no mention of Elon Musk, Dogecoin, cryptocurrency, Tesla, X (Twitter), or any specific corporate layoffs on this page. The data is for the entire U.S. federal government workforce, not a private company or a crypto-related entity.",
+      "fetch_status": 200,
+      "verdict": "POTENTIAL ISSUE - Multiple data points might be present",
+      "category": "POTENTIAL_ISSUE",
+      "evidence": "Found 6 data-like patterns"
+    },
+    {
+      "question": "Will Elon and DOGE cut 100-150k employees in 2025?",
+      "url": "https://fred.stlouisfed.org/series/CES9091000001",
+      "expected": "No",
+      "genlayer_reasoning": "The webpage provides only the federal employment figure for Jan 2026 (2,686 thousand persons) but lacks historical data for comparison, such as employment levels at the start or end of 2025, making it impossible to determine if a cut of 100-150k employees occurred in 2025. No information on Elon Musk or DOGE is mentioned.",
+      "fetch_status": 200,
+      "verdict": "POTENTIAL ISSUE - Multiple data points might be present",
+      "category": "POTENTIAL_ISSUE",
+      "evidence": "Found 6 data-like patterns"
+    },
+    {
+      "question": "Will Elon and DOGE cut less than 50k employees in 2025?",
+      "url": "https://fred.stlouisfed.org/series/CES9091000001",
+      "expected": "No",
+      "genlayer_reasoning": "The provided text only shows a single data point for January 2026 (2,686 thousand employees). It does not provide the 2024 or 2025 employment levels necessary to calculate the net change or identify specific actions taken by 'Elon and DOGE'.",
+      "fetch_status": 200,
+      "verdict": "POTENTIAL ISSUE - Multiple data points might be present",
+      "category": "POTENTIAL_ISSUE",
+      "evidence": "Found 6 data-like patterns"
+    },
+    {
+      "question": "Will Elon and DOGE cut 150-200k employees in 2025?",
+      "url": "https://fred.stlouisfed.org/series/CES9091000001",
+      "expected": "No",
+      "genlayer_reasoning": "The webpage shows only one data point: January 2026 federal employment at 2,686 thousand persons. To determine if 150-200k employees were cut in 2025, we would need federal employment data from the beginning of 2025 (or end of 2024) to compare against end of 2025 data. The webpage does not provide this historical comparison data necessary to calculate the change in federal employment during 2025.",
+      "fetch_status": 200,
+      "verdict": "POTENTIAL ISSUE - Multiple data points might be present",
+      "category": "POTENTIAL_ISSUE",
+      "evidence": "Found 6 data-like patterns"
+    },
+    {
+      "question": "Brazil’s 12-month inflation below 5.50% for December 2025?",
+      "url": "https://www.ibge.gov.br/en/indicators#ipca",
+      "expected": "Yes",
+      "genlayer_reasoning": "The webpage provides the 12-month IPCA inflation rate as 4.44, associated with January 2026 data, but does not explicitly state the 12-month rate for December 2025. No data is available to calculate or infer the December 2025 rate definitively, such as the January 2025 monthly rate.",
+      "fetch_status": 200,
+      "verdict": "GenLayer CORRECT - No clear inflation data",
+      "category": "GENLAYER_CORRECT",
+      "evidence": "No inflation numbers found"
+    },
+    {
+      "question": "Will Elon and DOGE cut 50-100k employees in 2025?",
+      "url": "https://fred.stlouisfed.org/series/CES9091000001",
+      "expected": "No",
+      "genlayer_reasoning": "The webpage only shows a single data point (Jan 2026: 2,686 thousand federal employees) without providing baseline data from the beginning of 2025 or any other 2025 data points. To determine if 50-100k employees were cut in 2025, we would need to compare federal employment levels from the start of 2025 to the end of 2025, but this information is not present on the page. Additionally, the page does not specify whether any reductions were specifically attributable to 'Elon and DOGE.'",
+      "fetch_status": 200,
+      "verdict": "POTENTIAL ISSUE - Multiple data points might be present",
+      "category": "POTENTIAL_ISSUE",
+      "evidence": "Found 6 data-like patterns"
+    },
+    {
+      "question": "Will Elon and DOGE cut 100-150k employees in 2025?",
+      "url": "https://fred.stlouisfed.org/series/CES9091000001",
+      "expected": "No",
+      "genlayer_reasoning": "The provided content only shows a single data point for January 2026 (2,686,000 employees). It does not provide the headcount from the start of 2025 or any preceding months to calculate the net change in employees, nor does it mention Elon Musk or the Department of Government Efficiency (DOGE).",
+      "fetch_status": 200,
+      "verdict": "POTENTIAL ISSUE - Multiple data points might be present",
+      "category": "POTENTIAL_ISSUE",
+      "evidence": "Found 6 data-like patterns"
+    },
+    {
+      "question": "Will Elon and DOGE cut more than 200k employees in 2025?",
+      "url": "https://fred.stlouisfed.org/series/CES9091000001",
+      "expected": "Yes",
+      "genlayer_reasoning": "The webpage content provides data on federal employees (specifically, 'All Employees, Federal') for January 2026, but it does not mention Elon Musk, Dogecoin (DOGE), or any private-sector companies. The question pertains to potential layoffs by Elon and DOGE in 2025, which is unrelated to federal employment data. No relevant information is available to resolve the question.",
+      "fetch_status": 200,
+      "verdict": "POTENTIAL ISSUE - Multiple data points might be present",
+      "category": "POTENTIAL_ISSUE",
+      "evidence": "Found 6 data-like patterns"
+    },
+    {
+      "question": "Will Elon and DOGE cut 150-200k employees in 2025?",
+      "url": "https://fred.stlouisfed.org/series/CES9091000001",
+      "expected": "No",
+      "genlayer_reasoning": "The webpage provides data on 'All Employees, Federal' (2,686 thousand persons in Jan 2026), which is a general federal employment figure. The question is about Elon and DOGE (Dogecoin) cutting 150-200k employees in 2025. The content does not mention Elon Musk, Dogecoin, any company he is associated with (like Tesla or X), or any specific layoff action in 2025. Therefore, there is no information to resolve the market.",
+      "fetch_status": 200,
+      "verdict": "POTENTIAL ISSUE - Multiple data points might be present",
+      "category": "POTENTIAL_ISSUE",
+      "evidence": "Found 6 data-like patterns"
+    },
+    {
+      "question": "Will U.S. National debt surpass $38 trillion in 2025?",
+      "url": "https://www.treasurydirect.gov/NP_WS/debt/current",
+      "expected": "Yes",
+      "genlayer_reasoning": "The webpage content provides the TotalDebt as 38787781432126.22 on the effective date of 2026-02-24, which is over $38 trillion, but this date is in 2026, not 2025. There is no data from 2025 to determine if the debt surpassed $38 trillion specifically during 2025.",
+      "fetch_status": 200,
+      "verdict": "MANUAL REVIEW - Fetched but needs human check",
+      "category": "MANUAL_REVIEW",
+      "evidence": "{\"effectiveDate\":\"February 26, 2026 EST\",\"governmentHoldings\":7640562889718.20,\"publicDebt\":31149029..."
+    },
+    {
+      "question": "Will Anthropic have the top AI model on December 31?",
+      "url": "https://lmarena.ai/leaderboard/text",
+      "expected": "No",
+      "genlayer_reasoning": "The webpage shows the leaderboard as of Feb 24, 2026, with Anthropic models at ranks 1 and 2, but does not provide the specific ranking or state on December 31 (presumably 2025). Rankings are based on votes that could have accumulated or changed after December 31, and some models have dates in 2026, making it impossible to definitively determine the top model on that exact date from this content.",
+      "fetch_status": 200,
+      "verdict": "MANUAL REVIEW - Fetched but needs human check",
+      "category": "MANUAL_REVIEW",
+      "evidence": "<!DOCTYPE html><html lang=\"en\" class=\"m-0 h-svh w-full p-0\"><head><meta charSet=\"utf-8\"/><meta name=..."
+    },
+    {
+      "question": "Texas Strategic Bitcoin Reserve Act (H.B. 1598) signed in 2025?",
+      "url": "https://www.cnbc.com/2024/12/12/texas-house-introduces-bill-to-establish-a-strategic-bitcoin-reserve.html",
+      "expected": "No",
+      "genlayer_reasoning": "The article only states that a bill to establish a strategic bitcoin reserve was introduced in the Texas House in December 2024. It does not mention the bill number (H.B. 1598), whether it passed the legislature, or whether it was signed into law in 2025. Therefore, based solely on this page, we cannot determine if the Texas Strategic Bitcoin Reserve Act (H.B. 1598) was signed in 2025.",
+      "fetch_status": 200,
+      "verdict": "MANUAL REVIEW - Fetched but needs human check",
+      "category": "MANUAL_REVIEW",
+      "evidence": "<!DOCTYPE html><html lang=\"en\" prefix=\"og=https://ogp.me/ns#\" itemscope=\"\" itemType=\"https://schema...."
+    }
+  ],
+  "summary": {
+    "GENLAYER_CORRECT": 1,
+    "POTENTIAL_ISSUE": 8,
+    "BLOCKED": 0,
+    "MANUAL_REVIEW": 3
+  },
+  "extrapolation": {
+    "potential_issue_rate": 67,
+    "estimated_failures_in_204": 136,
+    "adjusted_accuracy": 35,
+    "current_accuracy": 100
+  }
+}

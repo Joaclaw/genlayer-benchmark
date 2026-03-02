@@ -1,0 +1,225 @@
+{
+  "total": 414,
+  "categories": {
+    "LEGITIMATE - Live/Current Data Source": {
+      "count": 32,
+      "percentage": 8,
+      "samples": [
+        {
+          "question": "Will Ethereum hit $7,000 by December 31?",
+          "url": "https://www.binance.com/en/trade/ETH_USDT",
+          "reasoning": "The provided webpage content contains general promotional text and interface elements from Binance but does not include any Ethereum (ETH) price information or historical data indicating whether ETH reached $7,000 by December 31. Without any price or date-specific evidence, the resolution cannot be determined from this page."
+        },
+        {
+          "question": "Will Ethereum hit $6,000 by December 31?",
+          "url": "https://www.binance.com/en/trade/ETH_USDT",
+          "reasoning": "The webpage content does not contain any price information for Ethereum (ETH). While the page appears to be from Binance's ETH/USDT trading pair, the provided content only shows announcements, navigation elements, and cookie preferences. There is no actual price data, charts, or trading information visible that would indicate whether ETH reached $6,000 by December 31."
+        },
+        {
+          "question": "Will Ethereum dip to $1,000 by December 31?",
+          "url": "https://www.binance.com/en/trade/ETH_USDT",
+          "reasoning": "The provided webpage content contains platform announcements and interface elements but does not list the current price of Ethereum or any historical price data for the period ending December 31."
+        },
+        {
+          "question": "Will Bitcoin dip to $50,000 by December 31, 2025?",
+          "url": "https://www.binance.com/en/trade/BTC_USDT",
+          "reasoning": "The provided webpage excerpt contains only promotional text, interface labels, and general announcements, but no Bitcoin price data, historical chart, or any indication of whether BTC ever dipped to $50,000 by December 31, 2025. Therefore, it does not provide enough information to determine the market outcome."
+        },
+        {
+          "question": "Will Ethereum dip to $2,500 by December 31?",
+          "url": "https://www.binance.com/en/trade/ETH_USDT",
+          "reasoning": "The provided webpage content contains site announcements, navigation elements, and cookie preferences, but it does not list the current price of Ethereum or historical price data for the specified period."
+        }
+      ]
+    },
+    "LEGITIMATE - Generic/Homepage": {
+      "count": 49,
+      "percentage": 12,
+      "samples": [
+        {
+          "question": "Will Félix González win the Chilean presidential election?",
+          "url": "https://www.servel.cl/",
+          "reasoning": "The provided webpage content is the homepage of the Chilean Electoral Service (Servel). While it mentions links to 'Resultados Provisorios 2da Votación Presidencial' and news items referencing the 'Elecciones Parlamentarias y Presidenciales 2025', the text itself does not contain the actual election results or the name of the winner. The candidate 'Félix González' is not mentioned anywhere in the provided content."
+        },
+        {
+          "question": "Will Billy Kelleher win the Irish Presidential Election?",
+          "url": "https://www.electoralcommission.ie/",
+          "reasoning": "The provided webpage content from Ireland’s Electoral Commission contains only general information about voting, electoral systems, news updates about exhibitions and policy matters, and contact details. It does not mention the Irish Presidential Election, any election results, or Billy Kelleher. Therefore, it is impossible to determine from this page whether Billy Kelleher won the Irish Presidential Election."
+        },
+        {
+          "question": "Will Barry Andrews win the Irish Presidential Election?",
+          "url": "https://www.electoralcommission.ie/",
+          "reasoning": "The page contains only general information about Ireland’s electoral system, voter registration, and news updates; it does not mention the Irish Presidential Election, any candidates, or the election outcome."
+        },
+        {
+          "question": "Will Bertie Ahern win the Irish Presidential Election?",
+          "url": "https://www.electoralcommission.ie/",
+          "reasoning": "The provided webpage content from the Electoral Commission site contains only general information about voting, electoral systems, news updates, and contact details. It does not mention the Irish Presidential Election, any candidates, or election results, and therefore does not indicate whether Bertie Ahern won the election."
+        },
+        {
+          "question": "Will Maria Steen win the Irish Presidential Election?",
+          "url": "https://www.electoralcommission.ie/",
+          "reasoning": "The provided webpage content from the Electoral Commission does not mention Maria Steen or the results of any Irish Presidential Election. It primarily contains general information about voter registration, electoral systems, and news updates."
+        }
+      ]
+    },
+    "LEGITIMATE - Historical Data Not Available": {
+      "count": 21,
+      "percentage": 5,
+      "samples": [
+        {
+          "question": "Will Elon and DOGE cut 150-200k employees in 2025?",
+          "url": "https://fred.stlouisfed.org/series/CES9091000001",
+          "reasoning": "The webpage shows only one data point: January 2026 federal employment at 2,686 thousand persons. To determine if 150-200k employees were cut in 2025, we would need federal employment data from the beginning of 2025 (or end of 2024) to compare against end of 2025 data. The webpage does not provide this historical comparison data necessary to calculate the change in federal employment during 2025."
+        },
+        {
+          "question": "Will all remaining Trump cabinet picks be confirmed?",
+          "url": "https://www.senate.gov/legislative/NominationsRejectedorWithdrawn.htm",
+          "reasoning": "The webpage lists historical cabinet nominations that were rejected, withdrawn, or had no action taken, including some from Donald Trump's presidency up to 2019, but does not define or identify what 'remaining Trump cabinet picks' refers to, nor does it provide information on confirmations after 2019 or for any potential future term, making it impossible to definitively resolve the question."
+        },
+        {
+          "question": "Will Elon and DOGE cut more than $250b in federal spending in 2025?",
+          "url": "https://fred.stlouisfed.org/series/FGEXPND",
+          "reasoning": "The webpage only shows Q4 2025 federal expenditures at $7,572.400 billion (seasonally adjusted annual rate). To determine if spending was cut by more than $250 billion in 2025, we would need to compare this to a baseline (such as Q4 2024 or projected 2025 spending without cuts). The webpage does not provide historical comparison data, previous quarters' figures, or any information about what spending would have been without DOGE's actions. Additionally, the data shown is a quarterly figure expressed as an annual rate, not total 2025 spending, making it impossible to calculate the actual reduction from the information provided."
+        },
+        {
+          "question": "Will Elon and DOGE cut between $50-100b in federal spending in 2025?",
+          "url": "https://fred.stlouisfed.org/series/FGEXPND",
+          "reasoning": "The provided webpage content only lists the Federal Government Current Expenditures for Q4 2025 ($7,572.400 billion). It does not contain historical data or a baseline (such as 2024 expenditures) to calculate the difference in spending. Without knowing the previous spending levels, it is impossible to determine if a cut of $50-100 billion occurred."
+        },
+        {
+          "question": "Will Party D hold the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+          "url": "https://www.electoral.gob.ar/nuevo/index.php",
+          "reasoning": "The provided webpage content does not include any information about the results of the 2025 Argentina election, seat distribution in the Chamber of Deputies, or the performance of Party D. The content is limited to general electoral resources, procedures, and historical context."
+        }
+      ]
+    },
+    "LEGITIMATE - Wrong Source Type": {
+      "count": 98,
+      "percentage": 24,
+      "samples": [
+        {
+          "question": "Will Elon and DOGE cut more than 200k employees in 2025?",
+          "url": "https://fred.stlouisfed.org/series/CES9091000001",
+          "reasoning": "The webpage only provides data on total federal employment (series CES9091000001) such as the number of federal employees in January 2026. It does not mention Elon Musk, DOGE, specific companies, layoffs, or any employment changes in 2025 related to them. Therefore, it does not contain enough information to determine whether Elon and DOGE cut more than 200,000 employees in 2025."
+        },
+        {
+          "question": "Will Elon and DOGE cut less than 50k employees in 2025?",
+          "url": "https://fred.stlouisfed.org/series/CES9091000001",
+          "reasoning": "The webpage provides data on federal employment levels, including a figure of 2,686 thousand federal employees in January 2026. However, it does not mention Elon Musk, DOGE (Department of Government Efficiency, as colloquially referenced), or any planned layoffs or workforce reductions. There is no information about employment cuts initiated by Elon Musk or any entity named DOGE. Therefore, the content is insufficient to determine whether fewer than 50,000 employees will be cut in 2025."
+        },
+        {
+          "question": "Ukraine joins NATO in 2025?",
+          "url": "https://www.nato.int/cps/en/natohq/nato_countries.htm",
+          "reasoning": "The webpage, updated 11 March 2024, lists 32 NATO member countries and does not include Ukraine among them. However, the question concerns whether Ukraine joins NATO in 2025, which is a future event relative to the page’s last update. The content provides no information about accession in 2025, so it is not possible to determine the answer based solely on this page."
+        },
+        {
+          "question": "Will Gold close under $2,500 at the end of 2025?",
+          "url": "https://www.google.com/finance/quote/GCW00:COMEX",
+          "reasoning": "The webpage content provided does not contain any information about the price of Gold or its future projections. It is a cookie consent page from Google Finance and does not display the actual content related to the gold price (GCW00:COMEX). Therefore, it is not possible to determine if Gold will close under $2,500 at the end of 2025 based on the given content."
+        },
+        {
+          "question": "Will Gold close at $2,900-3,000 at the end of 2025?",
+          "url": "https://www.google.com/finance/quote/GCW00:COMEX",
+          "reasoning": "The provided webpage content is a generic Google cookie consent and privacy notice. It contains no information about gold prices, futures contracts, or any financial data that could be used to determine if gold will close within the $2,900-3,000 range at the end of 2025."
+        }
+      ]
+    },
+    "LEGITIMATE - Content Updated/Stale": {
+      "count": 0,
+      "percentage": 0,
+      "samples": []
+    },
+    "POTENTIAL ISSUE - Partial/Incomplete": {
+      "count": 8,
+      "percentage": 2,
+      "samples": [
+        {
+          "question": "Will the 10-year Treasury yield dip below 4% in 2025?",
+          "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2025",
+          "reasoning": "The provided webpage content only displays the first 25 entries out of 249 total entries for the year 2025. The visible data covers the period from January 2, 2025, to February 6, 2025, during which the 10-year Treasury yield ranged between 4.43% and 4.79%. Since the data for the remainder of the year is not included in the provided text, it is impossible to determine if the yield dips below 4% at any point after February 6, 2025."
+        },
+        {
+          "question": "Will the 10-year Treasury yield hit 5.2% in 2025?",
+          "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2025",
+          "reasoning": "The webpage content provides only the first 25 entries of 249 for 2025 (from 01/02/2025 to 02/06/2025), where the 10-year yield ranges from 4.43% to 4.79%, never reaching 5.2%. However, the remaining 224 entries are not included in the provided content, so it is impossible to determine if 5.2% was hit later in 2025."
+        },
+        {
+          "question": "Will the 10-year Treasury yield hit 5.0% in 2025?",
+          "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2025",
+          "reasoning": "The webpage content shows only the first 25 entries of 249 for 2025, covering dates up to 02/06/2025, where the 10-year yield peaks at 4.79% and never reaches 5.0%. However, the remaining 224 entries for the rest of 2025 are not included in the provided content, so it is impossible to definitively determine if the yield hit 5.0% later in the year."
+        },
+        {
+          "question": "Will the 10-year Treasury yield hit 4.8% in 2025?",
+          "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2025",
+          "reasoning": "The provided webpage content shows only the first 25 entries of 249 for 2025, covering dates up to 02/06/2025. None of these have the 10-year yield at or above 4.8% (highest is 4.79% on 01/13/2025). However, data for the remaining dates in 2025 is not included, so it cannot be definitively determined if the yield hit 4.8% later in the year."
+        },
+        {
+          "question": "Will Jean-Louis Billon win the 2025 Ivory Coast presidential election?",
+          "url": "https://www.cei.ci/",
+          "reasoning": "The page only lists legislative-election results and upcoming partial re-runs (communiqués dated 2025-2026). It does not mention the 2025 presidential election, any presidential candidates, or Jean-Louis Billon, so it cannot confirm or deny whether he won the presidency."
+        }
+      ]
+    },
+    "POTENTIAL ISSUE - Could Not Find": {
+      "count": 0,
+      "percentage": 0,
+      "samples": []
+    },
+    "POTENTIAL ISSUE - Extraction Failure": {
+      "count": 2,
+      "percentage": 0,
+      "samples": [
+        {
+          "question": "Will Tommy Paul win the 2025 French Open?",
+          "url": "https://www.rolandgarros.com/fr-fr/",
+          "reasoning": "The page only advertises Roland-Garros 2026 (18 May – 7 June 2026) and lists recent news; it contains no draw, bracket, results, or any mention of Tommy Paul, so we cannot determine whether he won the 2025 French Open."
+        },
+        {
+          "question": "Will global temperature increase by between 1.05-1.09ºC in May 2025?",
+          "url": "https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts+dSST.txt",
+          "reasoning": "The provided table only shows monthly global land-ocean temperature index values through the year 1980 (the last visible data row is for 1980, with months Jan–May shown as 29, 39, 29, 30, 35 in 0.01°C units). There is no data for the year 2025, let alone May 2025, so we cannot determine whether the May 2025 anomaly was between 1.05–1.09°C (i.e., 105–109 in the table’s units) based solely on this content."
+        }
+      ]
+    },
+    "NEEDS INVESTIGATION - Unclear": {
+      "count": 204,
+      "percentage": 49,
+      "samples": [
+        {
+          "question": "Will Elon and DOGE cut 50-100k employees in 2025?",
+          "url": "https://fred.stlouisfed.org/series/CES9091000001",
+          "reasoning": "The webpage provides data for 'All Employees, Federal' (2,686,000 in Jan 2026), which is a broad U.S. government employment figure. The question specifically asks about job cuts by 'Elon and DOGE' (presumably Elon Musk and Dogecoin or related entities) targeting 50-100k employees in 2025. There is no mention of Elon Musk, Dogecoin, cryptocurrency, Tesla, X (Twitter), or any specific corporate layoffs on this page. The data is for the entire U.S. federal government workforce, not a private company or a crypto-related entity."
+        },
+        {
+          "question": "Will Elon and DOGE cut 100-150k employees in 2025?",
+          "url": "https://fred.stlouisfed.org/series/CES9091000001",
+          "reasoning": "The webpage provides only the federal employment figure for Jan 2026 (2,686 thousand persons) but lacks historical data for comparison, such as employment levels at the start or end of 2025, making it impossible to determine if a cut of 100-150k employees occurred in 2025. No information on Elon Musk or DOGE is mentioned."
+        },
+        {
+          "question": "Will Elon and DOGE cut less than 50k employees in 2025?",
+          "url": "https://fred.stlouisfed.org/series/CES9091000001",
+          "reasoning": "The provided text only shows a single data point for January 2026 (2,686 thousand employees). It does not provide the 2024 or 2025 employment levels necessary to calculate the net change or identify specific actions taken by 'Elon and DOGE'."
+        },
+        {
+          "question": "Brazil’s 12-month inflation below 5.50% for December 2025?",
+          "url": "https://www.ibge.gov.br/en/indicators#ipca",
+          "reasoning": "The webpage provides the 12-month IPCA inflation rate as 4.44, associated with January 2026 data, but does not explicitly state the 12-month rate for December 2025. No data is available to calculate or infer the December 2025 rate definitively, such as the January 2025 monthly rate."
+        },
+        {
+          "question": "Will Elon and DOGE cut 50-100k employees in 2025?",
+          "url": "https://fred.stlouisfed.org/series/CES9091000001",
+          "reasoning": "The webpage only shows a single data point (Jan 2026: 2,686 thousand federal employees) without providing baseline data from the beginning of 2025 or any other 2025 data points. To determine if 50-100k employees were cut in 2025, we would need to compare federal employment levels from the start of 2025 to the end of 2025, but this information is not present on the page. Additionally, the page does not specify whether any reductions were specifically attributable to 'Elon and DOGE.'"
+        }
+      ]
+    }
+  },
+  "summary": {
+    "legitimate": 200,
+    "potential_issues": 10,
+    "needs_investigation": 204,
+    "legitimate_percentage": 48,
+    "potential_issues_percentage": 2,
+    "needs_investigation_percentage": 49
+  }
+}

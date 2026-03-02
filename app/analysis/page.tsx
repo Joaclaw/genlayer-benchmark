@@ -136,23 +136,40 @@ export default function AnalysisPage() {
         <div style={{ display: 'flex', gap: '1rem' }}>
           <div style={{
             padding: '12px 20px',
-            background: 'linear-gradient(135deg, #238636, #2ea043)',
+            background: 'linear-gradient(135deg, #d29922, #d29922)',
             borderRadius: '8px',
-            textAlign: 'center'
+            textAlign: 'center',
+            border: '1px solid #f85149'
           }}>
-            <div style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>100%</div>
-            <div style={{ fontSize: '0.75rem', opacity: 0.8 }}>Verified Accuracy</div>
+            <div style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>35-100%</div>
+            <div style={{ fontSize: '0.75rem', opacity: 0.8 }}>Accuracy Range*</div>
           </div>
           <div style={{
             padding: '12px 20px',
-            background: 'linear-gradient(135deg, #d29922, #d29922)',
+            background: 'linear-gradient(135deg, #3a1a1a, #4a1a1a)',
             borderRadius: '8px',
-            textAlign: 'center'
+            textAlign: 'center',
+            border: '1px solid #f85149'
           }}>
-            <div style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>6</div>
-            <div style={{ fontSize: '0.75rem', opacity: 0.8 }}>Disputed (0 errors)</div>
+            <div style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>~136</div>
+            <div style={{ fontSize: '0.75rem', opacity: 0.8 }}>Potential Failures</div>
           </div>
         </div>
+      </div>
+      
+      {/* Critical Notice */}
+      <div style={{
+        padding: '1rem',
+        background: '#3a1a1a',
+        border: '1px solid #f85149',
+        borderRadius: '8px',
+        marginBottom: '2rem',
+        fontSize: '0.9rem',
+        lineHeight: '1.6'
+      }}>
+        <strong style={{ color: '#f85149' }}>* Accuracy Under Review:</strong> Initial verification of 12 "ambiguous" cases found 67% with potential GenLayer 
+        extraction issues. If representative of all 205 unclear markets, true accuracy may be ~35% instead of 100%. 
+        Full URL verification in progress.
       </div>
 
       {/* Top Stats Grid */}
@@ -351,8 +368,28 @@ export default function AnalysisPage() {
       {data.llm_unresolvable > 0 && (
         <>
           <h2 style={{ fontSize: '1.25rem', marginTop: '2rem', marginBottom: '1rem' }}>
-            Ambiguous Cases ({data.llm_unresolvable} markets)
+            Ambiguous Cases Investigation ({data.llm_unresolvable} markets)
           </h2>
+          
+          {/* Investigation Alert */}
+          <div style={{
+            padding: '1.25rem',
+            background: 'linear-gradient(135deg, #3a1a1a, #4a1a1a)',
+            border: '1px solid #f85149',
+            borderRadius: '8px',
+            marginBottom: '1.5rem'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
+              <span style={{ fontSize: '1.5rem' }}>⚠️</span>
+              <strong style={{ fontSize: '1.1rem', color: '#f85149' }}>Critical: URL Verification Reveals Potential Issues</strong>
+            </div>
+            <div style={{ fontSize: '0.9rem', lineHeight: '1.6', color: '#c9d1d9' }}>
+              Investigated sample of 12 "unclear" cases by fetching URLs directly. Found <strong>67% (8/12)</strong> where 
+              GenLayer said "only one data point" but multiple data patterns were present when fetched. 
+              If representative: <strong>~136 potential failures</strong>, dropping accuracy from 100% to <strong>~35%</strong>.
+            </div>
+          </div>
+
           <div style={{
             padding: '1.5rem',
             background: '#161b22',
@@ -361,52 +398,84 @@ export default function AnalysisPage() {
             marginBottom: '2rem'
           }}>
             <div style={{ marginBottom: '1rem', fontSize: '0.9rem', color: '#8b949e' }}>
-              Content accessible (HTTP 200) but no YES/NO answer extractable
+              Content accessible (HTTP 200) but GenLayer couldn't extract YES/NO answer
             </div>
             
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem', marginBottom: '1rem' }}>
-              <div style={{ textAlign: 'center', padding: '1rem', background: '#0d1117', borderRadius: '6px' }}>
-                <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#6e7681', marginBottom: '0.25rem' }}>
-                  ~190
-                </div>
-                <div style={{ fontSize: '0.8rem', color: '#8b949e', marginBottom: '0.5rem' }}>LEGITIMATE</div>
-                <div style={{ fontSize: '0.85rem', color: '#8b949e', lineHeight: '1.4' }}>
-                  Live data sources, wrong source types, generic homepages
-                </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.75rem', marginBottom: '1.5rem' }}>
+              <div style={{ textAlign: 'center', padding: '0.75rem', background: '#0d1117', borderRadius: '6px', borderLeft: '3px solid #6e7681' }}>
+                <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#6e7681', marginBottom: '0.25rem' }}>200</div>
+                <div style={{ fontSize: '0.75rem', color: '#8b949e' }}>Legitimate</div>
               </div>
-
-              <div style={{ textAlign: 'center', padding: '1rem', background: '#0d1117', borderRadius: '6px' }}>
-                <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#f85149', marginBottom: '0.25rem' }}>
-                  ~0
-                </div>
-                <div style={{ fontSize: '0.8rem', color: '#8b949e', marginBottom: '0.5rem' }}>GENLAYER ISSUES</div>
-                <div style={{ fontSize: '0.85rem', color: '#8b949e', lineHeight: '1.4' }}>
-                  Sample found no truncation cases
-                </div>
+              <div style={{ textAlign: 'center', padding: '0.75rem', background: '#0d1117', borderRadius: '6px', borderLeft: '3px solid #3fb950' }}>
+                <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#3fb950', marginBottom: '0.25rem' }}>1</div>
+                <div style={{ fontSize: '0.75rem', color: '#8b949e' }}>Verified OK</div>
               </div>
-
-              <div style={{ textAlign: 'center', padding: '1rem', background: '#0d1117', borderRadius: '6px' }}>
-                <div style={{ fontSize: '2rem', fontWeight: 'bold', color: '#d29922', marginBottom: '0.25rem' }}>
-                  ~224
-                </div>
-                <div style={{ fontSize: '0.8rem', color: '#8b949e', marginBottom: '0.5rem' }}>NEEDS CHECK</div>
-                <div style={{ fontSize: '0.85rem', color: '#8b949e', lineHeight: '1.4' }}>
-                  Requires manual verification
-                </div>
+              <div style={{ textAlign: 'center', padding: '0.75rem', background: '#0d1117', borderRadius: '6px', borderLeft: '3px solid #f85149' }}>
+                <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#f85149', marginBottom: '0.25rem' }}>8</div>
+                <div style={{ fontSize: '0.75rem', color: '#8b949e' }}>Potential Issues</div>
+              </div>
+              <div style={{ textAlign: 'center', padding: '0.75rem', background: '#0d1117', borderRadius: '6px', borderLeft: '3px solid #d29922' }}>
+                <div style={{ fontSize: '1.5rem', fontWeight: 'bold', color: '#d29922', marginBottom: '0.25rem' }}>205</div>
+                <div style={{ fontSize: '0.75rem', color: '#8b949e' }}>Need Review</div>
               </div>
             </div>
 
+            {/* Investigation Results */}
+            <details style={{ marginTop: '1rem' }}>
+              <summary style={{ 
+                cursor: 'pointer', 
+                padding: '0.75rem', 
+                background: '#0d1117',
+                borderRadius: '6px',
+                borderLeft: '3px solid #f85149',
+                color: '#f85149',
+                fontWeight: '600',
+                fontSize: '0.9rem'
+              }}>
+                View 12 Investigated Cases →
+              </summary>
+              <div style={{ marginTop: '1rem', display: 'grid', gap: '0.75rem' }}>
+                {/* FRED Employment Cases */}
+                {[
+                  { q: 'DOGE cut 50-100k employees?', verdict: 'POTENTIAL ISSUE', evidence: 'Found 6 data-like patterns (GenLayer: "only one data point")' },
+                  { q: 'DOGE cut 100-150k employees?', verdict: 'POTENTIAL ISSUE', evidence: 'Found 6 data-like patterns' },
+                  { q: 'DOGE cut less than 50k?', verdict: 'POTENTIAL ISSUE', evidence: 'Found 6 data-like patterns' },
+                  { q: 'DOGE cut 150-200k?', verdict: 'POTENTIAL ISSUE', evidence: 'Found 6 data-like patterns' },
+                  { q: 'DOGE cut 50-100k? (dup)', verdict: 'POTENTIAL ISSUE', evidence: 'Found 6 data-like patterns' },
+                  { q: 'DOGE cut 100-150k? (dup)', verdict: 'POTENTIAL ISSUE', evidence: 'Found 6 data-like patterns' },
+                  { q: 'DOGE cut >200k?', verdict: 'POTENTIAL ISSUE', evidence: 'Found 6 data-like patterns' },
+                  { q: 'DOGE cut 150-200k? (dup)', verdict: 'POTENTIAL ISSUE', evidence: 'Found 6 data-like patterns' },
+                  { q: 'Brazil inflation <5.50%?', verdict: 'GenLayer CORRECT', evidence: 'No inflation data found in fetch' },
+                  { q: 'US Debt >$38T?', verdict: 'MANUAL REVIEW', evidence: 'Data present, needs human verification' },
+                  { q: 'Anthropic top model Dec 31?', verdict: 'MANUAL REVIEW', evidence: 'Leaderboard fetched, needs parsing' },
+                  { q: 'Texas Bitcoin Reserve signed?', verdict: 'MANUAL REVIEW', evidence: 'Article fetched, needs reading' }
+                ].map((c, i) => (
+                  <div key={i} style={{
+                    padding: '0.75rem',
+                    background: '#0d1117',
+                    borderRadius: '4px',
+                    borderLeft: `3px solid ${c.verdict === 'POTENTIAL ISSUE' ? '#f85149' : c.verdict === 'GenLayer CORRECT' ? '#3fb950' : '#d29922'}`,
+                    fontSize: '0.85rem'
+                  }}>
+                    <div style={{ fontWeight: '600', marginBottom: '0.25rem' }}>{c.q}</div>
+                    <div style={{ color: '#8b949e' }}>{c.evidence}</div>
+                  </div>
+                ))}
+              </div>
+            </details>
+
             <div style={{
+              marginTop: '1rem',
               padding: '1rem',
               background: '#1a1f2e',
               borderRadius: '6px',
               fontSize: '0.9rem',
               color: '#8b949e',
-              borderLeft: '3px solid #58a6ff'
+              borderLeft: '3px solid #f85149'
             }}>
-              <strong style={{ color: '#58a6ff' }}>Finding:</strong> Sample analysis of 50 markets found 0 GenLayer truncation issues. 
-              46% were legitimate (wrong source type), 54% need manual URL verification. 
-              If data accessible with HTTP 200, further investigation recommended for "needs check" category.
+              <strong style={{ color: '#f85149' }}>Preliminary Finding:</strong> 67% of sample showed potential GenLayer extraction issues. 
+              FRED employment pages appear to have multiple data points that GenLayer reported as "only one". 
+              Full URL verification of all 205 unclear cases required before final accuracy calculation.
             </div>
           </div>
         </>

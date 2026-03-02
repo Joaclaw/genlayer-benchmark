@@ -1,0 +1,1313 @@
+{
+  "total_unclear": 213,
+  "sub_categories": {
+    "Data exists but LLM says not enough": {
+      "count": 101,
+      "percentage": 47,
+      "all_cases": [
+        {
+          "question": "Will Elon and DOGE cut 50-100k employees in 2025?",
+          "url": "https://fred.stlouisfed.org/series/CES9091000001",
+          "reasoning": "The webpage provides data for 'All Employees, Federal' (2,686,000 in Jan 2026), which is a broad U.S. government employment figure. The question specifically asks about job cuts by 'Elon and DOGE' (presumably Elon Musk and Dogecoin or related entities) targeting 50-100k employees in 2025. There is no mention of Elon Musk, Dogecoin, cryptocurrency, Tesla, X (Twitter), or any specific corporate layoffs on this page. The data is for the entire U.S. federal government workforce, not a private company or a crypto-related entity.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Elon and DOGE cut less than 50k employees in 2025?",
+          "url": "https://fred.stlouisfed.org/series/CES9091000001",
+          "reasoning": "The provided text only shows a single data point for January 2026 (2,686 thousand employees). It does not provide the 2024 or 2025 employment levels necessary to calculate the net change or identify specific actions taken by 'Elon and DOGE'.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Elon and DOGE cut 50-100k employees in 2025?",
+          "url": "https://fred.stlouisfed.org/series/CES9091000001",
+          "reasoning": "The webpage only shows a single data point (Jan 2026: 2,686 thousand federal employees) without providing baseline data from the beginning of 2025 or any other 2025 data points. To determine if 50-100k employees were cut in 2025, we would need to compare federal employment levels from the start of 2025 to the end of 2025, but this information is not present on the page. Additionally, the page does not specify whether any reductions were specifically attributable to 'Elon and DOGE.'",
+          "expected": "No"
+        },
+        {
+          "question": "Will Elon and DOGE cut 100-150k employees in 2025?",
+          "url": "https://fred.stlouisfed.org/series/CES9091000001",
+          "reasoning": "The provided content only shows a single data point for January 2026 (2,686,000 employees). It does not provide the headcount from the start of 2025 or any preceding months to calculate the net change in employees, nor does it mention Elon Musk or the Department of Government Efficiency (DOGE).",
+          "expected": "No"
+        },
+        {
+          "question": "Will Elon and DOGE cut more than 200k employees in 2025?",
+          "url": "https://fred.stlouisfed.org/series/CES9091000001",
+          "reasoning": "The webpage content provides data on federal employees (specifically, 'All Employees, Federal') for January 2026, but it does not mention Elon Musk, Dogecoin (DOGE), or any private-sector companies. The question pertains to potential layoffs by Elon and DOGE in 2025, which is unrelated to federal employment data. No relevant information is available to resolve the question.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Will Elon and DOGE cut 150-200k employees in 2025?",
+          "url": "https://fred.stlouisfed.org/series/CES9091000001",
+          "reasoning": "The webpage provides data on 'All Employees, Federal' (2,686 thousand persons in Jan 2026), which is a general federal employment figure. The question is about Elon and DOGE (Dogecoin) cutting 150-200k employees in 2025. The content does not mention Elon Musk, Dogecoin, any company he is associated with (like Tesla or X), or any specific layoff action in 2025. Therefore, there is no information to resolve the market.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Anthropic have the top AI model on December 31?",
+          "url": "https://lmarena.ai/leaderboard/text",
+          "reasoning": "The webpage shows the leaderboard as of Feb 24, 2026, with Anthropic models at ranks 1 and 2, but does not provide the specific ranking or state on December 31 (presumably 2025). Rankings are based on votes that could have accumulated or changed after December 31, and some models have dates in 2026, making it impossible to definitively determine the top model on that exact date from this content.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Gold close at $2,700-2,800 at the end of 2025?",
+          "url": "https://www.google.com/finance/quote/GCW00:COMEX",
+          "reasoning": "The provided webpage content is a cookie consent banner and a sign-in prompt. It contains no information regarding the price of gold, the date, or market data necessary to determine if Gold closed at $2,700-2,800 at the end of 2025.",
+          "expected": "No"
+        },
+        {
+          "question": "Will America be profitable any month in 2025?",
+          "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government",
+          "reasoning": "The page only describes the Monthly Treasury Statement dataset and its API; it does not include any actual surplus/deficit figures for 2025, so we cannot tell whether any month in 2025 shows a profit (surplus).",
+          "expected": "Yes"
+        },
+        {
+          "question": "Will Elon and DOGE cut less than $50b in federal spending in 2025?",
+          "url": "https://fred.stlouisfed.org/series/FGEXPND",
+          "reasoning": "The provided text contains the total federal expenditure figure for Q4 2025 ($7,572.4 billion), but it does not mention Elon Musk, the Department of Government Efficiency (DOGE), or any specific data regarding spending cuts made by them. Without a baseline of what spending would have been without their intervention, it is impossible to determine if they cut less than $50b based solely on this content.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Will RFK end Hepatitis B vaccine recommendation in 2025?",
+          "url": "https://www.cdc.gov/acip-recs/hcp/vaccine-specific/",
+          "reasoning": "The page only lists that there are vaccine-specific ACIP recommendations, including for Hepatitis B, as of January 7, 2025. It does not mention RFK, any change in authority, or any ending or continuation of the Hepatitis B vaccine recommendation in 2025. Therefore, it does not provide enough information to determine whether RFK ended the Hepatitis B vaccine recommendation in 2025.",
+          "expected": "No"
+        },
+        {
+          "question": "Will RFK end HPV vaccine recommendation in 2025?",
+          "url": "https://www.cdc.gov/acip-recs/hcp/vaccine-specific/",
+          "reasoning": "The webpage content lists 'Human Papillomavirus' under vaccine-specific recommendations as of January 7, 2025, but does not mention RFK, any ending of the HPV recommendation, or provide evidence on whether it will be ended later in 2025.",
+          "expected": "No"
+        },
+        {
+          "question": "Will RFK end Influenza vaccine recommendation in 2025?",
+          "url": "https://www.cdc.gov/acip-recs/hcp/vaccine-specific/",
+          "reasoning": "The webpage content lists Influenza under Vaccine-Specific Recommendations and is dated January 7, 2025, but does not mention RFK, any ending of recommendations, or changes specific to the influenza vaccine for 2025, providing insufficient information to definitively resolve the question.",
+          "expected": "No"
+        },
+        {
+          "question": "Will RFK end COVID-19 vaccine recommendation in 2025?",
+          "url": "https://www.cdc.gov/acip-recs/hcp/vaccine-specific/",
+          "reasoning": "The webpage content, dated January 7, 2025, lists 'COVID-19' as a vaccine with current recommendations. However, it does not provide information regarding RFK's actions, future policy changes for the remainder of 2025, or any decision to end the recommendation.",
+          "expected": "No"
+        },
+        {
+          "question": "Will RFK end Measles Mumps and Rubella vaccine recommendation in 2025?",
+          "url": "https://www.cdc.gov/acip-recs/hcp/vaccine-specific/",
+          "reasoning": "The page only lists that ACIP recommendations for Measles, Mumps and Rubella (MMR) vaccines exist and are current as of January 7, 2025; it does not state whether RFK (or anyone else) has ended, revoked, or kept those recommendations for 2025.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Trump impose large tariffs in 2025?",
+          "url": "https://fred.stlouisfed.org/graph/?g=1wn5e",
+          "reasoning": "The webpage content provides metadata, descriptions, and sources for economic data series on customs duties and imports but contains no actual data values, graphs, or specific information about tariffs imposed by Trump in 2025, making it impossible to definitively resolve the question.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Will Gold close between $3400 and $3500 at the end of 2025?",
+          "url": "https://www.google.com/finance/quote/GCW00:COMEX",
+          "reasoning": "The page only shows a Google cookie/consent banner and does not provide any price data for gold or any information about the closing price of gold at the end of 2025.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Gold close between $3200 and $3300 at the end of 2025?",
+          "url": "https://www.google.com/finance/quote/GCW00:COMEX",
+          "reasoning": "The provided webpage content is only a Google sign-in and cookie consent page. It contains no actual financial data, price quotes, or any information about the price of gold (GCW00:COMEX) at any date, let alone its closing price at the end of 2025.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Gold close below $3200 at the end of 2025?",
+          "url": "https://www.google.com/finance/quote/GCW00:COMEX",
+          "reasoning": "The provided webpage content is only a generic Google sign-in and cookie consent page. It contains no actual financial data, price information, or market details about Gold (GCW00:COMEX) or any closing price for 2025.",
+          "expected": "No"
+        },
+        {
+          "question": "Will 8+ Fed rate cuts happen in 2025?",
+          "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+          "reasoning": "The webpage shows the FOMC meeting calendar and lists meetings that occurred in 2025 (January 28-29, March 18-19, May 6-7, June 17-18, July 29-30, September 16-17, October 28-29, and December 9-10). However, this page only shows when meetings occurred, not what rate decisions were made at each meeting. To determine if 8+ rate cuts happened in 2025, I would need to review the actual policy statements or minutes from each meeting to see what rate actions were taken. The calendar alone does not provide information about whether rates were cut, raised, or held steady at each meeting.",
+          "expected": "No"
+        },
+        {
+          "question": "Will 2 Fed rate cuts happen in 2025?",
+          "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+          "reasoning": "The provided webpage only lists the FOMC meeting calendar for 2021–2026 with links to statements, minutes, and projection materials. It does not state the target federal funds rate levels or any changes (hikes or cuts) made at those meetings. Therefore, based solely on this page, we cannot determine whether two or more rate cuts occurred in 2025.",
+          "expected": "No"
+        },
+        {
+          "question": "Will 1 Fed rate cut happen in 2025?",
+          "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+          "reasoning": "The provided webpage content only lists the schedule of FOMC meetings for 2025 and other years but does not include any statements, minutes, or decisions regarding interest rate changes for 2025. Without access to the actual meeting outcomes, projections, or policy decisions, it is impossible to determine if a Fed rate cut will occur in 2025.",
+          "expected": "No"
+        },
+        {
+          "question": "Will no Fed rate cuts happen in 2025?",
+          "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+          "reasoning": "The provided webpage only lists FOMC meeting dates, document links (statements, minutes, projection materials), and related metadata for 2025. It does not state the federal funds rate level, nor does it indicate whether any rate cuts occurred at those meetings. Therefore, based solely on this content, we cannot determine if there were zero Fed rate cuts in 2025.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Ximena Rincón win the Chilean presidential election?",
+          "url": "https://www.servel.cl/",
+          "reasoning": "The provided webpage content lists links to 'Resultados Provisorios 2da Votación Presidencial' and 'Resultados Preliminares' for the 2025 elections, but it does not display the actual election results or state who won. Furthermore, the name 'Ximena Rincón' does not appear anywhere in the text.",
+          "expected": "No"
+        },
+        {
+          "question": "Will any AI score ≥20% on ARC-AGI-2 by April 30?",
+          "url": "https://arcprize.org",
+          "reasoning": "The provided text confirms that the ARC Prize 2025 competition has ended and lists winners for 'Top Score' (NVARC), but it does not specify the numerical percentage score achieved by any AI on the ARC-AGI-2 benchmark specifically.",
+          "expected": "No"
+        },
+        {
+          "question": "Will LLA win the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+          "url": "https://www.electoral.gob.ar/nuevo/index.php",
+          "reasoning": "The provided webpage content does not include any information about election results, polling data, or projections for the 2025 Argentina election. It only lists general electoral resources, categories, and institutional details (e.g., museum inauguration, contact information). No evidence is present to determine whether LLA (La Libertad Avanza) will win the most seats in the Chamber of Deputies.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Will Party F hold the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+          "url": "https://www.electoral.gob.ar/nuevo/index.php",
+          "reasoning": "The webpage is from Argentina's National Electoral Chamber (CNE) and mentions '2025 Elections' in the navigation, but contains no actual election results or information about seat distribution in the Chamber of Deputies. The main content only describes a museum about Argentina's electoral history. There is no data about which party holds the most seats or any results from the 2025 election.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Party B win the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+          "url": "https://www.electoral.gob.ar/nuevo/index.php",
+          "reasoning": "The page only shows general navigation links and an announcement about a new Electoral Museum; it contains no results, vote counts, or seat allocations for the 2025 Chamber of Deputies election.",
+          "expected": "No"
+        },
+        {
+          "question": "Will  Nuno Mendes win the 2025 Ballon d'Or?",
+          "url": "https://www.francefootball.fr/",
+          "reasoning": "The provided webpage content contains general headlines and navigational links but does not mention the 2025 Ballon d'Or winner or Nuno Mendes.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Virgil van Dijk win the 2025 Ballon d'Or?",
+          "url": "https://www.francefootball.fr/",
+          "reasoning": "The webpage content includes navigation to 'Ballon d'Or' and a magazine edition dated February 13, 2026, but contains no mention of the 2025 Ballon d'Or winner or Virgil van Dijk, only unrelated articles and links.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Cole Palmer win the 2025 Ballon d'Or?",
+          "url": "https://www.francefootball.fr/",
+          "reasoning": "The webpage content dated February 13, 2026, lists various articles and general site navigation for France Football but does not mention Cole Palmer or the results of the 2025 Ballon d'Or ceremony.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Jamal Musiala win the 2025 Ballon d'Or?",
+          "url": "https://www.francefootball.fr/",
+          "reasoning": "The provided webpage content from francefootball.fr does not mention Jamal Musiala, the 2025 Ballon d'Or, or any Ballon d'Or winner information. It only shows general site navigation, article teasers, and footer/legal information. Therefore, there is not enough information to determine whether Jamal Musiala won the 2025 Ballon d'Or.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Achraf Hakimi win the 2025 Ballon d'Or?",
+          "url": "https://www.francefootball.fr/",
+          "reasoning": "The webpage content is from France Football's website dated February 13, 2026, but it only shows navigation elements, article headlines, and general site structure. There is no mention of Achraf Hakimi or any information about the 2025 Ballon d'Or winner. The content does not provide sufficient information to determine whether Hakimi won the 2025 Ballon d'Or.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Gianluigi Donnarumma win the 2025 Ballon d'Or?",
+          "url": "https://www.francefootball.fr/",
+          "reasoning": "The webpage content does not provide any information about the 2025 Ballon d'Or winner or Gianluigi Donnarumma's chances of winning it. The page contains general football-related articles and links but no results or announcements regarding the 2025 Ballon d'Or.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Desire Doue win the 2025 Ballon d'Or?",
+          "url": "https://www.francefootball.fr/",
+          "reasoning": "The provided webpage content does not mention Desire Doue, the 2025 Ballon d'Or, any list of winners, nominees, or results. It only shows general navigation and magazine information, so there is no evidence to determine whether Desire Doue won the 2025 Ballon d'Or.",
+          "expected": "No"
+        },
+        {
+          "question": "Will de Goes Rodrygo win the 2025 Ballon d'Or?",
+          "url": "https://www.francefootball.fr/",
+          "reasoning": "The provided France Football webpage content does not mention the 2025 Ballon d'Or, any winner, or de Goes Rodrygo. It only shows general site navigation, articles, and footer information dated February 13, 2026. There is no specific evidence indicating whether Rodrygo did or did not win the 2025 Ballon d'Or, so the question cannot be resolved from this page alone.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Mohamed Salah win the 2025 Ballon d'Or?",
+          "url": "https://www.francefootball.fr/",
+          "reasoning": "The provided webpage content from France Football contains general site navigation, links to articles, and footer information, but does not mention the 2025 Ballon d'Or, its winner, or Mohamed Salah. There is no explicit information about who won the 2025 Ballon d'Or, so the question cannot be resolved based solely on this page.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Vitinha win the 2025 Ballon d'Or?",
+          "url": "https://www.francefootball.fr/",
+          "reasoning": "The provided France Football webpage content contains only navigation, promotional text, and general site information, with no mention of Vitinha or the 2025 Ballon d'Or results. There is no evidence indicating whether Vitinha won, so the question cannot be resolved from this page alone.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Person C win the 2025 Ivory Coast presidential election?",
+          "url": "https://www.cei.ci/",
+          "reasoning": "The webpage is from the Commission Electorale Indépendante (CEI) of Ivory Coast and contains information about legislative elections (elections for the National Assembly) held on December 27, 2025. There is no mention of a presidential election in 2025, and no candidate named 'Person C' is referenced anywhere on the page. The content focuses exclusively on legislative elections, not presidential elections.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Person B win the 2025 Ivory Coast presidential election?",
+          "url": "https://www.cei.ci/",
+          "reasoning": "The webpage is from the Ivory Coast Electoral Commission (CEI) but only contains information about legislative elections (elections for Deputies to the National Assembly) held on December 27, 2025. There is no mention of a presidential election in 2025, nor any results for a presidential election. The page references 'Election Presidentielle 2025' with a link to consult results, but the actual content provided does not show any presidential election results or identify any candidates or winners. Without knowing who 'Person B' is or seeing actual presidential election results, it is impossible to determine if Person B won.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Jean-Louis Billon win the 2025 Ivory Coast presidential election?",
+          "url": "https://www.cei.ci/",
+          "reasoning": "The page only lists legislative-election results and upcoming partial re-runs (communiqués dated 2025-2026). It does not mention the 2025 presidential election, any presidential candidates, or Jean-Louis Billon, so it cannot confirm or deny whether he won the presidency.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Person G win the 2025 Ivory Coast presidential election?",
+          "url": "https://www.cei.ci/",
+          "reasoning": "The provided text contains information about the 2025 legislative elections (élections législatives) and mentions the existence of 2025 presidential election results, but it does not list the names of any candidates or the specific winner of the presidential election, including 'Person G'.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Person D win the 2025 Ivory Coast presidential election?",
+          "url": "https://www.cei.ci/",
+          "reasoning": "The webpage is from the Independent Electoral Commission (CEI) of Ivory Coast and contains information about the 2025 legislative elections (e.g., results from December 27, 2025). It also has a section titled 'Election Presidentielle 2025' with a link to 'CONSULTER LES RESULTATS,' but the provided content does not show the actual presidential election results or mention any candidate named 'Person D.' Therefore, there is insufficient information to determine if Person D won the 2025 presidential election.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Tidjane Thiam win the 2025 Ivory Coast presidential election?",
+          "url": "https://www.cei.ci/",
+          "reasoning": "The webpage is from the Independent Electoral Commission (CEI) of Ivory Coast and contains information about legislative elections (elections for Deputies to the National Assembly) held on December 27, 2025, with some follow-up elections in February 2026. There is no mention of a 2025 presidential election or any results related to Tidjane Thiam. The page only discusses legislative elections, not presidential elections.",
+          "expected": "No"
+        },
+        {
+          "question": "Will STAN win the most seats in the next Czech parliamentary election?",
+          "url": "https://www.volby.cz/index_en.htm",
+          "reasoning": "The provided webpage content only lists categories of elections (e.g., 'Chamber of Deputies 2025 2021 2017') and other election types, without any details on results, party seat counts, or which party won the most seats. There is no information mentioning STAN or any party performance, so it is impossible to determine from this page whether STAN won the most seats in the next Czech parliamentary election.",
+          "expected": "No"
+        },
+        {
+          "question": "Will ANO win the most seats in the next Czech parliamentary election?",
+          "url": "https://www.volby.cz/index_en.htm",
+          "reasoning": "The webpage lists '2025' under Chamber of Deputies as part of election results, suggesting it may be the next or most recent election, but provides no information on winners, seats, or any mention of ANO.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Will SPD win the most seats in the next Czech parliamentary election?",
+          "url": "https://www.volby.cz/index_en.htm",
+          "reasoning": "The webpage content lists election categories and years, such as Chamber of Deputies for 2025, 2021, etc., but provides no details on election results, parties like SPD, or seat distributions.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Stačilo! win the most seats in the next Czech parliamentary election?",
+          "url": "https://www.volby.cz/index_en.htm",
+          "reasoning": "The page only lists past and upcoming election years (e.g., Chamber of Deputies 2025, 2021, 2017) but provides no results or party-specific information, so it is impossible to tell whether the party 'Stačilo!' won the most seats.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Greens win the most seats in the next Czech parliamentary election?",
+          "url": "https://www.volby.cz/index_en.htm",
+          "reasoning": "The webpage content lists past and upcoming election years (e.g., Chamber of Deputies 2025), but it does not provide any results, polls, or data about seat distributions or party performance for future elections. Without specific information about the Greens or seat projections for the next Czech parliamentary election, the question cannot be resolved.",
+          "expected": "No"
+        },
+        {
+          "question": "Will SOCDEM win the most seats in the next Czech parliamentary election?",
+          "url": "https://www.volby.cz/index_en.htm",
+          "reasoning": "The webpage only shows election result archives for past years (e.g., Chamber of Deputies 2021, 2017, etc.) and lists future election years like 2025 as placeholders for upcoming elections. There is no actual result data for the 'next Czech parliamentary election' (which would likely be 2025), nor any mention of which party (including SOCDEM) won or will win the most seats.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Přísaha win the most seats in the next Czech parliamentary election?",
+          "url": "https://www.volby.cz/index_en.htm",
+          "reasoning": "The webpage only shows a navigation menu listing years of various Czech elections. While it confirms that Chamber of Deputies elections occurred in 2025, it does not provide any results data, seat counts, or information about which party (including Přísaha) won the most seats. The page appears to be just an index/navigation page without actual election results displayed.",
+          "expected": "No"
+        },
+        {
+          "question": "Will AUTO win the most seats in the next Czech parliamentary election?",
+          "url": "https://www.volby.cz/index_en.htm",
+          "reasoning": "The webpage content lists past and upcoming election years (e.g., Chamber of Deputies in 2021, 2017, and 2025) but does not provide any results, polling data, or information about political parties (including 'AUTO') for the next Czech parliamentary election. Without this data, the question cannot be resolved.",
+          "expected": "No"
+        },
+        {
+          "question": "No change in Fed interest rates after September 2025 meeting?",
+          "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+          "reasoning": "The webpage content lists FOMC meetings and provides links to statements and implementation notes for the September 2025 meeting and subsequent meetings, but does not include any details on the federal funds rate or whether it changed after the September 16-17, 2025 meeting.",
+          "expected": "No"
+        },
+        {
+          "question": "Fed increases interest rates by 25+ bps after September 2025 meeting?",
+          "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+          "reasoning": "The webpage shows that the September 2025 FOMC meeting occurred on September 16-17, 2025, and links to the statement and minutes are provided. However, the webpage content provided does not include the actual text of the September 2025 statement or minutes that would indicate what interest rate decision was made. To determine if the Fed increased interest rates by 25+ basis points after this meeting, we would need to access and read the actual statement or minutes documents, which are not included in the webpage content provided.",
+          "expected": "No"
+        },
+        {
+          "question": "Fed decreases interest rates by 50+ bps after September 2025 meeting?",
+          "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+          "reasoning": "The provided webpage only lists FOMC meeting dates, links to statements, implementation notes, projection materials, and minutes. It does not include any information about specific interest rate levels or changes (in basis points) at or after the September 16-17, 2025 meeting. Therefore, based solely on this content, we cannot determine whether the Fed decreased interest rates by 50+ bps after that meeting.",
+          "expected": "No"
+        },
+        {
+          "question": "Will MDG win the most seats in the next Norwegian parliamentary election?",
+          "url": "https://www.valg.no/en/",
+          "reasoning": "The webpage content is about the upcoming Parliamentary election on 8 September 2025, providing information on voting rights, polling stations, and past election results, but it contains no information on the outcome of the 2025 election or any predictions about which party, including MDG, will win the most seats.",
+          "expected": "No"
+        },
+        {
+          "question": "Fed decreases interest rates by 25 bps after July 2025 meeting?",
+          "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+          "reasoning": "The provided webpage content only lists FOMC meeting dates and links to statements, implementation notes, and minutes, but does not include any details about actual interest rate decisions or changes in the target federal funds rate. Therefore, it does not provide enough information to determine whether the Fed decreased interest rates by 25 basis points after the July 29-30, 2025 meeting.",
+          "expected": "No"
+        },
+        {
+          "question": "Will DPP hold the most seats in the House of Councillors following the 2025 Japan election?",
+          "url": "https://www.e-stat.go.jp/stat-search/files?page=1&toukei=00200236",
+          "reasoning": "The webpage content lists datasets for past House of Councillors election results up to 2022 (Reiwa 4), with no mention of the 2025 election or any seat distribution information for DPP or other parties following it.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Mintsuku hold the most seats in the House of Councillors following the 2025 Japan election?",
+          "url": "https://www.e-stat.go.jp/stat-search/files?page=1&toukei=00200236",
+          "reasoning": "The webpage lists datasets for past House of Councillors election results up to 2022, with no mention of the 2025 election, any party named 'Mintsuku', or seat distributions.",
+          "expected": "No"
+        },
+        {
+          "question": "Will SDP hold the most seats in the House of Councillors following the 2025 Japan election?",
+          "url": "https://www.e-stat.go.jp/stat-search/files?page=1&toukei=00200236",
+          "reasoning": "The webpage lists election results up to the 2022 election (令和４年7月１０日執行), with publication dates including 2025-04-01 for that dataset, but contains no information or results for the 2025 election or SDP's seat count following it.",
+          "expected": "No"
+        },
+        {
+          "question": "Elise Stefanik confirmed as UN ambassador?",
+          "url": "https://www.senate.gov/legislative/NominationsRejectedorWithdrawn.htm",
+          "reasoning": "The webpage shows a list of Cabinet nominations that were rejected, withdrawn, or had no action taken. Elise Stefanik does not appear anywhere on this list. However, this page only documents nominations that failed - it does not provide information about nominations that were successfully confirmed. Therefore, the absence of Stefanik's name does not confirm whether she was confirmed or not; we would need additional sources showing confirmed nominations to make that determination.",
+          "expected": "No"
+        },
+        {
+          "question": "Doug Collins confirmed as Secretary of Veterans Affairs?",
+          "url": "https://www.senate.gov/legislative/NominationsRejectedorWithdrawn.htm",
+          "reasoning": "The webpage content lists cabinet nominations that were rejected, withdrawn, or had no action taken, but does not mention Doug Collins at all. There is no information confirming or denying his confirmation as Secretary of Veterans Affairs.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Pete Hegseth confirmed as Secretary of Defense?",
+          "url": "https://www.senate.gov/legislative/NominationsRejectedorWithdrawn.htm",
+          "reasoning": "The provided Senate webpage lists cabinet nominations that were rejected, withdrawn, or had no action taken. It does not mention Pete Hegseth at all—neither as a nominee for Secretary of Defense nor in any other capacity. The page also does not list confirmed nominees, only unsuccessful ones. Because there is no information on this page about Pete Hegseth’s nomination or confirmation status, it is impossible to determine from this content alone whether he was confirmed as Secretary of Defense.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Sean Duffy confirmed as Secretary of Transportation?",
+          "url": "https://www.senate.gov/legislative/NominationsRejectedorWithdrawn.htm",
+          "reasoning": "The webpage content lists Cabinet nominations that were rejected, withdrawn, or had no action taken, up to 2019 entries like Patrick Shanahan. Sean Duffy is not mentioned anywhere in the provided content, so there is no information on whether he was confirmed as Secretary of Transportation.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Lee Zeldin confirmed as Administrator of the EPA?",
+          "url": "https://www.senate.gov/legislative/NominationsRejectedorWithdrawn.htm",
+          "reasoning": "This webpage only shows Cabinet nominations that were rejected, withdrawn, or had no action taken. Lee Zeldin does not appear on this list. However, his absence from this list does not confirm whether he was confirmed as EPA Administrator - it only indicates he was not rejected or withdrawn. To determine if he was confirmed, we would need to see a list of confirmed nominations, not just rejected/withdrawn ones.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Pam Bondi confirmed as Attorney General?",
+          "url": "https://www.senate.gov/legislative/NominationsRejectedorWithdrawn.htm",
+          "reasoning": "The webpage provided lists cabinet nominations that were rejected, withdrawn, or received no action, but it does not mention Pam Bondi or her nomination for Attorney General. There is no information confirming whether she was confirmed or not. Therefore, based solely on this content, the outcome cannot be determined.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Mike Huckabee confirmed as ambassador to Israel?",
+          "url": "https://www.senate.gov/legislative/NominationsRejectedorWithdrawn.htm",
+          "reasoning": "The webpage content lists only rejected, withdrawn, or no-action cabinet nominations and does not mention Mike Huckabee or any ambassador nominations, providing no information on his confirmation status as ambassador to Israel.",
+          "expected": "Yes"
+        },
+        {
+          "question": "John Ratcliffe confirmed as director of the CIA?",
+          "url": "https://www.senate.gov/legislative/NominationsRejectedorWithdrawn.htm",
+          "reasoning": "This webpage only lists Cabinet nominations that were rejected, withdrawn, or had no action taken. John Ratcliffe does not appear on this list. However, the absence from this list does not confirm whether he was confirmed or not - it only means his nomination was not rejected or withdrawn. To determine if he was confirmed as CIA Director, we would need to see a list of confirmed nominations, not just rejected/withdrawn ones.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Doug Burgum confirmed as Secretary of the Interior?",
+          "url": "https://www.senate.gov/legislative/NominationsRejectedorWithdrawn.htm",
+          "reasoning": "The webpage content lists only Cabinet nominations that were rejected, withdrawn, or had no action taken, but does not mention Doug Burgum at all. There is no information provided about whether he was nominated or confirmed as Secretary of the Interior.",
+          "expected": "Yes"
+        },
+        {
+          "question": "RFK Jr. confirmed as Health & Human Services Secretary?",
+          "url": "https://www.senate.gov/legislative/NominationsRejectedorWithdrawn.htm",
+          "reasoning": "The provided Senate webpage lists Cabinet nominations that were rejected, withdrawn, or had no action taken. It includes an entry for Tom Daschle as Health & Human Services Secretary (withdrawn Feb 9, 2009), but contains no mention of Robert F. Kennedy Jr. at all. Because the page is limited to rejected/withdrawn/no-action nominations and does not provide a complete record of all confirmed or unconfirmed HHS Secretaries, it does not give enough information to determine whether RFK Jr. was confirmed as Health & Human Services Secretary.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Brooke Rollins confirmed as Agriculture Secretary?",
+          "url": "https://www.senate.gov/legislative/NominationsRejectedorWithdrawn.htm",
+          "reasoning": "The webpage only lists Cabinet nominations that were rejected, withdrawn, or had no action taken. Brooke Rollins does not appear anywhere on this list. However, the absence from this list does not confirm whether Rollins was confirmed - it only shows she was not rejected or withdrawn. To determine if she was confirmed as Agriculture Secretary, we would need to see a list of confirmed nominations, not just rejected/withdrawn ones.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Scott Bessent confirmed as Treasury Secretary?",
+          "url": "https://www.senate.gov/legislative/NominationsRejectedorWithdrawn.htm",
+          "reasoning": "The webpage only lists Cabinet nominations that were rejected, withdrawn, or on which no action was taken. It does not mention Scott Bessent at all, nor does it list confirmed nominees. From this page alone, we cannot determine whether Scott Bessent was ever nominated or confirmed as Treasury Secretary.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Will federal spending decrease by $500-750b between Q4 2024 and Q2 2025?",
+          "url": "https://fred.stlouisfed.org/series/FGEXPND",
+          "reasoning": "The webpage only shows one data point: Q4 2025 at 7,572.400 billion dollars. To determine if federal spending decreased by $500-750b between Q4 2024 and Q2 2025, we would need the values for Q4 2024 and Q2 2025. Neither of these required data points are provided in the webpage content.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Ukraine join NATO before July?",
+          "url": "https://www.nato.int/cps/en/natohq/nato_countries.htm",
+          "reasoning": "The webpage content lists NATO's 32 member countries as of 11 March 2024, and Ukraine is not included in the list. There is no mention of Ukraine, its potential membership, or any timeline related to joining NATO. Without information on events after March 2024 or specific to Ukraine joining before July, the question cannot be definitively resolved.",
+          "expected": "No"
+        },
+        {
+          "question": "Will federal spending decrease by more than $2t between Q4 2024 and Q2 2025?",
+          "url": "https://fred.stlouisfed.org/series/FGEXPND",
+          "reasoning": "The webpage shows the value for Q4 2025 (7,572.400 billion dollars), but the question asks for a comparison between Q4 2024 and Q2 2025. The provided data does not show the values for Q4 2024 or Q2 2025, which are necessary to determine if a decrease of more than $2 trillion occurred between those specific quarters.",
+          "expected": "No"
+        },
+        {
+          "question": "Will federal spending decrease by $750b-1t between Q4 2024 and Q2 2025?",
+          "url": "https://fred.stlouisfed.org/series/FGEXPND",
+          "reasoning": "The provided text only contains data for Q4 2025 ($7,572.400 billion). It does not provide the specific expenditure figures for Q4 2024 or Q2 2025, which are necessary to calculate the difference and determine if a decrease occurred.",
+          "expected": "No"
+        },
+        {
+          "question": "Will xAI have the top AI model on June 30?",
+          "url": "https://lmarena.ai/leaderboard/text",
+          "reasoning": "The webpage content shows the leaderboard as of Feb 26, 2026, with xAI's highest-ranked model at #4 (grok-4.20-beta1), but it does not provide any information about the state of the leaderboard specifically on June 30 of any year.",
+          "expected": "No"
+        },
+        {
+          "question": "Russell Vought confirmed as OMB Director?",
+          "url": "https://www.senate.gov/legislative/NominationsRejectedorWithdrawn.htm",
+          "reasoning": "The provided webpage content lists nominations that were rejected, withdrawn, or received no action, but it does not include any information about Russell Vought or his confirmation as OMB (Office of Management and Budget) Director. Therefore, the question cannot be resolved based on this content alone.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Scott Turner confirmed as HUD Secretary?",
+          "url": "https://www.senate.gov/legislative/NominationsRejectedorWithdrawn.htm",
+          "reasoning": "The webpage content lists Cabinet nominations that were rejected, withdrawn, or received no action, but there is no mention of Scott Turner or a confirmation for the position of HUD (Housing and Urban Development) Secretary. Thus, the content does not provide enough information to determine if Scott Turner was confirmed.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Mehmet Oz confirmed as Medicare and Medicaid Administrator?",
+          "url": "https://www.senate.gov/legislative/NominationsRejectedorWithdrawn.htm",
+          "reasoning": "The provided webpage only lists certain Cabinet-level nominations that were rejected, withdrawn, or had no action taken by the Senate. It does not mention Mehmet Oz at all, nor does it address the position of Medicare and Medicaid Administrator. Because there is no information on this page about Mehmet Oz’s nomination or confirmation status for that role, the question cannot be resolved based solely on the given content.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Marco Rubio confirmed as Secretary of State?",
+          "url": "https://www.senate.gov/legislative/NominationsRejectedorWithdrawn.htm",
+          "reasoning": "The provided webpage only lists Cabinet nominations that were rejected, withdrawn, or received no action. It does not list successful confirmations, so Marco Rubio’s confirmation as Secretary of State cannot be confirmed from this source.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Will Trump Media invest in Bitcoin before July?",
+          "url": "https://www.ft.com/content/ee0edda4-fca6-4c1e-bc66-d21ec7302690",
+          "reasoning": "The webpage is behind a paywall and only shows the headline 'Trump Media targets crypto investments with push into financial services' along with subscription prompts. The actual article content that would confirm whether Trump Media specifically invested in Bitcoin before July is not accessible. While the headline mentions crypto investments, it does not provide sufficient detail about Bitcoin specifically or the timing of any actual investment.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Trump Media invest in $TRUMP before July?",
+          "url": "https://www.ft.com/content/ee0edda4-fca6-4c1e-bc66-d21ec7302690",
+          "reasoning": "The visible content only shows the headline 'Trump Media targets crypto investments with push into financial services' and subscription/promotional text. It does not provide any detailed reporting about specific cryptocurrencies, including $TRUMP, nor does it state whether Trump Media has actually made any investment in $TRUMP before July. Because there is no explicit confirmation or denial of such an investment in the provided text, the question cannot be resolved based on this page alone.",
+          "expected": "No"
+        },
+        {
+          "question": "Fed increases interest rates by 25+ bps after June 2025 meeting?",
+          "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+          "reasoning": "The provided webpage only lists FOMC meeting dates, associated documents (statements, minutes, projection materials), and release dates for 2021–2026. It does not include any information about the actual interest rate decisions or changes in the federal funds rate (e.g., whether rates were increased by 25+ bps after the June 2025 meeting). Therefore, based solely on this content, we cannot determine if the Fed increased interest rates by 25+ bps after the June 2025 meeting.",
+          "expected": "No"
+        },
+        {
+          "question": "Fed decreases interest rates by 25 bps after June 2025 meeting?",
+          "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+          "reasoning": "The provided webpage only lists FOMC meeting dates, document links (statements, implementation notes, minutes, projection materials), and release dates for those documents. It does not state any actual interest rate decisions, changes in the federal funds rate, or the size (in basis points) of any rate moves for or after the June 17-18, 2025 meeting. Therefore, we cannot determine from this content whether the Fed decreased interest rates by 25 bps after the June 2025 meeting.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Carlos Alcaraz win the 2025 French Open?",
+          "url": "https://www.rolandgarros.com/fr-fr/",
+          "reasoning": "The webpage is from the official Roland-Garros (French Open) site and shows content dated February 2025, promoting the 2026 tournament (scheduled for May 18 - June 7, 2026). The 2025 French Open has not yet occurred, so there is no information on this page about who won the 2025 tournament. The page only contains news updates about current ATP/WTA tour events and promotional content for the upcoming 2026 edition.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Will Tommy Paul win the 2025 French Open?",
+          "url": "https://www.rolandgarros.com/fr-fr/",
+          "reasoning": "The page only advertises Roland-Garros 2026 (18 May – 7 June 2026) and lists recent news; it contains no draw, bracket, results, or any mention of Tommy Paul, so we cannot determine whether he won the 2025 French Open.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Jannik Sinner win the 2025 French Open?",
+          "url": "https://www.rolandgarros.com/fr-fr/",
+          "reasoning": "The webpage shows that Roland-Garros 2026 is scheduled for May 18 - June 7, 2026, but the question asks about the 2025 French Open. There is no information on this page about the 2025 tournament results or winner. The page only contains news and information about the upcoming 2026 edition.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Joao Fonseca win the 2025 French Open?",
+          "url": "https://www.rolandgarros.com/fr-fr/",
+          "reasoning": "The webpage shows information about Roland-Garros 2026 (scheduled for May 18 - June 7, 2026), not the 2025 French Open. There is no mention of Joao Fonseca or any results from the 2025 tournament. The page contains news updates from February 2025 discussing various ATP/WTA players, but does not provide information about who won or will win the 2025 French Open.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Novak Djokovic win the 2025 French Open?",
+          "url": "https://www.rolandgarros.com/fr-fr/",
+          "reasoning": "The webpage shows that Roland-Garros 2026 is scheduled for May 18 - June 7, 2026, but the question asks about the 2025 French Open. There is no information on this page about the 2025 tournament results or winners. The page only contains news and information about the upcoming 2026 edition and does not mention Novak Djokovic winning or not winning the 2025 tournament.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Andrey Rublev win the 2025 French Open?",
+          "url": "https://www.rolandgarros.com/fr-fr/",
+          "reasoning": "The page only announces dates for Roland-Garros 2026 (18 May – 7 June 2026) and contains general news; it does not list any match results or name the 2025 men’s singles champion, so we cannot tell whether Andrey Rublev won the 2025 French Open.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Arjun Erigaisi win the 2025 Norway Chess tournament?",
+          "url": "https://norwaychess.no/en/",
+          "reasoning": "The provided webpage content focuses on the 2026 edition of Norway Chess (dates, lineup, and news). It contains no information regarding the results or winner of the 2025 Norway Chess tournament.",
+          "expected": "No"
+        },
+        {
+          "question": "Will the ECB announce a 50+ bps decrease at the June meeting?",
+          "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
+          "reasoning": "The webpage lists the schedule for upcoming ECB Governing Council meetings, including the June 2026 monetary policy meeting on 10–11 June. However, it does not provide any information about the actual decisions or announcements made during those meetings, such as whether a 50+ basis point rate decrease was announced. Therefore, based solely on this content, it is not possible to determine whether the ECB announced such a decrease at the June meeting.",
+          "expected": "No"
+        },
+        {
+          "question": "Will the ECB announce an increase at the June meeting?",
+          "url": "https://www.ecb.europa.eu/press/calendars/mgcgc/html/index.en.html",
+          "reasoning": "The webpage lists the ECB's meeting schedule, including a monetary policy meeting on June 10-11, 2026, which is likely the June meeting referenced in the question. However, the page does not provide any information about the outcome of the meeting or whether an interest rate increase will be announced. Therefore, based solely on this content, it is not possible to determine if the ECB will announce an increase.",
+          "expected": "No"
+        },
+        {
+          "question": "Trump approval >40% on June 1?",
+          "url": "https://www.natesilver.net/p/trump-approval-ratings-nate-silver-bulletin",
+          "reasoning": "The webpage is dated February 27, 2026, and discusses Trump's net approval rating (e.g., -13.4) and changes in issue-specific net approvals. However, it does not provide his actual topline approval percentage at any point, let alone for June 1 of any year. The question asks for his approval being >40% on June 1, but the content contains no data for that date.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Will Bitcoin replace SHA-256 before June?",
+          "url": "https://www.cryptoglobe.com/latest/2024/12/does-googles-new-quantum-chip-willow-threaten-bitcoin-the-crypto-community-responds/",
+          "reasoning": "The provided webpage content contains news about Bitcoin's price movements, ETFs, regulatory actions, and broader crypto market developments, but does not mention anything about Bitcoin changing or replacing its SHA-256 hashing algorithm, nor any protocol change timeline relative to June. Therefore, there is not enough information to determine whether Bitcoin replaced SHA-256 before June, so the question cannot be resolved from this page alone.",
+          "expected": "No"
+        },
+        {
+          "question": "Earthquake 7.0 or above before May?",
+          "url": "https://earthquake.usgs.gov/earthquakes/browse/significant.php#sigdef",
+          "reasoning": "The webpage shows the header 'Significant Earthquakes - 2026' and indicates it is fetching a list of earthquakes, but no actual earthquake data is displayed in the content provided. The page only contains explanatory text about what makes an earthquake 'significant' and the equation used to calculate significance. Without the actual list of earthquakes showing their magnitudes and dates, it is impossible to determine whether an earthquake of magnitude 7.0 or above occurred before May 2026.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Will Gold hit $3,600 before June?",
+          "url": "https://www.google.com/finance/quote/GCW00:COMEX",
+          "reasoning": "The provided webpage content only contains Google's cookie and privacy notice text and does not include any information about gold prices, dates, or whether gold reached $3,600 before June. Therefore, it is impossible to determine the market outcome from this content alone.",
+          "expected": "No"
+        },
+        {
+          "question": "Will global temperature increase by between 1.20-1.24ºC in May 2025?",
+          "url": "https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts+dSST.txt",
+          "reasoning": "The provided webpage content includes global temperature data up to the year 2026 but only lists annual mean temperatures and monthly data up to December 1980. There is no specific data for May 2025 or any projections/predictions beyond the existing historical data. Thus, it is impossible to determine if the global temperature will increase by between 1.20-1.24ºC in May 2025 based solely on this content.",
+          "expected": "No"
+        },
+        {
+          "question": "Will global temperature increase by between 1.05-1.09ºC in May 2025?",
+          "url": "https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts+dSST.txt",
+          "reasoning": "The provided table only shows monthly global land-ocean temperature index values through the year 1980 (the last visible data row is for 1980, with months Jan–May shown as 29, 39, 29, 30, 35 in 0.01°C units). There is no data for the year 2025, let alone May 2025, so we cannot determine whether the May 2025 anomaly was between 1.05–1.09°C (i.e., 105–109 in the table’s units) based solely on this content.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Will global temperature increase by between 1.15-1.19ºC in May 2025?",
+          "url": "https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts+dSST.txt",
+          "reasoning": "The webpage data shows temperature anomalies in 0.01 degrees Celsius with base period 1951-1980, but the data table ends at 1980 and does not include May 2025. The question asks about global temperature increase of 1.15-1.19ºC in May 2025, but this information is not present in the provided content.",
+          "expected": "No"
+        }
+      ]
+    },
+    "Scope/specificity issue": {
+      "count": 34,
+      "percentage": 16,
+      "all_cases": [
+        {
+          "question": "Will U.S. National debt surpass $38 trillion in 2025?",
+          "url": "https://www.treasurydirect.gov/NP_WS/debt/current",
+          "reasoning": "The webpage content provides the TotalDebt as 38787781432126.22 on the effective date of 2026-02-24, which is over $38 trillion, but this date is in 2026, not 2025. There is no data from 2025 to determine if the debt surpassed $38 trillion specifically during 2025.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Will Meta have the top AI model on December 31?",
+          "url": "https://lmarena.ai/leaderboard/text",
+          "reasoning": "The webpage content is a leaderboard dated Feb 24, 2026, but the question asks about December 31 (likely 2025). The content does not provide the specific rankings or state of the leaderboard as of December 31, and includes models and votes from after that date, making it impossible to definitively determine the top model on that exact date.",
+          "expected": "No"
+        },
+        {
+          "question": "Will NBA competitor raise >$3b in 2025?",
+          "url": "https://sg.news.yahoo.com/investors-seek-5-billion-to-form-basketball-league-to-rival-nba-051441296.html",
+          "reasoning": "The webpage discusses investors seeking $5 billion to form a basketball league to rival the NBA, but it does not specify whether an existing NBA competitor will raise more than $3 billion in 2025. There is no mention of a specific competitor or confirmed funding amount being raised in that year.",
+          "expected": "No"
+        },
+        {
+          "question": "Any Tesla arsonist found guilty in 2025?",
+          "url": "https://abcnews.go.com/Business/video/investigation-underway-apparent-tesla-arson-attacks-119962366",
+          "reasoning": "The provided text indicates that an investigation into 'apparent Tesla arson attacks' was underway as of March 19, 2025, and that Attorney General Pam Bondi labeled them 'domestic terrorism.' However, there is no information in the text regarding whether any specific individual was caught, tried, and found guilty in a court of law during 2025.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Will Trump's approval rating hit 35% in 2025?",
+          "url": "https://www.natesilver.net/p/trump-approval-ratings-nate-silver-bulletin",
+          "reasoning": "The webpage content discusses Trump's net approval rating (-14.9) and strong approval/disapproval percentages (24% strong approve, 45% strong disapprove in 2026; 34% strong approve at inauguration in 2025), but does not provide the total approval rating percentage at any point. Without specific total approval figures for 2025, it is impossible to determine if it hit 35%.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Trump announce Arthur Laffer as next Fed Chair in 2025?",
+          "url": "https://www.nbcwashington.com/news/business/money-report/fed-chair-jerome-powell-can-serve-remainder-of-term-says-trumps-treasury-pick-bessent/3788991/",
+          "reasoning": "The article only discusses that Jerome Powell can serve the remainder of his term as Fed Chair and mentions comments by Scott Bessent and Donald Trump about Powell. It does not mention Arthur Laffer, any announcement of a new Fed Chair, or any specific actions in 2025. Therefore, based solely on this webpage, we cannot determine whether Trump announced Arthur Laffer as the next Fed Chair in 2025.",
+          "expected": "No"
+        },
+        {
+          "question": "Will U.S. tourism decline in April?",
+          "url": "https://www.trade.gov/us-international-air-travel-statistics-i-92-data",
+          "reasoning": "The webpage content describes the U.S. International Air Travel Statistics program, including data collection methods and market profiles, but provides no actual statistics, passenger volumes, or trends for any specific month like April, nor any information on tourism decline.",
+          "expected": "No"
+        },
+        {
+          "question": "Will 7 Fed rate cuts happen in 2025?",
+          "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+          "reasoning": "The webpage content provides the schedule of FOMC meetings for 2025, including dates, statements, and minutes release dates, but does not include any details on the actual decisions made, such as whether rate cuts occurred or how many. There is no specific evidence about rate cuts in 2025.",
+          "expected": "No"
+        },
+        {
+          "question": "Will 3 Fed rate cuts happen in 2025?",
+          "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+          "reasoning": "The webpage content provides the schedule of FOMC meetings for 2025, including dates and placeholders for statements, minutes, and projections, but does not include any actual details, outcomes, or announcements from those meetings regarding rate cuts. There is no information on whether any rate cuts occurred, let alone specifically 3 in 2025.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Will José Antonio Kast win the Chilean presidential election?",
+          "url": "https://www.servel.cl/",
+          "reasoning": "The provided text indicates that the 2025 presidential elections have occurred (mentioning provisional results and campaign spending), but it does not specify the name of the winner or the specific vote counts for José Antonio Kast.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Will Francesca Muñoz win the Chilean presidential election?",
+          "url": "https://www.servel.cl/",
+          "reasoning": "The webpage mentions that presidential elections occurred in 2025 and provides links to results, but it does not list the name of the winner or mention Francesca Muñoz specifically.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Marco Enríquez-Ominami win the Chilean presidential election?",
+          "url": "https://www.servel.cl/",
+          "reasoning": "The provided Servel webpage content is a general institutional and news overview. It references elections and links to 'Resultados Provisorios' and 'Resultados Preliminares' but does not display any actual presidential results, candidate names, or indicate who won the Chilean presidential election. Marco Enríquez-Ominami is not mentioned anywhere on the page, so the outcome of his candidacy cannot be determined from this content alone.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Jim Gavin win the Irish Presidential Election?",
+          "url": "https://www.electoralcommission.ie/",
+          "reasoning": "The webpage content does not mention Jim Gavin or the Irish Presidential Election. It appears to be a general page about voting and electoral information in Ireland, with no specific details about current or upcoming elections or candidates. Therefore, it is not possible to determine if Jim Gavin will win the Irish Presidential Election based on this content.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Frances Fitzgerald win the Irish Presidential Election?",
+          "url": "https://www.electoralcommission.ie/",
+          "reasoning": "The webpage content does not mention the Irish Presidential Election, its results, or Frances Fitzgerald at all. It focuses on general voting information, news updates from 2025-2026, and electoral system details, providing no evidence to determine the winner.",
+          "expected": "No"
+        },
+        {
+          "question": "Will any AI score ≥20% on ARC-AGI-2 by June 30?",
+          "url": "https://arcprize.org",
+          "reasoning": "The provided webpage content mentions ARC-AGI-2 and that the ARC Prize 2025 competition has ended, but it does not list any specific scores, percentages, or performance metrics for ARC-AGI-2. There is no information indicating whether any AI scored ≥20% on ARC-AGI-2 by June 30, so the question cannot be resolved from this page alone.",
+          "expected": "No"
+        },
+        {
+          "question": "Will LLA hold the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+          "url": "https://www.electoral.gob.ar/nuevo/index.php",
+          "reasoning": "The webpage content does not provide any information about election results, political parties such as LLA, or seat distribution in the Chamber of Deputies for the 2025 Argentina election. It only mentions general sections of the electoral website and a museum inauguration. Therefore, it is impossible to determine whether LLA will hold the most seats based on this content.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Will FIT-U hold the most seats in the Chamber of Deputies following the 2025 Argentina election?",
+          "url": "https://www.electoral.gob.ar/nuevo/index.php",
+          "reasoning": "The webpage content discusses general aspects of the 2025 elections, such as political groups, financing, procedures, and a museum, but provides no information on election results, seat distributions in the Chamber of Deputies, or any mention of FIT-U.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Federico Valverde win the 2025 Ballon d'Or?",
+          "url": "https://www.francefootball.fr/",
+          "reasoning": "The provided webpage content from France Football mentions the Ballon d'Or category but does not list any winners or specific results for the 2025 edition.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Ousmane Dembele win the 2025 Ballon d'Or?",
+          "url": "https://www.francefootball.fr/",
+          "reasoning": "The provided webpage content, dated February 13, 2026, mentions the Ballon d'Or section but does not list any winners or specific results for the 2025 ceremony. There is no mention of Ousmane Dembele's ranking or award status.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Will Simone Gbagbo win the 2025 Ivory Coast presidential election?",
+          "url": "https://www.cei.ci/",
+          "reasoning": "The provided text indicates that a presidential election was scheduled for 2025 (listing a 'Liste Electorale Définitive 2025' and a section for 'Election Presidentielle 2025'), but it does not list the actual winner or the results of that specific election. While there are detailed results for the legislative elections held on December 27, 2025, the winner of the presidential seat is not mentioned.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Person E win the 2025 Ivory Coast presidential election?",
+          "url": "https://www.cei.ci/",
+          "reasoning": "The webpage content provided pertains primarily to the 2025 legislative elections in Ivory Coast, including results, communiqués, and procedural documents. There is no mention of the 2025 presidential election results, candidates, or any information specifically related to 'Person E' or their potential victory in the presidential election. Thus, the question cannot be resolved based on this content.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Person F win the 2025 Ivory Coast presidential election?",
+          "url": "https://www.cei.ci/",
+          "reasoning": "The provided webpage content focuses on the 2025 legislative elections (élections législatives) and mentions that results for the 2025 presidential election are available via a link. However, the text does not name the candidates or the specific winner of the presidential race, nor does it mention 'Person F'.",
+          "expected": "No"
+        },
+        {
+          "question": "Will another person win the 2025 Ivory Coast presidential election?",
+          "url": "https://www.cei.ci/",
+          "reasoning": "The webpage indicates that the 2025 Presidential Election has occurred (as there is a link for 'Résultats du scrutin' under 'Election Presidentielle 2025'), but the text does not name the winner or provide the specific results needed to determine if 'another person' (presumably someone other than the incumbent) won.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Trump's approval rating hit 30% before August?",
+          "url": "https://www.natesilver.net/p/trump-approval-ratings-nate-silver-bulletin",
+          "reasoning": "The webpage content is dated February 27, 2026, which is after the August deadline in the question ('before August'). However, the content discusses Trump's net approval rating (e.g., -13.4), not his raw approval rating, and provides no specific data point indicating his approval rating has reached or exceeded 30%. The question asks about hitting 30% approval, but the page only references net approval figures and issue-specific net approvals, making it impossible to determine if the raw approval condition was met by the specified time.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Trump's approval rating hit 35% before August?",
+          "url": "https://www.natesilver.net/p/trump-approval-ratings-nate-silver-bulletin",
+          "reasoning": "The page only reports Donald Trump’s *net* approval (e.g., -13.4 as of Feb. 27, 2026) and issue-specific net approval numbers. It does not provide his underlying approval percentage, does not mention a 35% approval threshold, and does not specify whether or when his approval hit 35% relative to any August. Therefore, the question cannot be resolved from this content alone.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Trump's approval rating hit 43% before August?",
+          "url": "https://www.natesilver.net/p/trump-approval-ratings-nate-silver-bulletin",
+          "reasoning": "The webpage provides Trump's approval ratings as of February 27, 2026, including net approval ratings and issue-specific ratings, but does not specify his exact overall approval percentage. It mentions net approval (e.g., -13.4 to -14.4), which is the difference between approval and disapproval, but not the raw approval level. Without knowing whether his approval rating reached 43%, and with no direct mention of that threshold or data beyond February 2026, it is impossible to determine if it hit 43% before August (presumably August 2026, though the year is not specified in the question). Therefore, the question is unresolvable based on the given content.",
+          "expected": "No"
+        },
+        {
+          "question": "Trump approval >40% on July 1?",
+          "url": "https://www.natesilver.net/p/trump-approval-ratings-nate-silver-bulletin",
+          "reasoning": "The provided text is dated February 27, 2026, and discusses current approval ratings for that time period. It does not provide data for July 1 (presumably of 2026 or a prior year), nor does it state the specific 'topline' approval percentage, only the 'net' approval (e.g., -13.4).",
+          "expected": "Yes"
+        },
+        {
+          "question": "Will Trump Media invest in Solana before July?",
+          "url": "https://www.ft.com/content/ee0edda4-fca6-4c1e-bc66-d21ec7302690",
+          "reasoning": "The webpage content is a paywalled article preview with only the headline 'Trump Media targets crypto investments with push into financial services' visible. While the headline suggests a general move into crypto, it does not specify any investment in Solana or provide a timeline (before July). The body text is completely inaccessible due to the paywall and subscription prompts. Therefore, there is not enough specific information to definitively answer the question.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Trump Media invest in Ethereum before July?",
+          "url": "https://www.ft.com/content/ee0edda4-fca6-4c1e-bc66-d21ec7302690",
+          "reasoning": "The article headline indicates that Trump Media 'targets' crypto investments and a 'push into financial services', but the provided text is behind a paywall and does not confirm whether a specific investment in Ethereum has actually occurred or will occur before July.",
+          "expected": "No"
+        },
+        {
+          "question": "Will NASA estimate a 4% chance of asteroid hitting Earth?",
+          "url": "https://cneos.jpl.nasa.gov/sentry/",
+          "reasoning": "The provided webpage content only describes the Sentry system and the structure/filters of its impact-risk table. It does not list any specific asteroid, impact probability values, or any mention of a 4% (0.04) impact chance. Therefore, it is impossible to determine from this content alone whether NASA has ever estimated a 4% chance of an asteroid hitting Earth.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Trump reduce majority of tariffs before July?",
+          "url": "https://www.theguardian.com/business/2025/apr/03/trumps-tariffs-the-full-list",
+          "reasoning": "The provided webpage content is from April 3, 2025, and reports that Trump announced 'sweeping new tariffs' and displayed a chart of 'all the new tariffs he was announcing.' While this information describes tariff actions taken in early April, it does not provide information about tariff policy changes in May or June. Because the question asks about actions occurring 'before July,' and the article only covers a specific date in April, the content is insufficient to determine if a reduction of tariffs occurred later in the specified timeframe.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Fed decreases interest rates by 50+ bps after June 2025 meeting?",
+          "url": "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+          "reasoning": "The webpage content provides a calendar of FOMC meetings with links to statements, minutes, and other materials, but does not include any specific details about interest rate decisions or changes, such as decreases by 50+ bps, in any meetings including those after June 2025.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Alex de Minaur win the 2025 French Open?",
+          "url": "https://www.rolandgarros.com/fr-fr/",
+          "reasoning": "The provided webpage is focused on Roland-Garros 2026 news and general updates. It mentions Alex de Minaur only in the context of recent performances but does not state the result of the 2025 French Open or indicate whether he won that tournament. Therefore, the question cannot be resolved based solely on the given content.",
+          "expected": "No"
+        },
+        {
+          "question": "Will global temperature increase by more than 1.24ºC in May 2025?",
+          "url": "https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts+dSST.txt",
+          "reasoning": "The webpage content mentions sources up to 2026 but only provides temperature data tables up to 1980, with no specific data for May 2025. Without the temperature anomaly value for May 2025, it is impossible to determine if the increase exceeds 1.24°C relative to the base period.",
+          "expected": "No"
+        }
+      ]
+    },
+    "Temporal mismatch in reasoning": {
+      "count": 10,
+      "percentage": 5,
+      "all_cases": [
+        {
+          "question": "X Money launch in 2025?",
+          "url": "https://www.aa.com.tr/en/economy/x-partners-with-visa-to-launch-x-money-later-this-year/3464796",
+          "reasoning": "The article, dated January 28–29, 2025, states that X partnered with Visa for its upcoming 'X Money' feature, which is 'set to launch this year.' This indicates a planned future launch in 2025 but does not provide evidence that X Money actually launched in 2025. Therefore, based solely on this page, we cannot determine whether the launch occurred in 2025.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Trump announce Scott Bessent as next Fed Chair in 2025?",
+          "url": "https://www.nbcwashington.com/news/business/money-report/fed-chair-jerome-powell-can-serve-remainder-of-term-says-trumps-treasury-pick-bessent/3788991/",
+          "reasoning": "The webpage content from December 2024 discusses Scott Bessent as Trump's pick for Treasury Secretary and states that Fed Chair Jerome Powell will serve out his term until May 2026, but it does not mention any announcement of Bessent as the next Fed Chair in 2025 or provide definitive information about future announcements in 2025.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Gold close between $3700 and $3800 at the end of 2025?",
+          "url": "https://www.google.com/finance/quote/GCW00:COMEX",
+          "reasoning": "The webpage content is a Google consent page about cookies and privacy policies, with no information on gold prices or closing values for 2025. It includes text like 'We use cookies and data to Deliver and maintain Google services' and options such as 'Reject all' or 'Accept all', but nothing related to the GCW00:COMEX quote or future gold prices.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Gold close between $3300 and $3400 at the end of 2025?",
+          "url": "https://www.google.com/finance/quote/GCW00:COMEX",
+          "reasoning": "The provided webpage content consists only of a Google cookies-consent banner and does not include any data about the current or future price of gold.",
+          "expected": "No"
+        },
+        {
+          "question": "Will KrF win the most seats in the next Norwegian parliamentary election?",
+          "url": "https://www.valg.no/en/",
+          "reasoning": "The webpage content provides information about the upcoming Parliamentary election on 8 September 2025, including voting instructions and links to past election results, but it does not mention any results for the 2025 election, KrF, or seat distributions, as the election has not yet occurred.",
+          "expected": "No"
+        },
+        {
+          "question": "Will SV win the most seats in the next Norwegian parliamentary election?",
+          "url": "https://www.valg.no/en/",
+          "reasoning": "The webpage content is about the upcoming Parliamentary election on 8 September 2025, including voting information and links to past results, but it does not provide any results, predictions, or information about which party, including SV, will win the most seats in the 2025 election.",
+          "expected": "No"
+        },
+        {
+          "question": "Will an FBI agent be charged for leaking ICE plans?",
+          "url": "https://nypost.com/2025/02/11/us-news/tom-homan-accuses-fbi-of-leaking-information-about-ice-raids/",
+          "reasoning": "The webpage content reports accusations of an FBI leak and promises that the identified leaker will 'go to jail,' but it does not state that any FBI agent has actually been charged. It discusses ongoing investigations and future actions, without definitive evidence of charges being filed.",
+          "expected": "No"
+        },
+        {
+          "question": "US kicks trans members out of military before July?",
+          "url": "https://www.theguardian.com/us-news/2025/feb/27/transgender-us-military-personnel-pentagon-memo-stood-down-trump-administration",
+          "reasoning": "The article describes a memo issued by the Trump administration in February 2025 ordering the Pentagon to identify and fire transgender members of the US military. However, the article does not provide definitive evidence that the US military actually kicked out transgender members before July 2025. The memo sets a timeline for identification and separation, but it does not confirm whether this process was completed by the specified deadline.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Lorenzo Musetti win the 2025 French Open?",
+          "url": "https://www.rolandgarros.com/fr-fr/",
+          "reasoning": "The webpage content provides information about Roland-Garros 2026, including upcoming events, news articles, and past performances, but it does not mention Lorenzo Musetti's participation or performance in the 2025 French Open. Since the 2025 tournament is not the focus of the page and no results or predictions about Musetti are given, the outcome cannot be determined from this content.",
+          "expected": "No"
+        },
+        {
+          "question": "Judge Boasberg impeached before June?",
+          "url": "https://nypost.com/2025/03/16/us-news/judge-who-blocked-trumps-alien-enemies-order-faces-impeachment-push-by-gop-rep-musk/",
+          "reasoning": "The article states that Rep. Brandon Gill announced plans to file articles of impeachment against Judge James Boasberg and that there is an impeachment push, but it does not report that Boasberg was actually impeached at any time, let alone before June. Since the page only describes intentions and efforts to begin impeachment, and gives no outcome or follow-up, the question cannot be definitively resolved based solely on this content.",
+          "expected": "No"
+        }
+      ]
+    },
+    "Question interpretation issue": {
+      "count": 10,
+      "percentage": 5,
+      "all_cases": [
+        {
+          "question": "Will Gold close at $3,100-3,200 at the end of 2025?",
+          "url": "https://www.google.com/finance/quote/GCW00:COMEX",
+          "reasoning": "The webpage content is entirely about Google's cookies, data usage, and privacy policy, with no mention of gold prices, closing values, or any financial data related to the question.",
+          "expected": "No"
+        },
+        {
+          "question": "North Carolina Bitcoin Reserve Act signed before July?",
+          "url": "https://crypto.news/pro-north-carolinas-strategic-bitcoin-reserve-bill-a-big-deal",
+          "reasoning": "The webpage content only states that the bill (HB 92) was introduced in February 2025 and that the process was 'moving quickly.' It does not provide any information about the bill being signed into law, nor does it mention any date on which it was signed. The question asks if the act was signed before July, but the article lacks the necessary information to determine its signing status or date.",
+          "expected": "No"
+        },
+        {
+          "question": "Karen Read guilty in officer's death?",
+          "url": "https://whdh.com/news/federal-judge-affirms-retrying-karen-read-not-double-jeopardy-denying-defense-motion/",
+          "reasoning": "The webpage reports on a federal judge's decision regarding double jeopardy and the denial of a defense motion to dismiss charges, but it does not provide any information about the outcome of Karen Read's retrial or a final verdict. The question asks if Karen Read is guilty in the officer's death, but the content only discusses procedural matters and an upcoming retrial scheduled for April 1. No verdict or guilt determination is mentioned.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Trump announce Ron Paul as next Fed Chair in 2025?",
+          "url": "https://www.nbcwashington.com/news/business/money-report/fed-chair-jerome-powell-can-serve-remainder-of-term-says-trumps-treasury-pick-bessent/3788991/",
+          "reasoning": "The webpage content discusses Jerome Powell serving the remainder of his term until May 2026 and statements from Trump and Scott Bessent indicating no plans to remove him, but it does not mention Ron Paul, any announcement of a next Fed Chair, or any events in 2025, providing insufficient information to definitively resolve the question YES or NO.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Franco Parisi win the Chilean presidential election?",
+          "url": "https://www.servel.cl/",
+          "reasoning": "The webpage content from Servel.cl provides information about electoral processes, results, and news up to 2026, but it does not explicitly mention Franco Parisi or the outcome of the Chilean presidential election in question. The available results pertain to 'Elecciones 2025' and '2da Votación Presidencial,' but no direct evidence confirms whether Franco Parisi won or lost.",
+          "expected": "No"
+        },
+        {
+          "question": "No Trump announcement of next Fed Chair by June 30?",
+          "url": "https://www.nbcwashington.com/news/business/money-report/fed-chair-jerome-powell-can-serve-remainder-of-term-says-trumps-treasury-pick-bessent/3788991/",
+          "reasoning": "The provided text, dated December 2024, reports that Donald Trump and Scott Bessent intend to let Jerome Powell serve the remainder of his term (ending in May 2026). However, the text does not state whether Trump has made or will make an announcement regarding a 'next' Fed Chair (a successor) by the June 30 deadline mentioned in the question.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Will federal spending decrease by $250-500b between Q4 2024 and Q2 2025?",
+          "url": "https://fred.stlouisfed.org/series/FGEXPND",
+          "reasoning": "The webpage content does not provide the necessary data for Q4 2024 and Q2 2025 to determine if federal spending decreased by $250-500b between these two quarters. The latest available data point is for Q4 2025, which is not relevant to the question, and there is no data provided for Q4 2024 or Q2 2025.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Trump create External Revenue Service before July?",
+          "url": "https://apnews.com/article/irs-trump-tax-revenues-tariffs-eef2ab6930a8672a418af27f61efaed8",
+          "reasoning": "The webpage content, dated January 15, 2025, states that President-elect Trump 'announced plans to create' the External Revenue Service and requires an act of Congress, but does not indicate that it has been created. Since the content is from before July (assuming 2025) and provides no information on whether creation occurs before July, it is insufficient to definitively resolve the question.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Jack Draper win the 2025 French Open?",
+          "url": "https://www.rolandgarros.com/fr-fr/",
+          "reasoning": "The webpage content is for the 2026 Roland-Garros tournament (May 18 - June 7, 2026) and discusses news and events related to that edition. The question asks about Jack Draper winning the 2025 French Open. There is no information on the page about the 2025 tournament results or any mention of Jack Draper.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Alejandro Davidovich Fokina win the 2025 French Open?",
+          "url": "https://www.rolandgarros.com/fr-fr/",
+          "reasoning": "The webpage content pertains to the 2026 French Open (Roland-Garros), scheduled for May 18 to June 7, 2026, and does not provide any information about the 2025 French Open or the performance/participation of Alejandro Davidovich Fokina in any edition of the tournament. Thus, the question cannot be resolved based on this content.",
+          "expected": "No"
+        }
+      ]
+    },
+    "True unclear - needs manual check": {
+      "count": 58,
+      "percentage": 27,
+      "all_cases": [
+        {
+          "question": "Will Elon and DOGE cut 100-150k employees in 2025?",
+          "url": "https://fred.stlouisfed.org/series/CES9091000001",
+          "reasoning": "The webpage provides only the federal employment figure for Jan 2026 (2,686 thousand persons) but lacks historical data for comparison, such as employment levels at the start or end of 2025, making it impossible to determine if a cut of 100-150k employees occurred in 2025. No information on Elon Musk or DOGE is mentioned.",
+          "expected": "No"
+        },
+        {
+          "question": "Brazil’s 12-month inflation below 5.50% for December 2025?",
+          "url": "https://www.ibge.gov.br/en/indicators#ipca",
+          "reasoning": "The webpage provides the 12-month IPCA inflation rate as 4.44, associated with January 2026 data, but does not explicitly state the 12-month rate for December 2025. No data is available to calculate or infer the December 2025 rate definitively, such as the January 2025 monthly rate.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Will Gold close at $3,000-3,100 at the end of 2025?",
+          "url": "https://www.google.com/finance/quote/GCW00:COMEX",
+          "reasoning": "The webpage content is entirely about Google's cookie and privacy policy, with no mention of gold prices, closing values, or any data related to 2025.",
+          "expected": "No"
+        },
+        {
+          "question": "AI wins IMO gold medal in 2025?",
+          "url": "https://imo-grand-challenge.github.io/",
+          "reasoning": "The webpage content describes the IMO Grand Challenge proposal, rules, and committee but does not mention any AI achieving a gold medal, nor does it reference the year 2025 or any outcome of the challenge.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Gold close at $3,200 or more at the end of 2025?",
+          "url": "https://www.google.com/finance/quote/GCW00:COMEX",
+          "reasoning": "The webpage content is solely about Google's cookie and privacy policy consent, with no mention of gold prices or any financial data from GCW00:COMEX, making it impossible to determine the closing price of gold at the end of 2025.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Texas Strategic Bitcoin Reserve Act (H.B. 1598) signed in 2025?",
+          "url": "https://www.cnbc.com/2024/12/12/texas-house-introduces-bill-to-establish-a-strategic-bitcoin-reserve.html",
+          "reasoning": "The article only states that a bill to establish a strategic bitcoin reserve was introduced in the Texas House in December 2024. It does not mention the bill number (H.B. 1598), whether it passed the legislature, or whether it was signed into law in 2025. Therefore, based solely on this page, we cannot determine if the Texas Strategic Bitcoin Reserve Act (H.B. 1598) was signed in 2025.",
+          "expected": "No"
+        },
+        {
+          "question": "A$AP Rocky convicted of a felony?",
+          "url": "https://www.usatoday.com/story/entertainment/celebrities/2025/01/19/asap-rocky-trial-felony-assault-what-to-know/77805179007/",
+          "reasoning": "The provided text indicates that the trial is currently 'underway' and that closing arguments are 'expected to come Thursday.' While it confirms A$AP Rocky is charged with two felony counts, a verdict has not yet been reached according to the content.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Elon and DOGE cut between $200-250b in federal spending in 2025?",
+          "url": "https://fred.stlouisfed.org/series/FGEXPND",
+          "reasoning": "The page only provides a single data point for Federal Government: Current Expenditures — Q4 2025 at 7,572.400 billions of dollars (seasonally adjusted annual rate). It does not show prior years’ or earlier 2025 expenditure levels, nor any information about changes, cuts, or who caused them. Without comparison data or references to a $200–250b reduction or to Elon and DOGE, we cannot determine whether such a cut occurred in 2025 based solely on this content.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Elon and DOGE cut between $100-150b in federal spending in 2025?",
+          "url": "https://fred.stlouisfed.org/series/FGEXPND",
+          "reasoning": "The page only reports the level of Federal Government: Current Expenditures (FGEXPND) for Q4 2025 as 7,572.400 billions of dollars (seasonally adjusted annual rate) and provides metadata about the series. It does not include any information about changes relative to prior periods, total cuts in 2025, or any connection to actions by Elon or DOGE. Therefore, it is impossible to determine from this page whether federal spending was cut by $100–150 billion in 2025 or whether such a cut was attributable to Elon and DOGE.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Elon and DOGE cut between $150-200b in federal spending in 2025?",
+          "url": "https://fred.stlouisfed.org/series/FGEXPND",
+          "reasoning": "The page only provides the level of Federal Government: Current Expenditures for Q4 2025 (7,572.4 billion dollars, seasonally adjusted annual rate). It does not specify any baseline for comparison, any measure of change in spending, nor any information about cuts attributed to 'Elon and DOGE' or any target range of $150–200 billion in reductions. Without a defined reference point or description of the intended metric, the size of any spending cut in 2025 cannot be determined from this data alone.",
+          "expected": "No"
+        },
+        {
+          "question": "New Coronavirus Pandemic in 2025?",
+          "url": "https://www.newsweek.com/new-coronavirus-bat-chinese-lab-2034232",
+          "reasoning": "The webpage discusses the discovery of a new bat coronavirus, HKU5-CoV-2, in February 2025, which has the potential to infect humans in laboratory settings due to its use of the human ACE2 receptor. However, the CDC explicitly states there is 'no reason to believe it currently poses a concern to public health' and that 'they have not detected infections in humans.' The article does not confirm that a new coronavirus pandemic has occurred in 2025, only that a virus with zoonotic potential has been identified. Therefore, based on the information provided, it cannot be determined whether a new coronavirus pandemic actually occurred in 2025.",
+          "expected": "No"
+        },
+        {
+          "question": "Vaccine for new COVID disease in 2025?",
+          "url": "https://www.aa.com.tr/en/asia-pacific/china-discovers-new-bat-coronavirus-that-poses-risk-of-animal-to-human-transmission/3489013",
+          "reasoning": "The article only states that Chinese researchers discovered a new bat coronavirus (HKU5-CoV-2) that can infect human cells and uses the same receptor as SARS-CoV-2. It notes the risk of animal-to-human transmission is low and does not describe any resulting human disease outbreak or any development, authorization, or deployment of a vaccine for this virus or any 'new COVID disease' in 2025. Therefore, based solely on this page, we cannot determine whether there was a vaccine for a new COVID disease in 2025.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Trump's approval rating hit 25% in 2025?",
+          "url": "https://www.natesilver.net/p/trump-approval-ratings-nate-silver-bulletin",
+          "reasoning": "The webpage content provides net approval ratings (e.g., -14.9) and strongly approve percentages (dropped from 34% at inauguration to 24% as of February 26, 2026), but does not specify the total approval rating percentage at any point, including in 2025. There is no definitive evidence on whether the total approval rating reached exactly 25% in 2025.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Trump refrain from announcing a next Fed Chair in 2025?",
+          "url": "https://www.nbcwashington.com/news/business/money-report/fed-chair-jerome-powell-can-serve-remainder-of-term-says-trumps-treasury-pick-bessent/3788991/",
+          "reasoning": "The provided text indicates that Donald Trump likely will not remove Jerome Powell and that Powell will serve out his term ending in May 2026. However, the article does not mention whether Trump plans to announce a *successor* (the next Fed Chair) in 2025 ahead of that expiration, making it impossible to determine if he will 'refrain' from such an announcement.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Will Trump announce Larry Kudlow as next Fed Chair in 2025?",
+          "url": "https://www.nbcwashington.com/news/business/money-report/fed-chair-jerome-powell-can-serve-remainder-of-term-says-trumps-treasury-pick-bessent/3788991/",
+          "reasoning": "The webpage content discusses Jerome Powell serving out his term until May 2026 and mentions no announcements about a next Fed Chair, nor does it reference Larry Kudlow at all. There is insufficient information to determine if Trump will announce Kudlow in 2025.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Trump announce Michelle Bowman as next Fed Chair in 2025?",
+          "url": "https://www.nbcwashington.com/news/business/money-report/fed-chair-jerome-powell-can-serve-remainder-of-term-says-trumps-treasury-pick-bessent/3788991/",
+          "reasoning": "The provided text discusses Scott Bessent's confirmation that Jerome Powell will serve out his term as Fed Chair until May 2026. It does not mention Michelle Bowman nor does it state that she has been announced as the next Fed Chair.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Trump announce Judy Shelton as next Fed Chair in 2025?",
+          "url": "https://www.nbcwashington.com/news/business/money-report/fed-chair-jerome-powell-can-serve-remainder-of-term-says-trumps-treasury-pick-bessent/3788991/",
+          "reasoning": "The article only states that Trump’s Treasury Secretary pick Scott Bessent said Jerome Powell will serve out his term as Fed Chair, which ends in May 2026. It does not mention Judy Shelton, any 2025 announcement, or any change in Fed Chair appointment. Therefore, the outcome of whether Trump announces Judy Shelton as the next Fed Chair in 2025 cannot be determined from this page.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Trump announce Chamath Palihapitiya as next Fed Chair in 2025?",
+          "url": "https://www.nbcwashington.com/news/business/money-report/fed-chair-jerome-powell-can-serve-remainder-of-term-says-trumps-treasury-pick-bessent/3788991/",
+          "reasoning": "The webpage content discusses Jerome Powell serving the remainder of his term until May 2026 and Trump's statements on not removing him, but it makes no mention of Chamath Palihapitiya or any announcement of a next Fed Chair in 2025.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Trump announce Howard Lutnick as next Fed Chair in 2025?",
+          "url": "https://www.nbcwashington.com/news/business/money-report/fed-chair-jerome-powell-can-serve-remainder-of-term-says-trumps-treasury-pick-bessent/3788991/",
+          "reasoning": "The provided text discusses Scott Bessent's appointment as Treasury Secretary and the status of current Fed Chair Jerome Powell. It does not mention Howard Lutnick being announced as the next Fed Chair, nor does it confirm any announcement regarding the Fed Chair position for 2025.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Trump announce Chris Waller as next Fed Chair in 2025?",
+          "url": "https://www.nbcwashington.com/news/business/money-report/fed-chair-jerome-powell-can-serve-remainder-of-term-says-trumps-treasury-pick-bessent/3788991/",
+          "reasoning": "The webpage content discusses Jerome Powell serving out his term until May 2026 and statements from Trump and Bessent about not removing him, but it does not mention Chris Waller, any announcement of a next Fed Chair, or events in 2025.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Harold Mayne-Nicholls win the Chilean presidential election?",
+          "url": "https://www.servel.cl/",
+          "reasoning": "The webpage content from Servel.cl provides information about electoral processes, results from the 2025 elections, and other administrative details, but it does not mention Harold Mayne-Nicholls or any results related to the Chilean presidential election beyond 2025. There is no evidence in the provided content to determine whether Harold Mayne-Nicholls won the Chilean presidential election.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Carolina Tohá win the Chilean presidential election?",
+          "url": "https://www.servel.cl/",
+          "reasoning": "The webpage mentions that the 2025 presidential election results are available, but it does not list the name of the winner or specify if Carolina Tohá was a candidate or the victor.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Michelle Bachelet win the Chilean presidential election?",
+          "url": "https://www.servel.cl/",
+          "reasoning": "The webpage content references the 2025 presidential elections and provides links to provisional and preliminary results, but does not include any actual results or mention Michelle Bachelet or the winner of the election.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Jaime Mulet win the Chilean presidential election?",
+          "url": "https://www.servel.cl/",
+          "reasoning": "The webpage content from Servel.cl provides information about electoral processes, results from the 2025 elections, and other administrative details, but it does not explicitly mention Jaime Mulet or the outcome of the Chilean presidential election regarding his victory or defeat. No definitive results for the presidential election involving Jaime Mulet are visible in the provided content.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Gonzalo Winter win the Chilean presidential election?",
+          "url": "https://www.servel.cl/",
+          "reasoning": "The webpage content discusses the 2025 Chilean elections, including links to provisional and preliminary results for the second presidential vote, but does not specify the winner or mention Gonzalo Winter at all.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Evelyn Matthei win the Chilean presidential election?",
+          "url": "https://www.servel.cl/",
+          "reasoning": "The webpage content from Servel.cl provides information about electoral processes, results for the 2025 elections (including provisional and preliminary results for presidential elections), and other administrative details. However, it does not explicitly mention Evelyn Matthei or the final outcome of the Chilean presidential election to confirm whether she won. The latest results referenced are for the 2025 elections, but no definitive winner is stated.",
+          "expected": "No"
+        },
+        {
+          "question": "Will any AI score ≥85% on ARC-AGI-2 by November 3?",
+          "url": "https://arcprize.org",
+          "reasoning": "The webpage announces the results of the ARC Prize 2025 competition and mentions that 'NVARC' achieved the 1st Place Top Score on ARC-AGI-2. However, it does not specify the actual score NVARC received or whether any AI scored ≥85%. Without explicit information about the score percentage, it is impossible to determine if the threshold was met.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Person H win the 2025 Ivory Coast presidential election?",
+          "url": "https://www.cei.ci/",
+          "reasoning": "The webpage mentions that results for the 2025 presidential election are available (“Election Presidentielle 2025 – Résultats du scrutin – CONSULTER LES RESULTATS”) but does not display any actual result data or candidate names in the provided content. There is no information indicating who won the 2025 Ivory Coast presidential election or whether a person identified as “Person H” won. Therefore, based solely on the given webpage content, the outcome cannot be determined.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Pascal Affi N'Guessan win the 2025 Ivory Coast presidential election?",
+          "url": "https://www.cei.ci/",
+          "reasoning": "The webpage mentions that results for the 2025 Presidential Election are available via a link, but it does not display the actual results or name the winner. Therefore, it is impossible to determine if Pascal Affi N'Guessan won based solely on the provided text.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Gnangbo Kacou win the 2025 Ivory Coast presidential election?",
+          "url": "https://www.cei.ci/",
+          "reasoning": "The webpage mentions that results for the 2025 presidential election exist ('Election Presidentielle 2025 – Résultats du scrutin – CONSULTER LES RESULTATS') but does not display any actual result data or name any candidate, including Gnangbo Kacou. Since the winner is not stated anywhere in the provided content, the outcome of whether Gnangbo Kacou won cannot be determined based solely on this page.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Ap win the most seats in the next Norwegian parliamentary election?",
+          "url": "https://www.valg.no/en/",
+          "reasoning": "The webpage content provides information about the upcoming Parliamentary election on 8 September 2025, including voting details and links to results from earlier elections, but does not include any results or outcomes for the 2025 election itself.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Will the number of federal employees decrease by 25,000-50,000 between December and June?",
+          "url": "https://fred.stlouisfed.org/series/CES9091000001",
+          "reasoning": "The page only provides a single data point: January 2026 employment of 2,686 thousand federal employees. It does not include federal employment levels for any December or June, so we cannot determine whether the number of federal employees decreased by 25,000–50,000 between any December and June based solely on this content.",
+          "expected": "No"
+        },
+        {
+          "question": "Will the number of federal employees decrease by 100,000-200,000 between December and June?",
+          "url": "https://fred.stlouisfed.org/series/CES9091000001",
+          "reasoning": "The webpage content provides only the January 2026 figure (2,686 thousand federal employees) and does not include data for December or June of any year, making it impossible to determine if there was a decrease of 100,000-200,000 between those months.",
+          "expected": "No"
+        },
+        {
+          "question": "Will the number of federal employees decrease by 50,000-100,000 between December and June?",
+          "url": "https://fred.stlouisfed.org/series/CES9091000001",
+          "reasoning": "The page only provides a single data point (January 2026: 2,686 thousand federal employees) and does not list employment levels for any December or June. Without values for both endpoints of the December-to-June period, it is impossible to determine whether federal employment decreased by 50,000–100,000 over that span based solely on this content.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Will the number of federal employees decrease by less than 25,000 between December and June?",
+          "url": "https://fred.stlouisfed.org/series/CES9091000001",
+          "reasoning": "The webpage content provides only one data point: Jan 2026: 2,686 thousand employees. It does not include data for December or June, making it impossible to determine the change in federal employees between those months.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Vivek Ramaswamy be the first elected Speaker of the House for the 119th congress?",
+          "url": "https://www.speaker.gov/",
+          "reasoning": "The webpage content refers to 'Speaker Johnson' in posts dated February 2026, during the 119th Congress, but does not mention Vivek Ramaswamy or provide any information about the election of the first Speaker at the start of the 119th Congress in January 2025. It is possible that Ramaswamy was the initial Speaker and later replaced, as the page appears to be for the current Speaker.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Trump announce Kevin Warsh as next Fed Chair?",
+          "url": "https://www.nbcwashington.com/news/business/money-report/fed-chair-jerome-powell-can-serve-remainder-of-term-says-trumps-treasury-pick-bessent/3788991/",
+          "reasoning": "The article only states that Jerome Powell is the current Federal Reserve Chair and that he can serve out his term, with no mention whatsoever of Kevin Warsh or any announcement involving him. Because the webpage does not address Kevin Warsh or an announcement of him as the next Fed Chair, it does not provide enough information to determine whether Trump ever announced Kevin Warsh as the next Fed Chair.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Trump announce Kevin Hassett as next Fed Chair?",
+          "url": "https://www.nbcwashington.com/news/business/money-report/fed-chair-jerome-powell-can-serve-remainder-of-term-says-trumps-treasury-pick-bessent/3788991/",
+          "reasoning": "The webpage content discusses Jerome Powell serving the remainder of his term as Fed Chair until May 2026 and statements from Scott Bessent and Trump supporting this, but it does not mention Kevin Hassett or any announcement by Trump regarding the next Fed Chair.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Trump announce Arthur Laffer as next Fed Chair?",
+          "url": "https://www.nbcwashington.com/news/business/money-report/fed-chair-jerome-powell-can-serve-remainder-of-term-says-trumps-treasury-pick-bessent/3788991/",
+          "reasoning": "The article only discusses Jerome Powell remaining as Federal Reserve Chair and notes that Trump likely would not try to remove him. It does not mention Arthur Laffer at all, nor any announcement of a new Fed Chair. Therefore, based solely on this page, we cannot determine whether Trump announced Arthur Laffer as the next Fed Chair.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Trump announce Larry Kudlow as next Fed Chair?",
+          "url": "https://www.nbcwashington.com/news/business/money-report/fed-chair-jerome-powell-can-serve-remainder-of-term-says-trumps-treasury-pick-bessent/3788991/",
+          "reasoning": "The article only states that Fed Chair Jerome Powell can serve the remainder of his term and discusses comments by Scott Bessent and Donald Trump about Powell’s tenure. It does not mention Larry Kudlow at all, nor any announcement by Trump naming Kudlow as the next Fed Chair. Therefore, based solely on this page, we cannot determine whether Trump announced Larry Kudlow as the next Fed Chair.",
+          "expected": "No"
+        },
+        {
+          "question": "Will federal spending decrease by less than $250b between Q4 2024 and Q2 2025?",
+          "url": "https://fred.stlouisfed.org/series/FGEXPND",
+          "reasoning": "The webpage content provides only the value for Q4 2025 (7,572.400 billion dollars), but does not include values for Q4 2024 or Q2 2025, which are necessary to determine if spending decreased by less than $250 billion between those quarters.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Trump's sovereign wealth fund acquires TikTok before July?",
+          "url": "https://www.theguardian.com/us-news/2025/feb/03/trump-sovereign-wealth-fund-tiktok",
+          "reasoning": "The article, dated February 3, 2025, states that Donald Trump signed an executive order to create a sovereign wealth fund and mentioned it 'could' or 'may' be used to purchase TikTok. However, the fund has not yet been established (Treasury Secretary Bessent stated they intend to 'stand this thing up within the next 12 months') and the article does not confirm that an acquisition has actually taken place.",
+          "expected": "No"
+        },
+        {
+          "question": "Trump's sovereign wealth fund acquires Bitcoin before July?",
+          "url": "https://www.theguardian.com/us-news/2025/feb/03/trump-sovereign-wealth-fund-tiktok",
+          "reasoning": "The article confirms that Donald Trump signed an executive order to create a sovereign wealth fund on February 3, 2025. However, it does not state that the fund has acquired Bitcoin; it only mentions the fund might be used to purchase TikTok and that the fund is expected to be 'stood up' within the next 12 months.",
+          "expected": "No"
+        },
+        {
+          "question": "Mexico tariffs on China in effect before July?",
+          "url": "https://fortune.com/2025/02/24/mexico-weighs-china-tariffs-trump-deal-claudia-sheinbaum/",
+          "reasoning": "The article only states that Mexico is weighing possible levies on Chinese imports and that officials are in Washington examining potential tariffs. It does not say that Mexico actually imposed tariffs on China or provide any date on which such tariffs took effect. Therefore, based solely on this page, we cannot determine whether Mexico had tariffs on China in effect before July.",
+          "expected": "No"
+        },
+        {
+          "question": "Trump Family buys stake in Binance before July?",
+          "url": "https://www.cnbc.com/2025/03/13/binance-token-rises-after-report-that-trump-family-has-discussed-stake.html",
+          "reasoning": "The webpage content reports that the Trump family has discussed securing a financial stake in Binance's U.S. arm, but it also includes a denial from Binance's founder, Changpeng Zhao, who stated on X that there have been no discussions about a Binance US deal with anyone. Additionally, no definitive evidence or confirmation of a completed stake purchase before July is provided in the article.",
+          "expected": "No"
+        },
+        {
+          "question": "Will US GDP growth in Q2 2025 be less than 2%?",
+          "url": "https://www.bea.gov/data/gdp/gross-domestic-product",
+          "reasoning": "The provided webpage content only reports GDP growth for Q3 2025 (+4.4%) and Q4 2025 (+1.4%). It does not mention GDP growth for Q2 2025 at all, so it is impossible to determine from this page whether Q2 2025 GDP growth was less than 2%.",
+          "expected": "No"
+        },
+        {
+          "question": "Will US GDP growth in Q2 2025 be between 0% and -1%?",
+          "url": "https://www.bea.gov/data/gdp/gross-domestic-product",
+          "reasoning": "The webpage content provides GDP growth data for Q3 2025 (+4.4%) and Q4 2025 (+1.4%), but does not mention or provide any information on Q2 2025 GDP growth.",
+          "expected": "No"
+        },
+        {
+          "question": "Will FYRE Festival 2 sell out?",
+          "url": "https://www.fyre.mx/",
+          "reasoning": "The webpage only describes Fyre Festival’s rebranding with LimeWire, provides merch information, and offers a waitlist sign-up. It does not mention ticket sales, attendance numbers, capacity, or any statement indicating whether Fyre Festival 2 has sold out or will sell out.",
+          "expected": "No"
+        },
+        {
+          "question": "TikTok sale announced by June 19?",
+          "url": "https://www.whitehouse.gov/presidential-actions/2025/04/extending-the-tiktok-enforcement-delay/",
+          "reasoning": "The provided text only discusses executive orders extending the enforcement delay of the 'Protecting Americans from Foreign Adversary Controlled Applications Act' until June 19, 2025. It does not mention whether a sale of TikTok was actually announced or completed.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Taylor Fritz win the 2025 French Open?",
+          "url": "https://www.rolandgarros.com/fr-fr/",
+          "reasoning": "The webpage content is focused on Roland-Garros 2026, including news, events, and accreditation for 2026, with no mention of the 2025 French Open winner or Taylor Fritz.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Frances Tiafoe win the 2025 French Open?",
+          "url": "https://www.rolandgarros.com/fr-fr/",
+          "reasoning": "The webpage content is focused on Roland-Garros 2026 and related news, with no mention of the 2025 French Open results or Frances Tiafoe.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Felix Auger-Aliassime win the 2025 French Open?",
+          "url": "https://www.rolandgarros.com/fr-fr/",
+          "reasoning": "The webpage content is focused on the 2026 Roland-Garros tournament and recent WTA/ATP news from February (year unspecified, but copyright 2025), with no mention of the 2025 French Open results or winner. Mentions of 'FAA comme à la maison' refer to Felix Auger-Aliassime but provide no details on him winning the 2025 event.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Magnus Carlsen win the 2025 Norway Chess tournament?",
+          "url": "https://norwaychess.no/en/",
+          "reasoning": "The webpage content mentions news about Norway Chess 2026, including the lineup and player statements, but does not provide any information about the 2025 tournament or Magnus Carlsen's participation or performance in it. Therefore, it is not possible to determine whether he won the 2025 Norway Chess tournament based on this page.",
+          "expected": "Yes"
+        },
+        {
+          "question": "Will Hikaru Nakamura win the 2025 Norway Chess tournament?",
+          "url": "https://norwaychess.no/en/",
+          "reasoning": "The webpage content does not mention the 2025 Norway Chess tournament or Hikaru Nakamura's participation in it. The information available is about the 2026 tournament and other unrelated news, making it impossible to determine if Hikaru Nakamura will win the 2025 Norway Chess tournament.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Wei Yi win the 2025 Norway Chess tournament?",
+          "url": "https://norwaychess.no/en/",
+          "reasoning": "The provided webpage content only includes information about Norway Chess 2026 (dates, lineup, news posts) and does not mention the 2025 Norway Chess tournament or its winner. Therefore, it is impossible to determine from this page whether Wei Yi won the 2025 Norway Chess tournament.",
+          "expected": "No"
+        },
+        {
+          "question": "Will Capitol foreign flag ban be signed into law?",
+          "url": "https://www.breitbart.com/politics/2025/03/05/exclusive-sen-bernie-moreno-introduces-bill-ban-foreign-flags-capitol-grounds/",
+          "reasoning": "The article only states that Sen. Bernie Moreno introduced the 'Allegiance Act' to ban foreign flags on U.S. Capitol grounds. It does not say whether the bill passed Congress or was signed into law, so the ultimate outcome cannot be determined from this page.",
+          "expected": "No"
+        },
+        {
+          "question": "Will global temperature increase by less than 1.05ºC in May 2025?",
+          "url": "https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts+dSST.txt",
+          "reasoning": "The provided webpage content includes temperature data only up to 1980, with no data for May 2025 or any year beyond 1980.",
+          "expected": "No"
+        },
+        {
+          "question": "2025 May hottest on record?",
+          "url": "https://data.giss.nasa.gov/gistemp/tabledata_v4/GLB.Ts+dSST.txt",
+          "reasoning": "The table excerpt only provides detailed monthly temperature index values through 1980 and does not include any data for the year 2025 (or even for recent decades). Therefore, it is impossible, based solely on the provided webpage content, to determine the May 2025 value or compare it to other years’ May values to see if it was the hottest on record.",
+          "expected": "No"
+        }
+      ]
+    }
+  }
+}
