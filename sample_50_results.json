@@ -1,0 +1,314 @@
+{
+  "investigated": [
+    {
+      "question": "Will Elon and DOGE cut 50-100k employees in 2025?",
+      "url": "https://fred.stlouisfed.org/series/CES9091000001",
+      "category": "GENLAYER_CORRECT",
+      "status": 200
+    },
+    {
+      "question": "Will Elon and DOGE cut 100-150k employees in 2025?",
+      "url": "https://fred.stlouisfed.org/series/CES9091000001",
+      "category": "GENLAYER_CORRECT",
+      "status": 200
+    },
+    {
+      "question": "Will Elon and DOGE cut less than 50k employees in 2025?",
+      "url": "https://fred.stlouisfed.org/series/CES9091000001",
+      "category": "GENLAYER_CORRECT",
+      "status": 200
+    },
+    {
+      "question": "Will Elon and DOGE cut more than 200k employees in 2025?",
+      "url": "https://fred.stlouisfed.org/series/CES9091000001",
+      "category": "GENLAYER_CORRECT",
+      "status": 200
+    },
+    {
+      "question": "Will Elon and DOGE cut 150-200k employees in 2025?",
+      "url": "https://fred.stlouisfed.org/series/CES9091000001",
+      "category": "GENLAYER_CORRECT",
+      "status": 200
+    },
+    {
+      "question": "Will all remaining Trump cabinet picks be confirmed?",
+      "url": "https://www.senate.gov/legislative/NominationsRejectedorWithdrawn.htm",
+      "category": "MANUAL_REVIEW",
+      "status": 200
+    },
+    {
+      "question": "Brazil’s 12-month inflation below 5.50% for December 2025?",
+      "url": "https://www.ibge.gov.br/en/indicators#ipca",
+      "category": "GENLAYER_CORRECT",
+      "status": 200
+    },
+    {
+      "question": "Will Elon and DOGE cut 50-100k employees in 2025?",
+      "url": "https://fred.stlouisfed.org/series/CES9091000001",
+      "category": "GENLAYER_CORRECT",
+      "status": 200
+    },
+    {
+      "question": "Will Elon and DOGE cut 100-150k employees in 2025?",
+      "url": "https://fred.stlouisfed.org/series/CES9091000001",
+      "category": "GENLAYER_CORRECT",
+      "status": 200
+    },
+    {
+      "question": "Will Elon and DOGE cut less than 50k employees in 2025?",
+      "url": "https://fred.stlouisfed.org/series/CES9091000001",
+      "category": "GENLAYER_CORRECT",
+      "status": 200
+    },
+    {
+      "question": "Will Elon and DOGE cut more than 200k employees in 2025?",
+      "url": "https://fred.stlouisfed.org/series/CES9091000001",
+      "category": "GENLAYER_CORRECT",
+      "status": 200
+    },
+    {
+      "question": "Will Elon and DOGE cut 150-200k employees in 2025?",
+      "url": "https://fred.stlouisfed.org/series/CES9091000001",
+      "category": "GENLAYER_CORRECT",
+      "status": 200
+    },
+    {
+      "question": "Ukraine joins NATO in 2025?",
+      "url": "https://www.nato.int/cps/en/natohq/nato_countries.htm",
+      "category": "MANUAL_REVIEW",
+      "status": 200
+    },
+    {
+      "question": "Will Gold close at $3,100-3,200 at the end of 2025?",
+      "url": "https://www.google.com/finance/quote/GCW00:COMEX",
+      "category": "MANUAL_REVIEW",
+      "status": 200
+    },
+    {
+      "question": "Will Ethereum hit $7,000 by December 31?",
+      "url": "https://www.binance.com/en/trade/ETH_USDT",
+      "category": "BLOCKED",
+      "status": 202
+    },
+    {
+      "question": "Will Ethereum hit $6,000 by December 31?",
+      "url": "https://www.binance.com/en/trade/ETH_USDT",
+      "category": "BLOCKED",
+      "status": 202
+    },
+    {
+      "question": "Will Ethereum dip to $1,000 by December 31?",
+      "url": "https://www.binance.com/en/trade/ETH_USDT",
+      "category": "BLOCKED",
+      "status": 202
+    },
+    {
+      "question": "Will Bitcoin dip to $50,000 by December 31, 2025?",
+      "url": "https://www.binance.com/en/trade/BTC_USDT",
+      "category": "BLOCKED",
+      "status": 202
+    },
+    {
+      "question": "Will Gold close at $3,000-3,100 at the end of 2025?",
+      "url": "https://www.google.com/finance/quote/GCW00:COMEX",
+      "category": "MANUAL_REVIEW",
+      "status": 200
+    },
+    {
+      "question": "AI wins IMO gold medal in 2025?",
+      "url": "https://imo-grand-challenge.github.io/",
+      "category": "MANUAL_REVIEW",
+      "status": 200
+    },
+    {
+      "question": "Will Ethereum dip to $2,500 by December 31?",
+      "url": "https://www.binance.com/en/trade/ETH_USDT",
+      "category": "BLOCKED",
+      "status": 202
+    },
+    {
+      "question": "Will U.S. National debt surpass $38 trillion in 2025?",
+      "url": "https://www.treasurydirect.gov/NP_WS/debt/current",
+      "category": "MANUAL_REVIEW",
+      "status": 200
+    },
+    {
+      "question": "Will Bitcoin reach $150,000 by December 31, 2025?",
+      "url": "https://www.binance.com/en/trade/BTC_USDT",
+      "category": "BLOCKED",
+      "status": 202
+    },
+    {
+      "question": "Will Bitcoin dip to $80,000 by December 31, 2025?",
+      "url": "https://www.binance.com/en/trade/BTC_USDT",
+      "category": "BLOCKED",
+      "status": 202
+    },
+    {
+      "question": "Will Bitcoin dip to $90,000 by December 31, 2025?",
+      "url": "https://www.binance.com/en/trade/BTC_USDT",
+      "category": "BLOCKED",
+      "status": 202
+    },
+    {
+      "question": "Will Gold close under $2,500 at the end of 2025?",
+      "url": "https://www.google.com/finance/quote/GCW00:COMEX",
+      "category": "MANUAL_REVIEW",
+      "status": 200
+    },
+    {
+      "question": "Will Anthropic have the top AI model on December 31?",
+      "url": "https://lmarena.ai/leaderboard/text",
+      "category": "GENLAYER_CORRECT",
+      "status": 200
+    },
+    {
+      "question": "Will Gold close at $2,900-3,000 at the end of 2025?",
+      "url": "https://www.google.com/finance/quote/GCW00:COMEX",
+      "category": "MANUAL_REVIEW",
+      "status": 200
+    },
+    {
+      "question": "Will Bitcoin dip to $70,000 by December 31, 2025?",
+      "url": "https://www.binance.com/en/trade/BTC_USDT",
+      "category": "BLOCKED",
+      "status": 202
+    },
+    {
+      "question": "Will Bitcoin dip to $20,000 by December 31, 2025?",
+      "url": "https://www.binance.com/en/trade/BTC_USDT",
+      "category": "BLOCKED",
+      "status": 202
+    },
+    {
+      "question": "Will Gold close at $2,800-2,900 at the end of 2025?",
+      "url": "https://www.google.com/finance/quote/GCW00:COMEX",
+      "category": "MANUAL_REVIEW",
+      "status": 200
+    },
+    {
+      "question": "Will Gold close at $3,200 or more at the end of 2025?",
+      "url": "https://www.google.com/finance/quote/GCW00:COMEX",
+      "category": "MANUAL_REVIEW",
+      "status": 200
+    },
+    {
+      "question": "Will Meta have the top AI model on December 31?",
+      "url": "https://lmarena.ai/leaderboard/text",
+      "category": "GENLAYER_CORRECT",
+      "status": 200
+    },
+    {
+      "question": "Will Gold close at $2,500-2,600 at the end of 2025?",
+      "url": "https://www.google.com/finance/quote/GCW00:COMEX",
+      "category": "MANUAL_REVIEW",
+      "status": 200
+    },
+    {
+      "question": "Will Ethereum hit $5,000 by December 31?",
+      "url": "https://www.binance.com/en/trade/ETH_USDT",
+      "category": "BLOCKED",
+      "status": 202
+    },
+    {
+      "question": "Will Ethereum hit $4,000 by December 31?",
+      "url": "https://www.binance.com/en/trade/ETH_USDT",
+      "category": "BLOCKED",
+      "status": 202
+    },
+    {
+      "question": "Will Gold close at $2,700-2,800 at the end of 2025?",
+      "url": "https://www.google.com/finance/quote/GCW00:COMEX",
+      "category": "MANUAL_REVIEW",
+      "status": 200
+    },
+    {
+      "question": "Will Gold close at $2,600-2,700 at the end of 2025?",
+      "url": "https://www.google.com/finance/quote/GCW00:COMEX",
+      "category": "MANUAL_REVIEW",
+      "status": 200
+    },
+    {
+      "question": "US government shutdown in 2025?",
+      "url": "https://www.opm.gov/policy-data-oversight/snow-dismissal-procedures/current-status/",
+      "category": "MANUAL_REVIEW",
+      "status": 200
+    },
+    {
+      "question": "Will NBA competitor raise >$3b in 2025?",
+      "url": "https://sg.news.yahoo.com/investors-seek-5-billion-to-form-basketball-league-to-rival-nba-051441296.html",
+      "category": "MANUAL_REVIEW",
+      "status": 200
+    },
+    {
+      "question": "Texas Strategic Bitcoin Reserve Act (H.B. 1598) signed in 2025?",
+      "url": "https://www.cnbc.com/2024/12/12/texas-house-introduces-bill-to-establish-a-strategic-bitcoin-reserve.html",
+      "category": "MANUAL_REVIEW",
+      "status": 200
+    },
+    {
+      "question": "X Money launch in 2025?",
+      "url": "https://www.aa.com.tr/en/economy/x-partners-with-visa-to-launch-x-money-later-this-year/3464796",
+      "category": "MANUAL_REVIEW",
+      "status": 200
+    },
+    {
+      "question": "A$AP Rocky convicted of a felony?",
+      "url": "https://www.usatoday.com/story/entertainment/celebrities/2025/01/19/asap-rocky-trial-felony-assault-what-to-know/77805179007/",
+      "category": "MANUAL_REVIEW",
+      "status": 200
+    },
+    {
+      "question": "A$AP Rocky sentenced to prison?",
+      "url": "https://www.usatoday.com/story/entertainment/celebrities/2025/01/19/asap-rocky-trial-felony-assault-what-to-know/77805179007/",
+      "category": "MANUAL_REVIEW",
+      "status": 200
+    },
+    {
+      "question": "Will America be profitable any month in 2025?",
+      "url": "https://fiscaldata.treasury.gov/datasets/monthly-treasury-statement/summary-of-receipts-outlays-and-the-deficit-surplus-of-the-u-s-government",
+      "category": "MANUAL_REVIEW",
+      "status": 200
+    },
+    {
+      "question": "Will Elon and DOGE cut more than $250b in federal spending in 2025?",
+      "url": "https://fred.stlouisfed.org/series/FGEXPND",
+      "category": "GENLAYER_CORRECT",
+      "status": 200
+    },
+    {
+      "question": "North Carolina Bitcoin Reserve Act signed before July?",
+      "url": "https://crypto.news/pro-north-carolinas-strategic-bitcoin-reserve-bill-a-big-deal",
+      "category": "MANUAL_REVIEW",
+      "status": 200
+    },
+    {
+      "question": "Will Elon and DOGE cut between $50-100b in federal spending in 2025?",
+      "url": "https://fred.stlouisfed.org/series/FGEXPND",
+      "category": "GENLAYER_CORRECT",
+      "status": 200
+    },
+    {
+      "question": "Will Elon and DOGE cut less than $50b in federal spending in 2025?",
+      "url": "https://fred.stlouisfed.org/series/FGEXPND",
+      "category": "GENLAYER_CORRECT",
+      "status": 200
+    },
+    {
+      "question": "Will Elon and DOGE cut between $200-250b in federal spending in 2025?",
+      "url": "https://fred.stlouisfed.org/series/FGEXPND",
+      "category": "GENLAYER_CORRECT",
+      "status": 200
+    }
+  ],
+  "stats": {
+    "GENLAYER_CORRECT": 17,
+    "POTENTIAL_ISSUE": 0,
+    "BLOCKED": 12,
+    "MANUAL_REVIEW": 21
+  },
+  "extrapolation": {
+    "estFailures": 0,
+    "newAccuracy": 100
+  }
+}
