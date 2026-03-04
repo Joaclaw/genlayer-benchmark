@@ -1,9 +1,0 @@
-{
-  "investigated": [],
-  "stats": {
-    "GENLAYER_CORRECT": 0,
-    "POTENTIAL_ISSUE": 0,
-    "BLOCKED": 0,
-    "MANUAL_REVIEW": 0
-  }
-}

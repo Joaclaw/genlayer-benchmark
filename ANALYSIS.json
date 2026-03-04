@@ -1,14 +1,14 @@
 {
-  "generated_at": "2026-02-28T10:12:40.636Z",
+  "generated_at": "2026-03-03T18:50:39.406Z",
   "contract_address": "0x1414F437fd85Ed7f713756c28b2f03F73A3Dc905",
   "summary": {
     "total": 959,
     "resolvable": 80,
     "resolvable_rate": 8.3,
     "accuracy": 92.5,
-    "genlayer_issues": 0,
-    "external_issues": 298,
-    "ambiguous_issues": 414
+    "genlayer_issues": 6,
+    "external_issues": 462,
+    "ambiguous_issues": 417
   },
   "breakdown": {
     "web_access": {
