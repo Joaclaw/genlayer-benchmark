@@ -13,20 +13,3 @@ export async function getResultsData() {
     return JSON.parse(fileContents);
 }
 
-export async function getAnalysisData() {
-    const filePath = path.join(process.cwd(), 'ANALYSIS.json');
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    return JSON.parse(fileContents);
-}
-
-export async function getFinalAnalysisData() {
-    const filePath = path.join(process.cwd(), 'final_analysis.json');
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    return JSON.parse(fileContents);
-}
-
-export async function getAmbiguousDetailedAnalysisData() {
-    const filePath = path.join(process.cwd(), 'ambiguous_detailed_analysis.json');
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    return JSON.parse(fileContents);
-}
