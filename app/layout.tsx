@@ -1,7 +1,14 @@
 import './globals.css';
 import Navigation from '@/components/Navigation';
 
-export const metadata = {
+import type { Metadata, Viewport } from 'next';
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
+
+export const metadata: Metadata = {
   title: 'GenLayer Benchmark Explorer',
   description: 'Analysis and breakdown of Polymarket resolution through GenLayer Intelligent Contracts',
 };

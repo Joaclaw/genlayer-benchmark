@@ -1,9 +1,8 @@
 'use client';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-// Custom Minimalist SVG Icons
 const BarChartIcon = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <line x1="18" y1="20" x2="18" y2="10"></line>
@@ -19,8 +18,21 @@ const SearchIcon = () => (
   </svg>
 );
 
+const MenuIcon = () => (
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="3" y1="6" x2="21" y2="6"></line>
+    <line x1="3" y1="12" x2="21" y2="12"></line>
+    <line x1="3" y1="18" x2="21" y2="18"></line>
+  </svg>
+);
+
 export default function Navigation() {
   const pathname = usePathname();
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [pathname]);
 
   const links = [
     { href: '/', label: 'PolyMarket Data', icon: <BarChartIcon /> },
@@ -28,38 +40,53 @@ export default function Navigation() {
   ];
 
   return (
-    <aside className="sidebar">
-      <div className="sidebar-header">
-        <div className="sidebar-logo">
-          <span className="logo-gradient">
-            GenLayer
-          </span>
-          Benchmark
+    <>
+      <button
+        className="mobile-menu-btn"
+        onClick={() => setMobileOpen(true)}
+        aria-label="Open menu"
+      >
+        <MenuIcon />
+      </button>
+
+      {mobileOpen && (
+        <div
+          className="sidebar-overlay"
+          onClick={() => setMobileOpen(false)}
+        />
+      )}
+
+      <aside className={`sidebar ${mobileOpen ? 'open' : ''}`}>
+        <div className="sidebar-header">
+          <div className="sidebar-logo">
+            <span className="logo-gradient">GenLayer</span>
+            Benchmark
+          </div>
         </div>
-      </div>
 
-      <nav style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-        {links.map((link) => {
-          const isActive = pathname === link.href;
-          return (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`nav-link ${isActive ? 'active' : ''}`}
-            >
-              <span style={{ display: 'flex', alignItems: 'center', opacity: isActive ? 1 : 0.6, transition: 'opacity 0.2s' }}>
-                {link.icon}
-              </span>
-              {link.label}
-            </Link>
-          );
-        })}
-      </nav>
+        <nav style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          {links.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={`nav-link ${isActive ? 'active' : ''}`}
+              >
+                <span style={{ display: 'flex', alignItems: 'center', opacity: isActive ? 1 : 0.6, transition: 'opacity 0.2s' }}>
+                  {link.icon}
+                </span>
+                {link.label}
+              </Link>
+            );
+          })}
+        </nav>
 
-      <div style={{ marginTop: 'auto', padding: '1.5rem 1rem', borderTop: '1px solid var(--border-color)', color: 'var(--text-dim)', fontSize: '0.8rem', lineHeight: 1.5 }}>
-        <div style={{ fontWeight: 500, color: 'var(--text-main)', marginBottom: '0.25rem' }}>System Overview</div>
-        Intelligent Contract validation suite for empirical accuracy benchmarking.
-      </div>
-    </aside>
+        <div style={{ marginTop: 'auto', padding: '1.5rem 1rem', borderTop: '1px solid var(--border-color)', color: 'var(--text-dim)', fontSize: '0.8rem', lineHeight: 1.5 }}>
+          <div style={{ fontWeight: 500, color: 'var(--text-main)', marginBottom: '0.25rem' }}>System Overview</div>
+          Intelligent Contract validation suite for empirical accuracy benchmarking.
+        </div>
+      </aside>
+    </>
   );
 }
