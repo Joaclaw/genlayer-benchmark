@@ -13,3 +13,9 @@ export async function getResultsData() {
     return JSON.parse(fileContents);
 }
 
+export async function getCategoryData() {
+    const filePath = path.join(process.cwd(), 'data', 'market_categories.json');
+    const fileContents = fs.readFileSync(filePath, 'utf8');
+    return JSON.parse(fileContents);
+}
+

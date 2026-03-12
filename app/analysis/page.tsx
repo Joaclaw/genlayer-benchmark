@@ -1,10 +1,12 @@
 import React from 'react';
 import StatCard from '@/components/StatCard';
 import TabbedResults from '@/components/TabbedResults';
-import { getResultsData } from '@/lib/data';
+import CategoryView from '@/components/CategoryView';
+import { getResultsData, getCategoryData } from '@/lib/data';
 
 export default async function AnalysisResultsPage() {
   let resultData;
+  let categoryData;
   try {
     resultData = await getResultsData();
   } catch (e) {
@@ -14,6 +16,12 @@ export default async function AnalysisResultsPage() {
         Please ensure <code>benchmark_results.json</code> exists in the data directory.
       </div>
     );
+  }
+
+  try {
+    categoryData = await getCategoryData();
+  } catch (e) {
+    categoryData = null;
   }
 
   const results = resultData.results || [];
@@ -91,6 +99,21 @@ export default async function AnalysisResultsPage() {
           type="neutral"
         />
       </div>
+
+      {/* Market Categories Section */}
+      {categoryData && (
+        <>
+          <h2 style={{ fontSize: '1.25rem', fontWeight: 400, marginBottom: '1.5rem', color: 'var(--text-main)', letterSpacing: '0.02em', borderBottom: '1px solid var(--border-color)', paddingBottom: '0.75rem' }}>
+            Market Categories
+            <span style={{ fontSize: '0.85rem', fontWeight: 300, color: 'var(--text-dim)', marginLeft: '1rem' }}>
+              {categoryData.total_markets} markets classified by determinism
+            </span>
+          </h2>
+          <div style={{ marginBottom: '4rem' }}>
+            <CategoryView data={categoryData} />
+          </div>
+        </>
+      )}
 
       {/* Detailed Breakdown */}
       <h2 style={{ fontSize: '1.25rem', fontWeight: 400, marginBottom: '1.5rem', color: 'var(--text-main)', letterSpacing: '0.02em', borderBottom: '1px solid var(--border-color)', paddingBottom: '0.75rem' }}>Failure Breakdown</h2>
