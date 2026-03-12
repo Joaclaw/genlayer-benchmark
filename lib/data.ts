@@ -19,3 +19,17 @@ export async function getCategoryData() {
     return JSON.parse(fileContents);
 }
 
+export async function getPilotResultsData() {
+    const filePath = path.join(process.cwd(), 'data', 'pilot_results.json');
+    if (!fs.existsSync(filePath)) return null;
+    const fileContents = fs.readFileSync(filePath, 'utf8');
+    return JSON.parse(fileContents);
+}
+
+export async function getPilotURLsData() {
+    const filePath = path.join(process.cwd(), 'data', 'pilot_urls.json');
+    if (!fs.existsSync(filePath)) return null;
+    const fileContents = fs.readFileSync(filePath, 'utf8');
+    return JSON.parse(fileContents);
+}
+

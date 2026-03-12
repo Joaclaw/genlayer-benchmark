@@ -2,6 +2,7 @@ import React from 'react';
 import StatCard from '@/components/StatCard';
 import TabbedResults from '@/components/TabbedResults';
 import CategoryView from '@/components/CategoryView';
+import PilotMonitor from '@/components/PilotMonitor';
 import { getResultsData, getCategoryData } from '@/lib/data';
 
 export default async function AnalysisResultsPage() {
@@ -70,6 +71,17 @@ export default async function AnalysisResultsPage() {
           Evaluating GenLayer&apos;s resolutions against exactly {results.length} closed markets, filtering noise from actionable insight.
         </p>
       </header>
+
+      {/* Live Multi-URL Pilot Monitor */}
+      <div style={{ marginBottom: '3rem' }}>
+        <h2 style={{ fontSize: '1.25rem', fontWeight: 400, marginBottom: '1.5rem', color: 'var(--text-main)', letterSpacing: '0.02em', borderBottom: '1px solid var(--border-color)', paddingBottom: '0.75rem' }}>
+          Live Multi-URL Pilot
+          <span style={{ fontSize: '0.85rem', fontWeight: 300, color: 'var(--text-dim)', marginLeft: '1rem' }}>
+            Agentic search + 3-URL consensus resolution
+          </span>
+        </h2>
+        <PilotMonitor />
+      </div>
 
       {/* Summary Stats Row */}
       <h2 style={{ fontSize: '1.25rem', fontWeight: 400, marginBottom: '1.5rem', color: 'var(--text-main)', letterSpacing: '0.02em', borderBottom: '1px solid var(--border-color)', paddingBottom: '0.75rem' }}>Resolution Summary</h2>
