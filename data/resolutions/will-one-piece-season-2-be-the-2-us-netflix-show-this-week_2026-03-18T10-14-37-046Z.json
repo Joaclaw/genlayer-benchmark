@@ -1,0 +1,121 @@
+{
+  "market": {
+    "id": "0x777c4c9feb943ec2359c4d92c682c1344f8a5aa0c1a6fa2b8f2254687c0cfe5b",
+    "question": "Will \"One Piece: Season 2\" be the #2 US Netflix show this week?",
+    "description": "Netflix is expected to update its Top 10 TV shows list on top10.netflix.com on Tuesday, March 17, 2026, 3:00 PM ET, reflecting viewership from the previous week (Monday to Sunday).\n\nThis market will resolve based on which show this update ranks as the #2 Netflix show in the United States.\n\nThe ranking is based on total views in the United States, as reported by Netflix for TV shows.\n\nIf the top10.netflix.com update does not occur by March 20, 2026, 11:59 PM ET, this market will resolve to \"Other\".",
+    "outcome": "No",
+    "end_date": "2026-03-17T00:00:00Z",
+    "resolved": true,
+    "slug": "will-one-piece-season-2-be-the-2-us-netflix-show-this-week",
+    "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/will-one-piece-season-2-be-the-top-global-netflix-show-this-week-xc3GnbOmzAW8.jpg"
+  },
+  "discoveredUrls": [
+    {
+      "url": "https://www.whats-on-netflix.com/news/top-10-reports/one-piece-season-2-tops-netflix-charts-but-how-do-the-premiere-numbers-compare-to-season-1/",
+      "title": "'ONE PIECE' Season 2 Tops Netflix Charts – But How Do the Premiere Numbers Compare to Season 1?",
+      "domain": "whats-on-netflix.com",
+      "relevance_score": 0.5226058917735973
+    },
+    {
+      "url": "https://www.thewrap.com/creative-content/tv-shows/one-piece-season-2-netflix-ratings-viewership/",
+      "title": "One Piece Season 2 Debuts Atop Netflix Most-Watched TV List",
+      "domain": "thewrap.com",
+      "relevance_score": 0.5106649810855353
+    },
+    {
+      "url": "https://spoiler.bolavip.com/en/netflix/one-piece-season-2-tops-netflix-charts-but-falls-short-of-the-first-seasons-debut",
+      "title": "‘One Piece’ Season 2 Tops Netflix Charts, but Falls Short of the First Season’s Debut - Spoiler US",
+      "domain": "spoiler.bolavip.com",
+      "relevance_score": 0.49872407039747335
+    },
+    {
+      "url": "https://variety.com/2026/tv/news/one-piece-season-2-ratings-netflix-1236691475/",
+      "title": "'One Piece' Season 2 Ratings: 16.8 Million Netflix Views",
+      "domain": "variety.com",
+      "relevance_score": 0.4867831597094114
+    },
+    {
+      "url": "https://www.netflix.com/tudum/articles/top-10-march-9-2026",
+      "title": "Top 10 Movies and Shows on Netflix: Week of March 9, 2026 - Netflix Tudum",
+      "domain": "netflix.com",
+      "relevance_score": 0.4748422490213494
+    }
+  ],
+  "validatedUrls": [
+    {
+      "url": "https://www.whats-on-netflix.com/news/top-10-reports/one-piece-season-2-tops-netflix-charts-but-how-do-the-premiere-numbers-compare-to-season-1/",
+      "title": "'ONE PIECE' Season 2 Tops Netflix Charts – But How Do the Premiere Numbers Compare to Season 1?",
+      "domain": "whats-on-netflix.com",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://www.thewrap.com/creative-content/tv-shows/one-piece-season-2-netflix-ratings-viewership/",
+      "title": "One Piece Season 2 Debuts Atop Netflix Most-Watched TV List",
+      "domain": "thewrap.com",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://spoiler.bolavip.com/en/netflix/one-piece-season-2-tops-netflix-charts-but-falls-short-of-the-first-seasons-debut",
+      "title": "‘One Piece’ Season 2 Tops Netflix Charts, but Falls Short of the First Season’s Debut - Spoiler US",
+      "domain": "spoiler.bolavip.com",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://variety.com/2026/tv/news/one-piece-season-2-ratings-netflix-1236691475/",
+      "title": "'One Piece' Season 2 Ratings: 16.8 Million Netflix Views",
+      "domain": "variety.com",
+      "accessible": false,
+      "relevant": false,
+      "error": "Anti-bot detected"
+    },
+    {
+      "url": "https://www.netflix.com/tudum/articles/top-10-march-9-2026",
+      "title": "Top 10 Movies and Shows on Netflix: Week of March 9, 2026 - Netflix Tudum",
+      "domain": "netflix.com",
+      "accessible": true,
+      "relevant": true
+    }
+  ],
+  "selectedUrls": [
+    "https://www.whats-on-netflix.com/news/top-10-reports/one-piece-season-2-tops-netflix-charts-but-how-do-the-premiere-numbers-compare-to-season-1/",
+    "https://www.thewrap.com/creative-content/tv-shows/one-piece-season-2-netflix-ratings-viewership/",
+    "https://spoiler.bolavip.com/en/netflix/one-piece-season-2-tops-netflix-charts-but-falls-short-of-the-first-seasons-debut"
+  ],
+  "result": {
+    "market_id": "0x777c4c9feb943ec2359c4d92c682c1344f8a5aa0c1a6fa2b8f2254687c0cfe5b",
+    "question": "Will \"One Piece: Season 2\" be the #2 US Netflix show this week?",
+    "urls_used": [
+      "https://www.whats-on-netflix.com/news/top-10-reports/one-piece-season-2-tops-netflix-charts-but-how-do-the-premiere-numbers-compare-to-season-1/",
+      "https://www.thewrap.com/creative-content/tv-shows/one-piece-season-2-netflix-ratings-viewership/",
+      "https://spoiler.bolavip.com/en/netflix/one-piece-season-2-tops-netflix-charts-but-falls-short-of-the-first-seasons-debut"
+    ],
+    "final_answer": "UNCERTAIN",
+    "expected": "No",
+    "correct": false,
+    "reasoning": "The sources provide information about 'One Piece: Season 2' being the #1 show on Netflix globally, but do not specifically state its ranking on US Netflix. The data is based on global English-language TV rankings, and there's no clear indication of its performance on the US Netflix chart.",
+    "urls_fetched": 3,
+    "consensus": {
+      "status": "ACCEPTED",
+      "result": "MAJORITY_AGREE",
+      "agree_count": 3,
+      "total_validators": 5,
+      "votes": [
+        "AGREE",
+        "DISAGREE",
+        "DISAGREE",
+        "AGREE",
+        "AGREE"
+      ]
+    }
+  },
+  "timestamp": "2026-03-18T10:14:36.854Z",
+  "logs": [
+    "heading|[03:12:55] Fetching market metadata from Polymarket...",
+    "info|[03:12:55] Found 21 markets under this event",
+    "success|[03:12:57] Selected: \"Will \"One Piece: Season 2\" be the #2 US Netflix show this week?\"",
+    "dim|[03:12:57] Status: Resolved | Outcome: No"
+  ]
+}

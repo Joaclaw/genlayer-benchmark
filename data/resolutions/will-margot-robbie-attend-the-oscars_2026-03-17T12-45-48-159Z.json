@@ -1,0 +1,110 @@
+{
+  "market": {
+    "id": "0x475d618ec0400594ae03be24a9f9b4d249e18627d1a3d9f6c2c5d47a138f73d1",
+    "question": "Will Margot Robbie attend the Oscars?",
+    "description": "The Academy Awards are presented annually by the Academy of Motion Picture Arts and Sciences (AMPAS) to honor outstanding artistic and technical achievements in film. For the 98th Academy Awards in 2026, nominations are scheduled to be announced on January 22, followed by the ceremony on March 15, 2026.\n\nThis market will resolve to \"Yes\" if the listed individual attends the 98th Academy Awards. Otherwise, this market will resolve to \"No\".\n\nIf the event is canceled or postponed beyond March 31, 2026, 11:59 PM ET, this market will resolve to \"No\".\n\nFor the purpose of this market, attending the Academy Awards is defined as being in physical attendance during any part of the event.\n\nThe resolution source will be a consensus of credible reporting.",
+    "outcome": "No",
+    "end_date": "2026-03-15T00:00:00Z",
+    "resolved": true,
+    "slug": "will-margot-robbie-attend-the-oscars",
+    "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/oscars-2026-best-picture-nominations-uExlgIhppb3W.jpg"
+  },
+  "discoveredUrls": [
+    {
+      "url": "https://www.elle.com/culture/celebrities/a70737477/why-margot-robbie-missed-oscars-2026/",
+      "title": "Why Margot Robbie Missed the 2026 Oscars",
+      "domain": "elle.com",
+      "relevance_score": 0.527151197142261
+    },
+    {
+      "url": "https://www.marieclaire.co.uk/celebrity-news/margot-robbie-absent-oscars",
+      "title": "Why Didn't Margot Robbie Attend the Oscars This Year? | Marie Claire UK",
+      "domain": "marieclaire.co.uk",
+      "relevance_score": 0.5119690436800765
+    },
+    {
+      "url": "https://www.imdb.com/news/ni64479630/",
+      "title": "Margot Robbie Reveals Post-Oscars Plans: “I Am Going to Switch My Phone Off” - IMDb",
+      "domain": "imdb.com",
+      "relevance_score": 0.4816047367557075
+    },
+    {
+      "url": "https://eonline.com/videos/2305355331588/margot-robbie-breaks-her-silence-on-oscars-nomination-snub",
+      "title": "Margot Robbie Breaks Her Silence on Oscars Nomination Snub",
+      "domain": "eonline.com",
+      "relevance_score": 0.466422583293523
+    },
+    {
+      "url": "https://faroutmagazine.co.uk/margot-robbie-will-arnett-oscar-is-this-thing-on/",
+      "title": "Margot Robbie claims Will Arnett was snubbed by the Oscars",
+      "domain": "faroutmagazine.co.uk",
+      "relevance_score": 0.436058276369154
+    }
+  ],
+  "validatedUrls": [
+    {
+      "url": "https://www.elle.com/culture/celebrities/a70737477/why-margot-robbie-missed-oscars-2026/",
+      "title": "Why Margot Robbie Missed the 2026 Oscars",
+      "domain": "elle.com",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://www.marieclaire.co.uk/celebrity-news/margot-robbie-absent-oscars",
+      "title": "Why Didn't Margot Robbie Attend the Oscars This Year? | Marie Claire UK",
+      "domain": "marieclaire.co.uk",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://www.imdb.com/news/ni64479630/",
+      "title": "Margot Robbie Reveals Post-Oscars Plans: “I Am Going to Switch My Phone Off” - IMDb",
+      "domain": "imdb.com",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://eonline.com/videos/2305355331588/margot-robbie-breaks-her-silence-on-oscars-nomination-snub",
+      "title": "Margot Robbie Breaks Her Silence on Oscars Nomination Snub",
+      "domain": "eonline.com",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://faroutmagazine.co.uk/margot-robbie-will-arnett-oscar-is-this-thing-on/",
+      "title": "Margot Robbie claims Will Arnett was snubbed by the Oscars",
+      "domain": "faroutmagazine.co.uk",
+      "accessible": true,
+      "relevant": true
+    }
+  ],
+  "selectedUrls": [
+    "https://www.elle.com/culture/celebrities/a70737477/why-margot-robbie-missed-oscars-2026/",
+    "https://www.marieclaire.co.uk/celebrity-news/margot-robbie-absent-oscars",
+    "https://www.imdb.com/news/ni64479630/"
+  ],
+  "result": {
+    "market_id": "0x475d618ec0400594ae03be24a9f9b4d249e18627d1a3d9f6c2c5d47a138f73d1",
+    "question": "Will Margot Robbie attend the Oscars?",
+    "urls_used": [
+      "https://www.elle.com/culture/celebrities/a70737477/why-margot-robbie-missed-oscars-2026/",
+      "https://www.marieclaire.co.uk/celebrity-news/margot-robbie-absent-oscars",
+      "https://www.imdb.com/news/ni64479630/"
+    ],
+    "final_answer": "UNCERTAIN",
+    "expected": "No",
+    "correct": false,
+    "confidence": "UNKNOWN",
+    "reasoning": "",
+    "source_analysis": [],
+    "urls_fetched": 0,
+    "urls_failed": 0
+  },
+  "timestamp": "2026-03-17T12:45:48.152Z",
+  "logs": [
+    "heading|[05:45:40] Fetching market metadata from Polymarket...",
+    "info|[05:45:40] Found 14 markets under this event",
+    "success|[05:45:41] Selected: \"Will Margot Robbie attend the Oscars?\"",
+    "dim|[05:45:41] Status: Resolved | Outcome: No"
+  ]
+}

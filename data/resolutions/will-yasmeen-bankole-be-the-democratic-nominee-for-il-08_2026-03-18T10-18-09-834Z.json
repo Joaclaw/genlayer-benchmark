@@ -1,0 +1,121 @@
+{
+  "market": {
+    "id": "0x33514c584523af522e49c20b8592965188505f755865bfbeedf1d6b2f72efb0c",
+    "question": "Will Yasmeen Bankole be the Democratic Nominee for IL-08?",
+    "description": "This market will resolve according to the candidate who wins the nomination for the Democratic Party to contest the IL-08 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The Democratic primary will take place on March 17, 2026.\n\nIf no nominee is announced by November 3, 2026, 11:59PM ET, this market will resolve to \"Other\".\n\nThe resolution source for this market will be a consensus of official Democrat sources, including https://democrats.org/.\n\nAny replacement of the nominee before election day will not change the resolution of the market.",
+    "outcome": "No",
+    "end_date": "2026-03-17T00:00:00Z",
+    "resolved": true,
+    "slug": "will-yasmeen-bankole-be-the-democratic-nominee-for-il-08",
+    "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/il-07-democratic-primary-winner-dBMfW1d-DJRZ.png"
+  },
+  "discoveredUrls": [
+    {
+      "url": "https://ballotpedia.org/Yasmeen_Bankole",
+      "title": "Yasmeen Bankole - Ballotpedia",
+      "domain": "ballotpedia.org",
+      "relevance_score": 0.4603455452500589
+    },
+    {
+      "url": "https://chicago.suntimes.com/elections/2026/candidate-questionnaires/yasmeen-bankole-illinois-primary-8th-congressional-district",
+      "title": "Yasmeen Bankole, Democratic candidate for Illinois 8th Congressional District - Chicago Sun-Times",
+      "domain": "chicago.suntimes.com",
+      "relevance_score": 0.45588315816812947
+    },
+    {
+      "url": "https://navprod.dailyherald.com/20260228/us-congress-politics/yasmeen-bankole-2026-candidate-for-the-8th-congressional-district/",
+      "title": "Yasmeen Bankole: 2026 candidate for the 8th Congressional District",
+      "domain": "navprod.dailyherald.com",
+      "relevance_score": 0.45142077108620005
+    },
+    {
+      "url": "https://higherheightsforamericapac.org/candidate/yasmeen-bankole/",
+      "title": "Yasmeen Bankole\n\t\t\t\t-Higher Heights for America PAC",
+      "domain": "higherheightsforamericapac.org",
+      "relevance_score": 0.4469583840042706
+    },
+    {
+      "url": "https://www.shawlocal.com/kane-county-chronicle/2026/02/06/2026-election-questionnaire-yasmeen-bankole-us-house-of-representatives-8th-district/",
+      "title": "2026 Election Questionnaire: Yasmeen Bankole, U.S. House of Representatives, 8th District – Shaw Local",
+      "domain": "shawlocal.com",
+      "relevance_score": 0.4424959969223412
+    }
+  ],
+  "validatedUrls": [
+    {
+      "url": "https://ballotpedia.org/Yasmeen_Bankole",
+      "title": "Yasmeen Bankole - Ballotpedia",
+      "domain": "ballotpedia.org",
+      "accessible": false,
+      "relevant": false,
+      "error": "Anti-bot detected"
+    },
+    {
+      "url": "https://chicago.suntimes.com/elections/2026/candidate-questionnaires/yasmeen-bankole-illinois-primary-8th-congressional-district",
+      "title": "Yasmeen Bankole, Democratic candidate for Illinois 8th Congressional District - Chicago Sun-Times",
+      "domain": "chicago.suntimes.com",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://navprod.dailyherald.com/20260228/us-congress-politics/yasmeen-bankole-2026-candidate-for-the-8th-congressional-district/",
+      "title": "Yasmeen Bankole: 2026 candidate for the 8th Congressional District",
+      "domain": "navprod.dailyherald.com",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://higherheightsforamericapac.org/candidate/yasmeen-bankole/",
+      "title": "Yasmeen Bankole\n\t\t\t\t-Higher Heights for America PAC",
+      "domain": "higherheightsforamericapac.org",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://www.shawlocal.com/kane-county-chronicle/2026/02/06/2026-election-questionnaire-yasmeen-bankole-us-house-of-representatives-8th-district/",
+      "title": "2026 Election Questionnaire: Yasmeen Bankole, U.S. House of Representatives, 8th District – Shaw Local",
+      "domain": "shawlocal.com",
+      "accessible": true,
+      "relevant": true
+    }
+  ],
+  "selectedUrls": [
+    "https://chicago.suntimes.com/elections/2026/candidate-questionnaires/yasmeen-bankole-illinois-primary-8th-congressional-district",
+    "https://navprod.dailyherald.com/20260228/us-congress-politics/yasmeen-bankole-2026-candidate-for-the-8th-congressional-district/",
+    "https://higherheightsforamericapac.org/candidate/yasmeen-bankole/"
+  ],
+  "result": {
+    "market_id": "0x33514c584523af522e49c20b8592965188505f755865bfbeedf1d6b2f72efb0c",
+    "question": "Will Yasmeen Bankole be the Democratic Nominee for IL-08?",
+    "urls_used": [
+      "https://chicago.suntimes.com/elections/2026/candidate-questionnaires/yasmeen-bankole-illinois-primary-8th-congressional-district",
+      "https://navprod.dailyherald.com/20260228/us-congress-politics/yasmeen-bankole-2026-candidate-for-the-8th-congressional-district/",
+      "https://higherheightsforamericapac.org/candidate/yasmeen-bankole/"
+    ],
+    "final_answer": "UNCERTAIN",
+    "expected": "No",
+    "correct": false,
+    "reasoning": "The sources identify Yasmeen Bankole as a candidate for the Democratic nomination in the Illinois 8th Congressional District primary scheduled for March 17, 2026. However, the provided text does not contain election results or polling data to determine if she will win the nomination. The sources only confirm her candidacy, background, and policy positions.",
+    "urls_fetched": 3,
+    "consensus": {
+      "status": "ACCEPTED",
+      "result": "MAJORITY_AGREE",
+      "agree_count": 5,
+      "total_validators": 5,
+      "votes": [
+        "AGREE",
+        "AGREE",
+        "AGREE",
+        "AGREE",
+        "AGREE"
+      ]
+    }
+  },
+  "timestamp": "2026-03-18T10:18:09.722Z",
+  "logs": [
+    "heading|[03:17:09] Fetching market metadata from Polymarket...",
+    "info|[03:17:09] Found 35 markets under this event",
+    "success|[03:17:11] Selected: \"Will Yasmeen Bankole be the Democratic Nominee for IL-08?\"",
+    "dim|[03:17:11] Status: Resolved | Outcome: No"
+  ]
+}

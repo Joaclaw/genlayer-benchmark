@@ -1,0 +1,108 @@
+{
+  "market": {
+    "id": "0xca656ca1c8fe09d8662cc55a328a3cc4b5f702474d0fd29932045da46f4aa786",
+    "question": "Will \"Virgin River: Season 7\" be the #2 US Netflix show this week?",
+    "description": "Netflix is expected to update its Top 10 TV shows list on top10.netflix.com on Tuesday, March 17, 2026, 3:00 PM ET, reflecting viewership from the previous week (Monday to Sunday).\n\nThis market will resolve based on which show this update ranks as the #2 Netflix show in the United States.\n\nThe ranking is based on total views in the United States, as reported by Netflix for TV shows.\n\nIf the top10.netflix.com update does not occur by March 20, 2026, 11:59 PM ET, this market will resolve to \"Other\".",
+    "outcome": "No",
+    "end_date": "2026-03-17T00:00:00Z",
+    "resolved": true,
+    "slug": "will-virgin-river-season-7-be-the-2-us-netflix-show-this-week",
+    "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/will-virgin-river-season-7-be-the-top-global-netflix-show-this-week-LzG2401BfALn.jpg"
+  },
+  "discoveredUrls": [
+    {
+      "url": "https://www.comingsoon.net/tv/news/2108266-virgin-river-tops-netflix-charts-after-season-7-release",
+      "title": "Hit Romance Series Beats Bridgerton on Netflix Charts",
+      "domain": "comingsoon.net",
+      "relevance_score": 0.4301693689335308
+    },
+    {
+      "url": "https://screenrant.com/virgin-river-season-7-netflix-success-explained-march-2026/",
+      "title": "Why Netflix's New #1 Show Is Taking Over America (New Season Out Now)",
+      "domain": "screenrant.com",
+      "relevance_score": 0.4249746794251993
+    },
+    {
+      "url": "https://metro.co.uk/2026/03/14/addictive-netflix-drama-soars-number-1-emotional-season-7-drops-27436531/",
+      "title": "Addictive Netflix drama soars to number 1 after 'emotional' season 7 drops | Metro News",
+      "domain": "metro.co.uk",
+      "relevance_score": 0.4145853004085362
+    },
+    {
+      "url": "https://www.whats-on-netflix.com/news/virgin-river-season-7-episode-titles-order-and-runtimes-revealed/",
+      "title": "'Virgin River' Season 7 Episode Titles, Order and Runtimes Revealed",
+      "domain": "whats-on-netflix.com",
+      "relevance_score": 0.4093906109002046
+    },
+    {
+      "url": "https://www.mandatory.com/news/1744306-virgin-river-tops-netflix-charts-after-season-7-release",
+      "title": "Fan-Favorite Romance Series Conquers Netflix Charts After Season 7 Debut - Mandatory",
+      "domain": "mandatory.com",
+      "relevance_score": 0.4041959213918731
+    }
+  ],
+  "validatedUrls": [
+    {
+      "url": "https://www.comingsoon.net/tv/news/2108266-virgin-river-tops-netflix-charts-after-season-7-release",
+      "title": "Hit Romance Series Beats Bridgerton on Netflix Charts",
+      "domain": "comingsoon.net",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://screenrant.com/virgin-river-season-7-netflix-success-explained-march-2026/",
+      "title": "Why Netflix's New #1 Show Is Taking Over America (New Season Out Now)",
+      "domain": "screenrant.com",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://metro.co.uk/2026/03/14/addictive-netflix-drama-soars-number-1-emotional-season-7-drops-27436531/",
+      "title": "Addictive Netflix drama soars to number 1 after 'emotional' season 7 drops | Metro News",
+      "domain": "metro.co.uk",
+      "accessible": false,
+      "relevant": false,
+      "error": "Anti-bot detected"
+    },
+    {
+      "url": "https://www.whats-on-netflix.com/news/virgin-river-season-7-episode-titles-order-and-runtimes-revealed/",
+      "title": "'Virgin River' Season 7 Episode Titles, Order and Runtimes Revealed",
+      "domain": "whats-on-netflix.com",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://www.mandatory.com/news/1744306-virgin-river-tops-netflix-charts-after-season-7-release",
+      "title": "Fan-Favorite Romance Series Conquers Netflix Charts After Season 7 Debut - Mandatory",
+      "domain": "mandatory.com",
+      "accessible": true,
+      "relevant": true
+    }
+  ],
+  "selectedUrls": [
+    "https://www.comingsoon.net/tv/news/2108266-virgin-river-tops-netflix-charts-after-season-7-release",
+    "https://screenrant.com/virgin-river-season-7-netflix-success-explained-march-2026/",
+    "https://www.whats-on-netflix.com/news/virgin-river-season-7-episode-titles-order-and-runtimes-revealed/"
+  ],
+  "result": {
+    "market_id": "0xca656ca1c8fe09d8662cc55a328a3cc4b5f702474d0fd29932045da46f4aa786",
+    "question": "Will \"Virgin River: Season 7\" be the #2 US Netflix show this week?",
+    "urls_used": [
+      "https://www.comingsoon.net/tv/news/2108266-virgin-river-tops-netflix-charts-after-season-7-release",
+      "https://screenrant.com/virgin-river-season-7-netflix-success-explained-march-2026/",
+      "https://www.whats-on-netflix.com/news/virgin-river-season-7-episode-titles-order-and-runtimes-revealed/"
+    ],
+    "final_answer": "YES",
+    "expected": "No",
+    "correct": false,
+    "status": "COMMITTING",
+    "consensus": "NO_MAJORITY"
+  },
+  "timestamp": "2026-03-18T09:55:14.634Z",
+  "logs": [
+    "heading|[02:54:59] Fetching market metadata from Polymarket...",
+    "info|[02:54:59] Found 21 markets under this event",
+    "success|[02:55:01] Selected: \"Will \"Virgin River: Season 7\" be the #2 US Netflix show this week?\"",
+    "dim|[02:55:01] Status: Resolved | Outcome: No"
+  ]
+}

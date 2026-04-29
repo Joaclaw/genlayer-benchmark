@@ -3,23 +3,23 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import React, { useState, useEffect } from 'react';
 
-const BarChartIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <line x1="18" y1="20" x2="18" y2="10"></line>
-    <line x1="12" y1="20" x2="12" y2="4"></line>
-    <line x1="6" y1="20" x2="6" y2="14"></line>
+const TerminalIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <polyline points="4 17 10 11 4 5"></polyline>
+    <line x1="12" y1="19" x2="20" y2="19"></line>
   </svg>
 );
 
-const SearchIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="11" cy="11" r="8"></circle>
-    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+const HistoryIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <path d="M3 3v5h5"></path>
+    <path d="M3.05 13A9 9 0 1 0 6 5.3L3 8"></path>
+    <path d="M12 7v5l4 2"></path>
   </svg>
 );
 
 const MenuIcon = () => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
     <line x1="3" y1="6" x2="21" y2="6"></line>
     <line x1="3" y1="12" x2="21" y2="12"></line>
     <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -35,8 +35,8 @@ export default function Navigation() {
   }, [pathname]);
 
   const links = [
-    { href: '/', label: 'PolyMarket Data', icon: <BarChartIcon /> },
-    { href: '/analysis', label: 'Analysis & Results', icon: <SearchIcon /> },
+    { href: '/resolve', label: 'Resolve Market', icon: <TerminalIcon /> },
+    { href: '/resolutions', label: 'History', icon: <HistoryIcon /> },
   ];
 
   return (
@@ -59,32 +59,28 @@ export default function Navigation() {
       <aside className={`sidebar ${mobileOpen ? 'open' : ''}`}>
         <div className="sidebar-header">
           <div className="sidebar-logo">
-            <span className="logo-gradient">GenLayer</span>
-            Benchmark
+            <span className="logo-gradient">GL</span> Benchmark
           </div>
         </div>
 
-        <nav style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+        <nav>
           {links.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive = pathname === link.href || (link.href === '/resolve' && pathname === '/');
             return (
               <Link
                 key={link.href}
                 href={link.href}
                 className={`nav-link ${isActive ? 'active' : ''}`}
               >
-                <span style={{ display: 'flex', alignItems: 'center', opacity: isActive ? 1 : 0.6, transition: 'opacity 0.2s' }}>
-                  {link.icon}
-                </span>
+                {link.icon}
                 {link.label}
               </Link>
             );
           })}
         </nav>
 
-        <div style={{ marginTop: 'auto', padding: '1.5rem 1rem', borderTop: '1px solid var(--border-color)', color: 'var(--text-dim)', fontSize: '0.8rem', lineHeight: 1.5 }}>
-          <div style={{ fontWeight: 500, color: 'var(--text-main)', marginBottom: '0.25rem' }}>System Overview</div>
-          Intelligent Contract validation suite for empirical accuracy benchmarking.
+        <div style={{ marginTop: 'auto', paddingTop: '1rem', borderTop: '1px solid var(--border)', fontSize: '0.7rem', color: 'var(--text-dim)' }}>
+          Multi-URL Resolution Pipeline
         </div>
       </aside>
     </>

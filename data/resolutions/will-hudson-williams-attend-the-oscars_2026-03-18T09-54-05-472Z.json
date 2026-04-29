@@ -1,0 +1,108 @@
+{
+  "market": {
+    "id": "0x9bc8ff4cc211e124cbaccb5bd7ad504f67845806e978eb384d82eecbf91a26b2",
+    "question": "Will Hudson Williams attend the Oscars?",
+    "description": "The Academy Awards are presented annually by the Academy of Motion Picture Arts and Sciences (AMPAS) to honor outstanding artistic and technical achievements in film. For the 98th Academy Awards in 2026, nominations are scheduled to be announced on January 22, followed by the ceremony on March 15, 2026.\n\nThis market will resolve to \"Yes\" if the listed individual attends the 98th Academy Awards. Otherwise, this market will resolve to \"No\".\n\nIf the event is canceled or postponed beyond March 31, 2026, 11:59 PM ET, this market will resolve to \"No\".\n\nFor the purpose of this market, attending the Academy Awards is defined as being in physical attendance during any part of the event.\n\nThe resolution source will be a consensus of credible reporting.",
+    "outcome": "Yes",
+    "end_date": "2026-03-15T00:00:00Z",
+    "resolved": true,
+    "slug": "will-hudson-williams-attend-the-oscars",
+    "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/oscars-2026-best-picture-nominations-uExlgIhppb3W.jpg"
+  },
+  "discoveredUrls": [
+    {
+      "url": "https://www.elle.com/culture/celebrities/a70742150/hudson-williams-red-carpet-photos-oscars-2026/",
+      "title": "Hudson Williams Pairs His All-Black Suit With Unexpected Accessories at the 2026 Oscars",
+      "domain": "elle.com",
+      "relevance_score": 0.4093049584103231
+    },
+    {
+      "url": "https://variety.com/2026/awards/news/hudson-williams-attend-oscars-heated-rivalry-1236682622/",
+      "title": "'Heated Rivalry' Star Hudson Williams to Attend Oscars 2026",
+      "domain": "variety.com",
+      "relevance_score": 0.40503653950137025
+    },
+    {
+      "url": "https://www.eonline.com/news/1429685/oscars-2026-hudson-williams-on-fans-reaction-to-his-girlfriend",
+      "title": "Oscars 2026: Hudson Williams on Fans' Reaction to His Girlfriend",
+      "domain": "eonline.com",
+      "relevance_score": 0.4007681205924174
+    },
+    {
+      "url": "https://www.indiatimes.com/trending/hudson-williams-at-the-2026-oscars-fans-are-already-rolling-their-eyes-actors-who-star-in-nominated-films-do-not-get-chance-the-to-attend-but/articleshow/129466156.html",
+      "title": "Hudson Williams at the 2026 Oscars? Fans are already rolling their eyes: 'Actors who star in nominated films do not get chance the to attend but…'",
+      "domain": "indiatimes.com",
+      "relevance_score": 0.39649970168346454
+    },
+    {
+      "url": "https://www.aol.co.uk/articles/hudson-williams-makes-stylish-oscars-205946540.html",
+      "title": "Hudson Williams Makes a Stylish Oscars Debut in Balenciaga Tuxedo and Bulgari Jewelry - AOL",
+      "domain": "aol.co.uk",
+      "relevance_score": 0.39223128277451164
+    }
+  ],
+  "validatedUrls": [
+    {
+      "url": "https://www.elle.com/culture/celebrities/a70742150/hudson-williams-red-carpet-photos-oscars-2026/",
+      "title": "Hudson Williams Pairs His All-Black Suit With Unexpected Accessories at the 2026 Oscars",
+      "domain": "elle.com",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://variety.com/2026/awards/news/hudson-williams-attend-oscars-heated-rivalry-1236682622/",
+      "title": "'Heated Rivalry' Star Hudson Williams to Attend Oscars 2026",
+      "domain": "variety.com",
+      "accessible": false,
+      "relevant": false,
+      "error": "Anti-bot detected"
+    },
+    {
+      "url": "https://www.eonline.com/news/1429685/oscars-2026-hudson-williams-on-fans-reaction-to-his-girlfriend",
+      "title": "Oscars 2026: Hudson Williams on Fans' Reaction to His Girlfriend",
+      "domain": "eonline.com",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://www.indiatimes.com/trending/hudson-williams-at-the-2026-oscars-fans-are-already-rolling-their-eyes-actors-who-star-in-nominated-films-do-not-get-chance-the-to-attend-but/articleshow/129466156.html",
+      "title": "Hudson Williams at the 2026 Oscars? Fans are already rolling their eyes: 'Actors who star in nominated films do not get chance the to attend but…'",
+      "domain": "indiatimes.com",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://www.aol.co.uk/articles/hudson-williams-makes-stylish-oscars-205946540.html",
+      "title": "Hudson Williams Makes a Stylish Oscars Debut in Balenciaga Tuxedo and Bulgari Jewelry - AOL",
+      "domain": "aol.co.uk",
+      "accessible": true,
+      "relevant": true
+    }
+  ],
+  "selectedUrls": [
+    "https://www.elle.com/culture/celebrities/a70742150/hudson-williams-red-carpet-photos-oscars-2026/",
+    "https://www.eonline.com/news/1429685/oscars-2026-hudson-williams-on-fans-reaction-to-his-girlfriend",
+    "https://www.indiatimes.com/trending/hudson-williams-at-the-2026-oscars-fans-are-already-rolling-their-eyes-actors-who-star-in-nominated-films-do-not-get-chance-the-to-attend-but/articleshow/129466156.html"
+  ],
+  "result": {
+    "market_id": "0x9bc8ff4cc211e124cbaccb5bd7ad504f67845806e978eb384d82eecbf91a26b2",
+    "question": "Will Hudson Williams attend the Oscars?",
+    "urls_used": [
+      "https://www.elle.com/culture/celebrities/a70742150/hudson-williams-red-carpet-photos-oscars-2026/",
+      "https://www.eonline.com/news/1429685/oscars-2026-hudson-williams-on-fans-reaction-to-his-girlfriend",
+      "https://www.indiatimes.com/trending/hudson-williams-at-the-2026-oscars-fans-are-already-rolling-their-eyes-actors-who-star-in-nominated-films-do-not-get-chance-the-to-attend-but/articleshow/129466156.html"
+    ],
+    "final_answer": "YES",
+    "expected": "Yes",
+    "correct": true,
+    "status": "COMMITTING",
+    "consensus": "NO_MAJORITY"
+  },
+  "timestamp": "2026-03-18T09:54:05.348Z",
+  "logs": [
+    "heading|[02:53:45] Fetching market metadata from Polymarket...",
+    "info|[02:53:46] Found 14 markets under this event",
+    "success|[02:53:47] Selected: \"Will Hudson Williams attend the Oscars?\"",
+    "dim|[02:53:47] Status: Resolved | Outcome: Yes"
+  ]
+}

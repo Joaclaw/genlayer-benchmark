@@ -1,0 +1,189 @@
+{
+  "market": {
+    "id": "0x9133a7c2abc25ff946a40572cce99b91078287817e513359fcf00bd8cdfacf1a",
+    "question": "Will Melissa Bean be the Democratic Nominee for IL-08?",
+    "description": "This market will resolve according to the candidate who wins the nomination for the Democratic Party to contest the IL-08 congressional district seat in the U.S. House of Representatives in the 2026 midterm elections. The Democratic primary will take place on March 17, 2026.\n\nIf no nominee is announced by November 3, 2026, 11:59PM ET, this market will resolve to \"Other\".\n\nThe resolution source for this market will be a consensus of official Democrat sources, including https://democrats.org/.\n\nAny replacement of the nominee before election day will not change the resolution of the market.",
+    "outcome": "Yes",
+    "end_date": "2026-03-17T00:00:00Z",
+    "resolved": true,
+    "slug": "will-melissa-bean-be-the-democratic-nominee-for-il-08",
+    "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/il-07-democratic-primary-winner-dBMfW1d-DJRZ.png"
+  },
+  "discoveredUrls": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Melissa_Bean",
+      "title": "Melissa Bean",
+      "domain": "en.wikipedia.org",
+      "relevance_score": 0.4365926422673827
+    },
+    {
+      "url": "https://ballotpedia.org/Melissa_Bean",
+      "title": "Melissa Bean - Ballotpedia",
+      "domain": "ballotpedia.org",
+      "relevance_score": 0.43134752572171203
+    },
+    {
+      "url": "https://chicago.suntimes.com/elections/2026/03/17/us-house-illinois-8th-congressional-district-primary-results",
+      "title": "Early front-runner Melissa Bean seeks to reclaim 8th Congressional District seat she lost in 2010  - Chicago Sun-Times",
+      "domain": "chicago.suntimes.com",
+      "relevance_score": 0.42610240917604136
+    },
+    {
+      "url": "https://govprofiles.com/melissa-bean/",
+      "title": "Representative Melissa L. Bean",
+      "domain": "govprofiles.com",
+      "relevance_score": 0.42085729263037064
+    },
+    {
+      "url": "https://www.melissabeanforcongress.com/about",
+      "title": "Melissa Bean for Congress",
+      "domain": "melissabeanforcongress.com",
+      "relevance_score": 0.41561217608469997
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Melissa_Bean",
+      "title": "Melissa Bean",
+      "domain": "en.wikipedia.org",
+      "relevance_score": 0.4306555673465008
+    },
+    {
+      "url": "https://chicago.suntimes.com/elections/2026/03/17/us-house-illinois-8th-congressional-district-primary-results",
+      "title": "Early front-runner Melissa Bean seeks to reclaim 8th Congressional District seat she lost in 2010  - Chicago Sun-Times",
+      "domain": "chicago.suntimes.com",
+      "relevance_score": 0.42145623423592476
+    },
+    {
+      "url": "http://newdemactionfund.com/press-releases/2025/12/18/new-dems-endorse-melissa-bean-in-illinois-eighth-district",
+      "title": "New Dems Endorse Melissa Bean in Illinois’ Eighth District — NewDem Action Fund",
+      "domain": "newdemactionfund.com",
+      "relevance_score": 0.40305756801477266
+    },
+    {
+      "url": "https://www.melissabeanforillinois.com/",
+      "title": "Melissa Bean for Congress",
+      "domain": "melissabeanforillinois.com",
+      "relevance_score": 0.39385823490419664
+    },
+    {
+      "url": "https://navprod.dailyherald.com/20250911/news/melissa-bean-enters-8th-congressional-race-15-years-after-loss-to-joe-walsh/",
+      "title": "Melissa Bean enters 8th Congressional race, 15 years after loss to Joe Walsh",
+      "domain": "navprod.dailyherald.com",
+      "relevance_score": 0.3846589017936206
+    }
+  ],
+  "validatedUrls": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Melissa_Bean",
+      "title": "Melissa Bean",
+      "domain": "en.wikipedia.org",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://ballotpedia.org/Melissa_Bean",
+      "title": "Melissa Bean - Ballotpedia",
+      "domain": "ballotpedia.org",
+      "accessible": false,
+      "relevant": false,
+      "error": "Anti-bot detected"
+    },
+    {
+      "url": "https://chicago.suntimes.com/elections/2026/03/17/us-house-illinois-8th-congressional-district-primary-results",
+      "title": "Early front-runner Melissa Bean seeks to reclaim 8th Congressional District seat she lost in 2010  - Chicago Sun-Times",
+      "domain": "chicago.suntimes.com",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://govprofiles.com/melissa-bean/",
+      "title": "Representative Melissa L. Bean",
+      "domain": "govprofiles.com",
+      "accessible": false,
+      "relevant": false,
+      "error": "Connection failed"
+    },
+    {
+      "url": "https://www.melissabeanforcongress.com/about",
+      "title": "Melissa Bean for Congress",
+      "domain": "melissabeanforcongress.com",
+      "accessible": false,
+      "relevant": false,
+      "error": "Anti-bot detected"
+    },
+    {
+      "url": "https://en.wikipedia.org/wiki/Melissa_Bean",
+      "title": "Melissa Bean",
+      "domain": "en.wikipedia.org",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://chicago.suntimes.com/elections/2026/03/17/us-house-illinois-8th-congressional-district-primary-results",
+      "title": "Early front-runner Melissa Bean seeks to reclaim 8th Congressional District seat she lost in 2010  - Chicago Sun-Times",
+      "domain": "chicago.suntimes.com",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "http://newdemactionfund.com/press-releases/2025/12/18/new-dems-endorse-melissa-bean-in-illinois-eighth-district",
+      "title": "New Dems Endorse Melissa Bean in Illinois’ Eighth District — NewDem Action Fund",
+      "domain": "newdemactionfund.com",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://www.melissabeanforillinois.com/",
+      "title": "Melissa Bean for Congress",
+      "domain": "melissabeanforillinois.com",
+      "accessible": false,
+      "relevant": false,
+      "error": "Anti-bot detected"
+    },
+    {
+      "url": "https://navprod.dailyherald.com/20250911/news/melissa-bean-enters-8th-congressional-race-15-years-after-loss-to-joe-walsh/",
+      "title": "Melissa Bean enters 8th Congressional race, 15 years after loss to Joe Walsh",
+      "domain": "navprod.dailyherald.com",
+      "accessible": true,
+      "relevant": true
+    }
+  ],
+  "selectedUrls": [
+    "https://en.wikipedia.org/wiki/Melissa_Bean",
+    "https://chicago.suntimes.com/elections/2026/03/17/us-house-illinois-8th-congressional-district-primary-results",
+    "https://en.wikipedia.org/wiki/Melissa_Bean"
+  ],
+  "result": {
+    "market_id": "0x9133a7c2abc25ff946a40572cce99b91078287817e513359fcf00bd8cdfacf1a",
+    "question": "Will Melissa Bean be the Democratic Nominee for IL-08?",
+    "urls_used": [
+      "https://en.wikipedia.org/wiki/Melissa_Bean",
+      "https://chicago.suntimes.com/elections/2026/03/17/us-house-illinois-8th-congressional-district-primary-results",
+      "https://en.wikipedia.org/wiki/Melissa_Bean"
+    ],
+    "final_answer": "YES",
+    "expected": "Yes",
+    "correct": true,
+    "reasoning": "Source 1 explicitly states 'She is the nominee to regain her old seat in the 2026 U.S. House election in Illinois's 8th congressional district.' Source 2 confirms she won the 8th Congressional District Democratic primary, moving to reclaim the seat.",
+    "urls_fetched": 3,
+    "consensus": {
+      "status": "ACCEPTED",
+      "result": "MAJORITY_AGREE",
+      "agree_count": 5,
+      "total_validators": 5,
+      "votes": [
+        "AGREE",
+        "AGREE",
+        "AGREE",
+        "AGREE",
+        "AGREE"
+      ]
+    }
+  },
+  "timestamp": "2026-03-18T10:20:57.996Z",
+  "logs": [
+    "heading|[03:20:05] Fetching market metadata from Polymarket...",
+    "info|[03:20:06] Found 35 markets under this event",
+    "success|[03:20:06] Selected: \"Will Melissa Bean be the Democratic Nominee for IL-08?\"",
+    "dim|[03:20:06] Status: Resolved | Outcome: Yes"
+  ]
+}

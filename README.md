@@ -1,96 +1,107 @@
-# 🧬 GenLayer Benchmark
+# GenLayer Multi-URL Resolution Benchmark
 
-**Can GenLayer's Intelligent Contracts resolve Polymarket prediction markets?**
+Test GenLayer's Optimistic Democracy consensus for resolving Polymarket prediction markets.
 
-This benchmark tests whether [GenLayer](https://genlayer.com)'s Intelligent Oracle + Optimistic Democracy approach can correctly resolve real prediction markets from [Polymarket](https://polymarket.com).
-
-## 📊 Key Findings
-
-| Metric | Result |
-|--------|--------|
-| **URL Accessibility** | 60% (6/10 markets) |
-| **Resolution Accuracy** | 83% (5/6 accessible) |
-| **Best Source** | Wikipedia (100% success) |
-| **Worst Sources** | News sites (anti-bot blocked) |
-
-### What Works
-- ✅ Wikipedia sources — fully accessible, correct resolution
-- ✅ Simple factual questions with clear yes/no answers
-- ✅ Historical events with documented outcomes
-
-### What Doesn't Work
-- ❌ News sites (CNN, TMZ) — anti-bot protection
-- ❌ Government sites (FDA) — heavy JavaScript requirements
-- ❌ Sports sites (Olympics.com) — anti-bot blocking
-- ❌ Date-context questions — LLM doesn't know "current" date
-
-## 🏗️ Architecture
-
-```
-┌─────────────────────────────────────────────────────────┐
-│                    Intelligent Contract                  │
-│  ┌─────────────────────────────────────────────────┐   │
-│  │  gl.get_webpage(resolution_url)                  │   │
-│  │  → Fetch resolution source                       │   │
-│  │                                                  │   │
-│  │  gl.exec_prompt(content + question)              │   │
-│  │  → LLM determines YES/NO/UNRESOLVABLE            │   │
-│  │                                                  │   │
-│  │  Optimistic Democracy validates via validators   │   │
-│  └─────────────────────────────────────────────────┘   │
-└─────────────────────────────────────────────────────────┘
-```
-
-## 🚀 Running Locally
+## Quick Start
 
 ```bash
 # Install dependencies
 npm install
 
-# Run Python benchmark (requires genlayer CLI + OpenAI key)
-python benchmark_runner.py
+# Configure API keys
+cp .env.example .env
+# Edit .env with your keys:
+# - EXA_API_KEY (for URL discovery)
+# - OPENAI_API_KEY (for relevance checking)
 
-# View dashboard
-npm run dashboard
-# → http://localhost:5050
+# Start dev server
+npm run dev
+# → http://localhost:3000
 ```
 
-## 📁 Structure
+## How It Works
+
+1. **Paste a Polymarket URL** (e.g., `https://polymarket.com/event/...`)
+2. **Auto-discover sources** via Exa AI (finds 5 URLs from different domains)
+3. **Validate URLs** (accessibility + relevance checks)
+4. **Submit to GenLayer** (3 URLs → Optimistic Democracy consensus)
+5. **Compare result** to Polymarket ground truth
+
+## Project Structure
 
 ```
-├── public/              # Static dashboard (Vercel deploy)
-│   ├── index.html      # Dashboard UI
-│   └── api/
-│       └── results.json # Benchmark results
-├── contracts/
-│   └── market_resolver.py  # GenLayer Intelligent Contract
-├── benchmark_runner.py  # Python benchmark script
-└── README.md
+genlayer-benchmark/
+├── app/                    # Next.js frontend
+│   ├── resolve/           # Main resolution UI
+│   └── api/resolve/       # API routes
+│       ├── market/        # Fetch Polymarket metadata
+│       ├── discover/      # Exa AI URL discovery
+│       ├── validate/      # URL validation
+│       ├── submit/        # Contract submission
+│       └── save/          # Persist results
+├── pipeline/              # Core logic
+│   ├── multi_url_resolver.py  # GenLayer contract
+│   └── lib/               # TypeScript utilities
+├── data/
+│   └── resolutions/       # Saved resolution results
+├── archive/               # Old code (preserved)
+└── TODOS.md              # Planned improvements
 ```
 
-## 🔮 Recommendations for GenLayer
+## Pipeline Architecture
 
-1. **Add headless browser support** — `gl.get_webpage()` should handle JavaScript-heavy sites
-2. **Implement anti-bot bypass** — Many real-world resolution sources have protection
-3. **Date context injection** — LLM needs to know the "current" date for time-sensitive questions
-4. **Multiple source verification** — Cross-reference multiple URLs for higher confidence
+```
+┌──────────────────────────────────────────────────────────────────┐
+│  POLYMARKET URL                                                  │
+│  └─► Fetch market metadata (question, outcome, end date)        │
+└────────────────────────────┬─────────────────────────────────────┘
+                             ▼
+┌──────────────────────────────────────────────────────────────────┐
+│  URL DISCOVERY (Exa AI)                                          │
+│  └─► Neural search for 5+ relevant sources                      │
+│  └─► Domain diversification (different domains)                 │
+└────────────────────────────┬─────────────────────────────────────┘
+                             ▼
+┌──────────────────────────────────────────────────────────────────┐
+│  URL VALIDATION                                                  │
+│  └─► HTTP accessibility check                                   │
+│  └─► Anti-bot detection                                         │
+│  └─► LLM relevance check (OpenAI)                              │
+└────────────────────────────┬─────────────────────────────────────┘
+                             ▼
+┌──────────────────────────────────────────────────────────────────┐
+│  CONTRACT SUBMISSION (GenLayer)                                  │
+│  └─► 3 URLs → MultiURLResolver contract                        │
+│  └─► Each URL: fetch + LLM extraction                          │
+│  └─► 2/3 majority vote → final answer                          │
+│  └─► Optimistic Democracy validates consensus                   │
+└────────────────────────────┬─────────────────────────────────────┘
+                             ▼
+┌──────────────────────────────────────────────────────────────────┐
+│  RESULT                                                          │
+│  └─► Compare to Polymarket ground truth                         │
+│  └─► Save to data/resolutions/                                  │
+└──────────────────────────────────────────────────────────────────┘
+```
 
-## 📖 Developer Reference
+## Contract
 
-See [GENLAYER.md](./GENLAYER.md) for:
-- Current v0.1.3+ API reference
-- Constructor-only pattern for resolutions
-- Scalable batch processing architecture
-- Common linter errors and fixes
-- Migration guide from v0.1.0
+The `MultiURLResolver` contract (`pipeline/multi_url_resolver.py`) implements:
 
-**Key API docs:** https://sdk.genlayer.com/main/_static/ai/api.txt
+- **Multi-URL consensus**: Fetches 3 pre-validated URLs
+- **Per-URL extraction**: LLM extracts YES/NO from each source
+- **2/3 majority vote**: Requires 2 of 3 to agree
+- **Optimistic Democracy**: GenLayer validators verify the result
 
-## 📝 License
+## API Keys Required
+
+| Key | Purpose | Get it at |
+|-----|---------|-----------|
+| `EXA_API_KEY` | URL discovery | https://exa.ai |
+| `OPENAI_API_KEY` | Relevance checking | https://platform.openai.com |
+
+Contract submission uses GenLayer's studionet - no private key required.
+
+## License
 
 MIT
-
----
-
-Built by [argue.fun](https://argue.fun) — Feb 2026
-# Deployment Check

@@ -1,0 +1,107 @@
+{
+  "market": {
+    "id": "0x28e3dba29418863b94668c63a727dac90ff78544d33f0318155baa02014be202",
+    "question": "Will \"The Tiktok Killer\" be the #2 US Netflix show this week?",
+    "description": "Netflix is expected to update its Top 10 TV shows list on top10.netflix.com on Tuesday, March 17, 2026, 3:00 PM ET, reflecting viewership from the previous week (Monday to Sunday).\n\nThis market will resolve based on which show this update ranks as the #2 Netflix show in the United States.\n\nThe ranking is based on total views in the United States, as reported by Netflix for TV shows.\n\nIf the top10.netflix.com update does not occur by March 20, 2026, 11:59 PM ET, this market will resolve to \"Other\".",
+    "outcome": "No",
+    "end_date": "2026-03-17T00:00:00Z",
+    "resolved": true,
+    "slug": "will-the-tiktok-killer-be-the-2-us-netflix-show-this-week",
+    "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/will-the-tiktok-killer-be-the-top-global-netflix-show-this-week-d1Ymf9kITB3G.jpg"
+  },
+  "discoveredUrls": [
+    {
+      "url": "https://programminginsider.com/netflix-debuts-the-tiktok-killer/",
+      "title": "Netflix Debuts 'The TikTok Killer' - Programming Insider",
+      "domain": "programminginsider.com",
+      "relevance_score": 0.4389822694940877
+    },
+    {
+      "url": "https://www.comingsoon.net/tv/news/2097650-netflix-most-watched-week-no-1-katt-williams-last-report-lincoln-lawyer-bridgerton",
+      "title": "The Lincoln Lawyer Beats Bridgerton but Still Loses Streaming Battle",
+      "domain": "comingsoon.net",
+      "relevance_score": 0.4326760354838854
+    },
+    {
+      "url": "https://www.whats-on-netflix.com/news/top-10-reports/reality-check-inside-americas-next-top-model-the-lincoln-lawyer-the-museum-of-innocence/",
+      "title": "Netflix Top 10 Report: 'Reality Check: Inside America's Next Top Model' Is A Hit While 'The Lincoln Lawyer' Continues Strong",
+      "domain": "whats-on-netflix.com",
+      "relevance_score": 0.4263698014736831
+    },
+    {
+      "url": "https://www.cbr.com/the-hunting-party-crime-streaming-success-netflix-february-2026/",
+      "title": "The Hunting Party: NBC's Crime Drama Tops Netflix Charts Amid Season 2",
+      "domain": "cbr.com",
+      "relevance_score": 0.4200635674634808
+    },
+    {
+      "url": "https://m.imdb.com/news/ni65425936/",
+      "title": "'Wednesday' Dethrones Netflix's 'Big Little Lies' Replacement on Streaming Charts - IMDb",
+      "domain": "m.imdb.com",
+      "relevance_score": 0.4137573334532785
+    }
+  ],
+  "validatedUrls": [
+    {
+      "url": "https://programminginsider.com/netflix-debuts-the-tiktok-killer/",
+      "title": "Netflix Debuts 'The TikTok Killer' - Programming Insider",
+      "domain": "programminginsider.com",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://www.comingsoon.net/tv/news/2097650-netflix-most-watched-week-no-1-katt-williams-last-report-lincoln-lawyer-bridgerton",
+      "title": "The Lincoln Lawyer Beats Bridgerton but Still Loses Streaming Battle",
+      "domain": "comingsoon.net",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://www.whats-on-netflix.com/news/top-10-reports/reality-check-inside-americas-next-top-model-the-lincoln-lawyer-the-museum-of-innocence/",
+      "title": "Netflix Top 10 Report: 'Reality Check: Inside America's Next Top Model' Is A Hit While 'The Lincoln Lawyer' Continues Strong",
+      "domain": "whats-on-netflix.com",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://www.cbr.com/the-hunting-party-crime-streaming-success-netflix-february-2026/",
+      "title": "The Hunting Party: NBC's Crime Drama Tops Netflix Charts Amid Season 2",
+      "domain": "cbr.com",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://m.imdb.com/news/ni65425936/",
+      "title": "'Wednesday' Dethrones Netflix's 'Big Little Lies' Replacement on Streaming Charts - IMDb",
+      "domain": "m.imdb.com",
+      "accessible": true,
+      "relevant": true
+    }
+  ],
+  "selectedUrls": [
+    "https://programminginsider.com/netflix-debuts-the-tiktok-killer/",
+    "https://www.comingsoon.net/tv/news/2097650-netflix-most-watched-week-no-1-katt-williams-last-report-lincoln-lawyer-bridgerton",
+    "https://www.whats-on-netflix.com/news/top-10-reports/reality-check-inside-americas-next-top-model-the-lincoln-lawyer-the-museum-of-innocence/"
+  ],
+  "result": {
+    "market_id": "0x28e3dba29418863b94668c63a727dac90ff78544d33f0318155baa02014be202",
+    "question": "Will \"The Tiktok Killer\" be the #2 US Netflix show this week?",
+    "urls_used": [
+      "https://programminginsider.com/netflix-debuts-the-tiktok-killer/",
+      "https://www.comingsoon.net/tv/news/2097650-netflix-most-watched-week-no-1-katt-williams-last-report-lincoln-lawyer-bridgerton",
+      "https://www.whats-on-netflix.com/news/top-10-reports/reality-check-inside-americas-next-top-model-the-lincoln-lawyer-the-museum-of-innocence/"
+    ],
+    "final_answer": "UNCERTAIN",
+    "expected": "No",
+    "correct": false,
+    "status": "COMMITTING",
+    "consensus": "NO_MAJORITY"
+  },
+  "timestamp": "2026-03-18T09:54:55.815Z",
+  "logs": [
+    "heading|[02:54:37] Fetching market metadata from Polymarket...",
+    "info|[02:54:37] Found 21 markets under this event",
+    "success|[02:54:40] Selected: \"Will \"The Tiktok Killer\" be the #2 US Netflix show this week?\"",
+    "dim|[02:54:40] Status: Resolved | Outcome: No"
+  ]
+}

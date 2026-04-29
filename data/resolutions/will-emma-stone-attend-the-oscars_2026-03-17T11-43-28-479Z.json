@@ -1,0 +1,111 @@
+{
+  "market": {
+    "id": "0x87fbf502b8781a5a2279f5cf0e74cb6541515e311b683fe51f89a350baf0fd2f",
+    "question": "Will Emma Stone attend the Oscars?",
+    "description": "The Academy Awards are presented annually by the Academy of Motion Picture Arts and Sciences (AMPAS) to honor outstanding artistic and technical achievements in film. For the 98th Academy Awards in 2026, nominations are scheduled to be announced on January 22, followed by the ceremony on March 15, 2026.\n\nThis market will resolve to \"Yes\" if the listed individual attends the 98th Academy Awards. Otherwise, this market will resolve to \"No\".\n\nIf the event is canceled or postponed beyond March 31, 2026, 11:59 PM ET, this market will resolve to \"No\".\n\nFor the purpose of this market, attending the Academy Awards is defined as being in physical attendance during any part of the event.\n\nThe resolution source will be a consensus of credible reporting.",
+    "outcome": "Yes",
+    "end_date": "2026-03-15T00:00:00Z",
+    "resolved": true,
+    "slug": "will-emma-stone-attend-the-oscars",
+    "image": "https://polymarket-upload.s3.us-east-2.amazonaws.com/oscars-2026-best-picture-nominations-uExlgIhppb3W.jpg"
+  },
+  "discoveredUrls": [
+    {
+      "url": "https://pagesix.com/2026/03/15/style/emma-stone-is-ethereal-in-backless-silver-gown-on-oscars-2026-red-carpet/",
+      "title": "Emma Stone is ethereal in backless gown on Oscars 2026 red carpet",
+      "domain": "pagesix.com",
+      "relevance_score": 0.5999064451865317
+    },
+    {
+      "url": "https://www.instyle.com/emma-stone-oscars-2026-backless-gown-11921448",
+      "title": "Emma Stone's Backless Oscars 2026 Dress Took Over 600 Hours to Make",
+      "domain": "instyle.com",
+      "relevance_score": 0.5803190536598322
+    },
+    {
+      "url": "https://www.elle.com/culture/celebrities/a70656063/emma-stone-red-carpet-photos-oscars-2026/",
+      "title": "Emma Stone Wears a Silver Louis Vuitton Gown With Capped Sleeves at the 2026 Oscars",
+      "domain": "elle.com",
+      "relevance_score": 0.5607316621331326
+    },
+    {
+      "url": "https://www.glamour.com/story/emma-stone-wore-the-bridgerton-wedding-dress-of-my-dreams-to-the-2026-oscars",
+      "title": "Emma Stone Wore the “Bridgerton” Wedding Dress of My Dreams to the 2026 Oscars | Glamour",
+      "domain": "glamour.com",
+      "relevance_score": 0.5411442706064331
+    },
+    {
+      "url": "https://wwd.com/pop-culture/celebrity-news/emma-stone-louis-vuitton-dress-oscars-2026-1238647656/",
+      "title": "Emma Stone Wears Louis Vuitton Dress at the Oscars 2026",
+      "domain": "wwd.com",
+      "relevance_score": 0.5215568790797336
+    }
+  ],
+  "validatedUrls": [
+    {
+      "url": "https://pagesix.com/2026/03/15/style/emma-stone-is-ethereal-in-backless-silver-gown-on-oscars-2026-red-carpet/",
+      "title": "Emma Stone is ethereal in backless gown on Oscars 2026 red carpet",
+      "domain": "pagesix.com",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://www.instyle.com/emma-stone-oscars-2026-backless-gown-11921448",
+      "title": "Emma Stone's Backless Oscars 2026 Dress Took Over 600 Hours to Make",
+      "domain": "instyle.com",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://www.elle.com/culture/celebrities/a70656063/emma-stone-red-carpet-photos-oscars-2026/",
+      "title": "Emma Stone Wears a Silver Louis Vuitton Gown With Capped Sleeves at the 2026 Oscars",
+      "domain": "elle.com",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://www.glamour.com/story/emma-stone-wore-the-bridgerton-wedding-dress-of-my-dreams-to-the-2026-oscars",
+      "title": "Emma Stone Wore the “Bridgerton” Wedding Dress of My Dreams to the 2026 Oscars | Glamour",
+      "domain": "glamour.com",
+      "accessible": true,
+      "relevant": true
+    },
+    {
+      "url": "https://wwd.com/pop-culture/celebrity-news/emma-stone-louis-vuitton-dress-oscars-2026-1238647656/",
+      "title": "Emma Stone Wears Louis Vuitton Dress at the Oscars 2026",
+      "domain": "wwd.com",
+      "accessible": false,
+      "relevant": false,
+      "error": "Anti-bot detected"
+    }
+  ],
+  "selectedUrls": [
+    "https://pagesix.com/2026/03/15/style/emma-stone-is-ethereal-in-backless-silver-gown-on-oscars-2026-red-carpet/",
+    "https://www.instyle.com/emma-stone-oscars-2026-backless-gown-11921448",
+    "https://www.elle.com/culture/celebrities/a70656063/emma-stone-red-carpet-photos-oscars-2026/"
+  ],
+  "result": {
+    "market_id": "0x87fbf502b8781a5a2279f5cf0e74cb6541515e311b683fe51f89a350baf0fd2f",
+    "question": "Will Emma Stone attend the Oscars?",
+    "urls_used": [
+      "https://pagesix.com/2026/03/15/style/emma-stone-is-ethereal-in-backless-silver-gown-on-oscars-2026-red-carpet/",
+      "https://www.instyle.com/emma-stone-oscars-2026-backless-gown-11921448",
+      "https://www.elle.com/culture/celebrities/a70656063/emma-stone-red-carpet-photos-oscars-2026/"
+    ],
+    "url_responses": [],
+    "final_answer": "UNCERTAIN",
+    "expected": "Yes",
+    "correct": false,
+    "consensus_count": 0,
+    "urls_fetched": 0,
+    "urls_failed": 0,
+    "reasoning": ""
+  },
+  "timestamp": "2026-03-17T11:43:28.374Z",
+  "logs": [
+    "heading|[04:42:05] Fetching market metadata from Polymarket...",
+    "info|[04:42:05] Found 14 markets under this event",
+    "success|[04:42:06] Selected: \"Will Emma Stone attend the Oscars?\"",
+    "dim|[04:42:06] Status: Resolved | Outcome: Yes"
+  ]
+}

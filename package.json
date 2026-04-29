@@ -7,12 +7,20 @@
     "build": "next build",
     "start": "next start",
     "pilot": "npx tsx scripts/pilot_multi_url.ts",
-    "pilot:urls-only": "SKIP_GENLAYER=true npx tsx scripts/pilot_multi_url.ts"
+    "pilot:urls-only": "SKIP_GENLAYER=true npx tsx scripts/pilot_multi_url.ts",
+    "fetch-targets": "npx tsx scripts/select_target_markets.ts",
+    "benchmark:fetch": "npx tsx scripts/benchmark/fetch_resolved.ts",
+    "benchmark:discover": "npx tsx scripts/benchmark/discover_urls.ts",
+    "benchmark:validate": "npx tsx scripts/benchmark/validate_urls.ts",
+    "benchmark:run": "npx tsx scripts/benchmark/run_benchmark.ts",
+    "benchmark:all": "npm run benchmark:fetch && npm run benchmark:discover && npm run benchmark:validate && npm run benchmark:run"
   },
   "dependencies": {
+    "dotenv": "^16.4.0",
     "exa-js": "^2.8.0",
     "genlayer-js": "^0.21.0",
     "next": "^14.0.0",
+    "openai": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
